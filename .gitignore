@@ -3,3 +3,10 @@ temp/
 .DS_Store
 node_modules/
 *.log
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
