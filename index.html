@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Virtual Human Lab | Bioinformatics + Machine Learning</title>
+    <meta
+      name="description"
+      content="Virtual Human Lab is an independent nonprofit research collective building virtual-human biology with RNA data, machine learning, and AI-enabled experimentation."
+    >
+    <meta property="og:title" content="Virtual Human Lab">
+    <meta
+      property="og:description"
+      content="An independent nonprofit research collective for bioinformatics, machine learning, and virtual-human biology."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.virtualhumanlab.com/">
+    <meta property="og:image" content="https://www.virtualhumanlab.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.virtualhumanlab.com/">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,650&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="sections.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Virtual Human Lab home">
+        <span class="brand-mark" aria-hidden="true">VH</span>
+        <span>Virtual Human Lab</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-bar"></span>
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="#research">Research</a>
+        <a href="#model">Model</a>
+        <a href="#members">Members</a>
+        <a href="#collaborate">Collaborate</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <canvas id="cell-field" aria-hidden="true"></canvas>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Independent nonprofit research collective</p>
+          <h1 id="hero-title">Virtual Human Lab</h1>
+          <p class="hero-kicker">
+            Building virtual-human biology with RNA data, machine learning, and AI-enabled
+            experimentation.
+          </p>
+          <div class="hero-actions" role="group" aria-label="Primary actions">
+            <a class="button button-primary" href="mailto:junidude14@gmail.com">Collaborate</a>
+            <a class="button button-secondary" href="#research">Explore research</a>
+          </div>
+        </div>
+        <div class="hero-meta" role="group" aria-label="Research focus summary">
+          <span>Bioinformatics + Machine Learning</span>
+          <span>RNA foundation models</span>
+          <span>GPU-enabled collaboration</span>
+        </div>
+      </section>
+
+      <section class="intro section-band" aria-labelledby="intro-title">
+        <div class="section-grid">
+          <div>
+            <p class="section-label">What we are</p>
+            <h2 id="intro-title">A free research collective for the AI biology era.</h2>
+          </div>
+          <div class="intro-copy">
+            <p>
+              Virtual Human Lab is a nonprofit, independent group of researchers working at the
+              intersection of bioinformatics and machine learning. We are not a formal institute
+              attached to a government agency, university, or company.
+            </p>
+            <p>
+              Our premise is simple: a new scientific field should be learnable from the ground up.
+              With AI as a tutor, AI as an experimental partner, and GPU access as the shared
+              instrument, motivated researchers can move faster than traditional training paths
+              often allow.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="research section-panel" id="research" aria-labelledby="research-title">
+        <div class="section-heading">
+          <p class="section-label">Research programs</p>
+          <h2 id="research-title">Foundation models for RNA-scale virtual humans.</h2>
+          <p>
+            Our current work focuses on learning cellular state, tissue-scale signals, and
+            cross-resolution translation from RNA-seq data.
+          </p>
+        </div>
+
+        <div class="program-grid">
+          <article class="program-card">
+            <span class="program-index">01</span>
+            <h3>Single-cell foundation model in scRNA-seq</h3>
+            <p>
+              Models that learn cell identity, perturbation response, and disease-state geometry
+              from single-cell transcriptomes.
+            </p>
+          </article>
+          <article class="program-card accent-green">
+            <span class="program-index">02</span>
+            <h3>Bulk-cell foundation model in bulk RNA-seq</h3>
+            <p>
+              Representations for cohort-scale transcriptomes that preserve clinically useful
+              biological structure.
+            </p>
+          </article>
+          <article class="program-card accent-red">
+            <span class="program-index">03</span>
+            <h3>RNA-LLM</h3>
+            <p>
+              A multimodal LLM direction that connects language reasoning with RNA-seq embeddings
+              for interpretation and hypothesis generation.
+            </p>
+          </article>
+          <article class="program-card accent-blue">
+            <span class="program-index">04</span>
+            <h3>Bulk RNA-seq to single-cell RNA-seq</h3>
+            <p>
+              Cross-resolution modeling that translates population-level RNA signals into
+              single-cell-like cellular programs.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="model section-band dark-band" id="model" aria-labelledby="model-title">
+        <div class="section-grid">
+          <div>
+            <p class="section-label">Institute model</p>
+            <h2 id="model-title">Free participation, serious work.</h2>
+          </div>
+          <ul class="model-list">
+            <li class="model-item">
+              <h3>Self-directed entry</h3>
+              <p>
+                We welcome researchers who want to learn a new technical field without waiting for
+                permission from a traditional lab hierarchy.
+              </p>
+            </li>
+            <li class="model-item">
+              <h3>AI-native experimentation</h3>
+              <p>
+                We treat AI systems as learning infrastructure, coding partners, literature
+                companions, and experimental accelerators.
+              </p>
+            </li>
+            <li class="model-item">
+              <h3>GPU-centered collaboration</h3>
+              <p>
+                We are independent, but we actively welcome collaborations with institutions,
+                universities, companies, and public organizations that can support GPU resources.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="members section-panel" id="members" aria-labelledby="members-title">
+        <div class="section-heading compact">
+          <p class="section-label">Members</p>
+          <h2 id="members-title">A small starting group, built to stay open.</h2>
+          <p>
+            Current member backgrounds are listed for context only. Virtual Human Lab is an
+            independent collective and does not claim institutional affiliation.
+          </p>
+        </div>
+
+        <div class="member-grid">
+          <article class="member-card">
+            <div class="member-initials" aria-hidden="true">SL</div>
+            <h3>Seung Jun Lee</h3>
+            <p>MD, Plastic Surgeon</p>
+            <a href="https://www.linkedin.com/in/seung-jun-lee-a42920245/" target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+          </article>
+          <article class="member-card">
+            <div class="member-initials" aria-hidden="true">SY</div>
+            <h3>Seongjun Yang</h3>
+            <p>Cold Spring Harbor PhD Candidate</p>
+            <a href="https://www.linkedin.com/in/seongjun-yang-b338061b0/" target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+          </article>
+          <article class="member-card">
+            <div class="member-initials" aria-hidden="true">GL</div>
+            <h3>Gyubok Lee</h3>
+            <p>KAIST PhD Candidate</p>
+            <a href="https://www.linkedin.com/in/gyubok-lee/" target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section class="collaborate" id="collaborate" aria-labelledby="collaborate-title">
+        <div class="collaborate-copy">
+          <p class="section-label">Collaborate</p>
+          <h2 id="collaborate-title">Bring a clinical question, dataset, or GPU path.</h2>
+          <p>
+            We welcome collaborations with researchers, labs, universities, companies, and public
+            organizations interested in AI biology, transcriptomics, and virtual-human modeling.
+          </p>
+        </div>
+        <a class="button button-primary" href="mailto:junidude14@gmail.com">junidude14@gmail.com</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Virtual Human Lab</p>
+      <p>Independent nonprofit research collective for bioinformatics + machine learning.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
