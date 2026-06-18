@@ -7,6 +7,7 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 
 const palette = ["#f4efe4", "#d5a84f", "#a94731", "#6fb0a2", "#81a9c4"];
 let points = [];
+let clusters = [];
 let animationFrame = 0;
 
 function resizeCanvas() {
@@ -21,17 +22,43 @@ function resizeCanvas() {
 }
 
 function seedField(width, height) {
-  const count = Math.max(68, Math.floor((width * height) / 13500));
+  clusters = [
+    { x: width * 0.68, y: height * 0.25, rx: width * 0.12, ry: height * 0.08 },
+    { x: width * 0.82, y: height * 0.56, rx: width * 0.1, ry: height * 0.16 },
+    { x: width * 0.52, y: height * 0.62, rx: width * 0.14, ry: height * 0.11 },
+    { x: width * 0.86, y: height * 0.18, rx: width * 0.07, ry: height * 0.07 },
+    { x: width * 0.62, y: height * 0.82, rx: width * 0.11, ry: height * 0.08 },
+  ];
+
+  const count = Math.max(90, Math.floor((width * height) / 11000));
   points = Array.from({ length: count }, (_, index) => {
-    const lane = index % 4;
+    const clusterIndex = index % clusters.length;
+    const cluster = clusters[clusterIndex];
+    const angle = Math.random() * Math.PI * 2;
+    const distance = Math.sqrt(Math.random());
+    const lane = index % palette.length;
+
     return {
-      x: Math.random() * width,
-      y: Math.random() * height,
-      radius: 1.4 + Math.random() * 3.8,
-      speed: 0.08 + Math.random() * 0.22,
+      x: cluster.x + Math.cos(angle) * cluster.rx * distance,
+      y: cluster.y + Math.sin(angle) * cluster.ry * distance,
+      radius: 1.6 + Math.random() * 3.2,
+      speed: 0.04 + Math.random() * 0.14,
       phase: Math.random() * Math.PI * 2,
+      cluster: clusterIndex,
       color: palette[(lane + Math.floor(Math.random() * palette.length)) % palette.length],
     };
+  });
+}
+
+function drawClusterContours(time) {
+  clusters.forEach((cluster, index) => {
+    const pulse = reduceMotion ? 0 : Math.sin(time * 0.001 + index) * 3;
+    context.globalAlpha = 0.1;
+    context.strokeStyle = palette[(index + 1) % palette.length];
+    context.lineWidth = 1.25;
+    context.beginPath();
+    context.ellipse(cluster.x, cluster.y, cluster.rx + pulse, cluster.ry + pulse, index * 0.22, 0, Math.PI * 2);
+    context.stroke();
   });
 }
 
@@ -44,6 +71,7 @@ function drawField(time = 0) {
   context.clearRect(0, 0, width, height);
   context.fillStyle = "#101414";
   context.fillRect(0, 0, width, height);
+  drawClusterContours(time);
 
   context.globalAlpha = 0.18;
   context.strokeStyle = "#f4efe4";
@@ -55,8 +83,8 @@ function drawField(time = 0) {
       const b = points[j];
       const distance = Math.hypot(a.x - b.x, a.y - b.y);
 
-      if (distance < 116) {
-        context.globalAlpha = (1 - distance / 116) * 0.16;
+      if (distance < 92 && a.cluster === b.cluster) {
+        context.globalAlpha = (1 - distance / 92) * 0.12;
         context.beginPath();
         context.moveTo(a.x, a.y);
         context.lineTo(b.x, b.y);

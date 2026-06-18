@@ -101,6 +101,18 @@
   margin: 0;
 }
 
+.footer-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.footer-links a {
+  align-items: center;
+  display: inline-flex;
+  min-height: 2.75rem;
+}
+
 @media (max-width: 920px) {
   .nav-toggle {
     display: grid;
@@ -117,6 +129,11 @@
     position: absolute;
     right: 0;
     top: 100%;
+  }
+
+  .site-nav a {
+    min-height: 2.75rem;
+    padding: 0.65rem 0;
   }
 
   .site-header.nav-open .site-nav {
@@ -144,12 +161,24 @@
     padding-top: 6.5rem;
   }
 
+  h2 {
+    font-size: clamp(2.2rem, 12vw, 3.8rem);
+    line-height: 1.04;
+  }
+
   .hero-overlay {
     background: rgba(16, 20, 20, 0.68);
   }
 
   .hero-meta {
+    gap: 0.5rem;
     margin-top: 2.25rem;
+  }
+
+  .hero-meta span {
+    border: 1px solid rgba(244, 239, 228, 0.2);
+    font-size: 0.82rem;
+    padding: 0.35rem 0.5rem;
   }
 
   .program-grid,

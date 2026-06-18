@@ -1,0 +1,256 @@
+.library-section {
+  background: var(--paper);
+  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 5vw, 4rem);
+}
+
+.library-shell {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  margin: 0 auto;
+  max-width: var(--max);
+}
+
+.library-lede p:last-child {
+  color: var(--ink-soft);
+  font-size: clamp(1.08rem, 1.8vw, 1.35rem);
+  max-width: 42rem;
+}
+
+.shelf-grid {
+  display: grid;
+  gap: 1px;
+}
+
+.shelf-card {
+  background: rgba(230, 220, 201, 0.58);
+  border: 1px solid rgba(23, 20, 17, 0.14);
+  display: block;
+  min-height: 11rem;
+  padding: clamp(1.1rem, 2vw, 1.6rem);
+  text-decoration: none;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.shelf-card:hover {
+  background: rgba(230, 220, 201, 0.86);
+  transform: translateX(4px);
+}
+
+.shelf-kicker,
+.entry-meta,
+.problem-item span,
+.status-pill {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.shelf-kicker,
+.problem-item span {
+  color: var(--red);
+  display: inline-block;
+  margin-bottom: 1.15rem;
+}
+
+.shelf-card p,
+.problem-item p,
+.entry-card p,
+.collection-lede p {
+  color: var(--ink-soft);
+}
+
+.open-problems {
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+
+.problem-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.artifact-panel {
+  border: 1px solid rgba(23, 20, 17, 0.16);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 auto clamp(2rem, 5vw, 4rem);
+  max-width: var(--max);
+}
+
+.artifact-step {
+  background:
+    linear-gradient(180deg, rgba(244, 239, 228, 0.82), rgba(244, 239, 228, 0.62)),
+    repeating-linear-gradient(135deg, rgba(47, 109, 138, 0.08) 0 1px, transparent 1px 12px);
+  border-right: 1px solid rgba(23, 20, 17, 0.14);
+  min-height: 10rem;
+  padding: 1.1rem;
+}
+
+.artifact-step:last-child {
+  border-right: 0;
+}
+
+.artifact-step span {
+  color: var(--red);
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+}
+
+.artifact-step strong {
+  display: block;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.12;
+}
+
+.problem-item {
+  border-top: 1px solid var(--line);
+  padding-top: 1.2rem;
+}
+
+.problem-item p {
+  margin-bottom: 0;
+}
+
+.collection-hero {
+  background: var(--field);
+  color: var(--paper);
+  padding: 8rem clamp(1rem, 5vw, 4rem) clamp(4rem, 7vw, 6rem);
+}
+
+.collection-shell {
+  margin: 0 auto;
+  max-width: var(--max);
+}
+
+.collection-hero h1 {
+  font-size: clamp(4rem, 12vw, 10rem);
+  max-width: 11ch;
+}
+
+.collection-lede {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 36rem);
+}
+
+.collection-lede p {
+  color: rgba(244, 239, 228, 0.78);
+  font-size: clamp(1.08rem, 1.8vw, 1.35rem);
+}
+
+.entry-section {
+  background: var(--paper-deep);
+  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 5vw, 4rem);
+}
+
+.entry-grid {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0 auto;
+  max-width: var(--max);
+}
+
+.entry-card {
+  background: rgba(244, 239, 228, 0.8);
+  border: 1px solid rgba(23, 20, 17, 0.12);
+  display: flex;
+  flex-direction: column;
+  min-height: 21rem;
+  padding: clamp(1.2rem, 2vw, 1.8rem);
+}
+
+.entry-meta {
+  color: var(--red);
+  margin-bottom: 2.8rem;
+}
+
+.entry-card p {
+  margin-top: auto;
+}
+
+.entry-card a {
+  color: var(--red);
+  font-weight: 700;
+}
+
+.status-pill {
+  align-self: flex-start;
+  background: var(--ink);
+  color: var(--paper);
+  margin-bottom: 1rem;
+  padding: 0.3rem 0.55rem;
+}
+
+.empty-state {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  margin: 0 auto;
+  max-width: var(--max);
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.empty-state p {
+  color: var(--ink-soft);
+  max-width: 48rem;
+}
+
+@media (max-width: 920px) {
+  .library-shell,
+  .collection-lede {
+    grid-template-columns: 1fr;
+  }
+
+  .entry-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .artifact-panel {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .entry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .artifact-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .artifact-step {
+    border-bottom: 1px solid rgba(23, 20, 17, 0.14);
+    border-right: 0;
+    min-height: auto;
+  }
+
+  .artifact-step span {
+    font-size: 0.84rem;
+    margin-bottom: 1rem;
+  }
+
+  .entry-card {
+    min-height: auto;
+  }
+
+  .entry-card p {
+    margin-top: 1rem;
+  }
+
+  .entry-meta,
+  .shelf-kicker,
+  .problem-item span,
+  .status-pill {
+    font-size: 0.82rem;
+  }
+
+  .collection-hero {
+    padding-top: 6.5rem;
+  }
+}

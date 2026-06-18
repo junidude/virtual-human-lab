@@ -15,7 +15,9 @@ Then open `http://localhost:4173`.
 - `index.html` - page structure and English site copy
 - `styles.css` - core visual system
 - `sections.css` - section-specific and responsive rules
+- `library.css` - papers, notes, and research library layouts
 - `script.js` - navigation behavior and animated RNA/cell-state canvas
+- `papers/`, `notes/` - public research memory sections
 - `404.html`, `robots.txt`, `sitemap.xml` - static hosting and SEO helpers
 - `favicon.svg`, `assets/og-image.png` - browser and social preview assets
 - `reports/` - generated visual QA screenshots

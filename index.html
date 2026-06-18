@@ -6,12 +6,12 @@
     <title>Virtual Human Lab | Bioinformatics + Machine Learning</title>
     <meta
       name="description"
-      content="Virtual Human Lab is an independent nonprofit research collective building virtual-human biology with RNA data, machine learning, and AI-enabled experimentation."
+      content="Virtual Human Lab is an independent, non-commercial research collective building virtual-human biology with RNA data, machine learning, and AI-enabled experimentation."
     >
     <meta property="og:title" content="Virtual Human Lab">
     <meta
       property="og:description"
-      content="An independent nonprofit research collective for bioinformatics, machine learning, and virtual-human biology."
+      content="An independent, non-commercial research collective for bioinformatics, machine learning, and virtual-human biology."
     >
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.virtualhumanlab.com/">
@@ -27,6 +27,7 @@
     >
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="sections.css">
+    <link rel="stylesheet" href="library.css">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -42,7 +43,9 @@
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="#research">Research</a>
-        <a href="#model">Model</a>
+        <a href="papers/">Papers</a>
+        <a href="notes/">Notes</a>
+        <a href="#open-problems">Open Problems</a>
         <a href="#members">Members</a>
         <a href="#collaborate">Collaborate</a>
       </nav>
@@ -53,21 +56,21 @@
         <canvas id="cell-field" aria-hidden="true"></canvas>
         <div class="hero-overlay" aria-hidden="true"></div>
         <div class="hero-content">
-          <p class="eyebrow">Independent nonprofit research collective</p>
+          <p class="eyebrow">Independent non-commercial research collective</p>
           <h1 id="hero-title">Virtual Human Lab</h1>
           <p class="hero-kicker">
-            Building virtual-human biology with RNA data, machine learning, and AI-enabled
-            experimentation.
+            An open, independent research collective building RNA-modeling infrastructure,
+            AI-enabled experiments, and public research memory for virtual-human biology.
           </p>
           <div class="hero-actions" role="group" aria-label="Primary actions">
-            <a class="button button-primary" href="mailto:junidude14@gmail.com">Collaborate</a>
-            <a class="button button-secondary" href="#research">Explore research</a>
+            <a class="button button-primary" href="#research">Explore research</a>
+            <a class="button button-secondary" href="notes/">Read notes</a>
           </div>
         </div>
         <div class="hero-meta" role="group" aria-label="Research focus summary">
           <span>Bioinformatics + Machine Learning</span>
           <span>RNA foundation models</span>
-          <span>GPU-enabled collaboration</span>
+          <span>Public research memory</span>
         </div>
       </section>
 
@@ -79,7 +82,7 @@
           </div>
           <div class="intro-copy">
             <p>
-              Virtual Human Lab is a nonprofit, independent group of researchers working at the
+              Virtual Human Lab is an independent, non-commercial group of researchers working at the
               intersection of bioinformatics and machine learning. We are not a formal institute
               attached to a government agency, university, or company.
             </p>
@@ -93,6 +96,62 @@
         </div>
       </section>
 
+      <section class="library-section" id="library" aria-labelledby="library-title">
+        <div class="library-shell">
+          <div class="library-lede">
+            <p class="section-label">Public research memory</p>
+            <h2 id="library-title">Papers, notes, and open problems belong on the same shelf.</h2>
+            <p>
+              Virtual Human Lab will publish formal outputs and the reasoning around them: preprints,
+              technical notes, negative results, reading maps, and implementation logs.
+            </p>
+          </div>
+          <div class="shelf-grid">
+            <a class="shelf-card" href="papers/">
+              <span class="shelf-kicker">Formal outputs</span>
+              <h3>Papers &amp; preprints</h3>
+              <p>Only public papers and preprints, with citations, code, data, and model links.</p>
+            </a>
+            <a class="shelf-card" href="notes/">
+              <span class="shelf-kicker">Working memory</span>
+              <h3>Research notes</h3>
+              <p>Short technical posts on datasets, model design, evaluation, and biological interpretation.</p>
+            </a>
+            <a class="shelf-card" href="#open-problems">
+              <span class="shelf-kicker">Collaboration surface</span>
+              <h3>Open problems</h3>
+              <p>Questions where a collaborator, dataset, GPU path, or method critique can change the work.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="open-problems section-band" id="open-problems" aria-labelledby="open-problems-title">
+        <div class="section-grid">
+          <div>
+            <p class="section-label">Open problems</p>
+            <h2 id="open-problems-title">What we want to make legible next.</h2>
+          </div>
+          <div class="problem-list">
+            <article class="problem-item">
+              <span>01</span>
+              <h3>Cross-resolution RNA benchmarks</h3>
+              <p>How should models be judged when moving between bulk cohorts and single-cell atlases?</p>
+            </article>
+            <article class="problem-item">
+              <span>02</span>
+              <h3>Biological interpretability for RNA embeddings</h3>
+              <p>Which signals are pathway-level, which are batch artifacts, and which are clinically useful?</p>
+            </article>
+            <article class="problem-item">
+              <span>03</span>
+              <h3>GPU-efficient training loops</h3>
+              <p>How can independent researchers train meaningful models without institutional-scale compute?</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section class="research section-panel" id="research" aria-labelledby="research-title">
         <div class="section-heading">
           <p class="section-label">Research programs</p>
@@ -101,6 +160,25 @@
             Our current work focuses on learning cellular state, tissue-scale signals, and
             cross-resolution translation from RNA-seq data.
           </p>
+        </div>
+
+        <div class="artifact-panel" role="group" aria-label="RNA modeling workflow sketch">
+          <div class="artifact-step">
+            <span>Input</span>
+            <strong>Bulk cohorts + scRNA-seq atlases</strong>
+          </div>
+          <div class="artifact-step">
+            <span>Representation</span>
+            <strong>RNA embeddings + cell-state maps</strong>
+          </div>
+          <div class="artifact-step">
+            <span>Evaluation</span>
+            <strong>Pathways, perturbations, clinical signal</strong>
+          </div>
+          <div class="artifact-step">
+            <span>Output</span>
+            <strong>Models, notes, code, preprints</strong>
+          </div>
         </div>
 
         <div class="program-grid">
@@ -132,8 +210,8 @@
             <span class="program-index">04</span>
             <h3>Bulk RNA-seq to single-cell RNA-seq</h3>
             <p>
-              Cross-resolution modeling that translates population-level RNA signals into
-              single-cell-like cellular programs.
+              Cross-resolution modeling that studies whether population-level RNA signals can be
+              mapped into single-cell-like cellular programs.
             </p>
           </article>
         </div>
@@ -224,7 +302,13 @@
 
     <footer class="site-footer">
       <p>Virtual Human Lab</p>
-      <p>Independent nonprofit research collective for bioinformatics + machine learning.</p>
+      <p>
+        <span class="footer-links">
+          <a href="papers/">Papers</a>
+          <a href="notes/">Notes</a>
+          <a href="mailto:junidude14@gmail.com">Contact</a>
+        </span>
+      </p>
     </footer>
 
     <script src="script.js"></script>
