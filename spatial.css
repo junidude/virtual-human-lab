@@ -77,48 +77,9 @@
   z-index: 1;
 }
 
-.collaboration-orbit {
-  height: clamp(10rem, 22vw, 16rem);
-  margin: clamp(-0.8rem, -1vw, -0.35rem) auto clamp(1.2rem, 3vw, 2rem);
-  max-width: var(--max);
-  overflow: hidden;
-  position: relative;
-}
-
-.collaboration-orbit::before,
-.collaboration-orbit::after {
-  content: "";
-  inset: 50% auto auto 0;
-  opacity: 0.42;
-  pointer-events: none;
-  position: absolute;
-  transform: translateY(-50%);
-}
-
-.collaboration-orbit::before {
-  border-top: 1px solid rgba(23, 20, 17, 0.18);
-  inline-size: 100%;
-}
-
-.collaboration-orbit::after {
-  background: var(--red);
-  block-size: 0.42rem;
-  inline-size: 0.42rem;
-}
-
-.collaboration-orbit .spatial-canvas {
-  block-size: 100%;
-  position: relative;
-  z-index: 1;
-}
-
 @media (max-width: 920px) {
   .artifact-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .collaboration-orbit {
-    height: 12rem;
   }
 }
 
@@ -141,16 +102,11 @@
     block-size: 5.2rem;
   }
 
-  .collaboration-orbit {
-    height: 9.5rem;
-    margin-bottom: 1rem;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .artifact-space,
-  .program-visual,
-  .collaboration-orbit .spatial-canvas {
+  .program-visual {
     opacity: 0.72;
   }
 }

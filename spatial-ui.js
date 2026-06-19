@@ -102,11 +102,6 @@ class SpatialScene {
       return;
     }
 
-    if (this.type === "collaboration") {
-      this.buildCollaboration();
-      return;
-    }
-
     this.buildProgram();
   }
 
@@ -230,34 +225,6 @@ class SpatialScene {
     group.add(this.makeRing(1.16, this.accent, center, { x: Math.PI * 0.58, y: 0.35, z: 0.1 }));
     group.add(this.makePointCloud(64, 1.36, spatialColors.ink));
     this.root.add(group);
-  }
-
-  buildCollaboration() {
-    const { THREE } = this;
-    this.camera.position.set(0, 0.1, 8.4);
-
-    const center = new THREE.Vector3(0, 0, 0);
-    const anchors = [
-      new THREE.Vector3(-3.2, -0.5, 0.4),
-      new THREE.Vector3(-1.1, 0.85, -0.2),
-      new THREE.Vector3(1.35, -0.72, 0.35),
-      new THREE.Vector3(3.2, 0.52, -0.18),
-    ];
-    const colors = [spatialColors.green, spatialColors.blue, spatialColors.yellow, spatialColors.red];
-
-    this.root.add(this.makeNode(0.18, spatialColors.ink, center));
-    anchors.forEach((anchor, index) => {
-      this.root.add(this.makeNode(0.13, colors[index], anchor));
-      this.root.add(this.makeLine([center, anchor], colors[index], 0.42));
-      this.root.add(this.makeRing(0.36, colors[index], anchor, {
-        x: Math.PI * 0.5,
-        y: index * 0.52,
-        z: index * 0.2,
-      }));
-    });
-
-    const bridge = this.makeLine(anchors, spatialColors.ink, 0.22);
-    this.root.add(bridge, this.makePointCloud(120, 3.6, spatialColors.ink));
   }
 
   bindEvents() {
