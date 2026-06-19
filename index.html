@@ -21,6 +21,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,650&display=swap"
       rel="stylesheet"
@@ -29,6 +30,7 @@
     <link rel="stylesheet" href="sections.css?v=advisor-compact-20260619">
     <link rel="stylesheet" href="library.css">
     <link rel="stylesheet" href="collaborators.css">
+    <link rel="stylesheet" href="spatial.css?v=spatial-ui-20260619">
     <link rel="stylesheet" href="motion.css">
   </head>
   <body>
@@ -166,6 +168,11 @@
         </div>
 
         <div class="artifact-panel" role="group" aria-label="RNA modeling workflow sketch">
+          <canvas
+            class="spatial-canvas artifact-space"
+            data-spatial-scene="workflow"
+            aria-hidden="true"
+          ></canvas>
           <div class="artifact-step">
             <span>Input</span>
             <strong>Bulk cohorts + scRNA-seq atlases</strong>
@@ -187,6 +194,12 @@
         <div class="program-grid">
           <article class="program-card">
             <span class="program-index">01</span>
+            <canvas
+              class="spatial-canvas program-visual"
+              data-spatial-scene="program"
+              data-spatial-accent="#d5a84f"
+              aria-hidden="true"
+            ></canvas>
             <h3>Single-cell foundation model in scRNA-seq</h3>
             <p>
               Models that learn cell identity, perturbation response, and disease-state geometry
@@ -195,6 +208,12 @@
           </article>
           <article class="program-card accent-green">
             <span class="program-index">02</span>
+            <canvas
+              class="spatial-canvas program-visual"
+              data-spatial-scene="program"
+              data-spatial-accent="#466f56"
+              aria-hidden="true"
+            ></canvas>
             <h3>Bulk-cell foundation model in bulk RNA-seq</h3>
             <p>
               Representations for cohort-scale transcriptomes that preserve clinically useful
@@ -203,6 +222,12 @@
           </article>
           <article class="program-card accent-red">
             <span class="program-index">03</span>
+            <canvas
+              class="spatial-canvas program-visual"
+              data-spatial-scene="program"
+              data-spatial-accent="#8f3426"
+              aria-hidden="true"
+            ></canvas>
             <h3>RNA-LLM</h3>
             <p>
               A multimodal LLM direction that connects language reasoning with RNA-seq embeddings
@@ -211,6 +236,12 @@
           </article>
           <article class="program-card accent-blue">
             <span class="program-index">04</span>
+            <canvas
+              class="spatial-canvas program-visual"
+              data-spatial-scene="program"
+              data-spatial-accent="#2f6d8a"
+              aria-hidden="true"
+            ></canvas>
             <h3>Bulk RNA-seq to single-cell RNA-seq</h3>
             <p>
               Cross-resolution modeling that studies whether population-level RNA signals can be
@@ -329,6 +360,14 @@
           </p>
         </div>
 
+        <div class="collaboration-orbit" aria-hidden="true">
+          <canvas
+            class="spatial-canvas"
+            data-spatial-scene="collaboration"
+            aria-hidden="true"
+          ></canvas>
+        </div>
+
         <div class="collaborator-grid">
           <article class="collaborator-card">
             <span class="collaborator-index" aria-hidden="true">01</span>
@@ -409,5 +448,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script type="module" src="spatial-ui.js?v=spatial-ui-20260619"></script>
   </body>
 </html>

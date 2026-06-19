@@ -1,0 +1,156 @@
+.spatial-canvas {
+  display: block;
+  inline-size: 100%;
+  touch-action: none;
+}
+
+.artifact-panel {
+  background:
+    linear-gradient(135deg, rgba(16, 20, 20, 0.92), rgba(31, 44, 40, 0.88)),
+    repeating-linear-gradient(90deg, rgba(244, 239, 228, 0.07) 0 1px, transparent 1px 3.5rem);
+  color: var(--paper);
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 auto clamp(1.4rem, 3vw, 2rem);
+  max-width: var(--max);
+  min-height: clamp(20rem, 34vw, 28rem);
+  overflow: hidden;
+  padding: clamp(1rem, 2.4vw, 1.6rem);
+  position: relative;
+}
+
+.artifact-space {
+  block-size: 100%;
+  inset: 0;
+  min-height: 100%;
+  opacity: 0.88;
+  position: absolute;
+}
+
+.artifact-step {
+  align-self: end;
+  background: rgba(16, 20, 20, 0.58);
+  border: 1px solid rgba(244, 239, 228, 0.16);
+  min-height: 8.25rem;
+  padding: clamp(0.95rem, 1.7vw, 1.2rem);
+  position: relative;
+  z-index: 1;
+}
+
+.artifact-step span {
+  color: var(--yellow);
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  margin-bottom: 1.9rem;
+  text-transform: uppercase;
+}
+
+.artifact-step strong {
+  display: block;
+  font-size: clamp(1rem, 1.35vw, 1.22rem);
+  line-height: 1.15;
+  max-width: 13rem;
+}
+
+.program-card {
+  overflow: hidden;
+  position: relative;
+}
+
+.program-card .program-index {
+  margin-bottom: clamp(1rem, 2vw, 1.35rem);
+}
+
+.program-visual {
+  block-size: clamp(4.6rem, 7vw, 6.4rem);
+  border-block: 1px solid rgba(23, 20, 17, 0.1);
+  margin: 0 0 clamp(1.1rem, 2vw, 1.6rem);
+}
+
+.program-card h3,
+.program-card p,
+.program-index {
+  position: relative;
+  z-index: 1;
+}
+
+.collaboration-orbit {
+  height: clamp(10rem, 22vw, 16rem);
+  margin: clamp(-0.8rem, -1vw, -0.35rem) auto clamp(1.2rem, 3vw, 2rem);
+  max-width: var(--max);
+  overflow: hidden;
+  position: relative;
+}
+
+.collaboration-orbit::before,
+.collaboration-orbit::after {
+  content: "";
+  inset: 50% auto auto 0;
+  opacity: 0.42;
+  pointer-events: none;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+.collaboration-orbit::before {
+  border-top: 1px solid rgba(23, 20, 17, 0.18);
+  inline-size: 100%;
+}
+
+.collaboration-orbit::after {
+  background: var(--red);
+  block-size: 0.42rem;
+  inline-size: 0.42rem;
+}
+
+.collaboration-orbit .spatial-canvas {
+  block-size: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 920px) {
+  .artifact-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .collaboration-orbit {
+    height: 12rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .artifact-panel {
+    grid-template-columns: 1fr;
+    min-height: 33rem;
+    padding: 0.8rem;
+  }
+
+  .artifact-step {
+    min-height: 6.5rem;
+  }
+
+  .artifact-step span {
+    margin-bottom: 0.9rem;
+  }
+
+  .program-visual {
+    block-size: 5.2rem;
+  }
+
+  .collaboration-orbit {
+    height: 9.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .artifact-space,
+  .program-visual,
+  .collaboration-orbit .spatial-canvas {
+    opacity: 0.72;
+  }
+}
