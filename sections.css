@@ -69,6 +69,63 @@ main > section[id] {
   font-weight: 700;
 }
 
+.advisor-panel {
+  border-top: 1px solid rgba(23, 20, 17, 0.18);
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  margin: clamp(2rem, 5vw, 4rem) auto 0;
+  max-width: var(--max);
+  padding-top: clamp(1.5rem, 4vw, 3rem);
+}
+
+.advisor-lede h3 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 0.98;
+  margin-bottom: 1rem;
+  max-width: 8ch;
+}
+
+.advisor-lede p:last-child {
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+}
+
+.advisor-grid {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.advisor-card {
+  background: rgba(244, 239, 228, 0.78);
+  border: 1px solid rgba(23, 20, 17, 0.14);
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: 3.2rem minmax(0, 1fr);
+  min-height: 15rem;
+  padding: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.advisor-index,
+.advisor-role {
+  color: var(--red);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+}
+
+.advisor-card h4 {
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  margin: 2.5rem 0 0.75rem;
+}
+
+.advisor-card p {
+  color: var(--ink-soft);
+  margin-bottom: 0;
+}
+
 .collaborate {
   background: var(--green);
   color: var(--paper);
@@ -145,13 +202,15 @@ main > section[id] {
   }
 
   .section-grid,
-  .compact {
+  .compact,
+  .advisor-panel {
     grid-template-columns: 1fr;
   }
 
   .program-grid,
   .member-grid,
-  .collaborator-grid {
+  .collaborator-grid,
+  .advisor-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -188,13 +247,15 @@ main > section[id] {
 
   .program-grid,
   .member-grid,
-  .collaborator-grid {
+  .collaborator-grid,
+  .advisor-grid {
     grid-template-columns: 1fr;
   }
 
   .program-card,
   .member-card,
-  .collaborator-card {
+  .collaborator-card,
+  .advisor-card {
     min-height: auto;
   }
 
