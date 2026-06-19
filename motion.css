@@ -124,7 +124,6 @@
   .shelf-card,
   .program-card,
   .member-card,
-  .collaborator-card,
   .entry-card,
   .problem-item,
   .model-item {
@@ -138,7 +137,6 @@
   .shelf-card:hover,
   .program-card:hover,
   .member-card:hover,
-  .collaborator-card:hover,
   .entry-card:hover {
     box-shadow: 0 18px 40px rgba(23, 20, 17, 0.12);
     transform: translateY(-6px);

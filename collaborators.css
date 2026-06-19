@@ -1,0 +1,214 @@
+.collaborators {
+  background:
+    linear-gradient(180deg, rgba(244, 239, 228, 0.95), rgba(244, 239, 228, 0.98)),
+    repeating-linear-gradient(90deg, rgba(23, 20, 17, 0.035) 0 1px, transparent 1px 5.2rem);
+  scroll-margin-top: 18rem;
+}
+
+.collaborators .section-heading {
+  align-items: start;
+  border-top: 1px solid rgba(23, 20, 17, 0.18);
+  padding-top: clamp(1.5rem, 3vw, 2.4rem);
+}
+
+.collaborators .section-heading h2 {
+  font-size: clamp(3rem, 4vw, 4.8rem);
+  max-width: 13ch;
+}
+
+.collaborators .section-heading p {
+  max-width: 42rem;
+}
+
+.collaborator-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 auto;
+  max-width: var(--max);
+}
+
+.collaborator-card {
+  background: rgba(230, 220, 201, 0.4);
+  border: 1px solid rgba(23, 20, 17, 0.18);
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  min-height: 26rem;
+  overflow: hidden;
+  position: relative;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.collaborator-card::before {
+  background: var(--ink);
+  content: "";
+  inset: 0 auto 0 4.5rem;
+  position: absolute;
+  width: 1px;
+}
+
+.collaborator-card::after {
+  background:
+    repeating-linear-gradient(135deg, rgba(47, 109, 138, 0.08) 0 1px, transparent 1px 13px),
+    linear-gradient(90deg, transparent, rgba(213, 168, 79, 0.12), transparent);
+  content: "";
+  inset: 0;
+  opacity: 0.56;
+  pointer-events: none;
+  position: absolute;
+}
+
+.collaborator-card:hover {
+  border-color: rgba(143, 52, 38, 0.56);
+  transform: translateY(-4px);
+}
+
+.collaborator-index {
+  color: var(--red);
+  font-family: var(--mono);
+  font-size: 1rem;
+  padding: 1.35rem 0;
+  position: relative;
+  text-align: center;
+  transition: transform 180ms ease;
+  z-index: 1;
+}
+
+.collaborator-card:hover .collaborator-index {
+  transform: translateY(0.45rem);
+}
+
+.collaborator-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(1.35rem, 3vw, 2.1rem);
+  position: relative;
+  z-index: 1;
+}
+
+.collaborator-type,
+.collaborator-org,
+.collaborator-context span {
+  font-family: var(--mono);
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.collaborator-type {
+  color: var(--red);
+  font-size: 0.76rem;
+  margin-bottom: clamp(2.4rem, 5vw, 4rem);
+}
+
+.collaborator-card h3 {
+  font-family: var(--sans);
+  font-size: clamp(2rem, 4.4vw, 3.55rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.98;
+  margin-bottom: 1rem;
+  max-width: 12ch;
+}
+
+.collaborator-org {
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  margin-bottom: clamp(1.8rem, 4vw, 3rem);
+}
+
+.collaborator-context {
+  border-top: 1px solid rgba(23, 20, 17, 0.18);
+  padding-top: 1rem;
+}
+
+.collaborator-context span {
+  color: var(--red);
+  display: block;
+  font-size: 0.72rem;
+  margin-bottom: 0.85rem;
+}
+
+.collaborator-context p {
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+  margin-bottom: 0;
+}
+
+.collaborator-links {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: clamp(1.5rem, 4vw, 3rem);
+}
+
+.collaborator-links a {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration-color: rgba(143, 52, 38, 0.62);
+  text-decoration-thickness: 0.08em;
+  transition: color 180ms ease, text-decoration-thickness 180ms ease;
+}
+
+.collaborator-links a:hover {
+  color: var(--red);
+  text-decoration-thickness: 0.16em;
+}
+
+.collaborator-links span {
+  display: inline-block;
+  transition: transform 180ms ease;
+}
+
+.collaborator-links a:hover span {
+  transform: translateX(0.25rem);
+}
+
+@media (max-width: 920px) {
+  .collaborator-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .collaborators {
+    scroll-margin-top: 20rem;
+  }
+
+  .collaborator-card {
+    min-height: 24rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .collaborator-card {
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    min-height: auto;
+  }
+
+  .collaborators .section-heading h2 {
+    font-size: clamp(2.65rem, 13vw, 4rem);
+  }
+
+  .collaborator-card::before {
+    left: 3.5rem;
+  }
+
+  .collaborator-body {
+    padding: 1.35rem 1.1rem 1.5rem;
+  }
+
+  .collaborator-type {
+    font-size: 0.82rem;
+    margin-bottom: 2.2rem;
+  }
+
+  .collaborator-card h3 {
+    font-size: clamp(1.7rem, 9vw, 2.55rem);
+  }
+
+  .collaborator-org,
+  .collaborator-context span {
+    font-size: 0.76rem;
+  }
+}
