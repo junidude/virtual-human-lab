@@ -214,6 +214,7 @@ function setupRevealMotion() {
     ".program-card",
     ".model-item",
     ".member-card",
+    ".collaborator-card",
     ".collaborate-copy",
     ".collaborate .button",
     ".collection-lede > *",
