@@ -312,8 +312,8 @@ main > section[id] {
     padding: 0.78rem 0.8rem;
   }
 
-  .nav-group:last-child .nav-links {
-    grid-template-columns: 1fr;
+  .nav-links a:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 
   .site-header.nav-open .site-nav {
