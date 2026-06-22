@@ -131,9 +131,15 @@ main > section[id] {
   width: 3rem;
 }
 
-.member-card a {
+.member-card a,
+.advisor-card a {
   color: var(--red);
   font-weight: 700;
+}
+
+.advisor-card a {
+  display: inline-flex;
+  margin-top: 0.65rem;
 }
 
 .advisor-panel {
