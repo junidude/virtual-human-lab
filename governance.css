@@ -210,6 +210,12 @@
   color: rgba(244, 239, 228, 0.78);
 }
 
+.document-callout h2 {
+  font-size: clamp(2.2rem, 3.4vw, 3.8rem);
+  line-height: 0.96;
+  overflow-wrap: anywhere;
+}
+
 .document-callout a {
   color: var(--yellow);
   font-weight: 700;
