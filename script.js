@@ -221,6 +221,15 @@ function setupRevealMotion() {
     ".collection-lede > *",
     ".entry-card",
     ".empty-state",
+    ".governance-card",
+    ".evidence-card",
+    ".principle-card",
+    ".disclosure-card",
+    ".status-panel",
+    ".representative-card",
+    ".representative-copy",
+    ".document-callout",
+    ".document-copy",
   ].join(",");
 
   const revealItems = document.querySelectorAll(revealSelectors);

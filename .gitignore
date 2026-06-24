@@ -3,3 +3,4 @@ temp/
 .DS_Store
 node_modules/
 *.log
+assets/VHL_governance_package_*.zip

@@ -249,11 +249,17 @@ main > section[id] {
   background: var(--ink);
   color: var(--paper);
   display: flex;
+  gap: 1.5rem;
   justify-content: space-between;
 }
 
 .site-footer p {
   margin: 0;
+}
+
+.site-footer p:first-child {
+  color: rgba(244, 239, 228, 0.78);
+  max-width: 54rem;
 }
 
 .footer-links {

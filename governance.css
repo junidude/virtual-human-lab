@@ -1,0 +1,337 @@
+.governance-summary,
+.evidence-section,
+.document-section,
+.disclosure-section {
+  position: relative;
+}
+
+.governance-summary {
+  background:
+    linear-gradient(180deg, rgba(230, 220, 201, 0.96), rgba(230, 220, 201, 0.9)),
+    repeating-linear-gradient(135deg, rgba(23, 20, 17, 0.045) 0 1px, transparent 1px 18px);
+}
+
+.governance-grid,
+.evidence-grid,
+.principle-grid,
+.disclosure-grid {
+  display: grid;
+  gap: 1px;
+  margin: 0 auto;
+  max-width: var(--max);
+}
+
+.governance-grid,
+.principle-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.governance-card,
+.evidence-card,
+.principle-card,
+.disclosure-card,
+.document-callout {
+  background: rgba(244, 239, 228, 0.82);
+  border: 1px solid rgba(23, 20, 17, 0.14);
+  color: inherit;
+  display: block;
+  min-height: 18rem;
+  padding: clamp(1.15rem, 2vw, 1.6rem);
+  text-decoration: none;
+}
+
+.governance-card {
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.governance-card:hover {
+  background: rgba(244, 239, 228, 0.98);
+  transform: translateY(-4px);
+}
+
+.governance-card span,
+.evidence-card span,
+.principle-card span,
+.disclosure-card span,
+.document-meta,
+.record-table th {
+  color: var(--red);
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  margin-bottom: clamp(1.3rem, 3vw, 2.2rem);
+  text-transform: uppercase;
+}
+
+.governance-card p,
+.evidence-card p,
+.principle-card p,
+.disclosure-card p,
+.document-copy p,
+.document-copy li,
+.record-table td {
+  color: var(--ink-soft);
+}
+
+.governance-hero {
+  background:
+    linear-gradient(90deg, rgba(16, 20, 20, 0.96), rgba(16, 20, 20, 0.78)),
+    repeating-linear-gradient(135deg, rgba(244, 239, 228, 0.08) 0 1px, transparent 1px 22px),
+    var(--field);
+  color: var(--paper);
+  padding: clamp(7rem, 10vw, 9rem) clamp(1rem, 5vw, 4rem) clamp(3.5rem, 7vw, 6rem);
+}
+
+.governance-hero .collection-shell {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 0.62fr);
+}
+
+.governance-hero h1 {
+  font-size: clamp(4.2rem, 8vw, 8.4rem);
+  max-width: 9ch;
+}
+
+.governance-hero p:not(.eyebrow) {
+  color: rgba(244, 239, 228, 0.78);
+  font-size: clamp(1.05rem, 1.45vw, 1.25rem);
+  line-height: 1.48;
+}
+
+.status-panel {
+  align-self: start;
+  background: rgba(244, 239, 228, 0.08);
+  border: 1px solid rgba(244, 239, 228, 0.2);
+  padding: clamp(1rem, 2.2vw, 1.4rem);
+}
+
+.status-panel h2 {
+  font-family: var(--sans);
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  line-height: 1.1;
+  margin-bottom: 0.85rem;
+}
+
+.status-panel dl {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+}
+
+.status-panel dt {
+  color: var(--yellow);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.status-panel dd {
+  margin: 0;
+}
+
+.evidence-section,
+.document-section {
+  background: var(--paper);
+  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 5vw, 4rem);
+}
+
+.evidence-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.evidence-card {
+  min-height: 15.5rem;
+}
+
+.representative-band {
+  background: var(--field);
+  color: var(--paper);
+  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 5vw, 4rem);
+}
+
+.representative-shell {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  margin: 0 auto;
+  max-width: var(--max);
+}
+
+.representative-card {
+  border: 1px solid rgba(244, 239, 228, 0.22);
+  padding: clamp(1.2rem, 2.5vw, 1.8rem);
+}
+
+.representative-card h3 {
+  color: var(--paper);
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  margin-bottom: 1rem;
+}
+
+.representative-card p,
+.representative-copy p,
+.representative-copy li {
+  color: rgba(244, 239, 228, 0.78);
+}
+
+.representative-card a {
+  color: var(--yellow);
+  font-weight: 700;
+}
+
+.principle-section {
+  background: var(--paper-deep);
+  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 5vw, 4rem);
+}
+
+.principle-card {
+  min-height: 17rem;
+}
+
+.document-shell {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(14rem, 0.42fr) minmax(0, 1fr);
+  margin: 0 auto;
+  max-width: var(--max);
+}
+
+.document-callout {
+  align-self: start;
+  background: var(--ink);
+  color: var(--paper);
+  min-height: auto;
+  position: sticky;
+  top: 6.5rem;
+}
+
+.document-callout p {
+  color: rgba(244, 239, 228, 0.78);
+}
+
+.document-callout a {
+  color: var(--yellow);
+  font-weight: 700;
+}
+
+.document-copy {
+  background: rgba(244, 239, 228, 0.74);
+  border: 1px solid rgba(23, 20, 17, 0.12);
+  padding: clamp(1.35rem, 3vw, 2.4rem);
+}
+
+.document-copy h1 {
+  font-size: clamp(3rem, 6vw, 6rem);
+  line-height: 0.94;
+  margin-bottom: 1.5rem;
+  max-width: none;
+}
+
+.document-copy h2 {
+  border-top: 1px solid rgba(23, 20, 17, 0.16);
+  font-family: var(--sans);
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
+  line-height: 1.08;
+  margin-top: 2.4rem;
+  padding-top: 1.3rem;
+}
+
+.document-copy h3 {
+  font-family: var(--sans);
+  font-size: clamp(1.16rem, 2vw, 1.55rem);
+  margin-top: 1.8rem;
+}
+
+.document-copy blockquote {
+  border-left: 4px solid var(--red);
+  color: var(--ink-soft);
+  margin: 1.3rem 0;
+  padding-left: 1rem;
+}
+
+.document-copy table,
+.record-table {
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+.document-copy th,
+.document-copy td,
+.record-table th,
+.record-table td {
+  border: 1px solid rgba(23, 20, 17, 0.14);
+  padding: 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.document-copy th,
+.record-table th {
+  background: rgba(230, 220, 201, 0.68);
+  margin-bottom: 0;
+}
+
+.disclosure-section {
+  background: var(--paper-deep);
+  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 5vw, 4rem);
+}
+
+.disclosure-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.disclosure-card {
+  min-height: 19rem;
+}
+
+.record-table-wrap {
+  margin: 0 auto;
+  max-width: var(--max);
+  overflow-x: auto;
+}
+
+.record-table {
+  min-width: 720px;
+}
+
+@media (max-width: 1020px) {
+  .governance-grid,
+  .principle-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 920px) {
+  .governance-hero .collection-shell,
+  .representative-shell,
+  .document-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .document-callout {
+    position: static;
+  }
+
+  .evidence-grid,
+  .disclosure-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .governance-grid,
+  .evidence-grid,
+  .principle-grid,
+  .disclosure-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .governance-card,
+  .evidence-card,
+  .principle-card,
+  .disclosure-card {
+    min-height: auto;
+  }
+}
