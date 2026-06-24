@@ -35,7 +35,7 @@
   border: 1px solid rgba(23, 20, 17, 0.14);
   color: inherit;
   display: block;
-  min-height: 18rem;
+  min-height: 13rem;
   padding: clamp(1.15rem, 2vw, 1.6rem);
   text-decoration: none;
 }
@@ -59,7 +59,7 @@
   display: inline-block;
   font-family: var(--mono);
   font-size: 0.76rem;
-  margin-bottom: clamp(1.3rem, 3vw, 2.2rem);
+  margin-bottom: clamp(0.85rem, 2vw, 1.4rem);
   text-transform: uppercase;
 }
 
@@ -75,11 +75,10 @@
 
 .governance-hero {
   background:
-    linear-gradient(90deg, rgba(16, 20, 20, 0.96), rgba(16, 20, 20, 0.78)),
-    repeating-linear-gradient(135deg, rgba(244, 239, 228, 0.08) 0 1px, transparent 1px 22px),
-    var(--field);
-  color: var(--paper);
-  padding: clamp(7rem, 10vw, 9rem) clamp(1rem, 5vw, 4rem) clamp(3.5rem, 7vw, 6rem);
+    linear-gradient(180deg, rgba(244, 239, 228, 0.96), rgba(230, 220, 201, 0.88)),
+    repeating-linear-gradient(135deg, rgba(23, 20, 17, 0.04) 0 1px, transparent 1px 22px);
+  color: var(--ink);
+  padding: clamp(6rem, 8vw, 7.25rem) clamp(1rem, 5vw, 4rem) clamp(2.75rem, 5vw, 4.5rem);
 }
 
 .governance-hero .collection-shell {
@@ -89,27 +88,28 @@
 }
 
 .governance-hero h1 {
-  font-size: clamp(4.2rem, 8vw, 8.4rem);
-  max-width: 9ch;
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  line-height: 1.02;
+  max-width: 12ch;
 }
 
 .governance-hero p:not(.eyebrow) {
-  color: rgba(244, 239, 228, 0.78);
-  font-size: clamp(1.05rem, 1.45vw, 1.25rem);
-  line-height: 1.48;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.35vw, 1.16rem);
+  line-height: 1.55;
 }
 
 .status-panel {
   align-self: start;
-  background: rgba(244, 239, 228, 0.08);
-  border: 1px solid rgba(244, 239, 228, 0.2);
+  background: rgba(244, 239, 228, 0.72);
+  border: 1px solid rgba(23, 20, 17, 0.14);
   padding: clamp(1rem, 2.2vw, 1.4rem);
 }
 
 .status-panel h2 {
   font-family: var(--sans);
-  font-size: clamp(1.2rem, 2vw, 1.65rem);
-  line-height: 1.1;
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+  line-height: 1.2;
   margin-bottom: 0.85rem;
 }
 
@@ -120,7 +120,7 @@
 }
 
 .status-panel dt {
-  color: var(--yellow);
+  color: var(--red);
   font-family: var(--mono);
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -133,7 +133,15 @@
 .evidence-section,
 .document-section {
   background: var(--paper);
-  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 5vw, 4rem);
+  padding: clamp(3rem, 6vw, 6rem) clamp(1rem, 5vw, 4rem);
+}
+
+.evidence-section .section-heading h2,
+.principle-section .section-heading h2,
+.disclosure-section .section-heading h2 {
+  font-size: clamp(2.1rem, 4vw, 4rem);
+  line-height: 1.02;
+  max-width: 780px;
 }
 
 .evidence-grid {
@@ -141,7 +149,7 @@
 }
 
 .evidence-card {
-  min-height: 15.5rem;
+  min-height: 13rem;
 }
 
 .representative-band {
@@ -182,11 +190,11 @@
 
 .principle-section {
   background: var(--paper-deep);
-  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 5vw, 4rem);
+  padding: clamp(3rem, 6vw, 6rem) clamp(1rem, 5vw, 4rem);
 }
 
 .principle-card {
-  min-height: 17rem;
+  min-height: 13rem;
 }
 
 .document-shell {
@@ -199,11 +207,9 @@
 
 .document-callout {
   align-self: start;
-  background: var(--ink);
+  background: rgba(23, 20, 17, 0.92);
   color: var(--paper);
   min-height: auto;
-  position: sticky;
-  top: 6.5rem;
 }
 
 .document-callout p {
@@ -211,14 +217,16 @@
 }
 
 .document-callout h2 {
-  font-size: clamp(2.2rem, 3.4vw, 3.8rem);
-  line-height: 0.96;
+  font-size: clamp(1.45rem, 2.5vw, 2.35rem);
+  line-height: 1.05;
   overflow-wrap: anywhere;
 }
 
 .document-callout a {
   color: var(--yellow);
+  display: block;
   font-weight: 700;
+  margin-top: 0.45rem;
 }
 
 .document-copy {
@@ -228,8 +236,8 @@
 }
 
 .document-copy h1 {
-  font-size: clamp(3rem, 6vw, 6rem);
-  line-height: 0.94;
+  font-size: clamp(2.25rem, 4vw, 3.8rem);
+  line-height: 1;
   margin-bottom: 1.5rem;
   max-width: none;
 }
@@ -281,7 +289,7 @@
 
 .disclosure-section {
   background: var(--paper-deep);
-  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 5vw, 4rem);
+  padding: clamp(3rem, 6vw, 6rem) clamp(1rem, 5vw, 4rem);
 }
 
 .disclosure-grid {
@@ -289,7 +297,7 @@
 }
 
 .disclosure-card {
-  min-height: 19rem;
+  min-height: 14rem;
 }
 
 .record-table-wrap {
@@ -314,10 +322,6 @@
   .representative-shell,
   .document-shell {
     grid-template-columns: 1fr;
-  }
-
-  .document-callout {
-    position: static;
   }
 
   .evidence-grid,
