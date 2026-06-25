@@ -336,8 +336,8 @@
   max-width: 780px;
 }
 
-.korean-record-page .governance-hero h1,
-.korean-record-page .document-copy h1 {
+.bylaws-record-page .governance-hero h1,
+.bylaws-record-page .document-copy h1 {
   font-family: var(--sans);
   font-weight: 700;
   letter-spacing: 0;
