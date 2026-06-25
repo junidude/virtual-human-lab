@@ -310,6 +310,126 @@
   min-width: 720px;
 }
 
+.record-page .governance-hero {
+  padding: clamp(5.75rem, 8vw, 7rem) clamp(1rem, 5vw, 4rem) clamp(2.5rem, 5vw, 4rem);
+}
+
+.record-page .record-hero-shell,
+.record-page .record-section-heading,
+.record-page .record-list,
+.record-page .record-document-copy {
+  margin: 0 auto;
+  max-width: 980px;
+}
+
+.record-page .record-hero-shell {
+  display: block;
+}
+
+.record-page .governance-hero h1 {
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  line-height: 1.03;
+  max-width: 780px;
+}
+
+.record-page .governance-hero p:not(.eyebrow) {
+  max-width: 780px;
+}
+
+.korean-record-page .governance-hero h1,
+.korean-record-page .document-copy h1 {
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.record-note {
+  border-top: 1px solid rgba(23, 20, 17, 0.16);
+  color: var(--ink-soft);
+  font-size: 1rem;
+  margin-top: clamp(1.25rem, 2vw, 1.75rem);
+  padding-top: 1rem;
+}
+
+.record-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1rem;
+  margin-top: 1.2rem;
+}
+
+.record-links a {
+  border-bottom: 1px solid currentColor;
+  color: var(--red);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.record-section {
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1rem, 5vw, 4rem);
+}
+
+.record-page .record-section-heading {
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.record-page .record-section-heading h2 {
+  font-size: clamp(1.9rem, 3.5vw, 3rem);
+  line-height: 1.08;
+}
+
+.record-page .record-section-heading p:not(.section-label) {
+  max-width: 720px;
+  padding-top: 0.75rem;
+}
+
+.record-list {
+  border-top: 1px solid rgba(23, 20, 17, 0.16);
+}
+
+.record-list article {
+  border-bottom: 1px solid rgba(23, 20, 17, 0.16);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 8.5rem minmax(12rem, 0.35fr) minmax(0, 1fr);
+  padding: clamp(1rem, 2vw, 1.35rem) 0;
+}
+
+.record-list span {
+  color: var(--red);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.record-list h3 {
+  font-family: var(--sans);
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.record-list p {
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.record-document-section {
+  padding: clamp(2.75rem, 5vw, 5rem) clamp(1rem, 5vw, 4rem);
+}
+
+.record-document-copy {
+  max-width: 980px;
+}
+
+.record-page .document-copy h1 {
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
+}
+
+.record-page .document-copy h2 {
+  font-size: clamp(1.45rem, 2.3vw, 2rem);
+}
+
 @media (max-width: 1020px) {
   .governance-grid,
   .principle-grid {
@@ -343,5 +463,9 @@
   .principle-card,
   .disclosure-card {
     min-height: auto;
+  }
+
+  .record-list article {
+    grid-template-columns: 1fr;
   }
 }

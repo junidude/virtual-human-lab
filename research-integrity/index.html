@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="../governance.css?v=records-20260624">
     <link rel="stylesheet" href="../motion.css">
   </head>
-  <body>
+  <body class="record-page">
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" data-header>
       <a class="brand" href="../" aria-label="Virtual Human Lab home">
@@ -61,35 +61,30 @@
     </header>
 
     <main id="main">
-      <section class="governance-hero" aria-labelledby="integrity-title">
-        <div class="collection-shell">
-          <div>
-            <p class="eyebrow">Research practice</p>
-            <h1 id="integrity-title">Data, authorship, and IP</h1>
-            <p>
-              VHL conducts independent academic research at the intersection of medicine,
-              transcriptomics, bioinformatics, computational biology, and machine learning. The
-              work should be reproducible, properly cited, and limited by the data-use terms,
-              ethics review, institutional rules, and public-service obligations that apply.
-            </p>
-          </div>
-          <aside class="status-panel">
-            <h2>Clinical boundary</h2>
-            <p>
-              Virtual Human Lab is not a medical provider. It does not provide diagnosis,
-              treatment, prescriptions, or patient-specific medical advice.
-            </p>
-          </aside>
+      <section class="governance-hero record-hero" aria-labelledby="integrity-title">
+        <div class="record-hero-shell">
+          <p class="eyebrow">Research practice</p>
+          <h1 id="integrity-title">Research practice</h1>
+          <p>
+            VHL conducts independent academic research at the intersection of medicine,
+            transcriptomics, bioinformatics, computational biology, and machine learning. Work
+            should be reproducible, properly cited, and limited by the data-use terms, ethics
+            review, institutional rules, and public-service obligations that apply.
+          </p>
+          <p class="record-note">
+            Clinical boundary: VHL is not a medical provider and does not provide diagnosis,
+            treatment, prescriptions, or patient-specific medical advice.
+          </p>
         </div>
       </section>
 
-      <section class="principle-section" aria-labelledby="integrity-principles-title">
-        <div class="section-heading">
+      <section class="principle-section record-section" aria-labelledby="integrity-principles-title">
+        <div class="section-heading record-section-heading">
           <p class="section-label">Operating principles</p>
-          <h2 id="integrity-principles-title">Research claims need traceable work behind them.</h2>
+          <h2 id="integrity-principles-title">Working rules</h2>
         </div>
-        <div class="principle-grid">
-          <article class="principle-card">
+        <div class="record-list">
+          <article>
             <span>Records</span>
             <h3>Reproducible methods</h3>
             <p>
@@ -97,7 +92,7 @@
               citations, conflicts, and material corrections.
             </p>
           </article>
-          <article class="principle-card">
+          <article>
             <span>Authorship</span>
             <h3>Contribution, not title</h3>
             <p>
@@ -105,7 +100,7 @@
               Authorship is based on actual scholarly contribution and responsibility for the work.
             </p>
           </article>
-          <article class="principle-card">
+          <article>
             <span>AI tools</span>
             <h3>Human accountability</h3>
             <p>
@@ -114,7 +109,7 @@
               compliance.
             </p>
           </article>
-          <article class="principle-card">
+          <article>
             <span>Independence</span>
             <h3>Affiliations are context</h3>
             <p>
@@ -126,19 +121,19 @@
         </div>
       </section>
 
-      <section class="evidence-section" aria-labelledby="data-boundary-title">
-        <div class="section-heading compact">
+      <section class="evidence-section record-section" aria-labelledby="data-boundary-title">
+        <div class="section-heading record-section-heading">
           <div>
             <p class="section-label">Human data boundary</p>
-            <h2 id="data-boundary-title">Only public or lawfully authorized data.</h2>
+            <h2 id="data-boundary-title">Data-use boundary</h2>
           </div>
           <p>
             VHL does not treat public availability as a shortcut around ethics, data-use, privacy,
             or institutional duties.
           </p>
         </div>
-        <div class="evidence-grid">
-          <article class="evidence-card">
+        <div class="record-list">
+          <article>
             <span>Allowed</span>
             <h3>Public or authorized data</h3>
             <p>
@@ -146,7 +141,7 @@
               compliance with repository terms, data-use agreements, and publication limits.
             </p>
           </article>
-          <article class="evidence-card">
+          <article>
             <span>Review</span>
             <h3>Human-subject and biospecimen-derived data</h3>
             <p>
@@ -155,7 +150,7 @@
               determinations and institutional authorization.
             </p>
           </article>
-          <article class="evidence-card">
+          <article>
             <span>Prohibited</span>
             <h3>No unauthorized internal records</h3>
             <p>
@@ -167,17 +162,14 @@
         </div>
       </section>
 
-      <section class="document-section" aria-labelledby="ip-title">
-        <div class="document-shell">
-          <aside class="document-callout">
-            <p class="document-meta">Intellectual property</p>
+      <section class="document-section record-document-section" aria-labelledby="ip-title">
+          <div class="document-copy record-document-copy">
+            <p class="section-label">Intellectual property</p>
             <h2 id="ip-title">Participation alone does not transfer rights.</h2>
             <p>
               Project-specific rights must be checked against actual contribution, law,
               institutional policies, funding terms, and written agreements.
             </p>
-          </aside>
-          <div class="document-copy">
             <h2>Background rights</h2>
             <p>
               Background intellectual property remains with its original owner. Participation in
@@ -198,7 +190,6 @@
               the Bylaws.
             </p>
           </div>
-        </div>
       </section>
     </main>
 
