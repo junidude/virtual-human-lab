@@ -440,8 +440,18 @@ main > section[id] {
   .section-grid,
   .compact,
   .model-grid,
-  .advisor-panel {
+  .advisor-panel,
+  .section-heading {
     grid-template-columns: 1fr;
+  }
+
+  .section-heading p:not(.section-label) {
+    border-left: 0;
+    border-top: 1px solid rgba(23, 20, 17, 0.16);
+    grid-column: auto;
+    grid-row: auto;
+    padding-left: 0;
+    padding-top: 1rem;
   }
 
   .intro .section-grid {

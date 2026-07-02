@@ -5,46 +5,45 @@
 }
 
 .artifact-panel {
-  background:
-    linear-gradient(135deg, rgba(16, 20, 20, 0.92), rgba(31, 44, 40, 0.88)),
-    repeating-linear-gradient(90deg, rgba(244, 239, 228, 0.07) 0 1px, transparent 1px 3.5rem);
-  color: var(--paper);
+  background: transparent;
+  border-block: 1px solid rgba(23, 20, 17, 0.16);
+  color: var(--ink);
   display: grid;
-  gap: 1px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 0 auto clamp(1.4rem, 3vw, 2rem);
   max-width: var(--max);
-  min-height: clamp(20rem, 34vw, 28rem);
+  min-height: auto;
   overflow: hidden;
-  padding: clamp(1rem, 2.4vw, 1.6rem);
+  padding: 0;
   position: relative;
 }
 
 .artifact-space {
-  block-size: 100%;
-  inset: 0;
-  min-height: 100%;
-  opacity: 0.88;
-  position: absolute;
+  display: none;
 }
 
 .artifact-step {
-  align-self: end;
-  background: rgba(16, 20, 20, 0.58);
-  border: 1px solid rgba(244, 239, 228, 0.16);
-  min-height: 8.25rem;
+  align-self: stretch;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid rgba(23, 20, 17, 0.14);
+  min-height: 7.4rem;
   padding: clamp(0.95rem, 1.7vw, 1.2rem);
   position: relative;
   z-index: 1;
 }
 
+.artifact-step:last-child {
+  border-right: 0;
+}
+
 .artifact-step span {
-  color: var(--yellow);
+  color: var(--red);
   display: block;
   font-family: var(--mono);
   font-size: 0.72rem;
   letter-spacing: 0;
-  margin-bottom: 1.9rem;
+  margin-bottom: 1.25rem;
   text-transform: uppercase;
 }
 
@@ -65,9 +64,10 @@
 }
 
 .program-visual {
-  block-size: clamp(4.6rem, 7vw, 6.4rem);
+  block-size: clamp(3.8rem, 5vw, 4.8rem);
   border-block: 1px solid rgba(23, 20, 17, 0.1);
   margin: 0 0 clamp(1.1rem, 2vw, 1.6rem);
+  opacity: 0.82;
 }
 
 .program-card h3,
@@ -86,12 +86,18 @@
 @media (max-width: 640px) {
   .artifact-panel {
     grid-template-columns: 1fr;
-    min-height: 33rem;
-    padding: 0.8rem;
+    min-height: auto;
+    padding: 0;
   }
 
   .artifact-step {
+    border-bottom: 1px solid rgba(23, 20, 17, 0.14);
+    border-right: 0;
     min-height: 6.5rem;
+  }
+
+  .artifact-step:last-child {
+    border-bottom: 0;
   }
 
   .artifact-step span {
