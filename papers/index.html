@@ -60,16 +60,24 @@
     </header>
 
     <main id="main">
-      <section class="collection-hero" aria-labelledby="papers-title">
-        <div class="collection-shell">
-          <p class="eyebrow">Formal outputs</p>
-          <div class="collection-lede">
-            <h1 id="papers-title">Manuscripts by request</h1>
-            <p>
-              These manuscripts are not publicly posted while patent filing is in progress. We
-              expect public release in roughly 2-3 months, subject to filing and review timing.
-              Researchers can request a private copy by email.
-            </p>
+      <section class="collection-hero papers-hero" aria-labelledby="papers-title">
+        <div class="papers-hero-shell">
+          <div class="papers-hero-main">
+            <p class="eyebrow">Pre-publication access</p>
+            <h1 id="papers-title">Private manuscripts.<br>Request access.</h1>
+          </div>
+          <div class="papers-hero-side" aria-label="Manuscript access status">
+            <span>Patent filing</span>
+            <strong>Not public yet.</strong>
+            <p>Public release is expected in roughly 2-3 months. Until then, researchers can request a private copy.</p>
+            <button class="button button-primary" type="button" data-paper-request="General manuscript request">
+              Request manuscript
+            </button>
+          </div>
+          <div class="papers-hero-facts" aria-label="Manuscript access summary">
+            <span>3 manuscripts</span>
+            <span>Blurred previews only</span>
+            <span>Email request</span>
           </div>
         </div>
       </section>
@@ -77,23 +85,25 @@
       <section class="manuscript-section" aria-labelledby="manuscripts-title">
         <div class="request-layout">
           <div class="request-copy">
-            <p class="section-label">Pre-publication access</p>
-            <h2 id="manuscripts-title">Private for patent filing, available by request.</h2>
-            <p>
-              The previews below are intentionally blurred. They indicate the manuscript structure
-              without publishing the full text, figures, or technical claims before the filing window
-              closes.
-            </p>
+            <p class="section-label">Request shelf</p>
+            <h2 id="manuscripts-title">Pick a manuscript.</h2>
           </div>
-          <div class="request-note">
-            <span>Status</span>
-            <p>
-              Patent filing in progress. Expected public release: roughly 2-3 months. Requests are
-              handled by email and may be declined if the request context is unclear.
-            </p>
-            <button class="button button-primary" type="button" data-paper-request="General manuscript request">
-              Request manuscript
-            </button>
+          <div class="request-steps" aria-label="Access process">
+            <div>
+              <span>01</span>
+              <strong>Preview</strong>
+              <p>Blurred figure or first page only.</p>
+            </div>
+            <div>
+              <span>02</span>
+              <strong>Request</strong>
+              <p>Name, email, affiliation, role, and purpose.</p>
+            </div>
+            <div>
+              <span>03</span>
+              <strong>Release</strong>
+              <p>Public posting expected in about 2-3 months.</p>
+            </div>
           </div>
         </div>
 
@@ -109,19 +119,13 @@
               <span class="status-pill">Filing in progress</span>
               <h3>PBISC: bulk RNA-seq to immune pseudo-cells</h3>
               <p>
-                A PBMC-focused generative deconvolution model that turns bulk RNA-seq into an
-                analysis-ready pseudo-single-cell count matrix for immune-state interpretation.
+                Generates PBMC pseudo-single-cell matrices from bulk RNA-seq.
               </p>
-              <dl class="manuscript-meta">
-                <div>
-                  <dt>Focus</dt>
-                  <dd>PBMC bulk RNA-seq, single-cell-like generation, immune disease</dd>
-                </div>
-                <div>
-                  <dt>Status</dt>
-                  <dd>Private manuscript; request-only during filing window</dd>
-                </div>
-              </dl>
+              <div class="manuscript-tags" aria-label="PBISC manuscript tags">
+                <span>PBMC</span>
+                <span>Bulk to pseudo-cell</span>
+                <span>Patent filing</span>
+              </div>
               <button class="button button-primary" type="button" data-paper-request="PBISC: bulk RNA-seq to immune pseudo-cells">
                 Request manuscript
               </button>
@@ -139,19 +143,13 @@
               <span class="status-pill">By request</span>
               <h3>RNA-LLM: transcriptomes as language-model tokens</h3>
               <p>
-                A multimodal RNA-language model direction that compresses a single-cell, pseudobulk,
-                or bulk expression profile into one LLM token for RNA-conditioned reasoning.
+                Compresses RNA profiles into one LLM token for transcriptome-conditioned reasoning.
               </p>
-              <dl class="manuscript-meta">
-                <div>
-                  <dt>Focus</dt>
-                  <dd>RNA tokenization, multimodal LLMs, clinical knowledge alignment</dd>
-                </div>
-                <div>
-                  <dt>Status</dt>
-                  <dd>Private manuscript; request-only before public posting</dd>
-                </div>
-              </dl>
+              <div class="manuscript-tags" aria-label="RNA-LLM manuscript tags">
+                <span>RNA token</span>
+                <span>Multimodal LLM</span>
+                <span>By request</span>
+              </div>
               <button class="button button-primary" type="button" data-paper-request="RNA-LLM: transcriptomes as language-model tokens">
                 Request manuscript
               </button>
@@ -169,19 +167,13 @@
               <span class="status-pill">By request</span>
               <h3>SLE-CR Bench: RNA evidence to medical-style reports</h3>
               <p>
-                A benchmark for testing whether LLMs can turn curated SLE PBMC transcriptomic
-                evidence into grounded, calibrated, bounded medical-style reports.
+                Tests whether curated patient RNA evidence can support grounded medical-style reports.
               </p>
-              <dl class="manuscript-meta">
-                <div>
-                  <dt>Focus</dt>
-                  <dd>SLE, PBMC scRNA-seq, decoupleR evidence cards, calibration</dd>
-                </div>
-                <div>
-                  <dt>Status</dt>
-                  <dd>Private manuscript; request-only before public posting</dd>
-                </div>
-              </dl>
+              <div class="manuscript-tags" aria-label="SLE-CR Bench manuscript tags">
+                <span>Patient RNA report</span>
+                <span>Calibration</span>
+                <span>By request</span>
+              </div>
               <button class="button button-primary" type="button" data-paper-request="SLE-CR Bench: RNA evidence to medical-style reports">
                 Request manuscript
               </button>
