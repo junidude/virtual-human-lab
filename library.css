@@ -219,6 +219,97 @@
   padding-top: 1rem;
 }
 
+.notes-hero {
+  background:
+    linear-gradient(90deg, rgba(16, 20, 20, 0.92), rgba(16, 20, 20, 0.78)),
+    repeating-linear-gradient(90deg, rgba(244, 239, 228, 0.08) 0 1px, transparent 1px 56px),
+    var(--field);
+}
+
+.notes-hero-shell {
+  display: grid;
+  gap: clamp(1.4rem, 3vw, 2.4rem);
+  grid-template-areas:
+    "copy card"
+    "strip strip";
+  grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 0.42fr);
+  margin: 0 auto;
+  max-width: var(--max);
+}
+
+.notes-hero-copy {
+  grid-area: copy;
+}
+
+.notes-hero h1 {
+  font-size: clamp(4rem, 7.4vw, 7rem);
+  line-height: 0.9;
+  margin-bottom: 1.25rem;
+  max-width: 11ch;
+}
+
+.notes-hero-copy p {
+  color: rgba(244, 239, 228, 0.76);
+  font-size: clamp(1.05rem, 1.45vw, 1.24rem);
+  line-height: 1.46;
+  max-width: 43rem;
+}
+
+.notes-thesis-card {
+  align-self: end;
+  background: rgba(244, 239, 228, 0.08);
+  border: 1px solid rgba(244, 239, 228, 0.24);
+  color: var(--paper);
+  grid-area: card;
+  padding: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.notes-thesis-card span,
+.notes-proof-strip span {
+  color: var(--yellow);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+}
+
+.notes-thesis-card strong {
+  display: block;
+  font-size: clamp(1.55rem, 2.6vw, 2.3rem);
+  line-height: 0.98;
+  margin: 0.7rem 0 0.85rem;
+  max-width: 12ch;
+}
+
+.notes-thesis-card p {
+  color: rgba(244, 239, 228, 0.72);
+  margin: 0;
+}
+
+.notes-proof-strip {
+  border-bottom: 1px solid rgba(244, 239, 228, 0.22);
+  border-top: 1px solid rgba(244, 239, 228, 0.22);
+  display: grid;
+  grid-area: strip;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.notes-proof-strip div {
+  border-right: 1px solid rgba(244, 239, 228, 0.18);
+  min-height: 7rem;
+  padding: 1rem 1.1rem;
+}
+
+.notes-proof-strip div:last-child {
+  border-right: 0;
+}
+
+.notes-proof-strip strong {
+  display: block;
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  line-height: 1.08;
+  margin-top: 1.45rem;
+}
+
 .entry-section {
   background: var(--paper-deep);
   padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 5vw, 4rem);
@@ -253,6 +344,61 @@
 .entry-card a {
   color: var(--red);
   font-weight: 700;
+}
+
+.notes-track-section .entry-card {
+  min-height: 18rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.notes-track-section {
+  padding-top: clamp(3rem, 5vw, 4.8rem);
+}
+
+.notes-track-section .section-heading {
+  align-items: end;
+  display: grid;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  grid-template-columns: minmax(10rem, 0.32fr) minmax(0, 1fr);
+  margin-bottom: clamp(1.4rem, 3vw, 2.4rem);
+}
+
+.notes-track-section .section-heading h2 {
+  font-family: var(--sans);
+  font-size: clamp(2.2rem, 3.9vw, 4rem);
+  font-weight: 700;
+  line-height: 0.98;
+  max-width: 17ch;
+}
+
+.notes-track-section .entry-card::before {
+  background: var(--red);
+  content: "";
+  height: 4px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.notes-track-section .entry-card h3 {
+  font-size: clamp(1.55rem, 2.4vw, 2.25rem);
+  line-height: 1;
+  max-width: 12ch;
+}
+
+.notes-track-section .entry-card:nth-child(3) {
+  background: var(--field);
+  color: var(--paper);
+}
+
+.notes-track-section .entry-card:nth-child(3) p {
+  color: rgba(244, 239, 228, 0.74);
+}
+
+.notes-track-section .entry-card:nth-child(3)::before {
+  background: var(--yellow);
 }
 
 .status-pill {
@@ -554,7 +700,8 @@
   .library-shell,
   .collection-lede,
   .request-layout,
-  .papers-hero-shell {
+  .papers-hero-shell,
+  .notes-hero-shell {
     grid-template-columns: 1fr;
   }
 
@@ -567,6 +714,17 @@
 
   .papers-hero-side {
     max-width: none;
+  }
+
+  .notes-hero-shell {
+    grid-template-areas:
+      "copy"
+      "card"
+      "strip";
+  }
+
+  .notes-thesis-card {
+    align-self: stretch;
   }
 
   .entry-grid,
@@ -583,7 +741,8 @@
   .entry-grid,
   .manuscript-grid,
   .form-grid,
-  .request-steps {
+  .request-steps,
+  .notes-proof-strip {
     grid-template-columns: 1fr;
   }
 
@@ -642,6 +801,33 @@
   .papers-hero h1 {
     font-size: clamp(3rem, 14vw, 4.2rem);
     line-height: 0.92;
+  }
+
+  .notes-hero h1 {
+    font-size: clamp(3.05rem, 14vw, 4.15rem);
+    max-width: 100%;
+  }
+
+  .notes-proof-strip div {
+    border-bottom: 1px solid rgba(244, 239, 228, 0.18);
+    border-right: 0;
+    min-height: auto;
+  }
+
+  .notes-proof-strip div:last-child {
+    border-bottom: 0;
+  }
+
+  .notes-proof-strip strong {
+    margin-top: 0.7rem;
+  }
+
+  .notes-track-section .section-heading {
+    display: block;
+  }
+
+  .notes-track-section .section-heading h2 {
+    font-size: clamp(2.1rem, 11vw, 3.2rem);
   }
 
   .collection-lede p {
