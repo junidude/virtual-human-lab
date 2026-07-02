@@ -305,7 +305,9 @@ h3 {
 .button {
   align-items: center;
   border: 1px solid currentColor;
+  cursor: pointer;
   display: inline-flex;
+  font: inherit;
   font-weight: 700;
   min-height: 3rem;
   padding: 0.82rem 1.1rem;
@@ -325,6 +327,11 @@ h3 {
 
 .button-secondary {
   color: var(--paper);
+}
+
+.button-quiet {
+  background: transparent;
+  color: var(--ink);
 }
 
 .hero-meta {

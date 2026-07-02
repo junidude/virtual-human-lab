@@ -50,7 +50,7 @@
         <div class="nav-group is-active">
           <span class="nav-label">Home</span>
           <span class="nav-links">
-            <a href="#open-problems">Open problems</a>
+            <a href="#what-we-study">What we study</a>
             <a href="#research">Programs</a>
             <a href="#members">Members</a>
             <a href="#collaborate">Collaborate</a>
@@ -118,7 +118,8 @@
             <h2 id="library-title">Papers, notes, and open questions in one place.</h2>
             <p>
               VHL publishes formal outputs together with the work around them: preprints,
-              technical notes, negative results, reading maps, and implementation logs.
+              technical notes, negative results, reading maps, and implementation logs. Some
+              manuscripts are temporarily available by request while patent filing is in progress.
             </p>
           </div>
           <div class="shelf-grid">
@@ -132,36 +133,45 @@
               <h3>Research notes</h3>
               <p>Short technical notes on datasets, model design, evaluation, and biological interpretation.</p>
             </a>
-            <a class="shelf-card" href="#open-problems">
+            <a class="shelf-card" href="#what-we-study">
               <span class="shelf-kicker">Collaboration surface</span>
-              <h3>Open problems</h3>
-              <p>Questions where a collaborator, dataset, GPU path, or method critique can change the work.</p>
+              <h3>What we study</h3>
+              <p>The current research agenda: PBMC deconvolution, RNA-language models, and SLE report benchmarks.</p>
             </a>
           </div>
         </div>
       </section>
 
-      <section class="open-problems section-band" id="open-problems" aria-labelledby="open-problems-title">
+      <section class="open-problems section-band" id="what-we-study" aria-labelledby="what-we-study-title">
         <div class="section-grid">
           <div>
-            <p class="section-label">Open problems</p>
-            <h2 id="open-problems-title">Questions we are working through.</h2>
+            <p class="section-label">Research overview</p>
+            <h2 id="what-we-study-title">What we are building now.</h2>
           </div>
           <div class="problem-list">
             <article class="problem-item">
               <span>01</span>
-              <h3>Cross-resolution RNA benchmarks</h3>
-              <p>How should models be judged when moving between bulk cohorts and single-cell atlases?</p>
+              <h3>PBMC bulk-to-single-cell generation</h3>
+              <p>
+                PBISC studies whether a PBMC bulk RNA-seq profile can be converted into an
+                analysis-ready pseudo-single-cell count matrix for downstream immune-state analysis.
+              </p>
             </article>
             <article class="problem-item">
               <span>02</span>
-              <h3>Biological interpretability for RNA embeddings</h3>
-              <p>Which signals are pathway-level, which are batch artifacts, and which are clinically useful?</p>
+              <h3>RNA tokens for clinical-language reasoning</h3>
+              <p>
+                RNA-LLM treats a transcriptome as a compact learned token, then asks whether an LLM
+                can reason over RNA profiles without serializing every gene into text.
+              </p>
             </article>
             <article class="problem-item">
               <span>03</span>
-              <h3>GPU-efficient training loops</h3>
-              <p>How can independent researchers train meaningful models without institutional-scale compute?</p>
+              <h3>SLE report benchmarks and calibration</h3>
+              <p>
+                SLE-CR Bench tests whether curated RNA-seq evidence becomes a medically bounded,
+                calibrated report rather than just a correct disease label.
+              </p>
             </article>
           </div>
         </div>
@@ -170,10 +180,11 @@
       <section class="research section-panel" id="research" aria-labelledby="research-title">
         <div class="section-heading">
           <p class="section-label">Research programs</p>
-          <h2 id="research-title">RNA models that stay connected to biology.</h2>
+          <h2 id="research-title">Three manuscripts, one RNA-scale agenda.</h2>
           <p>
-            Current work asks how RNA-seq models can learn cellular state, tissue-scale signal,
-            and cross-resolution translation without losing biological interpretability.
+            Current work links cross-resolution transcriptomics, multimodal RNA-language modeling,
+            and clinically bounded evaluation. The papers are request-only while patent filing is
+            in progress, with public release expected in roughly 2-3 months.
           </p>
         </div>
 
@@ -210,10 +221,10 @@
               data-spatial-accent="#d5a84f"
               aria-hidden="true"
             ></canvas>
-            <h3>Single-cell foundation model in scRNA-seq</h3>
+            <h3>PBISC: bulk RNA-seq to immune pseudo-cells</h3>
             <p>
-              Models that learn cell identity, perturbation response, and disease-state geometry
-              from single-cell transcriptomes.
+              A generative model that produces PBMC pseudo-single-cell matrices from bulk RNA-seq
+              without target-cohort scRNA-seq at inference time.
             </p>
           </article>
           <article class="program-card accent-green">
@@ -224,10 +235,10 @@
               data-spatial-accent="#466f56"
               aria-hidden="true"
             ></canvas>
-            <h3>Bulk-cell foundation model in bulk RNA-seq</h3>
+            <h3>SLE-CR Bench: report-level RNA evaluation</h3>
             <p>
-              Representations for cohort-scale transcriptomes that preserve clinically useful
-              biological structure.
+              A benchmark for whether LLM-written RNA-seq reports cite molecular evidence, express
+              calibrated uncertainty, and avoid unsupported clinical claims.
             </p>
           </article>
           <article class="program-card accent-red">
@@ -240,8 +251,8 @@
             ></canvas>
             <h3>RNA-LLM</h3>
             <p>
-              A multimodal LLM direction that connects language reasoning with RNA-seq embeddings
-              for interpretation and hypothesis generation.
+              A multimodal model that compresses a single-cell, pseudobulk, or bulk RNA profile
+              into one LLM token for transcriptome-conditioned reasoning.
             </p>
           </article>
           <article class="program-card accent-blue">
@@ -252,10 +263,10 @@
               data-spatial-accent="#2f6d8a"
               aria-hidden="true"
             ></canvas>
-            <h3>Bulk RNA-seq to single-cell RNA-seq</h3>
+            <h3>Leakage-controlled RNA model evaluation</h3>
             <p>
-              Cross-resolution modeling that studies whether population-level RNA signals can be
-              mapped into single-cell-like cellular programs.
+              Study-held-out and donor-held-out tests for autoimmune, infectious, and vaccine-response
+              transcriptomes before broader clinical claims.
             </p>
           </article>
         </div>

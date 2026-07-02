@@ -4,6 +4,10 @@ const navLinks = document.querySelectorAll(".site-nav a");
 const canvas = document.querySelector("#cell-field");
 const context = canvas ? canvas.getContext("2d") : null;
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const requestDialog = document.querySelector("[data-request-dialog]");
+const requestForm = document.querySelector("[data-paper-request-form]");
+const requestButtons = document.querySelectorAll("[data-paper-request]");
+const requestCloseButtons = document.querySelectorAll("[data-request-close]");
 
 const palette = ["#f4efe4", "#d5a84f", "#a94731", "#6fb0a2", "#81a9c4"];
 let points = [];
@@ -221,6 +225,9 @@ function setupRevealMotion() {
     ".collection-lede > *",
     ".entry-card",
     ".empty-state",
+    ".request-copy",
+    ".request-note",
+    ".manuscript-card",
     ".governance-card",
     ".evidence-card",
     ".principle-card",
@@ -258,6 +265,55 @@ function updateHeader() {
   header.classList.toggle("is-scrolled", window.scrollY > 18);
 }
 
+function openRequestDialog(paperTitle) {
+  if (!requestDialog || !requestForm) return;
+
+  const paperSelect = requestForm.elements.paper;
+  if (paperSelect && paperTitle) {
+    const option = Array.from(paperSelect.options).find((item) => item.value === paperTitle);
+    paperSelect.value = option ? paperTitle : "General manuscript request";
+  }
+
+  if (typeof requestDialog.showModal === "function") {
+    requestDialog.showModal();
+  } else {
+    requestDialog.setAttribute("open", "");
+  }
+}
+
+function closeRequestDialog() {
+  if (!requestDialog) return;
+
+  if (typeof requestDialog.close === "function") {
+    requestDialog.close();
+  } else {
+    requestDialog.removeAttribute("open");
+  }
+}
+
+function buildManuscriptRequestEmail(form) {
+  const data = new FormData(form);
+  const paper = data.get("paper") || "General manuscript request";
+  const body = [
+    "Manuscript request",
+    "",
+    `Requested manuscript: ${paper}`,
+    `Name: ${data.get("name") || ""}`,
+    `Email: ${data.get("email") || ""}`,
+    `Affiliation or organization: ${data.get("affiliation") || ""}`,
+    `Role or title: ${data.get("role") || ""}`,
+    `Professional profile or website: ${data.get("profile") || ""}`,
+    "",
+    "Research context or intended use:",
+    data.get("purpose") || "",
+    "",
+    "Boundary acknowledgement: I understand that the manuscript is private during the filing window and that I should not include patient information, controlled-access data, or confidential material.",
+  ].join("\n");
+
+  const subject = `Manuscript request: ${paper}`;
+  return `mailto:junidude14@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 if (header && navToggle) {
   navToggle.addEventListener("click", () => {
     const isOpen = header.classList.toggle("nav-open");
@@ -273,6 +329,31 @@ navLinks.forEach((link) => {
     navToggle.setAttribute("aria-expanded", "false");
   });
 });
+
+requestButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    openRequestDialog(button.dataset.paperRequest);
+  });
+});
+
+requestCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeRequestDialog);
+});
+
+if (requestDialog) {
+  requestDialog.addEventListener("click", (event) => {
+    if (event.target === requestDialog) {
+      closeRequestDialog();
+    }
+  });
+}
+
+if (requestForm) {
+  requestForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    window.location.href = buildManuscriptRequestEmail(requestForm);
+  });
+}
 
 window.addEventListener("scroll", updateHeader, { passive: true });
 window.addEventListener("resize", () => {
