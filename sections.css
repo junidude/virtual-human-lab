@@ -444,6 +444,17 @@ main > section[id] {
     grid-template-columns: 1fr;
   }
 
+  .intro .section-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-copy {
+    border-left: 0;
+    border-top: 1px solid rgba(23, 20, 17, 0.16);
+    padding-left: 0;
+    padding-top: 1.3rem;
+  }
+
   .model-heading {
     max-width: 34rem;
   }
@@ -484,6 +495,15 @@ main > section[id] {
   .model-heading h2 {
     font-size: clamp(3rem, 15vw, 4.35rem);
     max-width: 8.5ch;
+  }
+
+  .intro h2 {
+    font-size: clamp(2.35rem, 11vw, 3.55rem);
+    max-width: 11ch;
+  }
+
+  .intro-markers {
+    max-width: none;
   }
 
   .hero-overlay {
