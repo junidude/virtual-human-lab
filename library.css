@@ -191,7 +191,7 @@
   font-weight: 700;
   line-height: 0.95;
   margin: 0;
-  max-width: 10ch;
+  max-width: 11ch;
 }
 
 .papers-hero-side {
@@ -422,7 +422,9 @@
   align-self: flex-start;
   background: var(--ink);
   color: var(--paper);
+  line-height: 1.2;
   margin-bottom: 1rem;
+  max-width: 100%;
   padding: 0.3rem 0.55rem;
 }
 
@@ -558,11 +560,21 @@
 
 .manuscript-body h3 {
   font-size: clamp(1.18rem, 1.7vw, 1.55rem);
+  line-height: 1.08;
+  margin-bottom: 0.65rem;
 }
 
 .manuscript-body p,
 .manuscript-meta dd {
   color: var(--ink-soft);
+}
+
+.manuscript-body .manuscript-review-status {
+  border-left: 3px solid var(--red);
+  font-size: 0.92rem;
+  line-height: 1.35;
+  margin: 0 0 0.9rem;
+  padding-left: 0.7rem;
 }
 
 .manuscript-body p {

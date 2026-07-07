@@ -24,7 +24,7 @@
     >
     <link rel="stylesheet" href="../styles.css?v=ui-system-20260703">
     <link rel="stylesheet" href="../sections.css?v=ui-system-20260703">
-    <link rel="stylesheet" href="../library.css?v=ui-system-20260703">
+    <link rel="stylesheet" href="../library.css?v=paper-access-20260707">
     <link rel="stylesheet" href="../governance.css?v=records-20260624">
     <link rel="stylesheet" href="../motion.css">
   </head>
@@ -67,17 +67,17 @@
             <h1 id="papers-title">Private manuscripts.<br>Request access.</h1>
           </div>
           <div class="papers-hero-side" aria-label="Manuscript access status">
-            <span>Patent filing</span>
-            <strong>Not public yet.</strong>
-            <p>Public release is expected in roughly 2-3 months. Until then, researchers can request a private copy.</p>
+            <span>Patent filing + review</span>
+            <strong>Private for now.</strong>
+            <p>Manuscripts are under patent filing and venue review. Public release is expected after the filing window; researchers can request a private copy by email.</p>
             <button class="button button-primary" type="button" data-paper-request="General manuscript request">
               Request manuscript
             </button>
           </div>
           <div class="papers-hero-facts" aria-label="Manuscript access summary">
-            <span>3 manuscripts</span>
-            <span>Blurred previews only</span>
-            <span>Email request</span>
+            <span>BIBM full-paper review</span>
+            <span>MLCB review</span>
+            <span>Private by request</span>
           </div>
         </div>
       </section>
@@ -102,7 +102,7 @@
             <div>
               <span>03</span>
               <strong>Release</strong>
-              <p>Public posting expected in about 2-3 months.</p>
+              <p>Public posting follows filing and review timing.</p>
             </div>
           </div>
         </div>
@@ -111,22 +111,23 @@
           <article class="manuscript-card">
             <figure class="manuscript-preview">
               <img
-                src="../assets/manuscript-previews/pbisc-preview.jpg"
-                alt="Blurred preview of the PBISC manuscript workflow page"
+                src="../assets/manuscript-previews/pbisc-preview.jpg?v=paper-preview-20260707"
+                alt="Blurred preview of the PBISC manuscript first page"
               >
             </figure>
             <div class="manuscript-body">
-              <span class="status-pill">Filing in progress</span>
-              <h3>PBISC: bulk RNA-seq to immune pseudo-cells</h3>
+              <span class="status-pill">BIBM full-paper review</span>
+              <h3>PBISC: PBMC bulk RNA-seq to pseudo-single-cell matrices</h3>
+              <p class="manuscript-review-status">Reference-free single-cell-resolution deconvolution manuscript.</p>
               <p>
-                Generates PBMC pseudo-single-cell matrices from bulk RNA-seq.
+                Generates analysis-ready PBMC pseudo-single-cell count matrices from bulk RNA-seq without a matched target-cohort single-cell reference.
               </p>
               <div class="manuscript-tags" aria-label="PBISC manuscript tags">
                 <span>PBMC</span>
-                <span>Bulk to pseudo-cell</span>
-                <span>Patent filing</span>
+                <span>Bulk to single-cell</span>
+                <span>BIBM review</span>
               </div>
-              <button class="button button-primary" type="button" data-paper-request="PBISC: bulk RNA-seq to immune pseudo-cells">
+              <button class="button button-primary" type="button" data-paper-request="PBISC: PBMC bulk RNA-seq to pseudo-single-cell matrices">
                 Request manuscript
               </button>
             </div>
@@ -135,22 +136,23 @@
           <article class="manuscript-card">
             <figure class="manuscript-preview">
               <img
-                src="../assets/manuscript-previews/rna-llm-preview.jpg"
+                src="../assets/manuscript-previews/rna-llm-preview.jpg?v=paper-preview-20260707"
                 alt="Blurred preview of the RNA-LLM manuscript first page"
               >
             </figure>
             <div class="manuscript-body">
-              <span class="status-pill">By request</span>
-              <h3>RNA-LLM: transcriptomes as language-model tokens</h3>
+              <span class="status-pill">MLCB review</span>
+              <h3>RNA-LLM: transcriptomes as one language-model token</h3>
+              <p class="manuscript-review-status">Multimodal RNA-language foundation model manuscript.</p>
               <p>
-                Compresses RNA profiles into one LLM token for transcriptome-conditioned reasoning.
+                Compresses single-cell, pseudobulk, and bulk transcriptomes into one RNA token for transcriptome-conditioned biological reasoning.
               </p>
               <div class="manuscript-tags" aria-label="RNA-LLM manuscript tags">
                 <span>RNA token</span>
                 <span>Multimodal LLM</span>
-                <span>By request</span>
+                <span>MLCB review</span>
               </div>
-              <button class="button button-primary" type="button" data-paper-request="RNA-LLM: transcriptomes as language-model tokens">
+              <button class="button button-primary" type="button" data-paper-request="RNA-LLM: transcriptomes as one language-model token">
                 Request manuscript
               </button>
             </div>
@@ -159,22 +161,23 @@
           <article class="manuscript-card">
             <figure class="manuscript-preview">
               <img
-                src="../assets/manuscript-previews/sle-cr-bench-preview.jpg"
+                src="../assets/manuscript-previews/sle-cr-bench-preview.jpg?v=paper-preview-20260707"
                 alt="Blurred preview of the SLE-CR Bench manuscript overview page"
               >
             </figure>
             <div class="manuscript-body">
-              <span class="status-pill">By request</span>
-              <h3>SLE-CR Bench: RNA evidence to medical-style reports</h3>
+              <span class="status-pill">MLCB two-page paper review</span>
+              <h3>Patient RNA Report Bench: evidence to medical-style reports</h3>
+              <p class="manuscript-review-status">SLE-CR Bench manuscript for RNA-seq LLM interpretation.</p>
               <p>
-                Tests whether curated patient RNA evidence can support grounded medical-style reports.
+                Tests whether curated RNA-seq evidence cards can support calibrated, evidence-cited, medically bounded report generation.
               </p>
               <div class="manuscript-tags" aria-label="SLE-CR Bench manuscript tags">
                 <span>Patient RNA report</span>
                 <span>Calibration</span>
-                <span>By request</span>
+                <span>MLCB review</span>
               </div>
-              <button class="button button-primary" type="button" data-paper-request="SLE-CR Bench: RNA evidence to medical-style reports">
+              <button class="button button-primary" type="button" data-paper-request="Patient RNA Report Bench: evidence to medical-style reports">
                 Request manuscript
               </button>
             </div>
@@ -232,9 +235,9 @@
               Manuscript
               <select name="paper" required>
                 <option value="General manuscript request">General manuscript request</option>
-                <option value="PBISC: bulk RNA-seq to immune pseudo-cells">PBISC: bulk RNA-seq to immune pseudo-cells</option>
-                <option value="RNA-LLM: transcriptomes as language-model tokens">RNA-LLM: transcriptomes as language-model tokens</option>
-                <option value="SLE-CR Bench: RNA evidence to medical-style reports">SLE-CR Bench: RNA evidence to medical-style reports</option>
+                <option value="PBISC: PBMC bulk RNA-seq to pseudo-single-cell matrices">PBISC: PBMC bulk RNA-seq to pseudo-single-cell matrices</option>
+                <option value="RNA-LLM: transcriptomes as one language-model token">RNA-LLM: transcriptomes as one language-model token</option>
+                <option value="Patient RNA Report Bench: evidence to medical-style reports">Patient RNA Report Bench: evidence to medical-style reports</option>
               </select>
             </label>
             <label class="form-wide">
