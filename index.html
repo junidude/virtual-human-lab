@@ -1,545 +1,351 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Virtual Human Lab | Bioinformatics + Machine Learning</title>
-    <meta
-      name="description"
-      content="Virtual Human Lab is an independent research group working on transcriptomics, bioinformatics, computational biology, and machine learning."
-    >
-    <meta property="og:title" content="Virtual Human Lab">
-    <meta
-      property="og:description"
-      content="Independent research on bioinformatics, machine learning, and RNA-scale virtual-human biology."
-    >
+    <title>Virtual Human Lab | Computational Models of Individual Biology</title>
+    <meta name="description" content="Independent research on computational representations of human biological state, beginning with RNA and working toward validated models of individual response.">
+    <meta property="og:title" content="Virtual Human Lab | Computational Models of Individual Biology">
+    <meta property="og:description" content="Research toward models of individual biological state and response. Current work begins with RNA.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.virtualhumanlab.com/">
-    <meta property="og:image" content="https://www.virtualhumanlab.com/assets/og-image.png">
+    <meta property="og:image" content="https://www.virtualhumanlab.com/assets/og-image.png?v=20260813-5">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://www.virtualhumanlab.com/">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,650&display=swap"
-      rel="stylesheet"
-    >
-    <link rel="stylesheet" href="styles.css?v=ui-system-20260703">
-    <link rel="stylesheet" href="sections.css?v=ui-system-20260703">
-    <link rel="stylesheet" href="library.css?v=paper-access-20260707">
-    <link rel="stylesheet" href="collaborators.css">
-    <link rel="stylesheet" href="spatial.css?v=ui-system-20260703">
-    <link rel="stylesheet" href="governance.css?v=records-20260624">
-    <link rel="stylesheet" href="motion.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260813-5">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header" data-header>
-      <a class="brand" href="#top" aria-label="Virtual Human Lab home">
-        <span class="brand-mark" aria-hidden="true">VH</span>
-        <span>Virtual Human Lab</span>
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="nav-toggle-bar"></span>
-        <span class="sr-only">Toggle navigation</span>
-      </button>
-      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
-        <div class="nav-group is-active">
-          <span class="nav-label">Home</span>
-          <span class="nav-links">
-            <a href="#what-we-study">What we study</a>
-            <a href="#research">Programs</a>
-            <a href="#members">Members</a>
-            <a href="#collaborate">Collaborate</a>
-          </span>
-        </div>
-        <div class="nav-group">
-          <span class="nav-label">Library</span>
-          <span class="nav-links">
-            <a href="papers/">Papers</a>
-            <a href="notes/">Notes</a>
-          </span>
-        </div>
-      </nav>
+      <div class="header-inner">
+        <a class="brand" href="./" aria-label="Virtual Human Lab home">
+          <span class="brand-code" aria-hidden="true">VHL</span>
+          <span class="brand-name">Virtual Human Lab</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="sr-only">Open navigation</span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a href="research/">Research</a>
+          <a href="papers/">Papers</a>
+          <a href="blog/">Blog</a>
+          <a href="notes/">Notes</a>
+          <a href="members/">Members</a>
+          <a class="nav-contact" href="#contact">Contact</a>
+        </nav>
+      </div>
     </header>
 
     <main id="main">
-      <section class="hero" id="top" aria-labelledby="hero-title">
-        <canvas id="cell-field" aria-hidden="true"></canvas>
-        <div class="hero-overlay" aria-hidden="true"></div>
-        <div class="hero-content">
-          <p class="eyebrow">Independent AI biology lab</p>
-          <h1 id="hero-title">Virtual Human Lab</h1>
-          <p class="hero-kicker">
-            We study RNA data with machine learning: single-cell atlases, bulk cohorts, model
-            evaluation, and clinical interpretation.
-          </p>
-          <div class="hero-actions" role="group" aria-label="Primary actions">
-            <a class="button button-primary" href="#research">Explore research</a>
-            <a class="button button-secondary" href="notes/">Read notes</a>
-          </div>
-        </div>
-        <div class="hero-meta" role="group" aria-label="Research focus summary">
-          <span>Bioinformatics + Machine Learning</span>
-          <span>RNA models</span>
-          <span>Open research notes</span>
-        </div>
-      </section>
-
-      <section class="intro section-band" aria-labelledby="intro-title">
-        <div class="section-grid">
-          <div>
-            <p class="section-label">What we are</p>
-            <h2 id="intro-title">Independent RNA-scale AI biology.</h2>
-            <div class="intro-markers" aria-label="Lab identity summary">
-              <span>Independent</span>
-              <span>Non-commercial</span>
-              <span>Clinical + computational</span>
+      <section class="home-hero" aria-labelledby="home-title">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span>Computational human biology</span> Independent research</p>
+            <h1 id="home-title">Toward models of individual biological response.</h1>
+            <p class="hero-deck">
+              VHL’s long-term research program asks whether measurements from a person can become a
+              computational representation of biological state and eventually support estimates of
+              response to defined perturbations. Today’s work focuses on RNA methods, RNA-language
+              representations, and leakage-controlled benchmarks.
+            </p>
+            <div class="button-row">
+              <a class="button button-primary" href="research/">See what we study <span aria-hidden="true">↗</span></a>
+              <a class="button button-secondary" href="papers/">View manuscripts</a>
             </div>
           </div>
-          <div class="intro-copy">
-            <p>
-              Virtual Human Lab is an independent, non-commercial research group working across
-              medicine, transcriptomics, bioinformatics, computational biology, and machine
-              learning. It is not a university, hospital, company, government agency, or official
-              unit of one.
-            </p>
-            <p>
-              We use AI to help read literature, write code, design experiments, and test models.
-              The standard stays conventional: claims need sound data, reproducible methods, and
-              biological or clinical sense.
-            </p>
-          </div>
-        </div>
-      </section>
 
-      <section class="library-section" id="library" aria-labelledby="library-title">
-        <div class="library-shell">
-          <div class="library-lede">
-            <p class="section-label">Research library</p>
-            <h2 id="library-title">Papers, notes, and open questions in one place.</h2>
-            <p>
-              VHL publishes formal outputs together with the work around them: preprints,
-              technical notes, negative results, reading maps, and implementation logs. Some
-              manuscripts are temporarily available by request while patent filing is in progress.
-            </p>
-          </div>
-          <div class="shelf-grid">
-            <a class="shelf-card" href="papers/">
-              <span class="shelf-kicker">Formal outputs</span>
-              <h3>Papers &amp; preprints</h3>
-              <p>Only public papers and preprints, with citations, code, data, and model links.</p>
-            </a>
-            <a class="shelf-card" href="notes/">
-              <span class="shelf-kicker">Working memory</span>
-              <h3>Research notes</h3>
-              <p>Short technical notes on datasets, model design, evaluation, and biological interpretation.</p>
-            </a>
-            <a class="shelf-card" href="#what-we-study">
-              <span class="shelf-kicker">Collaboration surface</span>
-              <h3>What we study</h3>
-              <p>The current research agenda: PBMC deconvolution, RNA-language models, and patient RNA-seq report benchmarks.</p>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="open-problems section-band" id="what-we-study" aria-labelledby="what-we-study-title">
-        <div class="section-grid">
-          <div>
-            <p class="section-label">Research overview</p>
-            <h2 id="what-we-study-title">What we are building now.</h2>
-          </div>
-          <div class="problem-list">
-            <article class="problem-item">
+          <aside class="hero-status" aria-label="Current evidence and manuscript status">
+            <div class="status-heading">
+              <span class="live-dot" aria-hidden="true"></span>
+              <span>Current evidence / manuscripts</span>
+              <span>August 2026</span>
+            </div>
+            <a class="status-row" href="papers/#pbisc">
               <span>01</span>
-              <h3>PBMC bulk-to-single-cell generation</h3>
-              <p>
-                PBISC studies whether a PBMC bulk RNA-seq profile can be converted into an
-                analysis-ready pseudo-single-cell count matrix for downstream immune-state analysis.
-              </p>
-            </article>
-            <article class="problem-item">
+              <strong>PBISC</strong>
+              <em>BIBM full-paper review</em>
+            </a>
+            <a class="status-row" href="papers/#rna-llm">
               <span>02</span>
-              <h3>RNA tokens for clinical-language reasoning</h3>
-              <p>
-                RNA-LLM treats a transcriptome as a compact learned token, then asks whether an LLM
-                can reason over RNA profiles without serializing every gene into text.
-              </p>
-            </article>
-            <article class="problem-item">
-              <span>03</span>
-              <h3>Patient RNA-seq reports and calibration</h3>
-              <p>
-                We test whether curated patient RNA-seq evidence can become a medically bounded,
-                calibrated report rather than only a correct disease label.
-              </p>
-            </article>
-          </div>
+              <strong>RNA-LLM</strong>
+              <em>BIBM review</em>
+            </a>
+            <p class="status-note">
+              Manuscripts are available privately to researchers during patent filing and peer review.
+            </p>
+          </aside>
+        </div>
+
+        <div class="hero-index" aria-label="Virtual-human research model">
+          <span><b>Observe 01</b> Measured biology</span>
+          <span><b>Represent 02</b> Individual state</span>
+          <span><b>Perturb 03</b> Interventions + disease</span>
+          <span><b>Test 04</b> Outcomes + uncertainty</span>
         </div>
       </section>
 
-      <section class="research section-panel" id="research" aria-labelledby="research-title">
-        <div class="section-heading">
-          <p class="section-label">Research programs</p>
-          <h2 id="research-title">Three manuscripts, one RNA-scale agenda.</h2>
+      <section class="section research-overview" aria-labelledby="definition-title">
+        <div class="section-intro">
+          <p class="section-label">Definition</p>
+          <h2 id="definition-title">A model of biological state and response—not a visual replica.</h2>
           <p>
-            Current work links cross-resolution transcriptomics, multimodal RNA-language modeling,
-            and clinically bounded evaluation. The papers are request-only while patent filing is
-            in progress, with public release expected in roughly 2-3 months.
+            In VHL’s research, a virtual human is a task-specific computational model conditioned on
+            measurements from an individual. It asks how a measured state might change after a defined
+            perturbation, and reports uncertainty and limits. It is not a complete digital copy or a
+            clinical service available today.
           </p>
         </div>
 
-        <div class="artifact-panel" role="group" aria-label="RNA modeling workflow sketch">
-          <canvas
-            class="spatial-canvas artifact-space"
-            data-spatial-scene="workflow"
-            aria-hidden="true"
-          ></canvas>
-          <div class="artifact-step">
-            <span>Input</span>
-            <strong>Bulk cohorts + scRNA-seq atlases</strong>
-          </div>
-          <div class="artifact-step">
-            <span>Representation</span>
-            <strong>RNA embeddings + cell-state maps</strong>
-          </div>
-          <div class="artifact-step">
-            <span>Evaluation</span>
-            <strong>Pathways, perturbations, clinical signal</strong>
-          </div>
-          <div class="artifact-step">
-            <span>Output</span>
-            <strong>Models, notes, code, preprints</strong>
-          </div>
+        <div class="agenda-context">
+          <p class="section-label">Long-term research questions</p>
+          <h3>What could become testable if an individual model were reliable?</h3>
+          <p>These are research directions, not capabilities or services VHL offers today.</p>
         </div>
 
-        <div class="program-grid">
-          <article class="program-card">
-            <span class="program-index">01</span>
-            <canvas
-              class="spatial-canvas program-visual"
-              data-spatial-scene="program"
-              data-spatial-accent="#d5a84f"
-              aria-hidden="true"
-            ></canvas>
-            <h3>PBISC: bulk RNA-seq to immune pseudo-cells</h3>
-            <p>
-              A generative model that produces PBMC pseudo-single-cell matrices from bulk RNA-seq
-              without target-cohort scRNA-seq at inference time.
-            </p>
+        <div class="agenda-list">
+          <a class="agenda-item" href="research/#research-horizon">
+            <span class="agenda-number">01</span>
+            <div>
+              <span class="agenda-code">Virtual trials</span>
+              <h3>Could compare responses before prospective testing</h3>
+            </div>
+            <p>Use modeled cohorts to explore response heterogeneity and prioritize trial hypotheses before prospective human testing. Simulation cannot establish safety or efficacy.</p>
+            <span class="agenda-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="agenda-item" href="research/#research-horizon">
+            <span class="agenda-number">02</span>
+            <div>
+              <span class="agenda-code">Treatment response</span>
+              <h3>Could model response to candidate medicines</h3>
+            </div>
+            <p>Any eventual clinical use would require task-specific validation and independent clinician review of applicability, evidence, uncertainty, interactions, and safety.</p>
+            <span class="agenda-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="agenda-item" href="research/#research-horizon">
+            <span class="agenda-number">03</span>
+            <div>
+              <span class="agenda-code">Everyday exposures</span>
+              <h3>Could study nutritional and behavioral exposures</h3>
+            </div>
+            <p>Study response to nutrition, supplements, sleep, exercise, and other defined exposures across time rather than promise a personal recommendation.</p>
+            <span class="agenda-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="agenda-item" href="research/#research-horizon">
+            <span class="agenda-number">04</span>
+            <div>
+              <span class="agenda-code">Disease trajectories</span>
+              <h3>Could estimate plausible disease trajectories</h3>
+            </div>
+            <p>Use repeated measurements to estimate several plausible paths of progression, recovery, or relapse—with time horizons and uncertainty made explicit.</p>
+            <span class="agenda-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section why-section" aria-labelledby="why-title">
+        <div class="section-intro section-intro-inverse">
+          <p class="section-label">Why now</p>
+          <h2 id="why-title">From reference knowledge to state-conditioned estimates.</h2>
+          <p>Learned models offer a new interface to complex information. Biology can use that interface only when predictions are falsifiable, calibrated, and tested against new measurements.</p>
+        </div>
+        <div class="why-grid">
+          <article>
+            <span>01 / Reference</span>
+            <h3>Read what usually happens.</h3>
+            <p>Books, papers, and guidelines organize mechanisms and population evidence. They may stratify by known variables, but they do not instantiate a model of this person’s measured biological state.</p>
           </article>
-          <article class="program-card accent-green">
-            <span class="program-index">02</span>
-            <canvas
-              class="spatial-canvas program-visual"
-              data-spatial-scene="program"
-              data-spatial-accent="#466f56"
-              aria-hidden="true"
-            ></canvas>
-            <h3>Patient RNA-seq report evaluation</h3>
-            <p>
-              Benchmarks, starting with SLE-CR Bench, for whether LLM-written RNA-seq reports cite
-              molecular evidence, express calibrated uncertainty, and avoid unsupported clinical claims.
-            </p>
+          <article>
+            <span>02 / Retrieval</span>
+            <h3>Find what has been observed.</h3>
+            <p>Search and databases make evidence available on demand. Retrieval improves access, but it does not itself produce an estimate conditioned on this person’s measured biological state.</p>
           </article>
-          <article class="program-card accent-red">
-            <span class="program-index">03</span>
-            <canvas
-              class="spatial-canvas program-visual"
-              data-spatial-scene="program"
-              data-spatial-accent="#8f3426"
-              aria-hidden="true"
-            ></canvas>
-            <h3>RNA-LLM</h3>
-            <p>
-              A multimodal model that compresses a single-cell, pseudobulk, or bulk RNA profile
-              into one LLM token for transcriptome-conditioned reasoning.
-            </p>
-          </article>
-          <article class="program-card accent-blue">
-            <span class="program-index">04</span>
-            <canvas
-              class="spatial-canvas program-visual"
-              data-spatial-scene="program"
-              data-spatial-accent="#2f6d8a"
-              aria-hidden="true"
-            ></canvas>
-            <h3>Leakage-controlled RNA model evaluation</h3>
-            <p>
-              Study-held-out and donor-held-out tests for autoimmune, infectious, and vaccine-response
-              transcriptomes before broader clinical claims.
-            </p>
+          <article>
+            <span>03 / Learned models</span>
+            <h3>Ask what may happen in this state.</h3>
+            <p>A learned model can encode patterns from population data in parameters and condition an estimate on an individual’s measured state. It does not escape prior evidence; it reorganizes that evidence into a testable conditional estimate.</p>
           </article>
         </div>
       </section>
 
-      <section class="model section-band dark-band" id="model" aria-labelledby="model-title">
-        <div class="section-grid model-grid">
-          <div class="model-heading">
-            <p class="section-label">Lab model</p>
-            <h2 id="model-title">Open door. Serious standards.</h2>
-          </div>
-          <ul class="model-list">
-            <li class="model-item">
-              <h3>Self-directed entry</h3>
-              <p>
-                We welcome researchers who want to enter a technical field by doing the work:
-                reading, reproducing, coding, writing, and being reviewed.
-              </p>
-            </li>
-            <li class="model-item">
-              <h3>AI-native experimentation</h3>
-              <p>
-                AI systems help with literature review, coding, experiment design, and model
-                evaluation. Human researchers remain responsible for claims and errors.
-              </p>
-            </li>
-            <li class="model-item">
-              <h3>Documented support only</h3>
-              <p>
-                Financial or in-kind support is accepted only under documented terms that preserve
-                scientific independence, comply with members' institutional and public-service
-                obligations, and do not confer control over authorship, publication, clinical
-                decisions, or institutional representation.
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="members section-panel" id="members" aria-labelledby="members-title">
-        <div class="member-heading">
-          <div class="member-heading-meta">
-            <p class="section-label">Members</p>
-            <span>Active / pre-active / advisors</span>
-          </div>
-          <h2 id="members-title">Members and advisors</h2>
+      <section class="section research-overview" aria-labelledby="agenda-title">
+        <div class="section-intro">
+          <p class="section-label">Current work / RNA</p>
+          <h2 id="agenda-title">Current work begins with RNA.</h2>
           <p>
-            Affiliations identify the person, not an institutional sponsor. VHL does not speak for
-            any member's employer, hospital, university, company, government agency, or military
-            organization.
+            RNA abundance provides a time- and tissue-dependent measurement of gene expression. VHL’s current
+            projects ask how to resolve that signal, represent it for models, and test whether
+            results transfer. These questions are relevant to
+            the broader virtual-human research program without treating an RNA profile as the whole person.
           </p>
         </div>
 
-        <div class="member-status-block">
-          <div class="member-status-heading">
+        <div class="agenda-list">
+          <a class="agenda-item" href="research/#pbisc">
+            <span class="agenda-number">01</span>
+            <div>
+              <span class="agenda-code">Resolve / PBISC</span>
+              <h3>PBMC bulk-to-single-cell generation</h3>
+            </div>
+            <p>Test whether accessible bulk PBMC RNA can support a useful cell-resolved representation without presenting generated pseudo-cells as measurements.</p>
+            <span class="agenda-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="agenda-item" href="research/#rna-llm">
+            <span class="agenda-number">02</span>
+            <div>
+              <span class="agenda-code">Represent / RNA-LLM</span>
+              <h3>Transcriptomes as model input</h3>
+            </div>
+            <p>Encode single-cell, pseudobulk, or bulk RNA profiles into a learned representation for transcriptome-conditioned biological reasoning.</p>
+            <span class="agenda-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="agenda-item" href="research/#evaluation">
+            <span class="agenda-number">03</span>
+            <div>
+              <span class="agenda-code">Test / Evaluation</span>
+              <h3>Leakage-controlled model benchmarks</h3>
+            </div>
+            <p>Hold out studies and donors so performance reflects transfer to new biology rather than recognition of repeated cohorts or individuals.</p>
+            <span class="agenda-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section paper-summary" aria-labelledby="papers-title">
+        <div class="section-intro">
+          <p class="section-label">Manuscripts</p>
+          <h2 id="papers-title">Two manuscripts are under review.</h2>
+          <p>
+            Full PDFs are not posted publicly while patent filing and peer review are in progress.
+            Researchers may request a private copy by email; each listing includes a blurred preview.
+          </p>
+        </div>
+
+        <div class="paper-table">
+          <a class="paper-table-row" href="papers/#pbisc">
+            <span class="paper-table-index">P–01</span>
+            <strong>PBISC</strong>
+            <span>PBMC bulk RNA-seq → pseudo-single-cell matrices</span>
+            <em>BIBM full-paper review</em>
+          </a>
+          <a class="paper-table-row" href="papers/#rna-llm">
+            <span class="paper-table-index">P–02</span>
+            <strong>RNA-LLM</strong>
+            <span>Transcriptomes represented as one language-model token</span>
+            <em>BIBM review</em>
+          </a>
+        </div>
+        <div class="section-action">
+          <a class="text-link" href="papers/">Preview manuscripts and request access <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="section blog-home-summary" aria-labelledby="home-blog-title">
+        <div class="section-intro">
+          <p class="section-label">Latest essay</p>
+          <h2 id="home-blog-title">Why I Call It a Virtual Human</h2>
+          <p>Seung Jun Lee sets out the long-term research target, the limits of the current RNA work, and the evidence a model parameterized for one person would need to earn trust.</p>
+        </div>
+        <div class="blog-ledger">
+          <a class="blog-entry" href="blog/why-i-call-it-a-virtual-human/">
+            <span class="blog-entry-index">B–01</span>
+            <div class="blog-entry-title"><span>Research direction</span><h3>From biological measurement to a model that can be perturbed.</h3></div>
+            <div class="blog-entry-summary"><p>The essay explains the books-to-search-to-learned-model analogy and why RNA is a starting layer rather than the definition of VHL.</p><span>13 August 2026 · 8 min read</span></div>
+            <span class="blog-entry-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="section-action"><a class="text-link" href="blog/">Read all essays <span aria-hidden="true">→</span></a></div>
+      </section>
+
+      <section class="section people-summary" aria-labelledby="people-title">
+        <div class="section-intro">
+          <p class="section-label">People</p>
+          <h2 id="people-title">A small independent group across medicine and computational biology.</h2>
+          <p>Affiliations identify individuals and do not imply institutional sponsorship, endorsement, or responsibility.</p>
+        </div>
+        <div class="people-strip">
+          <div>
             <span>Active members</span>
-            <p>Currently participating in VHL research.</p>
+            <p>Seung Jun Lee</p>
+            <p>Seongjun Yang</p>
+            <p>Gyubok Lee</p>
           </div>
-          <div class="member-grid">
-            <article class="member-card">
-              <span class="member-status">Active member</span>
-              <div class="member-initials" aria-hidden="true">SL</div>
-              <h3>Seung Jun Lee</h3>
-              <p>MD, Plastic Surgeon</p>
-              <a href="https://www.linkedin.com/in/seung-jun-lee-a42920245/" target="_blank" rel="noreferrer">
-                LinkedIn
-              </a>
-            </article>
-            <article class="member-card">
-              <span class="member-status">Active member</span>
-              <div class="member-initials" aria-hidden="true">SY</div>
-              <h3>Seongjun Yang</h3>
-              <p>Cold Spring Harbor PhD Candidate</p>
-              <a href="https://www.linkedin.com/in/seongjun-yang-b338061b0/" target="_blank" rel="noreferrer">
-                LinkedIn
-              </a>
-            </article>
-            <article class="member-card">
-              <span class="member-status">Active member</span>
-              <div class="member-initials" aria-hidden="true">GL</div>
-              <h3>Gyubok Lee</h3>
-              <p>KAIST PhD &amp; SoftBank AI Research Scientist</p>
-              <a href="https://www.linkedin.com/in/gyubok-lee/" target="_blank" rel="noreferrer">
-                LinkedIn
-              </a>
-            </article>
-          </div>
-        </div>
-
-        <div class="member-status-block preactive-member-block">
-          <div class="member-status-heading">
+          <div>
             <span>Pre-active members</span>
-            <p>Preparing to join active research work.</p>
+            <p>Seung Hyun Hwang</p>
+            <p>Seungwoo Ryu</p>
           </div>
-          <div class="preactive-grid">
-            <article class="preactive-card">
-              <div class="member-initials" aria-hidden="true">SH</div>
-              <div>
-                <h3>Seung hyun Hwang</h3>
-                <p>Gruve AI Engineer</p>
-                <a href="https://www.linkedin.com/in/seung-hyun-hwang-53700124a/" target="_blank" rel="noreferrer">
-                  LinkedIn
-                </a>
-              </div>
-            </article>
-            <article class="preactive-card">
-              <div class="member-initials" aria-hidden="true">SR</div>
-              <div>
-                <h3>Seungwoo Ryu</h3>
-                <p>Allganize AI Engineer</p>
-                <a href="https://www.linkedin.com/in/tryumanshow/" target="_blank" rel="noreferrer">
-                  LinkedIn
-                </a>
-              </div>
-            </article>
+          <div>
+            <span>Advisors</span>
+            <p>Prof. Jung-Sik Song</p>
+            <p>Prof. Eun-Ju Lee</p>
           </div>
         </div>
-
-        <div class="advisor-panel">
-          <div class="advisor-lede">
-            <p class="section-label">Representative and advisors</p>
-            <h3 id="advisors-title">Clinical grounding, independent governance.</h3>
-            <p>
-              Representative authority follows the Bylaws. Advisors do not hold governance authority
-              unless separately admitted as Regular Members.
-            </p>
-          </div>
-
-          <div class="advisor-grid">
-            <article class="advisor-card">
-              <span class="advisor-index">A1</span>
-              <div>
-                <span class="advisor-role">Representative</span>
-                <h4>Seung Jun Lee</h4>
-                <p>MD, Plastic Surgeon; VHL representative under the Bylaws.</p>
-                <a href="https://www.linkedin.com/in/seung-jun-lee-a42920245/" target="_blank" rel="noreferrer">
-                  LinkedIn
-                </a>
-              </div>
-            </article>
-            <article class="advisor-card">
-              <span class="advisor-index">A2</span>
-              <div>
-                <span class="advisor-role">Clinical advisor</span>
-                <h4>Prof. Jung-Sik Song</h4>
-                <p>
-                  Severance Hospital Rheumatology, Department of Internal Medicine;
-                  clinical focus in systemic lupus erythematosus and autoimmune disease.
-                </p>
-                <a href="https://sev.severance.healthcare/sev/doctor/doctor-view.do?empNo=eXVoczIwMjBAKUApNN8Hi3kCFehrVa7BDRVJMc2FwzGgb4CoRAxiyBJNt9Y%3D&amp;deptSeq=75" target="_blank" rel="noreferrer">
-                  Profile
-                </a>
-              </div>
-            </article>
-            <article class="advisor-card">
-              <span class="advisor-index">A3</span>
-              <div>
-                <span class="advisor-role">Scientific advisor</span>
-                <h4>Prof. Eun-Ju Lee</h4>
-                <p>
-                  Severance Hospital Rheumatology, Department of Internal Medicine;
-                  clinical focus in arthritis and connective tissue disease.
-                </p>
-                <a href="https://sev.severance.healthcare/sev/doctor/doctor-view.do?empNo=eXVoczIwMjBAKUApNMQSi0QXFcBKVa%2FODBBJMtekJtoe2HS1EjpeTZsxAsY%3D&amp;deptSeq=75" target="_blank" rel="noreferrer">
-                  Profile
-                </a>
-              </div>
-            </article>
-          </div>
+        <div class="section-action">
+          <a class="text-link" href="members/">Roles, affiliations, and profiles <span aria-hidden="true">→</span></a>
         </div>
       </section>
 
-      <section class="collaborators section-band" id="collaborators" aria-labelledby="collaborators-title">
-        <div class="section-heading compact">
-          <p class="section-label">External relationships</p>
-          <h2 id="collaborators-title">Collaborations are individual unless an agreement says otherwise.</h2>
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div>
+          <p class="section-label">Contact</p>
+          <h2 id="contact-title">Discuss virtual-human research, a manuscript, or a collaboration.</h2>
+        </div>
+        <div class="contact-copy">
           <p>
-            We work with individual researchers, clinicians, and technical partners who bring
-            clinical questions, immune biology expertise, translational datasets, compute paths,
-            or method critique. Institution names are background context unless a written agreement
-            creates a formal relationship.
+            Introduce your research context, affiliation, and the project or manuscript you want to
+            discuss. Do not send patient information, controlled-access data, confidential material,
+            credentials, or unpublished proprietary data by email.
           </p>
-        </div>
-
-        <div class="collaborator-grid">
-          <article class="collaborator-card">
-            <span class="collaborator-index" aria-hidden="true">01</span>
-            <div class="collaborator-body">
-              <span class="collaborator-type">Clinical collaborator</span>
-              <h3>Individual rheumatology collaborators</h3>
-              <p class="collaborator-org">
-                Professional affiliations listed for identification only
-              </p>
-              <div class="collaborator-context">
-                <span>Collaboration context</span>
-                <p>
-                  Autoimmune disease questions, clinical rheumatology perspective, and biological
-                  validation for RNA-scale models.
-                </p>
-              </div>
-              <div class="collaborator-links">
-                <a
-                  href="https://medicine.yonsei.ac.kr/medicine/research/researchcenter/immu.do"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Immunology research <span aria-hidden="true">-></span>
-                </a>
-                <a href="http://www.yuhs-microbiology.org/kor/index.html" target="_blank" rel="noreferrer">
-                  Microbiology <span aria-hidden="true">-></span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="collaborator-card">
-            <span class="collaborator-index" aria-hidden="true">02</span>
-            <div class="collaborator-body">
-              <span class="collaborator-type">Biotechnology collaborator</span>
-              <h3>Industry research dialogue</h3>
-              <p class="collaborator-org">Industry research conversations, subject to documented terms</p>
-              <div class="collaborator-context">
-                <span>Collaboration context</span>
-                <p>
-                  Virtual-cell technology, translational AI, and RNA-scale modeling workflows.
-                  Any material support, data access, or rights arrangement must be reviewed and
-                  documented before work begins.
-                </p>
-              </div>
-            </div>
-          </article>
+          <a class="button button-primary" href="mailto:junidude14@gmail.com">junidude14@gmail.com <span aria-hidden="true">↗</span></a>
         </div>
       </section>
 
-      <section class="collaborate" id="collaborate" aria-labelledby="collaborate-title">
-        <div class="collaborate-copy">
-          <p class="section-label">Collaborate</p>
-          <h2 id="collaborate-title">Bring a clinical question, dataset, or compute path.</h2>
-          <p>
-            We welcome research conversations with individuals and organizations interested in AI
-            biology, transcriptomics, and virtual-human modeling. Do not send patient information,
-            controlled-access data, confidential institutional information, credentials, or
-            unpublished proprietary material by email.
-          </p>
-        </div>
-        <a class="button button-primary" href="mailto:junidude14@gmail.com">junidude14@gmail.com</a>
-      </section>
+      <aside class="clinical-boundary" aria-label="Clinical scope">
+        <span>Clinical scope</span>
+        <p>The personalized applications described on this site are long-term research directions, not services VHL currently offers. Virtual Human Lab is not a medical provider and does not provide diagnosis, prognosis, treatment or prevention recommendations, prescriptions, or patient-specific medical advice.</p>
+      </aside>
     </main>
 
     <footer class="site-footer">
-      <div class="footer-primary">
-        <p>Virtual Human Lab</p>
-        <p>
-          <span class="footer-links">
-            <a href="papers/">Papers</a>
-            <a href="notes/">Notes</a>
-            <a href="#collaborators">Collaborators</a>
-            <a href="mailto:junidude14@gmail.com">Contact</a>
-          </span>
-        </p>
+      <div class="footer-grid">
+        <div class="footer-identity">
+          <span class="brand-code">VHL</span>
+          <p>Independent, non-commercial research toward computational models of individual biology.</p>
+        </div>
+        <div class="footer-column">
+          <span>Research</span>
+          <a href="research/">What we study</a>
+          <a href="papers/">Papers</a>
+          <a href="blog/">Blog</a>
+          <a href="notes/">Notes</a>
+          <a href="members/">Members</a>
+        </div>
+        <div class="footer-column footer-secondary">
+          <span>Records</span>
+          <a href="governance/">Governance</a>
+          <a href="bylaws/">Bylaws</a>
+          <a href="research-integrity/">Research practice</a>
+          <a href="disclosures/">Disclosures</a>
+        </div>
+        <div class="footer-column">
+          <span>Contact</span>
+          <a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a>
+          <p>Republic of Korea</p>
+        </div>
       </div>
-      <p class="footer-records">
-        <span>Records</span>
-        <a href="governance/">Governance</a>
-      </p>
+      <div class="footer-bottom">
+        <span>© 2026 Virtual Human Lab</span>
+        <span>Affiliations do not imply institutional sponsorship.</span>
+      </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script type="module" src="spatial-ui.js?v=spatial-ui-20260620"></script>
+    <script src="script.js?v=20260813-5"></script>
   </body>
 </html>

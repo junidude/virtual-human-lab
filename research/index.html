@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Research | Virtual Human Lab</title>
+    <meta name="description" content="Research toward computational models of individual biological state and response, with current work focused on RNA methods and evaluation.">
+    <meta property="og:title" content="Research | Virtual Human Lab">
+    <meta property="og:description" content="Research toward individual-conditioned response models. Current work covers RNA resolution, representation, and evaluation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.virtualhumanlab.com/research/">
+    <meta property="og:image" content="https://www.virtualhumanlab.com/assets/og-image.png?v=20260813-5">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.virtualhumanlab.com/research/">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css?v=20260813-5">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="../" aria-label="Virtual Human Lab home">
+          <span class="brand-code" aria-hidden="true">VHL</span>
+          <span class="brand-name">Virtual Human Lab</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="sr-only">Open navigation</span>
+          <span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a href="./" aria-current="page">Research</a>
+          <a href="../papers/">Papers</a>
+          <a href="../blog/">Blog</a>
+          <a href="../notes/">Notes</a>
+          <a href="../members/">Members</a>
+          <a class="nav-contact" href="../#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero research-hero" aria-labelledby="research-title">
+        <div class="page-hero-grid">
+          <div>
+            <p class="eyebrow">Research / 2026</p>
+            <h1 id="research-title">From biological state to modeled response.</h1>
+          </div>
+          <div class="page-hero-copy">
+            <p>
+              VHL’s long-term research program is to condition computational models on measurements
+              from an individual and estimate how that biological state may change under a defined
+              perturbation. Any such estimate would need quantified uncertainty and validation against observed outcomes.
+            </p>
+            <p>
+              Current work begins with RNA: recovering cell-state structure, representing
+              transcriptomes, and building leakage-controlled
+              benchmarks. These projects study components relevant to the long-term aim. They do not
+              yet constitute a virtual-human model or a clinical decision tool.
+            </p>
+          </div>
+        </div>
+        <nav class="page-index" aria-label="Research page sections">
+          <a href="#model-architecture"><span>01</span> The model</a>
+          <a href="#research-horizon"><span>02</span> Research questions</a>
+          <a href="#rna-foundation"><span>03</span> Current RNA work</a>
+          <a href="#evidence-threshold"><span>04</span> Evidence threshold</a>
+        </nav>
+      </section>
+
+      <section class="section model-architecture" id="model-architecture" aria-labelledby="model-title">
+        <div class="section-intro">
+          <p class="section-label">Research model</p>
+          <h2 id="model-title">A defined biological state. A defined perturbation. A testable response.</h2>
+          <p>
+            A virtual human is not a complete digital replica. It is a task-specific, updateable
+            computational representation of selected aspects of human biology, conditioned on
+            measurements from an individual and evaluated for a defined question.
+          </p>
+        </div>
+        <div class="model-schema">
+          <article>
+            <span>01 / Observe</span>
+            <h3>Measured biology</h3>
+            <p>Molecular, cellular, clinical, behavioral, and environmental observations collected with time and context.</p>
+          </article>
+          <article>
+            <span>02 / Represent</span>
+            <h3>Individual state</h3>
+            <p>A computational representation that separates what was measured from what the model inferred or compressed.</p>
+          </article>
+          <article>
+            <span>03 / Perturb</span>
+            <h3>Defined change</h3>
+            <p>A medicine, nutrient, behavior, exposure, or disease process specified with dose, timing, and assumptions where relevant.</p>
+          </article>
+          <article>
+            <span>04 / Test</span>
+            <h3>Response + uncertainty</h3>
+            <p>A conditional estimate compared with new measurements, real outcomes, and explicit failure criteria.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section why-section research-horizon" id="research-horizon" aria-labelledby="horizon-title">
+        <div class="section-intro section-intro-inverse">
+          <p class="section-label">Long-term research questions</p>
+          <h2 id="horizon-title">What would become testable if an individual model were reliable?</h2>
+          <p>These are research directions, not capabilities or services VHL offers today. Each would require longitudinal data, causal evidence, external validation, and prospective testing.</p>
+        </div>
+        <div class="why-grid">
+          <article>
+            <span>01 / Interventions</span>
+            <h3>Which change is worth testing?</h3>
+            <p>Compare modeled responses to candidate medicines, nutrition, supplements, sleep, exercise, or other defined exposures without turning an estimate into a personal recommendation.</p>
+          </article>
+          <article>
+            <span>02 / Virtual trials</span>
+            <h3>How might response vary before recruitment?</h3>
+            <p>Explore response subgroups and prioritize trial hypotheses before prospective human testing. Simulation cannot establish safety or efficacy or replace clinical trials.</p>
+          </article>
+          <article>
+            <span>03 / Trajectories</span>
+            <h3>Which biological paths remain plausible?</h3>
+            <p>Use repeated measurements to estimate possible progression, recovery, or relapse paths while exposing assumptions, time horizons, and uncertainty.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section research-chapter" id="rna-foundation" aria-labelledby="rna-foundation-title">
+        <div class="section-intro">
+          <p class="section-label">Current work / RNA</p>
+          <h2 id="rna-foundation-title">Current RNA work asks how to read biological state.</h2>
+          <p>
+            RNA is a dynamic but incomplete view of cellular activity. PBISC, RNA-LLM, and
+            leakage-controlled benchmarks address resolution, representation, and testing questions
+            relevant to broader response models.
+          </p>
+        </div>
+      </section>
+
+      <section class="research-program" id="pbisc" aria-labelledby="pbisc-title">
+        <div class="program-rail">
+          <span>Program 01</span>
+          <strong>PBISC</strong>
+          <em>Cross-resolution transcriptomics</em>
+        </div>
+        <div class="program-main">
+          <p class="section-label">PBMC bulk → pseudo-single-cell</p>
+          <h2 id="pbisc-title">Can a bulk immune profile infer useful cell-state structure?</h2>
+          <p class="program-lede">
+            PBISC asks how much cell-level structure an RNA profile can support. It generates an
+            analysis-ready pseudo-single-cell count matrix from PBMC bulk RNA-seq.
+            It is designed to work without a matched target-cohort single-cell reference at inference time.
+          </p>
+          <div class="program-details">
+            <article>
+              <span>Research question</span>
+              <p>Can large legacy bulk cohorts support cell-type and cell-state analyses that normally require single-cell measurements?</p>
+            </article>
+            <article>
+              <span>Output</span>
+              <p>A generated count matrix for downstream immune-state analysis—not a claim that measured single cells have been recovered.</p>
+            </article>
+            <article>
+              <span>Evaluation boundary</span>
+              <p>Cell composition, expression structure, pathways, and downstream biological conclusions must be tested separately.</p>
+            </article>
+          </div>
+          <div class="program-footer">
+            <span class="status-chip">BIBM full-paper review</span>
+            <a class="text-link" href="../papers/#pbisc">Manuscript preview and request <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="research-program" id="rna-llm" aria-labelledby="rna-llm-title">
+        <div class="program-rail">
+          <span>Program 02</span>
+          <strong>RNA-LLM</strong>
+          <em>Multimodal representation</em>
+        </div>
+        <div class="program-main">
+          <p class="section-label">Transcriptome → learned token</p>
+          <h2 id="rna-llm-title">Can a language model reason over RNA without serializing every gene?</h2>
+          <p class="program-lede">
+            RNA-LLM tests an early bridge from a measured biological profile to a language-model
+            interface. It compresses a single-cell, pseudobulk, or bulk transcriptome into one learned RNA
+            token that conditions a language model on the measured transcriptomic profile.
+          </p>
+          <div class="program-details">
+            <article>
+              <span>Research question</span>
+              <p>Can a compact RNA representation preserve enough signal for biological reasoning across assay resolutions?</p>
+            </article>
+            <article>
+              <span>Interface</span>
+              <p>A learned bridge maps transcriptome features into the language model rather than turning thousands of gene values into a text prompt.</p>
+            </article>
+            <article>
+              <span>Evaluation boundary</span>
+              <p>Biological plausibility, cross-study transfer, and evidence use matter alongside language quality.</p>
+            </article>
+          </div>
+          <div class="program-footer">
+            <span class="status-chip">BIBM review</span>
+            <a class="text-link" href="../papers/#rna-llm">Manuscript preview and request <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="research-program" id="evaluation" aria-labelledby="evaluation-title">
+        <div class="program-rail">
+          <span>Program 03</span>
+          <strong>Evaluation</strong>
+          <em>Generalization and leakage control</em>
+        </div>
+        <div class="program-main">
+          <p class="section-label">Study-held-out / donor-held-out</p>
+          <h2 id="evaluation-title">Does the model transfer—or recognize the dataset?</h2>
+          <p class="program-lede">
+            A virtual-human model would need to transfer to new people and settings rather than
+            recognize a familiar dataset. VHL develops evaluation protocols for autoimmune, infectious-disease, and vaccine-response
+            transcriptomes that separate donors and studies before performance is measured.
+          </p>
+          <div class="program-details">
+            <article>
+              <span>Study leakage</span>
+              <p>Samples from the same cohort can share collection, processing, site, and batch signals. Random sample splits may reward those shortcuts.</p>
+            </article>
+            <article>
+              <span>Donor leakage</span>
+              <p>Repeated measurements from one person must stay in one split so the test does not reward subject recognition.</p>
+            </article>
+            <article>
+              <span>Reporting</span>
+              <p>Results should state the split unit, cohort provenance, endpoint, uncertainty, subgroup behavior, and known sources of leakage.</p>
+            </article>
+          </div>
+          <div class="program-footer">
+            <span class="status-chip status-chip-neutral">Cross-project research practice</span>
+            <a class="text-link" href="../research-integrity/">Read research practice <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="method-map" id="evidence-threshold" aria-labelledby="map-title">
+        <div class="section-intro section-intro-inverse">
+          <p class="section-label">Evidence threshold</p>
+          <h2 id="map-title">Every output needs uncertainty, failure conditions, and a boundary for use.</h2>
+          <p>A convincing output is not enough. The full chain from observation to response must show provenance, uncertainty, transfer, and the conditions under which the model should not be used.</p>
+        </div>
+        <ol class="method-flow">
+          <li><span>01 / Observe</span><strong>Defined biological state</strong><p>Record assay, context, cohort, donor, time, and access conditions.</p></li>
+          <li><span>02 / Encode</span><strong>Traceable representation</strong><p>State what is measured, inferred, compressed, generated, or missing.</p></li>
+          <li><span>03 / Perturb</span><strong>Conditional response</strong><p>Define the intervention, assumptions, time horizon, and uncertainty.</p></li>
+          <li><span>04 / Validate</span><strong>New people + outcomes</strong><p>Test transfer, calibration, failure modes, and prospective performance.</p></li>
+        </ol>
+      </section>
+
+      <section class="contact-section" aria-labelledby="research-contact-title">
+        <div>
+          <p class="section-label">Research inquiries</p>
+          <h2 id="research-contact-title">Bring a biological question that can be measured and tested.</h2>
+        </div>
+        <div class="contact-copy">
+          <p>Include your affiliation, research context, available evidence, and the response or perturbation you want to study. Do not send patient information, controlled-access data, or confidential material.</p>
+          <a class="button button-primary" href="mailto:junidude14@gmail.com">Contact VHL <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <aside class="clinical-boundary" aria-label="Current capability and clinical scope">
+        <span>Current capability</span>
+        <p>VHL does not currently operate a virtual-human system for individual prediction or clinical use. It does not predict individual treatment outcomes or recommend medicines, supplements, diets, or health behaviors. VHL is not a medical provider; simulations do not establish safety or efficacy or replace laboratory studies, clinical trials, professional judgment, or patient-specific medical care.</p>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-identity"><span class="brand-code">VHL</span><p>Independent, non-commercial research toward computational models of individual biology.</p></div>
+        <div class="footer-column"><span>Research</span><a href="./">What we study</a><a href="../papers/">Papers</a><a href="../blog/">Blog</a><a href="../notes/">Notes</a><a href="../members/">Members</a></div>
+        <div class="footer-column footer-secondary"><span>Records</span><a href="../governance/">Governance</a><a href="../bylaws/">Bylaws</a><a href="../research-integrity/">Research practice</a><a href="../disclosures/">Disclosures</a></div>
+        <div class="footer-column"><span>Contact</span><a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a><p>Republic of Korea</p></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Virtual Human Lab</span><span>Affiliations do not imply institutional sponsorship.</span></div>
+    </footer>
+    <script src="../script.js?v=20260813-5"></script>
+  </body>
+</html>
