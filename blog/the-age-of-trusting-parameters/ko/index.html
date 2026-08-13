@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>파라미터를 믿는 시대 | Virtual Human Lab</title>
+    <meta name="description" content="이승준이 개인의 생물학적 반응을 모델링하는 접근이 평균 환자의 한계를 넘어 신약개발에 들어갈 수 있는 이유와 필요한 증거를 설명합니다.">
+    <meta property="og:title" content="파라미터를 믿는 시대">
+    <meta property="og:description" content="Virtual Human이 신약개발에 들어갈 수 있는 이유, 그리고 그 전에 필요한 증거.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/ko/">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:image" content="https://www.virtualhumanlab.com/assets/blog/the-age-of-trusting-parameters-og-ko.png?v=20260814-1">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="파라미터를 믿는 시대 — Virtual Human Lab">
+    <meta property="article:published_time" content="2026-08-14">
+    <meta property="article:modified_time" content="2026-08-14">
+    <meta property="article:author" content="Seung Jun Lee">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/ko/">
+    <link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/">
+    <link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/ko/">
+    <link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/">
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../styles.css?v=20260814-1">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "@id": "https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/ko/#article",
+        "url": "https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/ko/",
+        "headline": "파라미터를 믿는 시대",
+        "description": "Virtual Human이 신약개발에 들어갈 수 있는 이유, 그리고 그 전에 필요한 증거.",
+        "inLanguage": "ko",
+        "datePublished": "2026-08-14",
+        "dateModified": "2026-08-14",
+        "author": {"@type": "Person", "name": "Seung Jun Lee"},
+        "publisher": {"@type": "Organization", "name": "Virtual Human Lab"},
+        "image": "https://www.virtualhumanlab.com/assets/blog/the-age-of-trusting-parameters-og-ko.png",
+        "mainEntityOfPage": "https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/ko/",
+        "translationOfWork": {
+          "@type": "BlogPosting",
+          "@id": "https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/#article",
+          "url": "https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/",
+          "inLanguage": "en"
+        }
+      }
+    </script>
+  </head>
+  <body class="article-page article-page-ko">
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="../../../" aria-label="Virtual Human Lab 홈"><span class="brand-code" aria-hidden="true">VHL</span><span class="brand-name">Virtual Human Lab</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">메뉴 열기</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+        <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
+          <a href="../../../research/">Research</a><a href="../../../papers/">Papers</a><a href="../../" aria-current="page">Blog</a><a href="../../../notes/">Notes</a><a href="../../../members/">Members</a><a class="nav-contact" href="../../../#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <article>
+        <header class="article-hero article-hero-b02">
+          <nav class="article-language" aria-label="글 언어"><a href="../" lang="en" hreflang="en">English</a><span aria-current="page">한국어</span></nav>
+          <div class="article-hero-grid">
+            <div class="article-hero-copy">
+              <p class="eyebrow">Blog / B–02 / 임상개발</p>
+              <h1>파라미터를 믿는 시대</h1>
+              <p class="article-subtitle">Virtual Human은 신약개발의 어디에 들어올 수 있는가</p>
+              <p class="article-deck">임상시험은 집단의 효과를 추정하지만 치료 반응은 개인의 생물학적 맥락에 따라 달라진다. 개인의 측정값을 조건으로 삼는 모델은 이 이질성을 탐색하는 데 도움을 줄 수 있다. 단, 먼저 정해진 역할 안에서 전향적 증거를 통해 예측의 가치를 입증해야 한다.</p>
+            </div>
+            <div class="article-thesis">
+              <span>주장</span>
+              <p>개인 반응을 모델링하려는 압력은 실제로 존재한다. 도입 여부는 사용 맥락, 보정, 전향적 검증, 그리고 잘못된 결정의 비용으로 판단해야 한다.</p>
+            </div>
+          </div>
+          <div class="article-meta" role="group" aria-label="글 정보">
+            <span><b>저자</b> <a href="../../../members/">이승준</a></span>
+            <span><b>게시일</b> 2026년 8월 14일</span>
+            <span><b>읽는 시간</b> 11분</span>
+            <span><b>성격</b> 저자 관점</span>
+          </div>
+        </header>
+
+        <div class="article-layout">
+          <aside class="article-contents" aria-label="목차">
+            <span>목차</span>
+            <a href="#average">평균 환자의 한계</a>
+            <a href="#proxies">생물학적 대리모델</a>
+            <a href="#within-human">인간 내부의 차이</a>
+            <a href="#granularity">세분화의 문제</a>
+            <a href="#pipeline">모델이 들어올 자리</a>
+            <a href="#parameters">파라미터를 믿는다는 것</a>
+            <a href="#threshold">증거의 문턱</a>
+          </aside>
+
+          <div class="article-copy">
+            <p class="article-opening">현대 임상시험은 반드시 필요한 일을 한다. 특정 집단에서 중재가 효과를 내는지 추정한다. 핵심 결과는 대개 집단 수준의 값이다. 이 값은 엄밀할 수 있지만 한 가지 질문을 남긴다. 그 추정값이 대표하는 집단과 생물학적으로 다른 사람에게서는 어떤 일이 일어날 것인가?</p>
+
+            <h2 id="average">평균 환자의 한계</h2>
+
+            <p>연령, 유전형, 장기 기능, 면역 상태, 마이크로바이옴, 동반질환, 과거 노출, 병용 약물은 모두 치료 반응을 바꿀 수 있다. 임상시험은 선정 기준, 층화, 표적 환자군 선별(enrichment), 공변량 보정, 하위집단 분석, 적응형 설계로 이 차이의 일부를 다룬다. 중요한 방법들이다. 그렇다고 임상적으로 의미 있는 조합의 수가 작아지지는 않는다.</p>
+
+            <p>따라서 이 글에서 말하는 “평균 환자”는 임상시험 참여자나 무작위시험에 대한 비난이 아니라 통계적 문제를 가리키는 표현이다. 대부분의 확증시험은 집단 수준의 추정대상(estimand)을 중심으로 검정력을 설계한다. 각 하위집단의 크기가 작거나 여러 변수가 상호작용하면 중요한 이질성이 그 값 아래에 남을 수 있다.</p>
+
+            <p>실제 진료에서 약의 효과가 약하거나 부작용이 커지는 이유가 항상 분자 자체의 결함인 것은 아니다. 약을 쓰는 사람이 개발 단계의 모집단과 달랐지만, 임상시험이 그 차이를 포착하거나 구분하지 못했을 수 있다. 과거에는 이런 차이의 상당 부분을 잔여 변동으로 다뤘다. 측정이 좋아지면 그중 일부는 검증할 수 있는 변수가 된다.</p>
+
+            <blockquote><p>문제는 임상시험이 평균을 쓴다는 데 있지 않다. 하나의 시험이 약이 사용될 모든 생물학적 조건을 전향적으로 검증할 수 없다는 데 있다.</p></blockquote>
+
+            <h2 id="proxies">모델 시스템은 유용하지만 그대로 옮겨지지 않을 수 있다</h2>
+
+            <p>의학은 늘 생물학적 대리모델을 사용해왔다. 파스퇴르는 <a href="https://www.nature.com/articles/032633a0">개와 토끼를 이용해 광견병 노출 후 접종법을 개발</a>한 뒤 1885년 조제프 마이스터를 치료했다. <a href="https://pubmed.ncbi.nlm.nih.gov/20314060/">토론토의 인슐린 연구</a>는 췌장을 제거한 개에서 출발해 1922년 환자에게 췌장 추출물을 투여하는 단계로 옮겨갔고, 제임스 콜립의 정제가 결정적 역할을 했다. <a href="https://www.sciencedirect.com/science/article/pii/S0140673600721222">1940년 쥐 감염실험으로 효과를 보인 페니실린</a>은 신중한 인체 시험을 거쳐 1941년 치료에 사용됐다.</p>
+
+            <p>이 사례들은 동물과 인간을 무심하게 동일시한 일이 아니다. 당시 이용할 수 있던 증거와 방법을 바탕으로 수행된 초기 중개 과정이었다. 성공은 모델 생물의 가치를 확립했다. 이후의 실패는 그 경계를 보여줬다. 유용한 대리모델은 복제본이 아니다.</p>
+
+            <p><a href="https://www.fda.gov/about-fda/fda-history-exhibits/brief-history-center-drug-evaluation-and-research">탈리도마이드는 그 경계를 선명하게 만들었다.</a> 이 약은 1957년 서독에서 판매되기 시작했고 심각한 선천성 기형과의 관련성이 드러난 뒤 1961년 회수됐다. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6248049/">일반적인 생쥐와 쥐는 최기형성에 비교적 저항성</a>을 보이지만, 일부 토끼와 비인간 영장류, 인간에서는 사지 기형이 나타날 수 있다. 원인을 하나의 대사경로로 설명할 수는 없다. 분자 표적과 단백질 분해 경로, 약동학, 용량, 발생 시기의 종간 차이가 함께 작용한다. 이 참사는 1962년 케파우버–해리스 수정안에 결정적인 여론의 동력을 제공했다. 이 법은 임상시험용 의약품 관리와 유효성 증거 요건을 강화했다. 그러나 오늘날의 1–3상 체계 전체가 이 사건 하나로 만들어진 것은 아니다.</p>
+
+            <p><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa063842">2006년 TGN1412는 더 좁지만 중요한 틈을 드러냈다.</a> 건강한 지원자 여섯 명이 CD28 초작용제(superagonist) 0.1 mg/kg을 투여받았다. 이 시작 용량은 원숭이 시험의 무독성량(NOAEL)의 500분의 1이었다. 여섯 명 모두 빠른 전신 염증반응과 중증 상태를 겪었다. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2990151/">이후 연구</a>는 인간의 CD4+ 효과기 기억 T세포(effector-memory T cell)에는 CD28이 발현되지만 전임상에 사용된 마카크 종에는 발현되지 않는다는 차이를 확인했다. 원숭이 데이터가 인간 반응을 놓친 이유를 설명하는 중요한 단서다. 다만 더 복잡한 기전의 한 부분이지 동물실험 전체에 대한 반증은 아니다.</p>
+
+            <p>두 사례에서 얻을 수 있는 결론은 제한적이다. 모델 시스템에 반응을 좌우하는 특징이 빠져 있으면, 겉보기에 안심할 만한 증거도 전이에 실패할 수 있다.</p>
+
+            <h2 id="within-human">관련된 일반화 문제는 인간 내부에도 있다</h2>
+
+            <p>사람과 사람은 서로 다른 종보다 훨씬 가깝다. 그래도 임상적으로 중요한 차이는 남는다.</p>
+
+            <p>코데인은 CYP2D6를 통해 모르핀으로 전환되어야 작용한다. 초고속 대사자는 허가 용량에서도 위험한 모르핀 농도에 도달할 수 있다. 편도 또는 아데노이드 절제 후 코데인을 투여받은 소아에서 사망과 치명적 호흡억제가 보고되자 <a href="https://www.fda.gov/media/85072/download">FDA는 2013년 해당 수술 후 사용에 박스 경고와 금기</a>를 추가했다. 유전형이 중요했지만 연령, 폐쇄성 수면무호흡, 용량, 임상 맥락도 함께 작용했다.</p>
+
+            <p>아바카비르는 더 건설적인 사례를 보여준다. 이 약의 다장기 과민반응 증후군은 HLA-B*57:01과 강하게 연관된다. <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa0706135">PREDICT-1</a>에서 보인자에게 아바카비르를 투여하지 않자 면역학적으로 확인된 과민반응은 2.7%에서 0%로 줄었고, 임상적으로 진단된 반응은 7.8%에서 3.4%로 줄었다. 이 표지자 하나가 반응을 완전히 결정한 것은 아니다. 양성예측도는 47.9%였다. 대신 하나의 위험요인을 진료를 바꿀 만큼 측정 가능하게 만들었다.</p>
+
+            <p>이 사례들은 모든 부작용을 하나의 표지자로 예측할 수 있다는 뜻이 아니다. 오히려 반대다. 코데인과 아바카비르는 위험의 큰 부분을 명확한 분자 특징과 연결할 수 있었기 때문에 다루기 쉬운 편이었다. 다유전자 효과, 마이크로바이옴, 병용 약물, 면역 이력, 시간에 따라 변하는 생리 상태는 훨씬 큰 상태공간을 만든다.</p>
+
+            <h2 id="granularity">정밀해질수록 세분화 문제가 커진다</h2>
+
+            <p>이론적 해법은 계속 나누는 것이다. 유전형, 연령, 동반질환, 과거 치료, 장기 기능, 환경, 그리고 그 상호작용별로 시험한다. 실제로는 가능한 조합이 빠르게 늘어나 전향적 코호트가 검증할 수 있는 범위를 넘어선다.</p>
+
+            <p>임상개발은 이미 표적 환자군 선별(enrichment), 적응형·플랫폼 설계, 공변량 모델, 제한된 상황의 외부 대조군, 개인별 반복시험(n-of-1) 같은 접근을 사용한다. 이런 방법은 낭비를 줄이고 하나의 고정 설계가 답하기 어려운 질문을 다룬다. 그래도 다차원적 층화를 전부 시험하는 일은 현실적이지 않다.</p>
+
+            <p>비용도 제약의 일부지만 과장해서는 안 된다. <a href="https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2702287">2015–2016년 FDA 승인을 뒷받침한 138개 핵심시험을 분석한 연구</a>에서 직접비용 중앙값은 1,900만 달러였고 범위는 500만 달러 미만부터 3억 4,680만 달러까지였다. 시험 규모, 기간, 평가변수, 적응증, 기관 구조에 따라 수치는 크게 달라진다. 중앙값 수준의 시험만 여러 교차 층에서 반복해도 경제적·운영적 부담은 빠르게 커진다.</p>
+
+            <h2 id="pipeline">이질성 탐색의 일부를 모델로 옮긴다</h2>
+
+            <p>가상 생물학(Virtual Biology)이 신약개발에 들어올 자리가 여기다. 분자·생리·임상·노출 데이터를 조건으로 삼는 모델은 가상 코호트에서 가설을 만들거나 특정 질문에 대한 반응을 추정할 수 있다. 프로토콜을 확정하기 전에 이질성을 탐색하고, 가설의 우선순위를 정하고, 표적 환자군 선별 후보 변수를 찾고, 용량·채취 전략을 비교하고, 실험실 또는 전향적 임상시험으로 가져갈 조건을 좁힐 수 있다.</p>
+
+            <p>입력 변수를 늘리는 것만으로 희소한 근거 문제가 해결되지는 않는다. 신뢰할 수 있는 모델이라면 용량–반응, 시간 변화, 세포 상태, 기전 관계처럼 다른 조건에도 이어지는 구조를 학습해야 한다. 그런 다음 외부 데이터나 전향적 데이터에서 조건부 예측이 계속 잘 보정되는지 보여줘야 한다. 새로운 코호트, 유전형, 중재, 측정 플랫폼에서 성능이 무너진다면 특징 수가 많다는 사실은 해답이 아니다.</p>
+
+            <p>이 접근은 이미 규제 언어 안에 있다. <a href="https://www.fda.gov/science-research/focus-areas-regulatory-science-report/focus-area-model-informed-product-development">FDA는 모델 기반 의약품 개발(model-informed drug development, MIDD)</a>을 비임상 데이터, 임상 데이터, 사전 정보, 생물학적 지식을 통합하는 계산 모델링과 시뮬레이션의 사용으로 정의한다. 용량 선택, 임상시험 설계, 치료의 개인화, 임상 결과 예측, 안전성 기전 평가에 이미 쓰인다. <a href="https://www.fda.gov/media/184747/download">2026년 ICH M15 가이드라인</a>은 질문, 사용 맥락, 모델의 영향력, 잘못된 결정의 결과, 모델 위험을 중심으로 평가 틀을 제시한다.</p>
+
+            <p>이 틀은 시뮬레이션이 “진짜 증거인가”라고 묻는 것보다 유용하다. 위험도가 낮은 용량 질문과 새로운 치료에 환자를 노출하는 고위험 결정은 같은 수준의 검증을 요구할 수 없다. 질문이 명확히 정해진 경우 모델 기반 분석은 용량 선택을 뒷받침하거나 추가 시험의 필요성을 줄일 수 있다. 그러나 그 자체로 새로운 치료의 안전성과 유효성을 확립하지는 못한다. 사람에게서 얻은 임상 근거는 여전히 중심이다.</p>
+
+            <div class="article-question-list article-pipeline-list">
+              <article><span>01 / 탐색</span><h3>어디에서 반응이 달라질 수 있는가?</h3><p>참여자와 기관을 확정하기 전에 가능한 이질성을 지도화하고 우선순위를 정한다.</p></article>
+              <article><span>02 / 설계</span><h3>어떤 시험이 가장 많은 정보를 주는가?</h3><p>선정 기준, 용량, 시점, 채취, 평가변수, 하위집단 전략을 계산 모델로 비교한다.</p></article>
+              <article><span>03 / 검증</span><h3>모델이 전향적 가치를 더하는가?</h3><p>예측을 사전에 명시하고 실제 결과를 모은 뒤 단순 기준모델과 현재 방법을 비교한다.</p></article>
+              <article><span>04 / 결정</span><h3>출력에 어느 정도의 무게를 둘 것인가?</h3><p>모델이 틀렸을 때의 결과가 클수록 더 강한 증거를 요구한다.</p></article>
+            </div>
+
+            <h2 id="parameters">LLM 도입이 보여준 범위</h2>
+
+            <p>대규모 언어모델은 정보와 만나는 방식을 바꿨다. 사용자는 문서 목록을 여는 대신 파라미터화된 모델에 조건부 질문을 하고 종합된 답을 받을 수 있다. 모델 출력이 탐색의 일상적인 출발점이 될 수 있음을 보여줬다는 점에서 이 변화는 중요하다.</p>
+
+            <p>여기서 “파라미터를 믿는다”는 말은 모델 가중치 자체를 믿거나 모든 출력을 사실로 받아들인다는 뜻이 아니다. 파라미터화된 모델의 출력에 정해진 의사결정 안에서 일정한 무게를 부여한다는 뜻이다.</p>
+
+            <p>그렇다고 사람들이 LLM을 보편적으로 신뢰하거나 그 신뢰가 정당하다는 뜻은 아니다. <a href="https://www.nature.com/articles/s42256-024-00976-7">실험에서는</a> 사용자가 LLM의 정확도를 과대평가하고 유창한 설명만으로 정답과 오답을 구분하는 데 어려움을 겪는 현상이 관찰됐다. <a href="https://www.frontiersin.org/journals/computer-science/articles/10.3389/fcomp.2024.1456098/full">다른 실험에서는</a> LLM의 추천이 AI가 선택한 검색 스니펫보다 더 신뢰받지 않았다. 사용은 넓어졌지만 신뢰는 맥락에 따라 달라지고 제대로 보정되지 않을 때가 많다.</p>
+
+            <p>따라서 생물학과의 유비는 인터페이스와 도입 압력에서 멈춘다. 탐색 연구에서는 가설의 우선순위를 정하는 데 쓸 수 있다. 규제와 연결된 개발 의사결정에는 사용 맥락에 맞춘 검증이 필요하다. 환자 진료에는 그보다 더 높은 증거와 전문가의 책임이 요구된다. 어느 단계에서든 그럴듯한 출력만으로는 부족하다. 전향적 성능, 보정된 불확실성, 명시적인 실패 조건, 추적 가능한 입력, 그리고 정해진 의사결정을 개선한다는 증거가 필요하다.</p>
+
+            <h2 id="threshold">문턱은 정확도 하나가 아니다</h2>
+
+            <p>성능 점수가 높은 모델도 임상개발의 특정 결정에는 부적합할 수 있다. 문턱은 모델이 답할 질문, 출력이 결정에 미치는 영향, 함께 쓰이는 다른 증거, 그리고 잘못됐을 때 벌어질 일에 따라 달라진다.</p>
+
+            <p>나는 경제적 압력이 검증된 개인 반응 모델을 신약개발의 더 많은 단계로 밀어 넣을 것이라고 본다. 임상적으로 중요한 생물학적 조합을 사람에게서 모두 직접 검증하는 일은 현실적으로 불가능하다. 반면 생물학적 측정과 계산 능력은 계속 늘어난다. 이는 강한 도입 유인을 만든다. 그렇다고 도입이 필연인 것은 아니며 모든 가상 코호트가 믿을 만해지는 것도 아니다.</p>
+
+            <p>실제 질문은 더 좁다. 정해진 과제에서 기존 임상시험 방법보다 전향적이고 보정된 가치를 보여줄 수 있는가? 가능하다면 도입의 근거는 “Virtual Human”이라는 이름이 아니다. 제한된 인체 실험을 더 효율적으로 쓰면서 구체적인 의사결정을 개선한다는 증거다.</p>
+
+            <aside class="article-source-note" aria-labelledby="sources-title">
+              <span id="sources-title">출처와 추가 자료</span>
+              <ol>
+                <li><a href="https://www.nature.com/articles/032633a0">Nature (1885): 파스퇴르의 첫 광견병 치료 보고</a></li>
+                <li><a href="https://pubmed.ncbi.nlm.nih.gov/20314060/">Banting 외 (1922): 당뇨병과 췌장 추출물</a></li>
+                <li><a href="https://www.sciencedirect.com/science/article/pii/S0140673600721222">Abraham 외 (1941): 페니실린 후속 관찰</a></li>
+                <li><a href="https://www.fda.gov/about-fda/fda-history-exhibits/brief-history-center-drug-evaluation-and-research">FDA: 탈리도마이드와 1962년 약사법 개정</a></li>
+                <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6248049/">Stephens 외 (2018): 탈리도마이드 최기형성의 종간 차이</a></li>
+                <li><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa063842">Suntharalingam 외 (2006): TGN1412 1상 사이토카인 폭풍</a></li>
+                <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2990151/">Eastwood 외 (2010): CD28 발현의 종간 차이</a></li>
+                <li><a href="https://www.fda.gov/media/85072/download">FDA (2013): 코데인 박스 경고와 금기</a></li>
+                <li><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa0706135">Mallal 외 (2008): PREDICT-1</a></li>
+                <li><a href="https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2702287">Moore 외 (2018): 핵심 임상시험 비용 추정</a></li>
+                <li><a href="https://www.fda.gov/science-research/focus-areas-regulatory-science-report/focus-area-model-informed-product-development">FDA: 모델 기반 제품 개발</a></li>
+                <li><a href="https://www.fda.gov/media/184747/download">ICH M15 / FDA (2026): Model-informed drug development</a></li>
+                <li><a href="https://www.nature.com/articles/s42256-024-00976-7">Steyvers 외 (2025): LLM 출력에 대한 사람의 확신</a></li>
+                <li><a href="https://www.frontiersin.org/journals/computer-science/articles/10.3389/fcomp.2024.1456098/full">McGrath 외 (2024): LLM 추천에 대한 신뢰</a></li>
+              </ol>
+            </aside>
+
+            <aside class="article-clinical-note" aria-label="연구 및 임상 범위">
+              <span>연구 범위</span>
+              <p>이 글은 연구방법과 신약개발에 관한 주장이다. VHL이 현재 개인의 치료 반응을 예측한다는 뜻이 아니다. VHL은 의료기관이 아니며 진단, 예후, 치료 권고, 처방, 환자 개인을 위한 의학적 조언을 제공하지 않는다.</p>
+            </aside>
+          </div>
+
+          <aside class="article-side-record" aria-label="글 기록">
+            <div><span>주장</span><p>검증된 개인 반응 모델은 유한한 임상시험이 모두 다루지 못하는 이질성을 탐색하는 데 도움을 줄 수 있다.</p></div>
+            <div><span>주장하지 않는 것</span><p>인체 근거의 대체, 필연적 도입, 현재 VHL의 임상 기능.</p></div>
+            <div><span>관련 글</span><a href="../../why-i-call-it-a-virtual-human/">Why I Call It a Virtual Human <span aria-hidden="true">→</span></a></div>
+          </aside>
+        </div>
+      </article>
+
+      <section class="article-end" aria-labelledby="article-end-title">
+        <div><p class="section-label">다음 글</p><h2 id="article-end-title">정의에서 시작하기.</h2></div>
+        <div><p>이 글은 개인 모델이 신약개발의 어디에 들어갈 수 있는지 논증한다. B–01은 VHL이 Virtual Human을 어떻게 정의하고 현재 연구가 왜 RNA에서 시작하는지 설명한다.</p><a class="button button-primary" href="../../why-i-call-it-a-virtual-human/">B–01 읽기 <span aria-hidden="true">↗</span></a><a class="text-link" href="../../">영문 Blog 목록 <span aria-hidden="true">→</span></a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-identity"><span class="brand-code">VHL</span><p>개인의 생물학을 계산 모델로 옮기기 위한 독립 비영리 연구.</p></div>
+        <div class="footer-column"><span>Research</span><a href="../../../research/">What we study</a><a href="../../../papers/">Papers</a><a href="../../">Blog</a><a href="../../../notes/">Notes</a><a href="../../../members/">Members</a></div>
+        <div class="footer-column footer-secondary"><span>Records</span><a href="../../../governance/">Governance</a><a href="../../../bylaws/">Bylaws</a><a href="../../../research-integrity/">Research practice</a><a href="../../../disclosures/">Disclosures</a></div>
+        <div class="footer-column"><span>Contact</span><a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a><p>Republic of Korea</p></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Virtual Human Lab</span><span>소속 표기는 기관의 후원이나 승인을 의미하지 않습니다.</span></div>
+    </footer>
+    <script src="../../../script.js?v=20260814-1"></script>
+  </body>
+</html>
