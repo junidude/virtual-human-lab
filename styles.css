@@ -1569,6 +1569,14 @@ body:has(dialog[open]) {
   background: var(--ink);
 }
 
+.article-language [lang="ko"],
+.article-page-ko .article-language span[aria-current="page"] {
+  font-family: "Noto Sans KR", var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: none;
+}
+
 .article-hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.42fr) minmax(270px, 0.48fr);
@@ -1591,6 +1599,11 @@ body:has(dialog[open]) {
   margin-bottom: 20px;
   font-size: clamp(4.3rem, 7vw, 7.8rem);
   letter-spacing: -0.055em;
+}
+
+.article-page-ko .article-hero-b01 h1 {
+  max-width: 1000px;
+  font-size: clamp(4rem, 6.5vw, 7.2rem);
 }
 
 .article-subtitle {
@@ -2958,6 +2971,10 @@ body:has(dialog[open]) {
 
   .article-hero-b02 h1 {
     font-size: clamp(3rem, 14vw, 4.55rem);
+  }
+
+  .article-page-ko .article-hero-b01 h1 {
+    font-size: clamp(2.8rem, 13.5vw, 4.25rem);
   }
 
   .article-subtitle {
