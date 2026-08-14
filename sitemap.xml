@@ -1,13 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.virtualhumanlab.com/</loc></url>
-  <url><loc>https://www.virtualhumanlab.com/research/</loc></url>
-  <url><loc>https://www.virtualhumanlab.com/papers/</loc></url>
-  <url><loc>https://www.virtualhumanlab.com/blog/</loc></url>
-  <url><loc>https://www.virtualhumanlab.com/blog/why-i-call-it-a-virtual-human/</loc></url>
-  <url><loc>https://www.virtualhumanlab.com/blog/why-i-call-it-a-virtual-human/ko/</loc></url>
-  <url><loc>https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/</loc></url>
-  <url><loc>https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/ko/</loc></url>
-  <url><loc>https://www.virtualhumanlab.com/notes/</loc></url>
-  <url><loc>https://www.virtualhumanlab.com/members/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.virtualhumanlab.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/research/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/research/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/papers/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/papers/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/papers/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/papers/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/papers/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/papers/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/papers/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/papers/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/blog/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/blog/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/blog/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/blog/why-i-call-it-a-virtual-human/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/blog/why-i-call-it-a-virtual-human/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/blog/why-i-call-it-a-virtual-human/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/blog/why-i-call-it-a-virtual-human/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/blog/why-i-call-it-a-virtual-human/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/blog/why-i-call-it-a-virtual-human/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/blog/why-i-call-it-a-virtual-human/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/blog/why-i-call-it-a-virtual-human/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/blog/the-age-of-trusting-parameters/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/notes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/notes/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/notes/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/notes/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/notes/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/notes/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/notes/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/notes/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/members/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/members/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/members/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/members/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/members/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/members/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/members/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/members/"/>
+  </url>
 </urlset>

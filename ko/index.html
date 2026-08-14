@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Virtual Human Lab | 개인 생물학의 계산 모델</title>
+    <meta name="description" content="개인의 생물학적 상태를 계산적으로 표현하고, 궁극적으로 개인별 반응을 검증된 방식으로 모델링하기 위한 독립 연구입니다. 현재 연구는 RNA에서 시작합니다.">
+    <meta property="og:title" content="Virtual Human Lab | 개인 생물학의 계산 모델">
+    <meta property="og:description" content="개인의 생물학적 상태와 반응을 모델링하기 위한 연구입니다. 현재 연구는 RNA에서 시작합니다.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.virtualhumanlab.com/ko/">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:image" content="https://www.virtualhumanlab.com/assets/og-image-ko.png?v=20260814-3">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.virtualhumanlab.com/ko/">
+    <link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/">
+    <link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/ko/">
+    <link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=20260814-3">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="/ko/" aria-label="Virtual Human Lab 한국어 홈">
+          <span class="brand-code" aria-hidden="true">VHL</span>
+          <span class="brand-name">Virtual Human Lab</span>
+        </a>
+        <div class="header-actions">
+          <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
+            <a href="/research/ko/">연구</a>
+            <a href="/papers/ko/">논문</a>
+            <a href="/blog/ko/">블로그</a>
+            <a href="/notes/ko/">노트</a>
+            <a href="/members/ko/">구성원</a>
+            <a class="nav-contact" href="/ko/#contact">문의</a>
+          </nav>
+          <nav class="site-language" aria-label="언어 선택">
+            <a href="/" lang="en" hreflang="en" aria-label="영어로 보기">EN</a><span lang="ko" aria-current="page">KR</span>
+          </nav>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+            <span class="sr-only">메뉴 열기</span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="home-hero" aria-labelledby="home-title">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span>계산 인간생물학</span> 독립 연구</p>
+            <h1 id="home-title">개인의 생물학적 반응 모델을 향하여.</h1>
+            <p class="hero-deck">
+              VHL의 장기 연구 프로그램은 한 사람에게서 얻은 측정값이 생물학적 상태의
+              계산적 표현이 되고, 궁극적으로 정해진 중재나 노출에 대한 반응 추정을
+              뒷받침할 수 있는지 묻습니다. 현재는 RNA 방법론, RNA 언어 표현, 데이터
+              누출을 통제한 벤치마크에 집중합니다.
+            </p>
+            <div class="button-row">
+              <a class="button button-primary" href="/research/ko/">연구 주제 보기 <span aria-hidden="true">↗</span></a>
+              <a class="button button-secondary" href="/papers/ko/">원고 보기</a>
+            </div>
+          </div>
+
+          <aside class="hero-status" aria-label="현재 근거와 원고 심사 현황">
+            <div class="status-heading">
+              <span class="live-dot" aria-hidden="true"></span>
+              <span>현재 근거 / 원고</span>
+              <span>2026년 8월</span>
+            </div>
+            <a class="status-row" href="/papers/ko/#pbisc">
+              <span>01</span>
+              <strong>PBISC</strong>
+              <em>BIBM 정규논문 심사 중</em>
+            </a>
+            <a class="status-row" href="/papers/ko/#rna-llm">
+              <span>02</span>
+              <strong>RNA-LLM</strong>
+              <em>BIBM 심사 중</em>
+            </a>
+            <p class="status-note">
+              특허 출원과 동료심사가 진행되는 동안 연구자는 이메일로 비공개 원고를 요청할 수 있습니다.
+            </p>
+          </aside>
+        </div>
+
+        <div class="hero-index" aria-label="Virtual Human 연구 모델">
+          <span><b>관찰 01</b> 측정된 생물학</span>
+          <span><b>표현 02</b> 개인의 상태</span>
+          <span><b>변화 03</b> 중재 + 질병</span>
+          <span><b>검증 04</b> 결과 + 불확실성</span>
+        </div>
+      </section>
+
+      <section class="section research-overview" aria-labelledby="definition-title">
+        <div class="section-intro">
+          <p class="section-label">정의</p>
+          <h2 id="definition-title">시각적 복제본이 아니라 생물학적 상태와 반응의 모델입니다.</h2>
+          <p>
+            VHL 연구에서 Virtual Human은 개인에게서 얻은 측정값을 조건으로 삼는 과제별
+            계산 모델입니다. 측정된 상태가 정해진 중재나 노출 뒤에 어떻게 달라질 수
+            있는지 묻고, 불확실성과 한계를 함께 제시합니다. 사람 전체의 디지털 복제본이
+            아니며 현재 이용할 수 있는 임상 서비스도 아닙니다.
+          </p>
+        </div>
+
+        <div class="agenda-context">
+          <p class="section-label">장기 연구 질문</p>
+          <h3>개인 모델이 신뢰할 만하다면 무엇을 검증 가능한 질문으로 만들 수 있을까요?</h3>
+          <p>아래는 VHL이 현재 제공하는 기능이나 서비스가 아니라 장기 연구 방향입니다.</p>
+        </div>
+
+        <div class="agenda-list">
+          <a class="agenda-item" href="/research/ko/#research-horizon">
+            <span class="agenda-number">01</span>
+            <div>
+              <span class="agenda-code">가상 임상시험</span>
+              <h3>전향적 시험 전에 반응을 비교할 수 있을까</h3>
+            </div>
+            <p>모델로 만든 코호트로 반응의 이질성을 탐색하고, 사람을 대상으로 한 전향적 시험에 앞서 임상시험 가설의 우선순위를 정합니다. 시뮬레이션만으로 안전성이나 유효성을 확립할 수는 없습니다.</p>
+            <span class="agenda-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="agenda-item" href="/research/ko/#research-horizon">
+            <span class="agenda-number">02</span>
+            <div>
+              <span class="agenda-code">치료 반응</span>
+              <h3>후보 의약품에 대한 반응을 모델링할 수 있을까</h3>
+            </div>
+            <p>향후 임상에서 사용하려면 과제별 검증이 필요하며, 임상의가 적용 가능성, 근거, 불확실성, 상호작용, 안전성을 독립적으로 검토해야 합니다.</p>
+            <span class="agenda-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="agenda-item" href="/research/ko/#research-horizon">
+            <span class="agenda-number">03</span>
+            <div>
+              <span class="agenda-code">일상적 노출</span>
+              <h3>영양과 행동에 따른 반응을 연구할 수 있을까</h3>
+            </div>
+            <p>개인 맞춤 권고를 약속하는 대신, 영양, 보충제, 수면, 운동과 그 밖의 정해진 노출에 대한 시간에 따른 반응을 연구합니다.</p>
+            <span class="agenda-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="agenda-item" href="/research/ko/#research-horizon">
+            <span class="agenda-number">04</span>
+            <div>
+              <span class="agenda-code">질병 경과</span>
+              <h3>가능한 질병 경과를 추정할 수 있을까</h3>
+            </div>
+            <p>반복 측정값으로 진행, 회복, 재발의 여러 가능 경로를 추정하되, 시간 범위와 불확실성을 명확히 밝힙니다.</p>
+            <span class="agenda-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section why-section" aria-labelledby="why-title">
+        <div class="section-intro section-intro-inverse">
+          <p class="section-label">왜 지금인가</p>
+          <h2 id="why-title">참조 지식에서 상태를 조건으로 삼는 추정으로.</h2>
+          <p>학습 모델은 복잡한 정보에 접근하는 새로운 인터페이스를 제공합니다. 생물학에서 이 인터페이스가 유효하려면 예측이 반증 가능하고 잘 보정되어야 하며, 새로운 측정값으로 검증되어야 합니다.</p>
+        </div>
+        <div class="why-grid">
+          <article>
+            <span>01 / 참조</span>
+            <h3>일반적으로 어떤 일이 일어나는지 읽습니다.</h3>
+            <p>책, 논문, 지침은 기전과 집단 수준의 근거를 체계화합니다. 알려진 변수로 층화할 수는 있지만, 이 사람에게서 측정한 생물학적 상태를 모델로 구현하지는 않습니다.</p>
+          </article>
+          <article>
+            <span>02 / 검색</span>
+            <h3>무엇이 관찰되었는지 찾습니다.</h3>
+            <p>검색과 데이터베이스를 통해 필요할 때 근거에 접근할 수 있습니다. 검색은 접근성을 높이지만, 그 자체로 이 사람의 측정된 생물학적 상태를 조건으로 삼는 추정값을 만들지는 않습니다.</p>
+          </article>
+          <article>
+            <span>03 / 학습 모델</span>
+            <h3>이 상태에서 무엇이 일어날 수 있는지 묻습니다.</h3>
+            <p>학습 모델은 집단 데이터에서 찾은 패턴을 파라미터에 담고, 개인의 측정된 상태를 조건으로 추정할 수 있습니다. 기존 근거에서 벗어나는 것이 아니라, 그 근거를 검증 가능한 조건부 추정값으로 다시 구성하는 것입니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section research-overview" aria-labelledby="agenda-title">
+        <div class="section-intro">
+          <p class="section-label">현재 연구 / RNA</p>
+          <h2 id="agenda-title">현재 연구는 RNA에서 시작합니다.</h2>
+          <p>
+            RNA 발현량은 시간과 조직에 따라 달라지는 유전자 발현 측정값입니다. VHL의 현재
+            프로젝트는 이 신호를 어떻게 세포 수준으로 풀어내고 모델이 다룰 수 있는 형태로
+            표현할지, 그리고 결과가 새로운 데이터에도 이어지는지 검증합니다. RNA 프로파일을
+            사람 전체와 동일시하지 않으면서 더 넓은 Virtual Human 연구에 필요한 질문을
+            다룹니다.
+          </p>
+        </div>
+
+        <div class="agenda-list">
+          <a class="agenda-item" href="/research/ko/#pbisc">
+            <span class="agenda-number">01</span>
+            <div>
+              <span class="agenda-code">해상도 / PBISC</span>
+              <h3>PBMC 벌크-단일세포 생성</h3>
+            </div>
+            <p>접근하기 쉬운 PBMC 벌크 RNA가 유용한 세포 수준 표현을 뒷받침할 수 있는지 검증하되, 생성된 유사 세포를 실제 측정값으로 제시하지 않습니다.</p>
+            <span class="agenda-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="agenda-item" href="/research/ko/#rna-llm">
+            <span class="agenda-number">02</span>
+            <div>
+              <span class="agenda-code">표현 / RNA-LLM</span>
+              <h3>전사체를 모델 입력으로</h3>
+            </div>
+            <p>단일세포, 유사 벌크 또는 벌크 RNA 프로파일을 학습된 표현으로 인코딩해 전사체를 조건으로 삼는 생물학적 추론에 사용합니다.</p>
+            <span class="agenda-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="agenda-item" href="/research/ko/#evaluation">
+            <span class="agenda-number">03</span>
+            <div>
+              <span class="agenda-code">검증 / 평가</span>
+              <h3>데이터 누출을 통제한 모델 벤치마크</h3>
+            </div>
+            <p>연구와 기증자를 분리해 평가함으로써, 반복된 코호트나 개인을 알아본 결과가 아니라 새로운 생물학으로의 전이를 성능에 반영합니다.</p>
+            <span class="agenda-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section paper-summary" aria-labelledby="papers-title">
+        <div class="section-intro">
+          <p class="section-label">원고</p>
+          <h2 id="papers-title">원고 2편이 심사 중입니다.</h2>
+          <p>
+            특허 출원과 동료심사가 진행되는 동안 전체 PDF는 공개하지 않습니다.
+            연구자는 이메일로 비공개 사본을 요청할 수 있으며, 각 원고 목록에는
+            흐림 처리된 미리보기가 있습니다.
+          </p>
+        </div>
+
+        <div class="paper-table">
+          <a class="paper-table-row" href="/papers/ko/#pbisc">
+            <span class="paper-table-index">P–01</span>
+            <strong>PBISC</strong>
+            <span>PBMC 벌크 RNA-seq → 유사 단일세포 행렬</span>
+            <em>BIBM 정규논문 심사 중</em>
+          </a>
+          <a class="paper-table-row" href="/papers/ko/#rna-llm">
+            <span class="paper-table-index">P–02</span>
+            <strong>RNA-LLM</strong>
+            <span>전사체를 언어모델 토큰 하나로 표현</span>
+            <em>BIBM 심사 중</em>
+          </a>
+        </div>
+        <div class="section-action">
+          <a class="text-link" href="/papers/ko/">원고 미리보기와 열람 요청 안내 <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="section blog-home-summary" aria-labelledby="home-blog-title">
+        <div class="section-intro">
+          <p class="section-label">최신 에세이</p>
+          <h2 id="home-blog-title">파라미터를 믿는 시대</h2>
+          <p>이승준은 개인 반응 모델이 신약개발의 어디에 들어갈 수 있는지, 집단 평균이 왜 세분화의 문제를 남기는지, 그리고 어떤 근거가 먼저 필요한지를 살펴봅니다.</p>
+        </div>
+        <div class="blog-ledger">
+          <article class="blog-record">
+            <a class="blog-entry" href="/blog/the-age-of-trusting-parameters/ko/">
+              <span class="blog-entry-index">B–02</span>
+              <div class="blog-entry-title"><span>임상개발</span><h3>평균 환자에서 개인 반응 모델로.</h3></div>
+              <div class="blog-entry-summary"><p>사람에게서 얻은 근거를 시뮬레이션으로 대체하지 않으면서, Virtual Human이 연구와 임상시험 설계에서 맡을 수 있는 역할을 제안합니다.</p><span>2026년 8월 14일 · 11분</span></div>
+              <span class="blog-entry-arrow" aria-hidden="true">↗</span>
+            </a>
+            <div class="blog-entry-translation"><span>다른 언어</span><a href="/blog/the-age-of-trusting-parameters/" lang="en" hreflang="en">Read in English <span aria-hidden="true">↗</span></a></div>
+          </article>
+        </div>
+        <div class="section-action"><a class="text-link" href="/blog/ko/">모든 에세이 보기 <span aria-hidden="true">→</span></a></div>
+      </section>
+
+      <section class="section people-summary" aria-labelledby="people-title">
+        <div class="section-intro">
+          <p class="section-label">구성원</p>
+          <h2 id="people-title">의학과 계산생물학을 잇는 소규모 독립 연구 그룹입니다.</h2>
+          <p>소속은 각 개인을 식별하기 위해 표시하며, 해당 기관의 후원, 승인 또는 책임을 의미하지 않습니다.</p>
+        </div>
+        <div class="people-strip">
+          <div>
+            <span>활동 회원</span>
+            <p>Seung Jun Lee</p>
+            <p>Seongjun Yang</p>
+            <p>Gyubok Lee</p>
+          </div>
+          <div>
+            <span>활동 예정 회원</span>
+            <p>Seung Hyun Hwang</p>
+            <p>Seungwoo Ryu</p>
+          </div>
+          <div>
+            <span>자문위원</span>
+            <p>Prof. Jung-Sik Song</p>
+            <p>Prof. Eun-Ju Lee</p>
+          </div>
+        </div>
+        <div class="section-action">
+          <a class="text-link" href="/members/ko/">역할, 소속, 프로필 보기 <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div>
+          <p class="section-label">문의</p>
+          <h2 id="contact-title">Virtual Human 연구, 원고 또는 협업에 관해 이야기해 주세요.</h2>
+        </div>
+        <div class="contact-copy">
+          <p>
+            연구 배경과 소속, 논의하려는 프로젝트 또는 원고를 소개해 주세요. 환자 정보,
+            접근이 통제된 데이터, 기밀 자료, 계정 정보, 공개되지 않은 독점 데이터는
+            이메일로 보내지 마십시오.
+          </p>
+          <a class="button button-primary" href="mailto:junidude14@gmail.com">junidude14@gmail.com <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <aside class="clinical-boundary" aria-label="임상 범위">
+        <span>임상 범위</span>
+        <p>이 사이트에 설명된 개인 맞춤형 응용은 장기 연구 방향이며 VHL이 현재 제공하는 서비스가 아닙니다. Virtual Human Lab은 의료기관이 아니며 진단, 예후, 치료 또는 예방 권고, 처방, 환자 개인을 위한 의학적 조언을 제공하지 않습니다.</p>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-identity">
+          <span class="brand-code">VHL</span>
+          <p>개인의 생물학을 계산 모델로 옮기기 위한 독립적이고 비상업적인 연구.</p>
+        </div>
+        <div class="footer-column">
+          <span>연구</span>
+          <a href="/research/ko/">연구 주제</a>
+          <a href="/papers/ko/">논문</a>
+          <a href="/blog/ko/">블로그</a>
+          <a href="/notes/ko/">노트</a>
+          <a href="/members/ko/">구성원</a>
+        </div>
+        <div class="footer-column footer-secondary">
+          <span>기록</span>
+          <a href="/governance/ko/">운영 체계</a>
+          <a href="/bylaws/ko/">회칙</a>
+          <a href="/research-integrity/ko/">연구 윤리와 실무</a>
+          <a href="/disclosures/ko/">공개 사항</a>
+        </div>
+        <div class="footer-column">
+          <span>문의</span>
+          <a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a>
+          <p>대한민국</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Virtual Human Lab</span>
+        <span>서면 합의가 없는 한 소속 표시는 기관의 후원이나 승인을 의미하지 않습니다.</span>
+      </div>
+    </footer>
+
+    <script src="/script.js?v=20260814-3"></script>
+  </body>
+</html>

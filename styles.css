@@ -34,6 +34,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+html[lang="ko"] body {
+  font-family: "Noto Sans KR", var(--font-sans);
+  word-break: keep-all;
+}
+
 body::before {
   position: fixed;
   inset: 0;
@@ -172,7 +177,15 @@ p {
 }
 
 .brand-name {
+  font-family: var(--font-sans);
   font-size: 0.96rem;
+  white-space: nowrap;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
 .site-nav {
@@ -217,6 +230,44 @@ p {
 
 .site-nav .nav-contact::after {
   display: none;
+}
+
+.site-language {
+  display: inline-grid;
+  flex: 0 0 auto;
+  grid-template-columns: repeat(2, 34px);
+  border: 1px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.045em;
+}
+
+.site-language a,
+.site-language span {
+  display: grid;
+  min-height: 32px;
+  place-items: center;
+}
+
+.site-language a + a,
+.site-language span + a,
+.site-language a + span {
+  border-left: 1px solid var(--ink);
+}
+
+.site-language a {
+  transition: color 150ms ease, background 150ms ease;
+}
+
+.site-language a:hover {
+  background: var(--acid);
+}
+
+.site-language [aria-current="page"] {
+  color: var(--white);
+  background: var(--ink);
 }
 
 .nav-toggle {
@@ -2518,6 +2569,10 @@ body:has(dialog[open]) {
     gap: 22px;
   }
 
+  .header-actions {
+    gap: 13px;
+  }
+
   .section-intro,
   .agenda-context,
   .people-section-heading,
@@ -2598,6 +2653,14 @@ body:has(dialog[open]) {
 
   .nav-toggle {
     display: block;
+  }
+
+  .header-actions {
+    gap: 10px;
+  }
+
+  .site-language {
+    grid-template-columns: repeat(2, 32px);
   }
 
   .site-nav {

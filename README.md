@@ -12,14 +12,23 @@ Then open `http://localhost:4173`.
 
 ## Public pages
 
-- `/` — virtual-human vision, current RNA programs, manuscript status, people, and contact
-- `/research/` — long-term virtual-human research agenda and current RNA work
-- `/papers/` — blurred manuscript previews and email-draft access request
-- `/blog/` — signed essays on research direction, published as paired English/Korean pages
-- `/notes/` — technical-note scope and current evidence register
-- `/members/` — active members, pre-active members, and advisors
-- `/governance/`, `/bylaws/`, `/research-integrity/`, `/disclosures/` — public records
-- `/bylaws/ko/` — Korean bylaws original
+- `/` and `/ko/` — English and Korean home pages
+- `/research/` and `/research/ko/` — long-term virtual-human research agenda and current RNA work
+- `/papers/` and `/papers/ko/` — blurred manuscript previews and email-draft access request
+- `/blog/` and `/blog/ko/` — signed essays on research direction
+- `/notes/` and `/notes/ko/` — technical-note scope and current evidence register
+- `/members/` and `/members/ko/` — active members, pre-active members, and advisors
+- `/governance/`, `/research-integrity/`, `/disclosures/` and their `/ko/` counterparts — public records
+- `/bylaws/` — English public summary; `/bylaws/ko/` — Korean bylaws original
+
+## Bilingual publishing
+
+Every visitor-facing page is available in English and Korean on separate URLs. English uses the
+unprefixed route and Korean uses a route-local `/ko/` suffix. Each equivalent pair has an always-
+visible header language switch, language-preserving navigation, localized metadata, a self-
+canonical URL, and reciprocal `hreflang` links. The bylaws are the exception: the English page is a
+summary and the Korean page is the full original, so the switch identifies them as different
+document editions rather than equivalent translations.
 
 ## Deployment safety
 

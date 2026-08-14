@@ -58,22 +58,40 @@ function closeRequestDialog() {
 function buildManuscriptRequestEmail(form) {
   const data = new FormData(form);
   const paper = data.get("paper") || "General manuscript request";
-  const body = [
-    "Private manuscript request",
-    "",
-    `Requested manuscript: ${paper}`,
-    `Name: ${data.get("name") || ""}`,
-    `Email: ${data.get("email") || ""}`,
-    `Affiliation or organization: ${data.get("affiliation") || ""}`,
-    `Role or title: ${data.get("role") || ""}`,
-    `Professional profile or website: ${data.get("profile") || ""}`,
-    "",
-    "Research context or intended use:",
-    data.get("purpose") || "",
-    "",
-    "Data acknowledgement: I have not included patient information, controlled-access data, non-public institutional information, or confidential material.",
-  ].join("\n");
-  return `mailto:junidude14@gmail.com?subject=${encodeURIComponent(`Manuscript request: ${paper}`)}&body=${encodeURIComponent(body)}`;
+  const korean = document.documentElement.lang === "ko";
+  const body = korean
+    ? [
+        "비공개 원고 요청",
+        "",
+        `요청 원고: ${paper}`,
+        `이름: ${data.get("name") || ""}`,
+        `이메일: ${data.get("email") || ""}`,
+        `소속 또는 기관: ${data.get("affiliation") || ""}`,
+        `직책 또는 역할: ${data.get("role") || ""}`,
+        `전문 프로필 또는 웹사이트: ${data.get("profile") || ""}`,
+        "",
+        "연구 맥락 또는 사용 목적:",
+        data.get("purpose") || "",
+        "",
+        "자료 확인: 환자 정보, 접근 제한 데이터, 비공개 기관 정보 또는 기밀 자료를 포함하지 않았습니다.",
+      ].join("\n")
+    : [
+        "Private manuscript request",
+        "",
+        `Requested manuscript: ${paper}`,
+        `Name: ${data.get("name") || ""}`,
+        `Email: ${data.get("email") || ""}`,
+        `Affiliation or organization: ${data.get("affiliation") || ""}`,
+        `Role or title: ${data.get("role") || ""}`,
+        `Professional profile or website: ${data.get("profile") || ""}`,
+        "",
+        "Research context or intended use:",
+        data.get("purpose") || "",
+        "",
+        "Data acknowledgement: I have not included patient information, controlled-access data, non-public institutional information, or confidential material.",
+      ].join("\n");
+  const subject = korean ? `원고 요청: ${paper}` : `Manuscript request: ${paper}`;
+  return `mailto:junidude14@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 requestButtons.forEach((button) => {

@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>연구 | Virtual Human Lab</title>
+    <meta name="description" content="개인의 생물학적 상태와 반응을 계산 모델로 표현하기 위한 Virtual Human Lab의 연구. 현재는 RNA 방법과 평가에 집중합니다.">
+    <meta property="og:title" content="연구 | Virtual Human Lab">
+    <meta property="og:description" content="개인의 생물학적 상태와 반응을 모델링하기 위한 연구. 현재는 RNA 해상도, 표현, 평가를 다룹니다.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.virtualhumanlab.com/research/ko/">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:image" content="https://www.virtualhumanlab.com/assets/og-image-ko.png?v=20260814-3">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.virtualhumanlab.com/research/ko/">
+    <link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/">
+    <link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/ko/">
+    <link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=20260814-3">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="/ko/" aria-label="Virtual Human Lab 홈">
+          <span class="brand-code" aria-hidden="true">VHL</span>
+          <span class="brand-name">Virtual Human Lab</span>
+        </a>
+        <div class="header-actions">
+          <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
+            <a href="/research/ko/" aria-current="page">연구</a>
+            <a href="/papers/ko/">논문</a>
+            <a href="/blog/ko/">블로그</a>
+            <a href="/notes/ko/">노트</a>
+            <a href="/members/ko/">구성원</a>
+            <a class="nav-contact" href="/ko/#contact">문의</a>
+          </nav>
+          <nav class="site-language" aria-label="언어 선택">
+            <a href="/research/" lang="en" hreflang="en" aria-label="View in English">EN</a><span lang="ko" aria-current="page">KR</span>
+          </nav>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+            <span class="sr-only">메뉴 열기</span>
+            <span aria-hidden="true"></span><span aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero research-hero" aria-labelledby="research-title">
+        <div class="page-hero-grid">
+          <div>
+            <p class="eyebrow">연구 / 2026</p>
+            <h1 id="research-title">생물학적 상태에서 반응 모델링까지.</h1>
+          </div>
+          <div class="page-hero-copy">
+            <p>
+              VHL의 장기 연구 프로그램은 개인에게서 얻은 측정값을 조건으로 계산 모델을 구성하고,
+              정해진 중재나 노출 뒤 그 생물학적 상태가 어떻게 달라질지 추정하는 것을 목표로 합니다.
+              이러한 추정에는 정량화된 불확실성과 관찰된 결과에 대한 검증이 필요합니다.
+            </p>
+            <p>
+              현재 연구는 RNA에서 출발합니다. 세포 상태 구조를 복원하고, 전사체를 표현하며,
+              데이터 누출을 통제한 벤치마크를 구축합니다. 이 프로젝트들은 장기 목표에 필요한
+              구성 요소를 연구하지만, 아직 Virtual Human 모델이나 임상 의사결정 도구를 이루지는 않습니다.
+            </p>
+          </div>
+        </div>
+        <nav class="page-index" aria-label="연구 페이지 목차">
+          <a href="#model-architecture"><span>01</span> 연구 모델</a>
+          <a href="#research-horizon"><span>02</span> 연구 질문</a>
+          <a href="#rna-foundation"><span>03</span> 현재 RNA 연구</a>
+          <a href="#evidence-threshold"><span>04</span> 증거의 문턱</a>
+        </nav>
+      </section>
+
+      <section class="section model-architecture" id="model-architecture" aria-labelledby="model-title">
+        <div class="section-intro">
+          <p class="section-label">연구 모델</p>
+          <h2 id="model-title">명확히 정의한 생물학적 상태. 명확히 정의한 변화. 검증 가능한 반응.</h2>
+          <p>
+            Virtual Human은 완전한 디지털 복제본이 아닙니다. 개인에게서 얻은 측정값을 조건으로 삼고,
+            인간 생물학의 선택된 측면을 과업에 맞게 표현하며, 정해진 질문에 대해 평가할 수 있도록
+            갱신 가능한 계산 표현입니다.
+          </p>
+        </div>
+        <div class="model-schema">
+          <article>
+            <span>01 / 관찰</span>
+            <h3>측정된 생물학</h3>
+            <p>분자·세포·임상·행동·환경 관찰값을 시간과 맥락 정보와 함께 수집합니다.</p>
+          </article>
+          <article>
+            <span>02 / 표현</span>
+            <h3>개인의 상태</h3>
+            <p>측정된 값과 모델이 추론하거나 압축한 값을 구분하는 계산 표현을 만듭니다.</p>
+          </article>
+          <article>
+            <span>03 / 변화</span>
+            <h3>정의된 변화</h3>
+            <p>의약품, 영양소, 행동, 노출 또는 질병 과정을 필요에 따라 용량·시점·가정과 함께 명시합니다.</p>
+          </article>
+          <article>
+            <span>04 / 검증</span>
+            <h3>반응 + 불확실성</h3>
+            <p>조건부 추정값을 새로운 측정값, 실제 결과, 명시적인 실패 기준과 비교합니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section why-section research-horizon" id="research-horizon" aria-labelledby="horizon-title">
+        <div class="section-intro section-intro-inverse">
+          <p class="section-label">장기 연구 질문</p>
+          <h2 id="horizon-title">개인 모델이 신뢰할 만해진다면 무엇을 검증할 수 있을까?</h2>
+          <p>아래 내용은 VHL이 현재 제공하는 기능이나 서비스가 아니라 연구 방향입니다. 각 방향에는 종단 데이터, 인과적 증거, 외부 검증, 전향적 시험이 필요합니다.</p>
+        </div>
+        <div class="why-grid">
+          <article>
+            <span>01 / 중재</span>
+            <h3>어떤 변화를 시험할 가치가 있을까?</h3>
+            <p>후보 의약품, 영양, 보충제, 수면, 운동 또는 그 밖의 정해진 노출에 대한 모델 반응을 비교하되, 추정값을 개인 맞춤 권고로 바꾸지 않습니다.</p>
+          </article>
+          <article>
+            <span>02 / 가상 임상시험</span>
+            <h3>모집 전 반응 차이를 어떻게 탐색할 수 있을까?</h3>
+            <p>전향적 인체 시험에 앞서 반응 하위집단을 탐색하고 임상시험 가설의 우선순위를 정합니다. 시뮬레이션은 안전성이나 유효성을 확립할 수 없으며 임상시험을 대체하지 못합니다.</p>
+          </article>
+          <article>
+            <span>03 / 궤적</span>
+            <h3>어떤 생물학적 경로가 여전히 가능할까?</h3>
+            <p>반복 측정값으로 가능한 진행·회복·재발 경로를 추정하면서 가정, 시간 범위, 불확실성을 함께 드러냅니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section research-chapter" id="rna-foundation" aria-labelledby="rna-foundation-title">
+        <div class="section-intro">
+          <p class="section-label">현재 연구 / RNA</p>
+          <h2 id="rna-foundation-title">현재의 RNA 연구는 생물학적 상태를 읽는 방법을 묻습니다.</h2>
+          <p>
+            RNA는 세포 활동을 보여주는 동적인 관측값이지만 완전하지는 않습니다. PBISC, RNA-LLM,
+            데이터 누출을 통제한 벤치마크는 더 폭넓은 반응 모델과 관련된 해상도, 표현, 검증 문제를 다룹니다.
+          </p>
+        </div>
+      </section>
+
+      <section class="research-program" id="pbisc" aria-labelledby="pbisc-title">
+        <div class="program-rail">
+          <span>프로그램 01</span>
+          <strong>PBISC</strong>
+          <em>해상도 간 전사체학</em>
+        </div>
+        <div class="program-main">
+          <p class="section-label">PBMC 벌크 → 유사 단일세포</p>
+          <h2 id="pbisc-title">벌크 면역 프로파일에서 유용한 세포 상태 구조를 추론할 수 있을까?</h2>
+          <p class="program-lede">
+            PBISC는 RNA 프로파일이 어느 정도의 세포 수준 구조를 뒷받침할 수 있는지 묻습니다.
+            PBMC 벌크 RNA-seq으로부터 분석 가능한 유사 단일세포 카운트 행렬을 생성합니다.
+            추론 시점에는 대상 코호트와 일치하는 단일세포 참조 데이터 없이 작동하도록 설계했습니다.
+          </p>
+          <div class="program-details">
+            <article>
+              <span>연구 질문</span>
+              <p>대규모로 축적된 기존 벌크 코호트를 활용해, 보통 단일세포 측정이 필요한 세포 유형과 세포 상태를 분석할 수 있을까?</p>
+            </article>
+            <article>
+              <span>출력</span>
+              <p>면역 상태 후속 분석을 위한 생성 카운트 행렬입니다. 실제로 측정된 단일세포를 복원했다는 주장이 아닙니다.</p>
+            </article>
+            <article>
+              <span>평가 경계</span>
+              <p>세포 조성, 발현 구조, 경로, 후속 생물학적 결론은 각각 별도로 검증해야 합니다.</p>
+            </article>
+          </div>
+          <div class="program-footer">
+            <span class="status-chip">BIBM full-paper review</span>
+            <a class="text-link" href="/papers/ko/#pbisc">원고 미리보기 및 요청 <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="research-program" id="rna-llm" aria-labelledby="rna-llm-title">
+        <div class="program-rail">
+          <span>프로그램 02</span>
+          <strong>RNA-LLM</strong>
+          <em>멀티모달 표현</em>
+        </div>
+        <div class="program-main">
+          <p class="section-label">전사체 → 학습된 토큰</p>
+          <h2 id="rna-llm-title">모든 유전자를 직렬화하지 않고 언어 모델이 RNA를 추론할 수 있을까?</h2>
+          <p class="program-lede">
+            RNA-LLM은 측정된 생물학적 프로파일과 언어 모델 인터페이스를 잇는 초기 접근을 시험합니다.
+            단일세포, 유사벌크 또는 벌크 전사체를 학습된 RNA 토큰 하나로 압축해, 측정된 전사체
+            프로파일을 언어 모델의 조건으로 제공합니다.
+          </p>
+          <div class="program-details">
+            <article>
+              <span>연구 질문</span>
+              <p>간결한 RNA 표현이 서로 다른 측정 해상도에서 생물학적 추론에 충분한 신호를 보존할 수 있을까?</p>
+            </article>
+            <article>
+              <span>인터페이스</span>
+              <p>수천 개 유전자 값을 텍스트 프롬프트로 바꾸는 대신, 학습된 연결부가 전사체 특징을 언어 모델에 매핑합니다.</p>
+            </article>
+            <article>
+              <span>평가 경계</span>
+              <p>언어 품질뿐 아니라 생물학적 타당성, 연구 간 전이, 근거 활용도 중요합니다.</p>
+            </article>
+          </div>
+          <div class="program-footer">
+            <span class="status-chip">BIBM review</span>
+            <a class="text-link" href="/papers/ko/#rna-llm">원고 미리보기 및 요청 <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="research-program" id="evaluation" aria-labelledby="evaluation-title">
+        <div class="program-rail">
+          <span>프로그램 03</span>
+          <strong>평가</strong>
+          <em>일반화와 데이터 누출 통제</em>
+        </div>
+        <div class="program-main">
+          <p class="section-label">연구 단위 홀드아웃 / 기증자 단위 홀드아웃</p>
+          <h2 id="evaluation-title">모델은 전이하는가, 아니면 데이터셋을 알아보는가?</h2>
+          <p class="program-lede">
+            Virtual Human 모델이라면 익숙한 데이터셋을 알아보는 데 그치지 않고 새로운 사람과 환경으로
+            전이해야 합니다. VHL은 자가면역질환, 감염병, 백신 반응 전사체를 대상으로 성능 측정 전에
+            기증자와 연구를 분리하는 평가 절차를 개발합니다.
+          </p>
+          <div class="program-details">
+            <article>
+              <span>연구 누출</span>
+              <p>같은 코호트의 샘플은 수집, 처리, 기관, 배치 신호를 공유할 수 있습니다. 샘플을 무작위로 나누면 이런 지름길에 보상을 줄 수 있습니다.</p>
+            </article>
+            <article>
+              <span>기증자 누출</span>
+              <p>한 사람에게서 반복 측정한 값은 하나의 분할에만 포함해, 시험이 개인 식별 능력에 보상하지 않도록 해야 합니다.</p>
+            </article>
+            <article>
+              <span>보고</span>
+              <p>결과에는 분할 단위, 코호트 출처, 평가변수, 불확실성, 하위집단별 양상, 알려진 누출 원인을 밝혀야 합니다.</p>
+            </article>
+          </div>
+          <div class="program-footer">
+            <span class="status-chip status-chip-neutral">프로젝트 공통 연구 원칙</span>
+            <a class="text-link" href="/research-integrity/ko/">연구 원칙 보기 <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="method-map" id="evidence-threshold" aria-labelledby="map-title">
+        <div class="section-intro section-intro-inverse">
+          <p class="section-label">증거의 문턱</p>
+          <h2 id="map-title">모든 출력에는 불확실성, 실패 조건, 사용 경계가 필요합니다.</h2>
+          <p>설득력 있어 보이는 출력만으로는 충분하지 않습니다. 관찰에서 반응까지의 전 과정에 출처, 불확실성, 전이 가능성, 모델을 사용하지 말아야 할 조건이 드러나야 합니다.</p>
+        </div>
+        <ol class="method-flow">
+          <li><span>01 / 관찰</span><strong>정의된 생물학적 상태</strong><p>분석법, 맥락, 코호트, 기증자, 시점, 접근 조건을 기록합니다.</p></li>
+          <li><span>02 / 인코딩</span><strong>추적 가능한 표현</strong><p>무엇을 측정·추론·압축·생성했는지, 무엇이 누락됐는지 밝힙니다.</p></li>
+          <li><span>03 / 변화</span><strong>조건부 반응</strong><p>중재, 가정, 시간 범위, 불확실성을 정의합니다.</p></li>
+          <li><span>04 / 검증</span><strong>새로운 사람 + 결과</strong><p>전이, 보정, 실패 양상, 전향적 성능을 시험합니다.</p></li>
+        </ol>
+      </section>
+
+      <section class="contact-section" aria-labelledby="research-contact-title">
+        <div>
+          <p class="section-label">연구 문의</p>
+          <h2 id="research-contact-title">측정하고 검증할 수 있는 생물학적 질문을 보내주세요.</h2>
+        </div>
+        <div class="contact-copy">
+          <p>소속, 연구 맥락, 이용 가능한 근거, 연구하려는 반응 또는 중재를 알려주세요. 환자 정보, 접근이 통제된 데이터, 기밀 자료는 보내지 마세요.</p>
+          <a class="button button-primary" href="mailto:junidude14@gmail.com">VHL에 문의 <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <aside class="clinical-boundary" aria-label="현재 역량과 임상 범위">
+        <span>현재 역량</span>
+        <p>VHL은 현재 개인 예측이나 임상 사용을 위한 Virtual Human 시스템을 운영하지 않습니다. 개인의 치료 결과를 예측하거나 의약품, 보충제, 식단, 건강 행동을 권고하지 않습니다. VHL은 의료기관이 아닙니다. 시뮬레이션은 안전성이나 유효성을 확립하지 않으며, 실험실 연구, 임상시험, 전문가의 판단, 환자별 의료를 대체하지 않습니다.</p>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-identity"><span class="brand-code">VHL</span><p>개인 생물학의 계산 모델을 향한 독립적·비상업적 연구.</p></div>
+        <div class="footer-column"><span>연구</span><a href="/research/ko/">연구 분야</a><a href="/papers/ko/">논문</a><a href="/blog/ko/">블로그</a><a href="/notes/ko/">노트</a><a href="/members/ko/">구성원</a></div>
+        <div class="footer-column footer-secondary"><span>공개 기록</span><a href="/governance/ko/">운영 구조</a><a href="/bylaws/ko/">회칙</a><a href="/research-integrity/ko/">연구 원칙</a><a href="/disclosures/ko/">공개 사항</a></div>
+        <div class="footer-column"><span>문의</span><a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a><p>대한민국</p></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Virtual Human Lab</span><span>서면 합의가 없는 한 소속 표시는 기관의 후원이나 승인을 의미하지 않습니다.</span></div>
+    </footer>
+    <script src="/script.js?v=20260814-3"></script>
+  </body>
+</html>
