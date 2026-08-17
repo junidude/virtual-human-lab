@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<title>TALK-PTG Stage B · SFT(정렬) — 데이터와 학습</title>
+<style>
+:root{
+  --bg:#f7f8f7;--panel:#ffffff;--fg:#171c1a;--mut:#6b7671;--rule:#dce2de;
+  --line:#39507c;--band:#39507c22;--ok:#1f6d4a;--warn:#8c5a12;--bad:#8c3b34;
+  --bar:#39507c;--barbg:#e2e7e3;--pre:#f2f4f2;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#101413;--panel:#161b19;--fg:#e7ece9;--mut:#8d9793;--rule:#28302d;
+  --line:#93a9d3;--band:#93a9d333;--ok:#6fc39a;--warn:#d7ab60;--bad:#d08278;
+  --bar:#93a9d3;--barbg:#232a27;--pre:#121716;
+}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);margin:0;padding:26px 22px 60px;
+  font:14px/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Segoe UI",
+  system-ui,"Noto Sans KR",sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:21px;line-height:1.35;margin:0 0 3px;font-weight:650}
+h2{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);
+  font-weight:600;margin:32px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
+h3{font-size:13.5px;margin:0 0 2px;font-weight:650}
+.sub{color:var(--mut);font-size:13px;margin:0;font-variant-numeric:tabular-nums}
+.manual{margin:16px 0 4px;padding:10px 13px;border:1px solid var(--rule);
+  background:var(--panel);font-size:13px;line-height:1.55}
+.manual b{font-weight:650}
+.manual .cmd{display:block;margin-top:6px;font-family:ui-monospace,SFMono-Regular,
+  Menlo,Consolas,monospace;font-size:11.5px;color:var(--mut);word-break:break-all}
+.grid{display:grid;gap:14px}
+.stats{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:18px}
+.cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.wide2{grid-template-columns:repeat(auto-fit,minmax(430px,1fr))}
+.card{border:1px solid var(--rule);background:var(--panel);padding:12px 14px 11px}
+.t{font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut)}
+.v{font-size:23px;font-weight:620;font-variant-numeric:tabular-nums;
+  margin:2px 0 2px;line-height:1.25}
+.v small{font-size:11.5px;color:var(--mut);font-weight:400;margin-left:7px;
+  letter-spacing:.03em;text-transform:none}
+.meta{font-size:11.5px;color:var(--mut);font-variant-numeric:tabular-nums;
+  display:flex;justify-content:space-between;gap:8px}
+.note{font-size:12px;color:var(--mut);line-height:1.55;margin:6px 0 0}
+svg.chart{display:block;width:100%;height:auto;margin:8px 0 2px}
+.card>svg:not(.chart){display:block;width:100%;height:88px;margin:2px 0 3px}
+.bar{height:8px;background:var(--barbg);margin:9px 0 5px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--bar)}
+.bar.done>i{background:var(--ok)}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+.badge{display:inline-block;font-size:10.5px;letter-spacing:.06em;padding:1px 7px;
+  border:1px solid var(--rule);color:var(--mut);vertical-align:2px;margin-left:7px;
+  text-transform:uppercase;font-weight:600}
+.badge.run{color:var(--warn);border-color:var(--warn)}
+.badge.done{color:var(--ok);border-color:var(--ok)}
+.badge.idle{color:var(--bad);border-color:var(--bad)}
+.badge.bad{color:var(--bad);border-color:var(--bad)}
+.badge.warn{color:var(--warn);border-color:var(--warn)}
+/* 결함 카드 — .bad/.warn 의 글자색이 카드 전체로 번지지 않게 되돌린다 */
+.card.bad,.card.warn{color:var(--fg)}
+.card.bad{border-left:3px solid var(--bad)}
+.card.warn{border-left:3px solid var(--warn)}
+.card.bad>h3,.card.warn>h3{color:var(--fg)}
+.note.dim{opacity:.78;border-top:1px solid var(--rule);padding-top:6px;margin-top:8px}
+details{margin-top:14px;border:1px solid var(--rule);background:var(--panel);
+  padding:9px 13px}
+details+details{margin-top:8px}
+summary{cursor:pointer;font-size:12.5px;color:var(--fg);font-weight:600}
+summary span{color:var(--mut);font-weight:400;margin-left:8px;font-size:11.5px}
+pre{background:var(--pre);border:1px solid var(--rule);padding:10px 12px;margin:9px 0 2px;
+  max-height:360px;overflow:auto;font-family:ui-monospace,SFMono-Regular,Menlo,
+  Consolas,monospace;font-size:11.5px;line-height:1.65;white-space:pre-wrap;
+  word-break:break-word}
+pre b{color:var(--line);font-weight:650}
+table{border-collapse:collapse;width:100%;margin-top:10px;font-size:12.5px;
+  font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:5px 8px;border-bottom:1px solid var(--rule);
+  vertical-align:top}
+th:first-child,td:first-child{text-align:left;font-variant-numeric:normal}
+td.n{text-align:left;color:var(--mut);font-variant-numeric:normal}
+th{color:var(--mut);font-weight:600;font-size:11px;letter-spacing:.05em;
+  text-transform:uppercase}
+.wide{overflow-x:auto}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px}
+a{color:var(--line)}
+.flag{border-left:3px solid var(--bad);background:var(--panel);padding:9px 13px;
+  margin:12px 0 0;font-size:12.5px;line-height:1.6}
+.flag b{color:var(--bad)}
+footer{margin-top:36px;color:var(--mut);font-size:12px;line-height:1.7;
+  border-top:1px solid var(--rule);padding-top:14px}
+</style></head><body><div class="wrap">
+<h1>TALK-PTG Stage B · SFT(정렬) — 데이터와 학습</h1>
+<p class="sub">지금 단계 · <b>데이터 생성</b> — 정렬 데이터를 만들고 있다. GRPO 는 2026-08-18 에 멈췄다 (아래 C).</p>
+<div class="manual"><b>이 페이지는 수동 갱신됩니다.</b> 자동으로 새로고침되지 않고, 아래 생성 시각에 멈춰 있습니다. 데이터 생성은 계속 돌고 있으므로 실제 값은 이보다 앞서 있습니다.<br>
+<span data-volatile>생성 시각 <b>2026-08-18 08:38:47 KST</b></span>
+<span class="cmd">다시 만들기: bash /home/sj_server_1/gblee/TALK-PTG/v7/stage_b/tools/push_sft_monitor.sh</span></div>
+<div class="grid stats"><div class="card"><div class="t">전체 예제</div><div class="v">450,000<small>/ 450,000</small></div></div><div class="card"><div class="t">진행률</div><div class="v">100.0%<small></small></div></div><div class="card"><div class="t">과제 1 묘사</div><div class="v">300,000<small>완료 · 100%</small></div></div><div class="card"><div class="t">과제 2 비교</div><div class="v">150,000<small>완료 · 100%</small></div></div><div class="card"><div class="t">SFT 학습</div><div class="v">아직 시작 안 함<small></small></div></div></div>
+<h2>A0. 데이터에서 확인된 어긋남 <span class="badge bad">5건</span></h2><p class="note">설계값(manifest 의 선언)과 실제로 만들어진 것을 맞대어 자동으로 잰 것이다. 고쳐지면 이 칸은 저절로 사라진다. 나뉨(train/val)은 두 과제 모두 연구가 겹치지 않는다 — 그쪽은 깨끗하다.</p><div class="grid wide2"><div class="card bad"><h3>K=64, 128 가 0건<span class="badge bad">결함</span></h3><div class="t">과제 1 · 한 묶음 묘사</div><p class="note">설계가 30% 를 맡기던 자리인데 한 건도 만들어지지 않았다. 그 몫은 남은 K 로 비례해서 조용히 나뉘어 들어갔다 (남은 비중이 정확히 1/0.70배가 되었다). 실제로 만들어진 가장 큰 묶음은 K=32 이다.</p><p class="note dim">왜 문제인가 — 바탕이 된 pilot 말뭉치가 3,776묶음 × 정확히 32세포다. 한 묶음보다 큰 세포집합은 애초에 뽑을 수가 없다. 생성기는 이때 멈추지 않고 그냥 건너뛰었다.</p></div><div class="card bad"><h3>세포집합 재사용이 상한 20 을 넘었다 (최다 73회)<span class="badge bad">결함</span></h3><div class="t">과제 1 · 한 묶음 묘사</div><p class="note">고유 세포집합 16,223개를 300,000번 꺼내 썼다. 상한을 넘긴 집합이 5,289개 (32.6%) 이고, 전체의 65.4% 가 그 집합들 위에 얹혀 있다.</p><p class="note dim">왜 문제인가 — 같은 세포를 문형만 바꿔 되풀이해 보여주는 것이라, 줄 수가 늘어난 만큼 실제 신호가 늘지는 않는다.</p></div><div class="card bad"><h3>K=64 가 0건<span class="badge bad">결함</span></h3><div class="t">과제 2 · 두 묶음 비교</div><p class="note">설계가 30% 를 맡기던 자리인데 한 건도 만들어지지 않았다. 그 몫은 남은 K 로 비례해서 조용히 나뉘어 들어갔다 (남은 비중이 정확히 1/0.70배가 되었다). 실제로 만들어진 가장 큰 묶음은 K=32 이다.</p><p class="note dim">왜 문제인가 — 바탕이 된 pilot 말뭉치가 3,776묶음 × 정확히 32세포다. 한 묶음보다 큰 세포집합은 애초에 뽑을 수가 없다. 생성기는 이때 멈추지 않고 그냥 건너뛰었다.</p></div><div class="card bad"><h3>세포집합 재사용이 상한 20 을 넘었다 (최다 211회)<span class="badge bad">결함</span></h3><div class="t">과제 2 · 두 묶음 비교</div><p class="note">고유 세포집합 7,858개를 300,000번 꺼내 썼다. 상한을 넘긴 집합이 5,350개 (68.1%) 이고, 전체의 88.9% 가 그 집합들 위에 얹혀 있다. manifest 에는 37회로 적혀 있는데, 그것은 &#x27;짝&#x27; 하나를 한 번으로 센 값이다. 낱개 세포집합으로 다시 세면 211회다 — manifest 가 문제를 작게 보이게 한다.</p><p class="note dim">왜 문제인가 — 같은 세포를 문형만 바꿔 되풀이해 보여주는 것이라, 줄 수가 늘어난 만큼 실제 신호가 늘지는 않는다.</p></div><div class="card warn"><h3>짝 종류 비중이 설계에서 벗어났다<span class="badge warn">주의</span></h3><div class="t">과제 2 · 두 묶음 비교</div><p class="note">same_type_same_study 53.3% (설계 45%)· same_type_other_study 18.3% (설계 25%)</p><p class="note dim">왜 문제인가 — 연구를 가로지르는 짝은 모델이 &#x27;연구별 버릇&#x27; 대신 세포 자체를 보게 만드는 가장 어려운 짝이다. 하필 그 자리가 모자란다.</p></div></div>
+<h2>A. 데이터 생성</h2><div class="grid cards"><div class="card"><h3>과제 1 · 한 묶음 묘사<span class="badge done">완료</span></h3><div class="t">describe_v4</div><div class="v">300,000<small>/ 300,000 · 100.0%</small></div><div class="bar done"><i style="width:100.00%"></i></div><div class="meta"><span>train 245,351 (81.8%)</span><span>val 54,649 (18.2%)</span></div><p class="note">K개 세포 → 캡션 한 단락. 하나를 못 읽으면 둘을 비교할 수 없으므로 이것이 먼저다.</p><p class="note">seed 20260817 · 마지막 기록 41분 54초 전</p></div><div class="card"><h3>과제 2 · 두 묶음 비교<span class="badge done">완료</span></h3><div class="t">compare_v4</div><div class="v">150,000<small>/ 150,000 · 100.0%</small></div><div class="bar done"><i style="width:100.00%"></i></div><div class="meta"><span>train 132,436 (88.3%)</span><span>val 17,564 (11.7%)</span></div><p class="note">묶음 A·B 를 같이 보여주고 무엇이 다른가를 답한다. 비교 대상이 입력 안에 있어서 안 보여준 것과 비교하지 않아도 된다.</p><p class="note">seed 20260818 · 마지막 기록 33분 41초 전</p></div></div><div class="grid wide2"><div class="card"><h3>과제 1 · 한 묶음 묘사 · K 분포</h3><div class="t">manifest</div><svg class="chart" viewBox="0 0 480 168" role="img"><line x1="8" x2="472" y1="132" y2="132" stroke="var(--rule)" stroke-width="1"/><rect x="9.8" y="122.8" width="54.4" height="9.2" fill="none" stroke="var(--mut)" stroke-width="1" stroke-dasharray="3 2" opacity=".75"/><rect x="10.3" y="118.9" width="53.4" height="13.1" fill="var(--bar)"/><text x="37.0" y="113.9" text-anchor="middle" font-size="11" fill="var(--mut)">6%</text><text x="37.0" y="147.0" text-anchor="middle" font-size="11" fill="var(--fg)">1</text><rect x="67.8" y="122.8" width="54.4" height="9.2" fill="none" stroke="var(--mut)" stroke-width="1" stroke-dasharray="3 2" opacity=".75"/><rect x="68.3" y="118.9" width="53.4" height="13.1" fill="var(--bar)"/><text x="95.0" y="113.9" text-anchor="middle" font-size="11" fill="var(--mut)">6%</text><text x="95.0" y="147.0" text-anchor="middle" font-size="11" fill="var(--fg)">2</text><rect x="125.8" y="118.2" width="54.4" height="13.8" fill="none" stroke="var(--mut)" stroke-width="1" stroke-dasharray="3 2" opacity=".75"/><rect x="126.3" y="112.3" width="53.4" height="19.7" fill="var(--bar)"/><text x="153.0" y="107.3" text-anchor="middle" font-size="11" fill="var(--mut)">9%</text><text x="153.0" y="147.0" text-anchor="middle" font-size="11" fill="var(--fg)">4</text><rect x="183.8" y="109.1" width="54.4" height="22.9" fill="none" stroke="var(--mut)" stroke-width="1" stroke-dasharray="3 2" opacity=".75"/><rect x="184.3" y="99.3" width="53.4" height="32.7" fill="var(--bar)"/><text x="211.0" y="94.3" text-anchor="middle" font-size="11" fill="var(--mut)">14%</text><text x="211.0" y="147.0" text-anchor="middle" font-size="11" fill="var(--fg)">8</text><rect x="241.8" y="95.3" width="54.4" height="36.7" fill="none" stroke="var(--mut)" stroke-width="1" stroke-dasharray="3 2" opacity=".75"/><rect x="242.3" y="79.8" width="53.4" height="52.2" fill="var(--bar)"/><text x="269.0" y="74.8" text-anchor="middle" font-size="11" fill="var(--mut)">23%</text><text x="269.0" y="147.0" text-anchor="middle" font-size="11" fill="var(--fg)">16</text><rect x="299.8" y="63.2" width="54.4" height="68.8" fill="none" stroke="var(--mut)" stroke-width="1" stroke-dasharray="3 2" opacity=".75"/><rect x="300.3" y="33.7" width="53.4" height="98.3" fill="var(--bar)"/><text x="327.0" y="28.7" text-anchor="middle" font-size="11" fill="var(--mut)">43%</text><text x="327.0" y="147.0" text-anchor="middle" font-size="11" fill="var(--fg)">32</text><rect x="357.8" y="86.2" width="54.4" height="45.8" fill="none" stroke="var(--mut)" stroke-width="1" stroke-dasharray="3 2" opacity=".75"/><text x="385.0" y="127.0" text-anchor="middle" font-size="11" fill="var(--bad)" font-weight="650">0</text><text x="385.0" y="147.0" text-anchor="middle" font-size="11" fill="var(--fg)">64</text><rect x="415.8" y="109.1" width="54.4" height="22.9" fill="none" stroke="var(--mut)" stroke-width="1" stroke-dasharray="3 2" opacity=".75"/><text x="443.0" y="127.0" text-anchor="middle" font-size="11" fill="var(--bad)" font-weight="650">0</text><text x="443.0" y="147.0" text-anchor="middle" font-size="11" fill="var(--fg)">128</text><text x="8" y="162" font-size="10.5" fill="var(--mut)">세포 수 K · 채운 막대 = 실제, 점선 = 설계 비중</text></svg><p class="note bad"><b>K=64, 128 가 0건이다.</b> 설계에서 30% 를 맡던 자리인데 한 건도 만들어지지 않았고, 그 몫이 나머지 K 로 조용히 나뉘어 들어갔다.</p></div><div class="card"><h3>과제 2 · 두 묶음 비교 · K 분포</h3><div class="t">manifest</div><svg class="chart" viewBox="0 0 480 168" role="img"><line x1="8" x2="472" y1="132" y2="132" stroke="var(--rule)" stroke-width="1"/><rect x="11.6" y="114.8" width="108.9" height="17.2" fill="none" stroke="var(--mut)" stroke-width="1" stroke-dasharray="3 2" opacity=".75"/><rect x="12.6" y="107.7" width="106.7" height="24.3" fill="var(--bar)"/><text x="66.0" y="102.7" text-anchor="middle" font-size="11" fill="var(--mut)">14%</text><text x="66.0" y="147.0" text-anchor="middle" font-size="11" fill="var(--fg)">8</text><rect x="127.6" y="97.7" width="108.9" height="34.3" fill="none" stroke="var(--mut)" stroke-width="1" stroke-dasharray="3 2" opacity=".75"/><rect x="128.6" y="83.0" width="106.7" height="49.0" fill="var(--bar)"/><text x="182.0" y="78.0" text-anchor="middle" font-size="11" fill="var(--mut)">29%</text><text x="182.0" y="147.0" text-anchor="middle" font-size="11" fill="var(--fg)">16</text><rect x="243.6" y="63.4" width="108.9" height="68.6" fill="none" stroke="var(--mut)" stroke-width="1" stroke-dasharray="3 2" opacity=".75"/><rect x="244.6" y="33.7" width="106.7" height="98.3" fill="var(--bar)"/><text x="298.0" y="28.7" text-anchor="middle" font-size="11" fill="var(--mut)">57%</text><text x="298.0" y="147.0" text-anchor="middle" font-size="11" fill="var(--fg)">32</text><rect x="359.6" y="80.5" width="108.9" height="51.5" fill="none" stroke="var(--mut)" stroke-width="1" stroke-dasharray="3 2" opacity=".75"/><text x="414.0" y="127.0" text-anchor="middle" font-size="11" fill="var(--bad)" font-weight="650">0</text><text x="414.0" y="147.0" text-anchor="middle" font-size="11" fill="var(--fg)">64</text><text x="8" y="162" font-size="10.5" fill="var(--mut)">세포 수 K · 채운 막대 = 실제, 점선 = 설계 비중</text></svg><p class="note bad"><b>K=64 가 0건이다.</b> 설계에서 30% 를 맡던 자리인데 한 건도 만들어지지 않았고, 그 몫이 나머지 K 로 조용히 나뉘어 들어갔다.</p></div></div><div class="grid wide2"><div class="card"><h3>문장별 포함 비율</h3><div class="t">캡션 300,000개 기준</div><svg class="chart" viewBox="0 0 480 162" role="img"><text x="108" y="16" text-anchor="end" font-size="11.5" fill="var(--fg)">조직</text><rect x="116" y="6" width="288" height="11" fill="var(--barbg)"/><rect x="116" y="6" width="288.0" height="11" fill="var(--ok)"/><text x="412" y="16" font-size="11.5" fill="var(--mut)">100.0%</text><text x="108" y="40" text-anchor="end" font-size="11.5" fill="var(--fg)">거친 계통</text><rect x="116" y="30" width="288" height="11" fill="var(--barbg)"/><rect x="116" y="30" width="102.5" height="11" fill="var(--bar)"/><text x="412" y="40" font-size="11.5" fill="var(--mut)">35.6%</text><text x="108" y="64" text-anchor="end" font-size="11.5" fill="var(--fg)">세밀한 종류</text><rect x="116" y="54" width="288" height="11" fill="var(--barbg)"/><rect x="116" y="54" width="177.0" height="11" fill="var(--bar)"/><text x="412" y="64" font-size="11.5" fill="var(--mut)">61.5%</text><text x="108" y="88" text-anchor="end" font-size="11.5" fill="var(--fg)">발현량 상위</text><rect x="116" y="78" width="288" height="11" fill="var(--barbg)"/><rect x="116" y="78" width="288.0" height="11" fill="var(--ok)"/><text x="412" y="88" font-size="11.5" fill="var(--mut)">100.0%</text><text x="108" y="112" text-anchor="end" font-size="11.5" fill="var(--fg)">구별 유전자</text><rect x="116" y="102" width="288" height="11" fill="var(--barbg)"/><rect x="116" y="102" width="288.0" height="11" fill="var(--ok)"/><text x="412" y="112" font-size="11.5" fill="var(--mut)">100.0%</text><text x="108" y="136" text-anchor="end" font-size="11.5" fill="var(--fg)">질병</text><rect x="116" y="126" width="288" height="11" fill="var(--barbg)"/><rect x="116" y="126" width="23.9" height="11" fill="var(--bar)"/><text x="412" y="136" font-size="11.5" fill="var(--mut)">8.3%</text><text x="0" y="158" font-size="10.5" fill="var(--mut)">조직 · 발현량 상위 · 구별 유전자는 모든 캡션에 들어간다</text></svg><p class="note">거친 계통과 세밀한 종류는 서로 배타적이다 (둘을 합쳐 약 97%). 질병 문장은 같은 연구 안에 정상과 질병이 둘 다 있고 K≥32 일 때만 붙는다.</p></div><div class="card"><h3>세포집합 재사용</h3><div class="t">RULES R15 · 상한 20</div><div class="v ok">18.49<small>예제 / 고유 집합</small></div><div class="bar"><i style="width:92.5%"></i></div><div class="meta"><span>고유 세포집합 16,223</span><span>최다 재사용 73회</span></div><p class="note">평균은 상한 안에 있지만 꼬리가 길다 — 같은 세포 73번을 본 집합이 있다. 문형만 바뀌고 세포는 같다.</p></div><div class="card"><h3>과제 2 · 짝 종류</h3><div class="t">manifest · 150,000쌍</div><svg class="chart" viewBox="0 0 480 90" role="img"><text x="108" y="16" text-anchor="end" font-size="11.5" fill="var(--fg)">같은 종류 · 같은 연구</text><rect x="116" y="6" width="288" height="11" fill="var(--barbg)"/><rect x="116" y="6" width="153.4" height="11" fill="var(--bar)"/><line x1="245.6" x2="245.6" y1="2" y2="19" stroke="var(--mut)" stroke-width="1.4" stroke-dasharray="2 2"/><text x="412" y="16" font-size="11.5" fill="var(--mut)">53.3% · 79,886</text><text x="108" y="40" text-anchor="end" font-size="11.5" fill="var(--fg)">같은 종류 · 다른 연구</text><rect x="116" y="30" width="288" height="11" fill="var(--barbg)"/><rect x="116" y="30" width="52.8" height="11" fill="var(--bar)"/><line x1="188.0" x2="188.0" y1="26" y2="43" stroke="var(--mut)" stroke-width="1.4" stroke-dasharray="2 2"/><text x="412" y="40" font-size="11.5" fill="var(--mut)">18.3% · 27,487</text><text x="108" y="64" text-anchor="end" font-size="11.5" fill="var(--fg)">다른 종류</text><rect x="116" y="54" width="288" height="11" fill="var(--barbg)"/><rect x="116" y="54" width="81.8" height="11" fill="var(--bar)"/><line x1="202.4" x2="202.4" y1="50" y2="67" stroke="var(--mut)" stroke-width="1.4" stroke-dasharray="2 2"/><text x="412" y="64" font-size="11.5" fill="var(--mut)">28.4% · 42,627</text><text x="0" y="86" font-size="10.5" fill="var(--mut)">점선 = 설계 비중</text></svg><p class="note">같은 종류 · 같은 연구: 가장 어렵다 · 같은 종류 · 다른 연구: 배치 차이가 섞인다 · 다른 종류: 쉽다 · 기준선</p></div><div class="card"><h3>과제 2 · 문장 구성</h3><div class="t">train 40,000쌍을 훑음</div><svg class="chart" viewBox="0 0 480 54" role="img"><text x="108" y="16" text-anchor="end" font-size="11.5" fill="var(--fg)">같은 종류</text><rect x="116" y="6" width="288" height="11" fill="var(--barbg)"/><rect x="116" y="6" width="200.5" height="11" fill="var(--bar)"/><text x="412" y="16" font-size="11.5" fill="var(--mut)">69.6%</text><text x="108" y="40" text-anchor="end" font-size="11.5" fill="var(--fg)">질병 대조</text><rect x="116" y="30" width="288" height="11" fill="var(--barbg)"/><rect x="116" y="30" width="9.6" height="11" fill="var(--bar)"/><text x="412" y="40" font-size="11.5" fill="var(--mut)">3.3%</text></svg><p class="note">차이 유전자 문장(A쪽 높음 · B쪽 높음)은 모든 쌍에 들어간다. 질병 대조는 같은 연구 안에서 정상 vs 질병이고 K≥32 일 때만 붙는다.</p></div></div><h2>A2. 실제 예제</h2><p class="sub">파일에 들어 있는 그대로다. 줄여 쓴 것은 세포 id 목록뿐이다. 가장 작은 K · 중간 K · 가장 큰 K 를 하나씩 골랐다.</p><p class="note bad">K=64, 128 예제는 <b>보여줄 수가 없다 — 한 건도 만들어지지 않았기 때문이다.</b> 실제로 존재하는 가장 큰 묶음은 K=32 이고, 그것이 아래 마지막 예제다. (A0 참고)</p><details><summary>과제 1 · 한 묶음 묘사 · K = 1<span>luminal hormone-sensing cell of mammary gland · breast</span></summary><pre><b>id</b>        D0000019
+<b>n_cells</b>   1
+<b>cells</b>     [116672]
+<b>study</b>     doi:10.1038/s41588-024-01688-9
+
+<b>instruction</b>
+Describe these cells.
+
+<b>answer</b>
+There exists one cell in breast that is possibly luminal hormone-sensing cell of mammary gland. Among measured genes, expression peaks for SORBS2, KTN1, ANKRD39, TOB2. Notable over typical cells, this set contains MAPK11, TRAPPC2, GASK1B, PPM1M, ROGDI, SF3A2, ST3GAL3, HSPA8, PGM3, STRN4, PCCB, MICOS13, ANO4, DFFA, CPEB4.
+
+<b>_slots</b>
+{
+ &quot;fine_type&quot;: &quot;luminal hormone-sensing cell of mammary gland&quot;,
+ &quot;tissue&quot;: &quot;breast&quot;,
+ &quot;top_expressed&quot;: [
+  &quot;SORBS2&quot;,
+  &quot;KTN1&quot;,
+  &quot;ANKRD39&quot;,
+  &quot;TOB2&quot;
+ ],
+ &quot;distinct&quot;: [
+  &quot;MAPK11&quot;,
+  &quot;TRAPPC2&quot;,
+  &quot;GASK1B&quot;,
+  &quot;PPM1M&quot;,
+  &quot;ROGDI&quot;,
+  &quot;SF3A2&quot;,
+  &quot;ST3GAL3&quot;,
+  &quot;HSPA8&quot;,
+  &quot;PGM3&quot;,
+  &quot;STRN4&quot;,
+  &quot;PCCB&quot;,
+  &quot;MICOS13&quot;,
+  &quot;ANO4&quot;,
+  &quot;DFFA&quot;,
+  &quot;CPEB4&quot;
+ ]
+}</pre></details><details><summary>과제 1 · 한 묶음 묘사 · K = 8<span>CD4-positive, alpha-beta T cell · lung</span></summary><pre><b>id</b>        D0000008
+<b>n_cells</b>   8
+<b>cells</b>     [38720, 38721, 38722, 38723, 38724, 38725, 38726, 38727]
+<b>study</b>     doi:10.1016/j.ccell.2022.10.008
+
+<b>instruction</b>
+What can be said about these cells?
+
+<b>answer</b>
+For lung, these 8 cells appear to be CD4-positive, alpha-beta T cell. These genes have peak expression: TOB2, ARV1, CEP104, ANKRD11, ANKRD39, CXCL16. The standouts in this set are LONP2, KRT7, SEC11A, LYRM4, ABCD3, CNOT2, HPS1, CHMP2A, CRYL1, RRBP1, MAP2K3, SGCE, with levels exceeding typical.
+
+<b>_slots</b>
+{
+ &quot;fine_type&quot;: &quot;CD4-positive, alpha-beta T cell&quot;,
+ &quot;tissue&quot;: &quot;lung&quot;,
+ &quot;top_expressed&quot;: [
+  &quot;TOB2&quot;,
+  &quot;ARV1&quot;,
+  &quot;CEP104&quot;,
+  &quot;ANKRD11&quot;,
+  &quot;ANKRD39&quot;,
+  &quot;CXCL16&quot;
+ ],
+ &quot;distinct&quot;: [
+  &quot;LONP2&quot;,
+  &quot;KRT7&quot;,
+  &quot;SEC11A&quot;,
+  &quot;LYRM4&quot;,
+  &quot;ABCD3&quot;,
+  &quot;CNOT2&quot;,
+  &quot;HPS1&quot;,
+  &quot;CHMP2A&quot;,
+  &quot;CRYL1&quot;,
+  &quot;RRBP1&quot;,
+  &quot;MAP2K3&quot;,
+  &quot;SGCE&quot;
+ ]
+}</pre></details><details><summary>과제 1 · 한 묶음 묘사 · K = 32<span>myeloid cells · adrenal gland · 질병 문장 포함</span></summary><pre><b>id</b>        D0000004
+<b>n_cells</b>   32
+<b>cells</b>     [43296, 43297, 43298, 43299, 43300, 43301, … , 43325, 43326, 43327]  (32개)
+<b>study</b>     doi:10.1016/j.ccell.2022.11.001
+
+<b>instruction</b>
+Summarize these cells.
+
+<b>answer</b>
+These 32 cells, sourced from adrenal gland, probably fall under myeloid cells. Here, CAPG, NDUFAF5, LURAP1L, ANKRD39, ZPR1, CFDP1 achieve the highest expression relative to the rest of the set. Genes showing the largest relative increase over a typical cell comprise TMEM178B, DEK, TRMT1, EEF1E1, APBB2, SYK, DDX46, ATF6, BRMS1, PABPN1, USB1, MGAT5, TMEM176B, PLK2, SLC2A3, JUNB, EID1. This donor carries nonpapillary renal cell carcinoma.
+
+<b>_slots</b>
+{
+ &quot;coarse_type&quot;: &quot;myeloid cells&quot;,
+ &quot;tissue&quot;: &quot;adrenal gland&quot;,
+ &quot;top_expressed&quot;: [
+  &quot;CAPG&quot;,
+  &quot;NDUFAF5&quot;,
+  &quot;LURAP1L&quot;,
+  &quot;ANKRD39&quot;,
+  &quot;ZPR1&quot;,
+  &quot;CFDP1&quot;
+ ],
+ &quot;distinct&quot;: [
+  &quot;TMEM178B&quot;,
+  &quot;DEK&quot;,
+  &quot;TRMT1&quot;,
+  &quot;EEF1E1&quot;,
+  &quot;APBB2&quot;,
+  &quot;SYK&quot;,
+  &quot;DDX46&quot;,
+  &quot;ATF6&quot;,
+  &quot;BRMS1&quot;,
+  &quot;PABPN1&quot;,
+  &quot;USB1&quot;,
+  &quot;MGAT5&quot;,
+  &quot;TMEM176B&quot;,
+  &quot;PLK2&quot;,
+  &quot;SLC2A3&quot;,
+  &quot;JUNB&quot;,
+  &quot;EID1&quot;
+ ],
+ &quot;disease&quot;: &quot;nonpapillary renal cell carcinoma&quot;
+}</pre></details><details><summary>과제 2 · 두 묶음 비교 · K = 8<span>same_type_same_study · 같은 종류</span></summary><pre><b>id</b>        C0000000
+<b>n_cells</b>   A 8 · B 8
+<b>cells_a</b>   [53920, 53921, 53922, 53923, 53924, 53925, 53926, 53927]
+<b>cells_b</b>   [53536, 53537, 53538, 53539, 53540, 53541, 53542, 53543]
+<b>study</b>     A doi:10.1038/s41586-020-2922-4
+          B doi:10.1038/s41586-020-2922-4
+
+<b>instruction</b>
+Differentiate these two cell groups.
+
+<b>answer</b>
+Gene expression differences favor set A for CLEC7A, KITLG, MASTL, PPP6C, F13A1, TM4SF1, TACC3, ING3 when judged against set B. The transcript levels of MED21, THYN1, NTMT1, VARS1, PTGER2, MTMR6, TRA2B, JUNB are elevated in set B compared with set A. Both groups were identified as non-classical monocyte.
+
+<b>_slots</b>
+{
+ &quot;a_up&quot;: [
+  &quot;CLEC7A&quot;,
+  &quot;KITLG&quot;,
+  &quot;MASTL&quot;,
+  &quot;PPP6C&quot;,
+  &quot;F13A1&quot;,
+  &quot;TM4SF1&quot;,
+  &quot;TACC3&quot;,
+  &quot;ING3&quot;
+ ],
+ &quot;b_up&quot;: [
+  &quot;MED21&quot;,
+  &quot;THYN1&quot;,
+  &quot;NTMT1&quot;,
+  &quot;VARS1&quot;,
+  &quot;PTGER2&quot;,
+  &quot;MTMR6&quot;,
+  &quot;TRA2B&quot;,
+  &quot;JUNB&quot;
+ ],
+ &quot;same_type&quot;: true,
+ &quot;type_a&quot;: &quot;non-classical monocyte&quot;,
+ &quot;type_b&quot;: &quot;non-classical monocyte&quot;,
+ &quot;pair_kind&quot;: &quot;same_type_same_study&quot;
+}</pre></details><details><summary>과제 2 · 두 묶음 비교 · K = 16<span>same_type_same_study · 같은 종류</span></summary><pre><b>id</b>        C0000003
+<b>n_cells</b>   A 16 · B 16
+<b>cells_a</b>   [65856, 65857, 65858, 65859, 65860, 65861, … , 65869, 65870, 65871]  (16개)
+<b>cells_b</b>   [67008, 67009, 67010, 67011, 67012, 67013, … , 67021, 67022, 67023]  (16개)
+<b>study</b>     A doi:10.1038/s41586-024-07571-1
+          B doi:10.1038/s41586-024-07571-1
+
+<b>instruction</b>
+Between these two sets of cells, what varies?
+
+<b>answer</b>
+Set A contains genes with higher expression than set B, namely DHFR, VIPAS39, TMSB15A, CBL, KAT6B, ACTA2, RMDN2, STK24. Set B shows a higher abundance of MED21, SOX4, PIGH, GINM1, DTX3L, KANSL2, CDH8, AEN than set A does. The two sets exhibit the features of IgA plasma cell.
+
+<b>_slots</b>
+{
+ &quot;a_up&quot;: [
+  &quot;DHFR&quot;,
+  &quot;VIPAS39&quot;,
+  &quot;TMSB15A&quot;,
+  &quot;CBL&quot;,
+  &quot;KAT6B&quot;,
+  &quot;ACTA2&quot;,
+  &quot;RMDN2&quot;,
+  &quot;STK24&quot;
+ ],
+ &quot;b_up&quot;: [
+  &quot;MED21&quot;,
+  &quot;SOX4&quot;,
+  &quot;PIGH&quot;,
+  &quot;GINM1&quot;,
+  &quot;DTX3L&quot;,
+  &quot;KANSL2&quot;,
+  &quot;CDH8&quot;,
+  &quot;AEN&quot;
+ ],
+ &quot;same_type&quot;: true,
+ &quot;type_a&quot;: &quot;IgA plasma cell&quot;,
+ &quot;type_b&quot;: &quot;IgA plasma cell&quot;,
+ &quot;pair_kind&quot;: &quot;same_type_same_study&quot;
+}</pre></details><details><summary>과제 2 · 두 묶음 비교 · K = 32<span>same_type_same_study · 같은 종류 · 질병 문장 포함</span></summary><pre><b>id</b>        C0000082
+<b>n_cells</b>   A 32 · B 32
+<b>cells_a</b>   [30144, 30145, 30146, 30147, 30148, 30149, … , 30173, 30174, 30175]  (32개)
+<b>cells_b</b>   [7232, 7233, 7234, 7235, 7236, 7237, … , 7261, 7262, 7263]  (32개)
+<b>study</b>     A doi:10.1038/s41586-024-07571-1
+          B doi:10.1038/s41586-024-07571-1
+
+<b>instruction</b>
+Compare one group of cells with the other group.
+
+<b>answer</b>
+Genes expressed more strongly in set A than in set B: MED21, PDAP1, FAM114A1, NUP160, CPQ, IGFBP4, CD24, BCL11A, CAMK2G, ASAP1, NEDD1. Findings indicate greater expression in set B than set A for the genes FARSB, NEPRO, SCYL2, KAT8, TNPO2, ODF2L, VAV3, POLR2D, DHFR, HSP90B1, EIF2B4. Both sets are labeled memory B cell. The specimen in A belongs to a donor with gastric cancer.
+
+<b>_slots</b>
+{
+ &quot;a_up&quot;: [
+  &quot;MED21&quot;,
+  &quot;PDAP1&quot;,
+  &quot;FAM114A1&quot;,
+  &quot;NUP160&quot;,
+  &quot;CPQ&quot;,
+  &quot;IGFBP4&quot;,
+  &quot;CD24&quot;,
+  &quot;BCL11A&quot;,
+  &quot;CAMK2G&quot;,
+  &quot;ASAP1&quot;,
+  &quot;NEDD1&quot;
+ ],
+ &quot;b_up&quot;: [
+  &quot;FARSB&quot;,
+  &quot;NEPRO&quot;,
+  &quot;SCYL2&quot;,
+  &quot;KAT8&quot;,
+  &quot;TNPO2&quot;,
+  &quot;ODF2L&quot;,
+  &quot;VAV3&quot;,
+  &quot;POLR2D&quot;,
+  &quot;DHFR&quot;,
+  &quot;HSP90B1&quot;,
+  &quot;EIF2B4&quot;
+ ],
+ &quot;same_type&quot;: true,
+ &quot;type_a&quot;: &quot;memory B cell&quot;,
+ &quot;type_b&quot;: &quot;memory B cell&quot;,
+ &quot;pair_kind&quot;: &quot;same_type_same_study&quot;,
+ &quot;disease&quot;: &quot;gastric cancer&quot;
+}</pre></details><h2>A3. manifest</h2><details><summary>describe_v4/manifest.json<span>val 연구 14 · 질병 가능 연구 29</span></summary><div class="wide"><table><tr><td>task</td><td class='n'>describe</td></tr><tr><td>measured</td><td class='n'>True</td></tr><tr><td>n</td><td class='n'>300000</td></tr><tr><td>n_by_split</td><td class='n'>{&quot;train&quot;: 245351, &quot;val&quot;: 54649}</td></tr><tr><td>k_dist</td><td class='n'>{&quot;1&quot;: 17154, &quot;2&quot;: 17169, &quot;4&quot;: 25849, &quot;8&quot;: 42838, &quot;16&quot;: 68322, &quot;32&quot;: 128668}</td></tr><tr><td>k_frac</td><td class='n'>{&quot;1&quot;: 0.0572, &quot;2&quot;: 0.0572, &quot;4&quot;: 0.0862, &quot;8&quot;: 0.1428, &quot;16&quot;: 0.2277, &quot;32&quot;: 0.4289}</td></tr><tr><td>max_k_observed</td><td class='n'>32</td></tr><tr><td>slot_rates</td><td class='n'>{&quot;coarse_type&quot;: 0.356, &quot;disease&quot;: 0.083, &quot;distinct&quot;: 1.0, &quot;fine_type&quot;: 0.6145, &quot;tissue&quot;: 1.0, &quot;top_expressed&quot;: 1.0}</td></tr><tr><td>n_unique_cellsets</td><td class='n'>16223</td></tr><tr><td>examples_per_cellset</td><td class='n'>18.492</td></tr><tr><td>max_reuse</td><td class='n'>73</td></tr><tr><td>gene_slots_total</td><td class='n'>6299263</td></tr><tr><td>housekeeping_in_lists</td><td class='n'>0</td></tr><tr><td>top_expressed_constant_share</td><td class='n'>0.3526</td></tr><tr><td>studies</td><td class='n'>{&quot;train&quot;: 76, &quot;val&quot;: 14}</td></tr><tr><td>study_overlap_train_val</td><td class='n'>0</td></tr><tr><td>seed</td><td class='n'>20260817</td></tr><tr><td>declared_k_weights</td><td class='n'>{&quot;1&quot;: 0.04, &quot;2&quot;: 0.04, &quot;4&quot;: 0.06, &quot;8&quot;: 0.1, &quot;16&quot;: 0.16, &quot;32&quot;: 0.3, &quot;64&quot;: 0.2, &quot;128&quot;: 0.1}</td></tr><tr><td>source</td><td class='n'>close/mcell (pilot) — 3,776 groups / 120,832 cells</td></tr></table></div><p class="note"><b>val 연구</b> (14) — doi:10.1016/j.cell.2022.11.005, doi:10.1016/j.isci.2024.111628, doi:10.1016/j.jcf.2025.01.016, doi:10.1016/j.jcmgh.2022.02.007, doi:10.1038/s41467-025-63202-x, doi:10.1038/s41586-021-03852-1, doi:10.1038/s41588-024-01702-0, doi:10.1038/s41590-025-02241-4, doi:10.1038/s41591-021-01586-1, doi:10.1101/2021.09.16.460628, doi:10.1101/2024.10.23.619925, doi:10.1101/2025.03.13.643025, doi:10.1126/science.aay3224, doi:10.1186/s12943-024-02191-9</p><p class="note"><b>질병 대조가 가능한 연구</b> (29) — 같은 연구 안에 정상과 질병이 둘 다 있는 것만이다.<br>collection:0f528c8a-a25c-4840-8fa3-d156fa11086f, collection:de2cde16-c8d3-4a6d-80be-1be9e879aaca, doi:10.1002/path.5751, doi:10.1016/j.ccell.2021.09.008, doi:10.1016/j.ccell.2022.11.001, doi:10.1016/j.cell.2021.02.018, doi:10.1016/j.cell.2021.08.003, doi:10.1016/j.cels.2024.04.002, doi:10.1016/j.immuni.2023.01.002, doi:10.1016/j.immuni.2023.01.032, doi:10.1016/j.jhep.2023.12.023, doi:10.1016/j.xcrm.2023.101158, doi:10.1038/s41467-022-29450-x, doi:10.1038/s41467-024-49037-y, doi:10.1038/s41467-024-49916-4, doi:10.1038/s41586-021-03929-x, doi:10.1038/s41586-024-07571-1, doi:10.1038/s41586-024-08560-0, doi:10.1038/s41586-025-09686-5, doi:10.1038/s41588-024-01702-0, doi:10.1038/s42255-022-00531-x, doi:10.1101/2021.09.16.460628, doi:10.1126/science.abq3061, doi:10.1158/2159-8290.cd-22-0824, doi:10.1158/2643-3230.bcd-21-0075, doi:10.1164/rccm.202207-1384oc, doi:10.1182/bloodadvances.2023011445, doi:10.1186/s12943-024-02191-9, doi:10.21203/rs.3.rs-3601404/v2</p></details><details><summary>compare_v4/manifest.json<span>val 연구 14 · 질병 가능 연구 29</span></summary><div class="wide"><table><tr><td>task</td><td class='n'>compare</td></tr><tr><td>measured</td><td class='n'>True</td></tr><tr><td>n</td><td class='n'>150000</td></tr><tr><td>n_by_split</td><td class='n'>{&quot;train&quot;: 132436, &quot;val&quot;: 17564}</td></tr><tr><td>k_dist</td><td class='n'>{&quot;8&quot;: 21208, &quot;16&quot;: 42863, &quot;32&quot;: 85929}</td></tr><tr><td>k_frac</td><td class='n'>{&quot;8&quot;: 0.1414, &quot;16&quot;: 0.2858, &quot;32&quot;: 0.5729}</td></tr><tr><td>max_k_observed</td><td class='n'>32</td></tr><tr><td>slot_rates</td><td class='n'>{&quot;a_up&quot;: 1.0, &quot;b_up&quot;: 1.0, &quot;disease&quot;: 0.0321, &quot;type_a&quot;: 1.0, &quot;type_b&quot;: 1.0}</td></tr><tr><td>n_unique_cellsets</td><td class='n'>101774</td></tr><tr><td>examples_per_cellset</td><td class='n'>1.474</td></tr><tr><td>max_reuse</td><td class='n'>37</td></tr><tr><td>gene_slots_total</td><td class='n'>2700728</td></tr><tr><td>housekeeping_in_lists</td><td class='n'>0</td></tr><tr><td>top_expressed_constant_share</td><td class='n'>0</td></tr><tr><td>studies</td><td class='n'>{&quot;train&quot;: 76, &quot;val&quot;: 14}</td></tr><tr><td>study_overlap_train_val</td><td class='n'>0</td></tr><tr><td>pair_kinds</td><td class='n'>{&quot;same_type_same_study&quot;: 79886, &quot;diff_type&quot;: 42627, &quot;same_type_other_study&quot;: 27487}</td></tr><tr><td>pair_frac</td><td class='n'>{&quot;same_type_same_study&quot;: 0.5326, &quot;diff_type&quot;: 0.2842, &quot;same_type_other_study&quot;: 0.1832}</td></tr><tr><td>seed</td><td class='n'>20260818</td></tr><tr><td>declared_k_weights</td><td class='n'>{&quot;8&quot;: 0.1, &quot;16&quot;: 0.2, &quot;32&quot;: 0.4, &quot;64&quot;: 0.3}</td></tr><tr><td>declared_pair_mix</td><td class='n'>{&quot;same_type_same_study&quot;: 0.45, &quot;same_type_other_study&quot;: 0.25, &quot;diff_type&quot;: 0.3}</td></tr><tr><td>min_gap</td><td class='n'>1</td></tr><tr><td>source</td><td class='n'>close/mcell (pilot)</td></tr></table></div><p class="note"><b>val 연구</b> (14) — doi:10.1016/j.cell.2022.11.005, doi:10.1016/j.isci.2024.111628, doi:10.1016/j.jcf.2025.01.016, doi:10.1016/j.jcmgh.2022.02.007, doi:10.1038/s41467-025-63202-x, doi:10.1038/s41586-021-03852-1, doi:10.1038/s41588-024-01702-0, doi:10.1038/s41590-025-02241-4, doi:10.1038/s41591-021-01586-1, doi:10.1101/2021.09.16.460628, doi:10.1101/2024.10.23.619925, doi:10.1101/2025.03.13.643025, doi:10.1126/science.aay3224, doi:10.1186/s12943-024-02191-9</p><p class="note"><b>질병 대조가 가능한 연구</b> (29) — 같은 연구 안에 정상과 질병이 둘 다 있는 것만이다.<br>collection:0f528c8a-a25c-4840-8fa3-d156fa11086f, collection:de2cde16-c8d3-4a6d-80be-1be9e879aaca, doi:10.1002/path.5751, doi:10.1016/j.ccell.2021.09.008, doi:10.1016/j.ccell.2022.11.001, doi:10.1016/j.cell.2021.02.018, doi:10.1016/j.cell.2021.08.003, doi:10.1016/j.cels.2024.04.002, doi:10.1016/j.immuni.2023.01.002, doi:10.1016/j.immuni.2023.01.032, doi:10.1016/j.jhep.2023.12.023, doi:10.1016/j.xcrm.2023.101158, doi:10.1038/s41467-022-29450-x, doi:10.1038/s41467-024-49037-y, doi:10.1038/s41467-024-49916-4, doi:10.1038/s41586-021-03929-x, doi:10.1038/s41586-024-07571-1, doi:10.1038/s41586-024-08560-0, doi:10.1038/s41586-025-09686-5, doi:10.1038/s41588-024-01702-0, doi:10.1038/s42255-022-00531-x, doi:10.1101/2021.09.16.460628, doi:10.1126/science.abq3061, doi:10.1158/2159-8290.cd-22-0824, doi:10.1158/2643-3230.bcd-21-0075, doi:10.1164/rccm.202207-1384oc, doi:10.1182/bloodadvances.2023011445, doi:10.1186/s12943-024-02191-9, doi:10.21203/rs.3.rs-3601404/v2</p></details><details><summary>파일<span>줄 수 · 크기 · 마지막 기록</span></summary><div class="wide"><table><tr><th>파일</th><th>줄</th><th>크기</th><th>마지막 기록</th></tr><tr><td>describe_v4/describe.train.jsonl</td><td>245,351</td><td>237.3MB</td><td class='n'>08-18 07:56</td></tr><tr><td>describe_v4/describe.val.jsonl</td><td>54,649</td><td>52.9MB</td><td class='n'>08-18 07:56</td></tr><tr><td>compare_v4/compare.train.jsonl</td><td>132,436</td><td>163.4MB</td><td class='n'>08-18 08:05</td></tr><tr><td>compare_v4/compare.val.jsonl</td><td>17,564</td><td>21.7MB</td><td class='n'>08-18 08:05</td></tr></table></div></details>
+<h2>B. SFT 학습</h2><div class="card"><h3>아직 시작하지 않았다<span class="badge idle">대기</span></h3><p class="note">학습이 시작되면 <code>/home/sj_server_1/gblee/TALK-PTG/v7/stage_b/runs/sft_*/metrics.jsonl</code> 가 생긴다. 이 페이지는 그 파일을 찾으면 곡선을 자동으로 그린다 — 학습 손실 · val 손실 · 학습률 · 기울기 크기 · 스텝 소요 · 초당 토큰. 기록에 없는 지표의 카드는 그리지 않는다.</p><p class="note">데이터가 다 만들어진 다음이 순서다. 지금은 (A) 가 먼저다.</p></div>
+<h2>C. 앞 단계 — GRPO 는 왜 멈췄나</h2><div class="wide"><table><tr><th>항목</th><th>값</th><th>뜻</th></tr><tr><td>진행</td><td>5,134 / 10,000 회</td><td class='n'>목표의 51.3% 에서 멈췄다</td></tr><tr><td>기간</td><td>1일 1시간 30분</td><td class='n'>2026-08-18 중단</td></tr><tr><td>우연 대비</td><td>z = −1.57 (n = 3,732)</td><td class='n'>5,134회 동안 한 번도 우연을 벗어나지 못했다</td></tr><tr><td>최근 300회 이득 0</td><td>0.957</td><td class='n'>후보 4개가 같은 점수라 기울기가 안 생긴다</td></tr><tr><td>원인</td><td>투영층 5.2M 이 무작위 초기값</td><td class='n'>10,000회가 주는 신호는 약 5,000비트뿐</td></tr><tr><td>그래서</td><td>SFT 로 정렬을 먼저 한다</td><td class='n'>LLaVA stage-1 에 대응</td></tr></table></div><p class="note">세포 벡터를 언어 공간으로 옮기는 투영층이 무작위 초기값인 채로 GRPO 를 돌리면, 한 문항에서 뽑은 후보 4개가 모두 같은 점수를 받는다. 점수가 같으면 이득(advantage)이 0 이고, 0 이면 기울기가 없다. 5,134회 동안 최근 300회 기준 95.7% 의 문항이 그랬다. 10,000회가 실어 나를 수 있는 정보량이 5,200만 개 값을 정하기에 턱없이 모자란다.</p><p class="note">그래서 순서를 바꾼다 — 먼저 <b>SFT 로 투영층을 언어에 맞춰 놓고</b>, 그 다음에 강화학습을 얹는다. LLaVA 의 stage-1(정렬) → stage-2(지시학습) 과 같은 순서다.<br><a href="https://www.virtualhumanlab.com/grpo/talk-ptg-stage-b/20260817-nojudge10k/" rel="noreferrer">→ GRPO 모니터링 페이지</a></p>
+<footer>출처 <code>/home/sj_server_1/gblee/TALK-PTG/v7/stage_b/align/out</code> · <code>/home/sj_server_1/gblee/TALK-PTG/v7/stage_b/runs</code> — 읽기만 합니다. 이 페이지는 데이터 생성이나 학습에 아무 영향을 주지 않습니다.<br>외부 스크립트 · 폰트 · CDN 을 쓰지 않는 자족 문서입니다. 그림은 전부 인라인 SVG 입니다.<br>검색 색인에서 제외되어 있고 (noindex) 사이트 어디에서도 링크되어 있지 않습니다.</footer>
+</div></body></html>
