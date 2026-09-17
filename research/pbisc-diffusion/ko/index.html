@@ -88,22 +88,22 @@
         <div class="trajectory-volcano-intro trajectory-volcano-intro-compact"><p class="section-label">유전자 발현 / SLE vs HC</p><h2 id="volcano-title">SLE vs HC</h2><div class="trajectory-badges"><span>HC · 12명</span><span>SLE · 30명</span><span>생성 세포 · 63,000개</span></div></div>
         <div class="trajectory-label-legend trajectory-direction-legend" aria-label="유전자 발현 차이의 방향"><span><i style="--label-color:#2563EB" aria-hidden="true"></i>HC에서 높음</span><span><i style="--label-color:#DC2626" aria-hidden="true"></i>SLE에서 높음</span><span><i class="trajectory-gene-outline" aria-hidden="true"></i>테두리 · IFNα 유전자</span><span><i style="--label-color:#9CA3AF" aria-hidden="true"></i>회색 · 0 / 판정 불가</span></div>
         <figure class="trajectory-player trajectory-volcano-player">
-          <div class="trajectory-player-top"><span>점 하나 = 유전자 하나</span><span>기증자 단위 비교</span></div>
-          <video controls playsinline preload="metadata" poster="/research/pbisc-diffusion/assets/volcano-direction/volcano-poster.png" aria-label="Diffusion 단계별 SLE 대 HC 유전자 volcano plot. 파란색은 HC에서 높음, 빨간색은 SLE에서 높음입니다." aria-describedby="volcano-caption volcano-description">
-            <source src="/research/pbisc-diffusion/assets/volcano-direction/volcano-trajectory.mp4" type="video/mp4">
-            <p><a href="/research/pbisc-diffusion/assets/volcano-direction/volcano-trajectory.mp4">MP4 영상을 다운로드해 주세요.</a></p>
+          <div class="trajectory-player-top"><span>점 하나 = 유전자 하나</span><span>우측 상단 · Ground truth</span></div>
+          <video controls playsinline preload="metadata" poster="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-poster.png" aria-label="Diffusion 단계별 SLE 대 HC 유전자 volcano plot. 각 패널 우측 상단은 고정된 Ground truth입니다. 파란색은 HC에서 높음, 빨간색은 SLE에서 높음입니다." aria-describedby="volcano-caption volcano-description">
+            <source src="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-trajectory.mp4" type="video/mp4">
+            <p><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-trajectory.mp4">MP4 영상을 다운로드해 주세요.</a></p>
           </video>
-          <figcaption id="volcano-caption"><p>파랑 / 빨강 = 발현 차이의 방향 · 테두리 = IFNα 집합 · 유의성 = 세로축</p><div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/volcano-direction/volcano-trajectory.mp4" download>MP4 다운로드 ↗</a></div></figcaption>
+          <figcaption id="volcano-caption"><p>파랑 / 빨강 = 발현 차이의 방향 · 테두리 = IFNα 집합 · 유의성 = 세로축</p><div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-trajectory.mp4" download>MP4 다운로드 ↗</a></div></figcaption>
         </figure>
         <div class="trajectory-axis-key" id="volcano-description"><span>X · log₂ fold change · SLE / HC</span><span>Y · −log₁₀ 보정 q값</span></div>
-        <figure class="trajectory-comparison"><a href="/research/pbisc-diffusion/assets/volcano-direction/volcano-endpoint-comparison.png"><img src="/research/pbisc-diffusion/assets/volcano-direction/volcano-endpoint-comparison.png" loading="lazy" decoding="async" alt="최종 생성 발현과 ground truth의 유전자 volcano plot: HC에서 높은 유전자는 파란색, SLE에서 높은 유전자는 빨간색, IFN alpha 반응 유전자는 테두리로 표시합니다."></a><figcaption>최종 생성 발현 vs Ground truth</figcaption></figure>
+        <figure class="trajectory-comparison"><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-endpoint-comparison.png"><img src="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-endpoint-comparison.png" loading="lazy" decoding="async" alt="최종 생성 발현과 ground truth의 유전자 volcano plot: HC에서 높은 유전자는 파란색, SLE에서 높은 유전자는 빨간색, IFN alpha 반응 유전자는 테두리로 표시합니다."></a><figcaption>최종 생성 발현 vs Ground truth</figcaption></figure>
       </section>
 
       <section class="trajectory-methods trajectory-methods-compact" aria-labelledby="methods-title">
         <h2 id="methods-title">방법 및 데이터</h2>
         <details class="trajectory-method-downloads"><summary>기록 메타데이터 · 통계 · 다운로드</summary>
           <div class="trajectory-badges"><span>질환 그룹 비교 · SLE vs HC</span><span>IFNα 집합 · 97개 중 61개 측정</span><span>기증자·유형당 세포 ≥20개 · 그룹당 기증자 ≥5명</span><span>Other · 기증자 수 부족</span></div>
-          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/v3/methods.json">샘플링 메타데이터 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-direction/volcano-methods.json">Volcano 방법 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-direction/volcano-stats.csv.gz">유전자별 통계 (CSV.gz) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-direction/volcano-endpoint-diagnostics.csv">최종 결과 진단 (CSV) ↗</a><a href="/research/pbisc-diffusion/assets/v2/diffusion-trajectory.mp4">이전 영상 (v2) ↗</a></div>
+          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/v3/methods.json">샘플링 메타데이터 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-methods.json">Volcano 방법 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-stats.csv.gz">유전자별 통계 (CSV.gz) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-endpoint-diagnostics.csv">최종 결과 진단 (CSV) ↗</a><a href="/research/pbisc-diffusion/assets/v2/diffusion-trajectory.mp4">이전 영상 (v2) ↗</a></div>
         </details>
         <p class="trajectory-gene-source"><a href="https://www.gsea-msigdb.org/gsea/msigdb/human/geneset/HALLMARK_INTERFERON_ALPHA_RESPONSE.html">MSigDB · HALLMARK_INTERFERON_ALPHA_RESPONSE</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
       </section>
