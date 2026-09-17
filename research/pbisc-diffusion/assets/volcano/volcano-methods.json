@@ -1,0 +1,242 @@
+{
+  "schema_version": "pbisc.donor_volcano.v1",
+  "status": "completed",
+  "checkpoint": "ctx2048 E12 EMA",
+  "contrast": "SLE minus HC; observational donor cohorts, not IFNa stimulation",
+  "observed_frames": 51,
+  "prediction_times": [
+    1.0,
+    0.9800000190734863,
+    0.9599999785423279,
+    0.9399999976158142,
+    0.9200000166893005,
+    0.8999999761581421,
+    0.8799999952316284,
+    0.8600000143051147,
+    0.8400000333786011,
+    0.8199999928474426,
+    0.800000011920929,
+    0.7800000309944153,
+    0.7599999904632568,
+    0.7400000095367432,
+    0.7200000286102295,
+    0.699999988079071,
+    0.6800000071525574,
+    0.6600000262260437,
+    0.6399999856948853,
+    0.6200000047683716,
+    0.6000000238418579,
+    0.5799999833106995,
+    0.5600000023841858,
+    0.5400000214576721,
+    0.5199999809265137,
+    0.5,
+    0.47999998927116394,
+    0.4599999785423279,
+    0.4399999976158142,
+    0.41999998688697815,
+    0.3999999761581421,
+    0.3799999952316284,
+    0.35999998450279236,
+    0.3400000035762787,
+    0.3199999928474426,
+    0.29999998211860657,
+    0.2800000011920929,
+    0.25999999046325684,
+    0.23999999463558197,
+    0.2199999988079071,
+    0.19999998807907104,
+    0.17999999225139618,
+    0.1599999964237213,
+    0.14000000059604645,
+    0.11999999731779099,
+    0.09999999403953552,
+    0.07999999821186066,
+    0.05999999865889549,
+    0.03999999910593033,
+    0.019999999552965164
+  ],
+  "cohort_donors": 42,
+  "cohort_SLE": 30,
+  "cohort_HC": 12,
+  "model_genes": 6000,
+  "tested_genes": 2980,
+  "fixed_global_BH_family": 17880,
+  "label_order": [
+    "T cell",
+    "B cell",
+    "Monocyte",
+    "NK cell",
+    "DC",
+    "Other"
+  ],
+  "eligible_SLE": [
+    30,
+    30,
+    30,
+    29,
+    21,
+    0
+  ],
+  "eligible_HC": [
+    12,
+    12,
+    12,
+    12,
+    8,
+    0
+  ],
+  "cell_minimum": 20,
+  "arm_minimum": 5,
+  "eligibility": "Endpoint >=20 cells in both generated and real donor/type; matched donors fixed across all frames.",
+  "labels": "Existing frozen AIFI scANVI endpoint annotations, validated to baseline NPZ row IDs; held fixed throughout.",
+  "expression": "Continuous expm1(hard-gated clean log1p), summed per donor/type; no rounding or Poissonization for tests.",
+  "effect": "log2[(mean donor CPM_SLE+1)/(mean donor CPM_HC+1)]",
+  "test": "Welch unequal-variance t-test on donor log2(1+CPM)",
+  "multiple_testing": "BH across all 6 types x 2,980 genes every frame; undefined/non-estimable p=1 with an explicit estimable flag. Within-type q also exported.",
+  "statistics_files": [
+    "volcano-stats.csv.gz"
+  ],
+  "endpoint_primary": true,
+  "earlier_frames": "Exploratory dependent visualizations; no across-time discovery claim.",
+  "bootstrap": {
+    "repeats": 1000,
+    "interval": "Percentile95%",
+    "unit": "donor",
+    "resampling": "Within disease arm and adult/pediatric stratum; shared resamples for real/generated",
+    "selection": "All measured IFNa Hallmark members, not selected by effect or p"
+  },
+  "permutation": {
+    "repeats": 999,
+    "null": "Disease labels permuted within adult/pediatric strata with preserved class counts; same permutations for real/generated",
+    "statistic": "Absolute log2 CPM mean ratio",
+    "correction": "Diagnostic empirical p with +1 correction; no discovery claim"
+  },
+  "clinical_confounding": "Welch tests remain unadjusted as in the benchmark; pediatric/adult composition and other clinical covariates preclude causal interpretation.",
+  "hallmark": {
+    "name": "HALLMARK_INTERFERON_ALPHA_RESPONSE",
+    "source": "https://www.gsea-msigdb.org/gsea/msigdb/human/download_geneset.jsp?fileType=json&geneSetName=HALLMARK_INTERFERON_ALPHA_RESPONSE",
+    "systematic_name": "M5911",
+    "total_members": 97,
+    "measured_members": 61,
+    "sha256": "2a3d93f3170bc9866ced1135bdde9870f18294f7ad3ae6cb3732dc3680483455",
+    "aliases_sha256": "94313e8a8a175d8b8e35d981d36f6ca0a06ca39b864a6585cf648b59aca02e90",
+    "unmatched_symbols": [
+      "ADAR",
+      "B2M",
+      "BATF2",
+      "BST2",
+      "C1S",
+      "CASP1",
+      "CASP8",
+      "CCRL2",
+      "CD47",
+      "CNP",
+      "DHX58",
+      "ELF1",
+      "HLA-C",
+      "IRF1",
+      "IRF2",
+      "IRF9",
+      "LGALS3BP",
+      "LY6E",
+      "MVB12A",
+      "NCOA7",
+      "NMI",
+      "NUB1",
+      "OGFR",
+      "PROCR",
+      "PSMA3",
+      "PSMB8",
+      "PSMB9",
+      "PSME1",
+      "PSME2",
+      "RTP4",
+      "SLC25A28",
+      "TAP1",
+      "TRIM21",
+      "TRIM26",
+      "TXNIP",
+      "UBE2L6"
+    ],
+    "mapping": "Official source or current symbols only; ambiguous symbol-to-multiple-Ensembl mapping fails; actual and canonical symbols exported; no absent-gene zero-fill.",
+    "attribution": "MSigDB / Broad Institute, MIT, Regents of the University of California; CC BY 4.0; Liberzon et al., PMID26771021"
+  },
+  "provenance": {
+    "replay_manifest_sha256": "799544eb3301f2a08bac8f19f1f656bac834f4338bda2f93950354ea792379cd",
+    "prepared_cohort_sha256": "820d2fb71ab6a879d4c55bd75f9ead6713a24374624bfea52abf10d18fc157a4",
+    "analysis_sha256": "334babced0abd9d0876e9dc1690e1928698308d495f34cc0a847212d54beca30",
+    "checkpoint_sha256": "f634f0ef06d06cd547e7c53cef58942520f3d998b8d99eba4798ca53fb09f315"
+  },
+  "warnings": [
+    "Generated-donor uncertainty conditions on one fixed sampling seed, checkpoint and endpoint annotation.",
+    "These fixed-family tests and true fold changes differ from the legacy variable-family, mean-log-expression DEG benchmark."
+  ],
+  "axis_limits": {
+    "x": [
+      -10.381679686787868,
+      10.381679686787868
+    ],
+    "y": [
+      -0.6011489849486531,
+      10.01914974914422
+    ]
+  },
+  "comparison_axis_limits": {
+    "x": [
+      -10.381679686787868,
+      10.381679686787868
+    ],
+    "y": [
+      -0.6011489849486531,
+      10.01914974914422
+    ]
+  },
+  "video": {
+    "fps": 25,
+    "duration_seconds": 30.0,
+    "observed_frames": 51,
+    "interpolation": "none",
+    "full_decode_verified": true,
+    "width": 1800,
+    "height": 1000
+  },
+  "assets": {
+    "HALLMARK_INTERFERON_ALPHA_RESPONSE.json": {
+      "bytes": 1094,
+      "sha256": "2a3d93f3170bc9866ced1135bdde9870f18294f7ad3ae6cb3732dc3680483455"
+    },
+    "gene_set_provenance.json": {
+      "bytes": 1260,
+      "sha256": "83e4bfc6b1848267f91bf1bb98ad9557a44b997be14e9819035c45a696f1934d"
+    },
+    "ifna_symbol_aliases.json": {
+      "bytes": 10587,
+      "sha256": "94313e8a8a175d8b8e35d981d36f6ca0a06ca39b864a6585cf648b59aca02e90"
+    },
+    "volcano-endpoint-comparison.pdf": {
+      "bytes": 145218,
+      "sha256": "5f1c2b9ddb2f0990fb8a4989bde57de8d211c8fdf1cc537672f46a5b1f785269"
+    },
+    "volcano-endpoint-comparison.png": {
+      "bytes": 201632,
+      "sha256": "1944fe8c491c8bc59334048d2ae4c666e0bfc197a98d63ba61702022ce0f2eb5"
+    },
+    "volcano-endpoint-diagnostics.csv": {
+      "bytes": 76443,
+      "sha256": "515a1cd21b5648bfa9529064f8bbea105a4af84d57710361b5aea49a328a7b7e"
+    },
+    "volcano-poster.png": {
+      "bytes": 193233,
+      "sha256": "b6c3a70021f000b29f0471ab5a2218e8707b597dff2c5a13c413577620f45209"
+    },
+    "volcano-stats.csv.gz": {
+      "bytes": 17910105,
+      "sha256": "09c6d23159435f091797ee43ada000e89fc0b5682d7d5eb93b116c8a0f817187"
+    },
+    "volcano-trajectory.mp4": {
+      "bytes": 736523,
+      "sha256": "b76c0daa0401ba52b60498ea775a5c0db623e66bcf5f6dc9b9d8b05f14316254"
+    }
+  }
+}

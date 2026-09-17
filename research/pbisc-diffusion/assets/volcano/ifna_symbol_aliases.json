@@ -1,0 +1,492 @@
+{
+  "gene_set": "HALLMARK_INTERFERON_ALPHA_RESPONSE",
+  "source_card": "https://www.gsea-msigdb.org/gsea/msigdb/human/geneset/HALLMARK_INTERFERON_ALPHA_RESPONSE.html",
+  "source_html_sha256": "b8ed50a1dedbfe7f0fde027160c90caaafdfca2a1619a79830cfc8bddd65f22c",
+  "members": [
+    {
+      "source_symbol": "ADAR",
+      "entrez_id": "103",
+      "canonical_symbol": "ADAR"
+    },
+    {
+      "source_symbol": "B2M",
+      "entrez_id": "567",
+      "canonical_symbol": "B2M"
+    },
+    {
+      "source_symbol": "BATF2",
+      "entrez_id": "116071",
+      "canonical_symbol": "BATF2"
+    },
+    {
+      "source_symbol": "BST2",
+      "entrez_id": "684",
+      "canonical_symbol": "BST2"
+    },
+    {
+      "source_symbol": "C1S",
+      "entrez_id": "716",
+      "canonical_symbol": "C1S"
+    },
+    {
+      "source_symbol": "CASP1",
+      "entrez_id": "834",
+      "canonical_symbol": "CASP1"
+    },
+    {
+      "source_symbol": "CASP8",
+      "entrez_id": "841",
+      "canonical_symbol": "CASP8"
+    },
+    {
+      "source_symbol": "CCRL2",
+      "entrez_id": "9034",
+      "canonical_symbol": "CCRL2"
+    },
+    {
+      "source_symbol": "CD47",
+      "entrez_id": "961",
+      "canonical_symbol": "CD47"
+    },
+    {
+      "source_symbol": "CD74",
+      "entrez_id": "972",
+      "canonical_symbol": "CD74"
+    },
+    {
+      "source_symbol": "CMPK2",
+      "entrez_id": "129607",
+      "canonical_symbol": "CMPK2"
+    },
+    {
+      "source_symbol": "CNP",
+      "entrez_id": "1267",
+      "canonical_symbol": "CNP"
+    },
+    {
+      "source_symbol": "CSF1",
+      "entrez_id": "1435",
+      "canonical_symbol": "CSF1"
+    },
+    {
+      "source_symbol": "CXCL10",
+      "entrez_id": "3627",
+      "canonical_symbol": "CXCL10"
+    },
+    {
+      "source_symbol": "CXCL11",
+      "entrez_id": "6373",
+      "canonical_symbol": "CXCL11"
+    },
+    {
+      "source_symbol": "DDX60",
+      "entrez_id": "55601",
+      "canonical_symbol": "DDX60"
+    },
+    {
+      "source_symbol": "DHX58",
+      "entrez_id": "79132",
+      "canonical_symbol": "DHX58"
+    },
+    {
+      "source_symbol": "EIF2AK2",
+      "entrez_id": "5610",
+      "canonical_symbol": "EIF2AK2"
+    },
+    {
+      "source_symbol": "ELF1",
+      "entrez_id": "1997",
+      "canonical_symbol": "ELF1"
+    },
+    {
+      "source_symbol": "EPSTI1",
+      "entrez_id": "94240",
+      "canonical_symbol": "EPSTI1"
+    },
+    {
+      "source_symbol": "FAM125A",
+      "entrez_id": "93343",
+      "canonical_symbol": "MVB12A"
+    },
+    {
+      "source_symbol": "FAM46A",
+      "entrez_id": "55603",
+      "canonical_symbol": "TENT5A"
+    },
+    {
+      "source_symbol": "FTSJD2",
+      "entrez_id": "23070",
+      "canonical_symbol": "CMTR1"
+    },
+    {
+      "source_symbol": "GBP2",
+      "entrez_id": "2634",
+      "canonical_symbol": "GBP2"
+    },
+    {
+      "source_symbol": "GBP4",
+      "entrez_id": "115361",
+      "canonical_symbol": "GBP4"
+    },
+    {
+      "source_symbol": "GMPR",
+      "entrez_id": "2766",
+      "canonical_symbol": "GMPR"
+    },
+    {
+      "source_symbol": "HERC6",
+      "entrez_id": "55008",
+      "canonical_symbol": "HERC6"
+    },
+    {
+      "source_symbol": "HLA-C",
+      "entrez_id": "3107",
+      "canonical_symbol": "HLA-C"
+    },
+    {
+      "source_symbol": "IFI27",
+      "entrez_id": "3429",
+      "canonical_symbol": "IFI27"
+    },
+    {
+      "source_symbol": "IFI30",
+      "entrez_id": "10437",
+      "canonical_symbol": "IFI30"
+    },
+    {
+      "source_symbol": "IFI35",
+      "entrez_id": "3430",
+      "canonical_symbol": "IFI35"
+    },
+    {
+      "source_symbol": "IFI44",
+      "entrez_id": "10561",
+      "canonical_symbol": "IFI44"
+    },
+    {
+      "source_symbol": "IFI44L",
+      "entrez_id": "10964",
+      "canonical_symbol": "IFI44L"
+    },
+    {
+      "source_symbol": "IFIH1",
+      "entrez_id": "64135",
+      "canonical_symbol": "IFIH1"
+    },
+    {
+      "source_symbol": "IFIT2",
+      "entrez_id": "3433",
+      "canonical_symbol": "IFIT2"
+    },
+    {
+      "source_symbol": "IFIT3",
+      "entrez_id": "3437",
+      "canonical_symbol": "IFIT3"
+    },
+    {
+      "source_symbol": "IFITM1",
+      "entrez_id": "8519",
+      "canonical_symbol": "IFITM1"
+    },
+    {
+      "source_symbol": "IFITM2",
+      "entrez_id": "10581",
+      "canonical_symbol": "IFITM2"
+    },
+    {
+      "source_symbol": "IFITM3",
+      "entrez_id": "10410",
+      "canonical_symbol": "IFITM3"
+    },
+    {
+      "source_symbol": "IL15",
+      "entrez_id": "3600",
+      "canonical_symbol": "IL15"
+    },
+    {
+      "source_symbol": "IL4R",
+      "entrez_id": "3566",
+      "canonical_symbol": "IL4R"
+    },
+    {
+      "source_symbol": "IL7",
+      "entrez_id": "3574",
+      "canonical_symbol": "IL7"
+    },
+    {
+      "source_symbol": "IRF1",
+      "entrez_id": "3659",
+      "canonical_symbol": "IRF1"
+    },
+    {
+      "source_symbol": "IRF2",
+      "entrez_id": "3660",
+      "canonical_symbol": "IRF2"
+    },
+    {
+      "source_symbol": "IRF7",
+      "entrez_id": "3665",
+      "canonical_symbol": "IRF7"
+    },
+    {
+      "source_symbol": "IRF9",
+      "entrez_id": "10379",
+      "canonical_symbol": "IRF9"
+    },
+    {
+      "source_symbol": "ISG15",
+      "entrez_id": "9636",
+      "canonical_symbol": "ISG15"
+    },
+    {
+      "source_symbol": "ISG20",
+      "entrez_id": "3669",
+      "canonical_symbol": "ISG20"
+    },
+    {
+      "source_symbol": "LAMP3",
+      "entrez_id": "27074",
+      "canonical_symbol": "LAMP3"
+    },
+    {
+      "source_symbol": "LAP3",
+      "entrez_id": "51056",
+      "canonical_symbol": "LAP3"
+    },
+    {
+      "source_symbol": "LGALS3BP",
+      "entrez_id": "3959",
+      "canonical_symbol": "LGALS3BP"
+    },
+    {
+      "source_symbol": "LPAR6",
+      "entrez_id": "10161",
+      "canonical_symbol": "LPAR6"
+    },
+    {
+      "source_symbol": "LY6E",
+      "entrez_id": "4061",
+      "canonical_symbol": "LY6E"
+    },
+    {
+      "source_symbol": "MOV10",
+      "entrez_id": "4343",
+      "canonical_symbol": "MOV10"
+    },
+    {
+      "source_symbol": "MX1",
+      "entrez_id": "4599",
+      "canonical_symbol": "MX1"
+    },
+    {
+      "source_symbol": "NCOA7",
+      "entrez_id": "135112",
+      "canonical_symbol": "NCOA7"
+    },
+    {
+      "source_symbol": "NMI",
+      "entrez_id": "9111",
+      "canonical_symbol": "NMI"
+    },
+    {
+      "source_symbol": "NUB1",
+      "entrez_id": "51667",
+      "canonical_symbol": "NUB1"
+    },
+    {
+      "source_symbol": "OAS1",
+      "entrez_id": "4938",
+      "canonical_symbol": "OAS1"
+    },
+    {
+      "source_symbol": "OASL",
+      "entrez_id": "8638",
+      "canonical_symbol": "OASL"
+    },
+    {
+      "source_symbol": "OGFR",
+      "entrez_id": "11054",
+      "canonical_symbol": "OGFR"
+    },
+    {
+      "source_symbol": "PARP12",
+      "entrez_id": "64761",
+      "canonical_symbol": "PARP12"
+    },
+    {
+      "source_symbol": "PARP14",
+      "entrez_id": "54625",
+      "canonical_symbol": "PARP14"
+    },
+    {
+      "source_symbol": "PARP9",
+      "entrez_id": "83666",
+      "canonical_symbol": "PARP9"
+    },
+    {
+      "source_symbol": "PLSCR1",
+      "entrez_id": "5359",
+      "canonical_symbol": "PLSCR1"
+    },
+    {
+      "source_symbol": "PNPT1",
+      "entrez_id": "87178",
+      "canonical_symbol": "PNPT1"
+    },
+    {
+      "source_symbol": "PRIC285",
+      "entrez_id": "85441",
+      "canonical_symbol": "HELZ2"
+    },
+    {
+      "source_symbol": "PROCR",
+      "entrez_id": "10544",
+      "canonical_symbol": "PROCR"
+    },
+    {
+      "source_symbol": "PSMA3",
+      "entrez_id": "5684",
+      "canonical_symbol": "PSMA3"
+    },
+    {
+      "source_symbol": "PSMB8",
+      "entrez_id": "5696",
+      "canonical_symbol": "PSMB8"
+    },
+    {
+      "source_symbol": "PSMB9",
+      "entrez_id": "5698",
+      "canonical_symbol": "PSMB9"
+    },
+    {
+      "source_symbol": "PSME1",
+      "entrez_id": "5720",
+      "canonical_symbol": "PSME1"
+    },
+    {
+      "source_symbol": "PSME2",
+      "entrez_id": "5721",
+      "canonical_symbol": "PSME2"
+    },
+    {
+      "source_symbol": "RIPK2",
+      "entrez_id": "8767",
+      "canonical_symbol": "RIPK2"
+    },
+    {
+      "source_symbol": "RNF31",
+      "entrez_id": "55072",
+      "canonical_symbol": "RNF31"
+    },
+    {
+      "source_symbol": "RSAD2",
+      "entrez_id": "91543",
+      "canonical_symbol": "RSAD2"
+    },
+    {
+      "source_symbol": "RTP4",
+      "entrez_id": "64108",
+      "canonical_symbol": "RTP4"
+    },
+    {
+      "source_symbol": "SAMD9",
+      "entrez_id": "54809",
+      "canonical_symbol": "SAMD9"
+    },
+    {
+      "source_symbol": "SAMD9L",
+      "entrez_id": "219285",
+      "canonical_symbol": "SAMD9L"
+    },
+    {
+      "source_symbol": "SELL",
+      "entrez_id": "6402",
+      "canonical_symbol": "SELL"
+    },
+    {
+      "source_symbol": "SLC25A28",
+      "entrez_id": "81894",
+      "canonical_symbol": "SLC25A28"
+    },
+    {
+      "source_symbol": "SP110",
+      "entrez_id": "3431",
+      "canonical_symbol": "SP110"
+    },
+    {
+      "source_symbol": "STAT2",
+      "entrez_id": "6773",
+      "canonical_symbol": "STAT2"
+    },
+    {
+      "source_symbol": "TAP1",
+      "entrez_id": "6890",
+      "canonical_symbol": "TAP1"
+    },
+    {
+      "source_symbol": "TDRD7",
+      "entrez_id": "23424",
+      "canonical_symbol": "TDRD7"
+    },
+    {
+      "source_symbol": "TMEM140",
+      "entrez_id": "55281",
+      "canonical_symbol": "TMEM140"
+    },
+    {
+      "source_symbol": "TRAFD1",
+      "entrez_id": "10906",
+      "canonical_symbol": "TRAFD1"
+    },
+    {
+      "source_symbol": "TRIM14",
+      "entrez_id": "9830",
+      "canonical_symbol": "TRIM14"
+    },
+    {
+      "source_symbol": "TRIM21",
+      "entrez_id": "6737",
+      "canonical_symbol": "TRIM21"
+    },
+    {
+      "source_symbol": "TRIM25",
+      "entrez_id": "7706",
+      "canonical_symbol": "TRIM25"
+    },
+    {
+      "source_symbol": "TRIM26",
+      "entrez_id": "7726",
+      "canonical_symbol": "TRIM26"
+    },
+    {
+      "source_symbol": "TRIM5",
+      "entrez_id": "85363",
+      "canonical_symbol": "TRIM5"
+    },
+    {
+      "source_symbol": "TXNIP",
+      "entrez_id": "10628",
+      "canonical_symbol": "TXNIP"
+    },
+    {
+      "source_symbol": "UBA7",
+      "entrez_id": "7318",
+      "canonical_symbol": "UBA7"
+    },
+    {
+      "source_symbol": "UBE2L6",
+      "entrez_id": "9246",
+      "canonical_symbol": "UBE2L6"
+    },
+    {
+      "source_symbol": "USP18",
+      "entrez_id": "11274",
+      "canonical_symbol": "USP18"
+    },
+    {
+      "source_symbol": "WARS",
+      "entrez_id": "7453",
+      "canonical_symbol": "WARS1"
+    }
+  ]
+}

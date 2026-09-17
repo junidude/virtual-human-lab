@@ -2,9 +2,136 @@
 .trajectory-player,
 .trajectory-reading,
 .trajectory-keyframes,
-.trajectory-methods {
+.trajectory-methods,
+.trajectory-tabs,
+.trajectory-volcano {
   width: var(--content);
   margin-inline: auto;
+}
+
+.trajectory-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  padding-block: 0 26px;
+  font: 0.75rem var(--font-mono);
+}
+
+.trajectory-tabs a {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.trajectory-tabs a:hover {
+  color: var(--accent-dark);
+}
+
+.trajectory-label-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 25px;
+  padding-top: 26px;
+  font-size: 0.85rem;
+}
+
+.trajectory-label-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.trajectory-label-legend i {
+  width: 9px;
+  height: 9px;
+  background: var(--label-color);
+  border-radius: 50%;
+}
+
+.trajectory-volcano {
+  margin-top: 76px;
+  padding-block: 48px 46px;
+  border-block: 1px solid var(--ink);
+}
+
+.trajectory-volcano-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 54px;
+  margin-bottom: 32px;
+}
+
+.trajectory-volcano-intro .section-label {
+  grid-column: 1 / -1;
+}
+
+.trajectory-volcano-intro h2 {
+  font-size: clamp(2rem, 3.7vw, 3.6rem);
+  letter-spacing: -0.055em;
+  line-height: 1.05;
+}
+
+.trajectory-volcano-intro > p:last-child {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
+  align-self: end;
+}
+
+.trajectory-volcano-player {
+  width: 100%;
+}
+
+.trajectory-volcano-guide {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding-block: 30px;
+}
+
+.trajectory-volcano-guide article > span {
+  color: var(--accent-dark);
+  font: 0.7rem var(--font-mono);
+  text-transform: uppercase;
+}
+
+.trajectory-volcano-guide h3 {
+  margin-block: 14px;
+  font-size: 1.55rem;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.trajectory-volcano-guide p,
+.trajectory-volcano-boundary p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.trajectory-volcano-boundary {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 36px;
+  padding-block: 26px;
+  border-block: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+
+.trajectory-comparison {
+  margin-block: 32px 24px;
+}
+
+.trajectory-comparison img {
+  width: 100%;
+  height: auto;
+}
+
+.trajectory-comparison figcaption {
+  max-width: 900px;
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.7;
 }
 
 .trajectory-hero {
@@ -361,7 +488,9 @@
 
   .trajectory-reading-header,
   .trajectory-note,
-  .trajectory-methods {
+  .trajectory-methods,
+  .trajectory-volcano-intro,
+  .trajectory-volcano-boundary {
     grid-template-columns: 1fr;
     gap: 20px;
   }
@@ -420,6 +549,16 @@
 
   .trajectory-methods {
     padding-block: 42px 54px;
+  }
+
+  .trajectory-volcano {
+    margin-top: 42px;
+    padding-block: 30px;
+  }
+
+  .trajectory-volcano-guide {
+    grid-template-columns: 1fr;
+    gap: 26px;
   }
 
   .trajectory-methods dl {
