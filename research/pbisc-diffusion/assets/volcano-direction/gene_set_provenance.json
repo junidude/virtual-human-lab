@@ -1,0 +1,16 @@
+{
+  "name": "HALLMARK_INTERFERON_ALPHA_RESPONSE",
+  "systematic_name": "M5911",
+  "source": "https://www.gsea-msigdb.org/gsea/msigdb/human/download_geneset.jsp?fileType=json&geneSetName=HALLMARK_INTERFERON_ALPHA_RESPONSE",
+  "source_card": "https://www.gsea-msigdb.org/gsea/msigdb/human/geneset/HALLMARK_INTERFERON_ALPHA_RESPONSE.html",
+  "retrieved_at": "2026-09-17T16:55:00.140302+09:00",
+  "sha256": "2a3d93f3170bc9866ced1135bdde9870f18294f7ad3ae6cb3732dc3680483455",
+  "n_gene_symbols": 97,
+  "version": "Live unversioned JSON pinned by retrieval timestamp and SHA256; card states first introduced in5.0",
+  "license": "CC-BY-4.0",
+  "attribution": "MSigDB / Broad Institute, Massachusetts Institute of Technology, Regents of the University of California; Liberzon etal2015, PMID26771021",
+  "contrast_warning": "Highlight of IFN-alpha-response associated genes in SLE-HC comparison; not an IFN-alpha stimulation experiment",
+  "source_alias_mapping": "ifna_symbol_aliases.json",
+  "alias_mapping_sha256": "94313e8a8a175d8b8e35d981d36f6ca0a06ca39b864a6585cf648b59aca02e90",
+  "mapping_rule": "Match official current symbols or the five explicitly mapped source aliases from the official MSigDB card; map to the fixed Ensembl gene axis without guessing."
+}

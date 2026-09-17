@@ -11,7 +11,7 @@
     <meta property="og:url" content="https://www.virtualhumanlab.com/research/pbisc-diffusion/">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ko_KR">
-    <meta property="og:image" content="https://www.virtualhumanlab.com/research/pbisc-diffusion/assets/v2/poster.png">
+    <meta property="og:image" content="https://www.virtualhumanlab.com/research/pbisc-diffusion/assets/v3/poster.png">
     <meta property="og:image:alt" content="PBISC-Diffusion sampling trajectory in PCA and UMAP">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/">
@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=20260814-3">
-    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260917-2">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260917-3">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -43,111 +43,59 @@
       </div>
     </header>
     <main id="main">
-      <section class="trajectory-hero" aria-labelledby="trajectory-title">
-        <div>
-          <a class="trajectory-back" href="/research/#pbisc">← Research / PBISC</a>
-          <p class="eyebrow">Model study / PBISC–Diffusion</p>
-          <h1 id="trajectory-title">From noise to<br><em>generated cells.</em></h1>
-          <p class="trajectory-deck">Follow the same generated cells through diffusion, colored by their final predicted PBMC labels. Two synchronized views compare them with observed real cells. A second recording tracks model-derived SLE–HC expression contrasts.</p>
-        </div>
-        <aside class="trajectory-record">
-          <span>A view inside the sampler</span>
-          <p>One fixed PBMC pseudobulk condition.<br>Observed cells anchor the two views.</p>
-          <small>Recorded model states<br>Fixed reference · Retrospective final labels</small>
-        </aside>
+      <section class="trajectory-hero trajectory-compact" aria-labelledby="trajectory-title">
+        <a class="trajectory-back" href="/research/#pbisc">← Research / PBISC</a>
+        <p class="eyebrow">Recorded sampling / 50 steps</p>
+        <h1 id="trajectory-title">PBISC–<em>Diffusion.</em></h1>
+        <div class="trajectory-badges"><span>ctx2048 · E12 · EMA</span><span>Input · Pseudobulk</span><span>Generated · 4,096 cells</span><span>Ground truth · 4,362 cells</span></div>
       </section>
 
-      <nav class="trajectory-tabs" aria-label="Recorded studies"><a href="#sampling">01 / Cell generation</a><a href="#volcano">02 / SLE–HC expression</a><a href="#methods-title">Recording methods</a></nav>
+      <nav class="trajectory-tabs" aria-label="Recorded studies"><a href="#sampling">01 / Cells</a><a href="#volcano">02 / Genes</a><a href="#methods-title">Methods</a></nav>
 
-      <figure id="sampling" class="trajectory-player" aria-label="PBISC-Diffusion sampling trajectory in PCA and UMAP">
-        <div class="trajectory-player-top"><span>Sampling trajectory / 50 steps</span><span>2,048 generated · 4,362 observed reference cells</span></div>
-        <video controls playsinline preload="metadata" poster="/research/pbisc-diffusion/assets/v2/poster.png" aria-label="PBISC-Diffusion sampling trajectory in PCA and UMAP" aria-describedby="video-caption video-description">
-          <source src="/research/pbisc-diffusion/assets/v2/diffusion-trajectory.mp4" type="video/mp4">
-          <p>Your browser cannot play this video. Download the MP4 or view the keyframes below. <a href="/research/pbisc-diffusion/assets/v2/diffusion-trajectory.mp4">MP4</a></p>
+      <div class="trajectory-point-key">
+        <table><caption>One dot</caption><tbody><tr><th scope="row">PCA / UMAP</th><td>Cell</td></tr><tr><th scope="row">Volcano</th><td>Gene · up to 2,980 / panel</td></tr></tbody></table>
+      </div>
+
+      <figure id="sampling" class="trajectory-player" aria-label="PBISC-Diffusion sampling, with denoising in PCA and expression estimates in UMAP">
+        <div class="trajectory-player-top"><span>Denoising · PCA</span><span>Expression estimate · UMAP</span></div>
+        <video controls playsinline preload="metadata" poster="/research/pbisc-diffusion/assets/v3/poster.png" aria-label="PBISC-Diffusion sampling, with denoising in PCA and expression estimates in UMAP" aria-describedby="video-caption video-description">
+          <source src="/research/pbisc-diffusion/assets/v3/diffusion-trajectory.mp4" type="video/mp4">
+          <p><a href="/research/pbisc-diffusion/assets/v3/diffusion-trajectory.mp4">Download the MP4 recording.</a></p>
         </video>
-        <figcaption id="video-caption">
-          <p>A silent recording of computational sampling steps. Use the player controls to pause, seek, or view fullscreen. The text below describes both panels.</p>
-          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/v2/diffusion-trajectory.mp4" download>Download MP4 ↗</a></div>
-        </figcaption>
+        <figcaption id="video-caption"><p>Fixed PCA / UMAP · Final PBMC5 + Other labels</p><div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/v3/diffusion-trajectory.mp4" download>Download MP4 ↗</a></div></figcaption>
       </figure>
-
-      <section class="trajectory-reading" id="video-description" aria-labelledby="reading-title">
-        <div class="trajectory-reading-header">
-          <p class="section-label">How to read the film</p>
-          <h2 id="reading-title">Two views of the same generation process.</h2>
-        </div>
-        <div class="trajectory-views">
-          <article>
-            <span class="trajectory-view-label">Left / actual noisy state / PCA</span>
-            <h3>What the sampler holds.</h3>
-            <p>Each colored point is one generated cell’s current diffusion state, xₜ, with value and support channels. A fixed PCA, fitted on canonically encoded observed cells over 2,980 common measured genes, shows the actual state without clipping the remaining noise.</p>
-          </article>
-          <article>
-            <span class="trajectory-view-label">Right / predicted clean expression / UMAP</span>
-            <h3>What the model expects.</h3>
-            <p>At each step, the denoiser predicts a clean state, x̂₀(t). Its hard-gated expression output passes through normalization, PCA, and UMAP fitted only on observed real cells. This panel shows how the current estimate of the completed profile changes.</p>
-          </article>
-        </div>
-        <div class="trajectory-label-legend" aria-label="Final predicted labels, fixed across the recording"><span><i style="--label-color:#0072B2" aria-hidden="true"></i>T cell</span><span><i style="--label-color:#D55E00" aria-hidden="true"></i>B cell</span><span><i style="--label-color:#009E73" aria-hidden="true"></i>Monocyte</span><span><i style="--label-color:#CC79A7" aria-hidden="true"></i>NK cell</span><span><i style="--label-color:#E69F00" aria-hidden="true"></i>DC</span><span><i style="--label-color:#56B4E9" aria-hidden="true"></i>Other</span></div>
-        <div class="trajectory-note">
-          <strong>Keep your eye on the same points.</strong>
-          <p>Colors carry final frozen scANVI predictions backward: T cell, B cell, Monocyte, NK cell, DC, and Other. These are transferred labels, not observed identities at intermediate steps. Other collects AIFI labels outside the five named groups; the benchmark confidence threshold is zero, so low-confidence predictions are retained. Gray points are 4,362 observed cells from the same donor whose cells supplied the condition. This comparison is not independent validation.</p>
-        </div>
+      <section class="trajectory-reading trajectory-reading-compact" id="video-description" aria-label="Final predicted cell labels and ground truth">
+        <div class="trajectory-label-legend"><span><i style="--label-color:#0072B2" aria-hidden="true"></i>T cell</span><span><i style="--label-color:#D55E00" aria-hidden="true"></i>B cell</span><span><i style="--label-color:#009E73" aria-hidden="true"></i>Monocyte</span><span><i style="--label-color:#CC79A7" aria-hidden="true"></i>NK cell</span><span><i style="--label-color:#E69F00" aria-hidden="true"></i>DC</span><span><i style="--label-color:#56B4E9" aria-hidden="true"></i>Other</span><span><i style="--label-color:#9CA3AF" aria-hidden="true"></i>Gray · Ground truth</span></div>
+        <p class="trajectory-short-note">Expression estimate = predicted final expression at this step.</p>
       </section>
 
       <section class="trajectory-keyframes" aria-labelledby="keyframes-title">
-        <div class="trajectory-keyframes-header">
-          <div><p class="section-label">A closer look</p><h2 id="keyframes-title">Selected recorded states.</h2></div>
-          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/v2/keyframes.png">Open full-size image ↗</a></div>
-        </div>
-        <figure>
-          <a href="/research/pbisc-diffusion/assets/v2/keyframes.png"><img src="/research/pbisc-diffusion/assets/v2/keyframes.png" alt="Selected sampling steps shown side by side, with the actual noisy state in PCA and predicted clean expression in UMAP. Point colors and projection axes are fixed across steps." loading="lazy" decoding="async"></a>
-          <figcaption>These frames show recorded model outputs. Changes between panels reflect successive sampling states; an apparently smooth or separated UMAP pattern alone does not establish biological structure.</figcaption>
-        </figure>
+        <div class="trajectory-keyframes-header"><h2 id="keyframes-title">Selected steps</h2><div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/v3/keyframes.png">Full-size image ↗</a></div></div>
+        <figure><a href="/research/pbisc-diffusion/assets/v3/keyframes.png"><img src="/research/pbisc-diffusion/assets/v3/keyframes.png" alt="Recorded sampling steps: 4,096 generated cells in final PBMC5 plus Other colors, and 4,362 ground truth cells in gray." loading="lazy" decoding="async"></a></figure>
       </section>
 
       <section class="trajectory-volcano" id="volcano" aria-labelledby="volcano-title">
-        <div class="trajectory-volcano-intro">
-          <p class="section-label">Second recording / SLE − HC</p>
-          <h2 id="volcano-title">Follow the model-derived<br>expression contrast.</h2>
-          <p>This recording uses a separate cohort of 1,500 generated cells per donor: 63,000 cells from 30 SLE and 12 HC donor conditions. It follows donor-level expression contrasts during denoising with fixed final predicted cell labels. Purple highlights 61 measured genes from the prespecified Hallmark interferon-alpha-response set; gray denotes other tested genes.</p>
-        </div>
+        <div class="trajectory-volcano-intro trajectory-volcano-intro-compact"><p class="section-label">Gene expression / SLE vs HC</p><h2 id="volcano-title">SLE vs HC</h2><div class="trajectory-badges"><span>HC · 12 donors</span><span>SLE · 30 donors</span><span>Generated · 63,000 cells</span></div></div>
+        <div class="trajectory-label-legend trajectory-direction-legend" aria-label="Gene expression direction"><span><i style="--label-color:#2563EB" aria-hidden="true"></i>HC higher</span><span><i style="--label-color:#DC2626" aria-hidden="true"></i>SLE higher</span><span><i class="trajectory-gene-outline" aria-hidden="true"></i>Outline · IFNα genes</span><span><i style="--label-color:#9CA3AF" aria-hidden="true"></i>Gray · Equal / undefined</span></div>
         <figure class="trajectory-player trajectory-volcano-player">
-          <div class="trajectory-player-top"><span>Donor-level contrast / computational steps</span><span>Purple: IFNα-response gene set</span></div>
-          <video controls playsinline preload="metadata" poster="/research/pbisc-diffusion/assets/volcano/volcano-poster.png" aria-label="SLE versus HC model-derived volcano plots across diffusion steps" aria-describedby="volcano-caption volcano-description">
-            <source src="/research/pbisc-diffusion/assets/volcano/volcano-trajectory.mp4" type="video/mp4">
-            <p>Download the <a href="/research/pbisc-diffusion/assets/volcano/volcano-trajectory.mp4">MP4 recording</a> or view the endpoint comparison below.</p>
+          <div class="trajectory-player-top"><span>One dot = one gene</span><span>Donor-level comparison</span></div>
+          <video controls playsinline preload="metadata" poster="/research/pbisc-diffusion/assets/volcano-direction/volcano-poster.png" aria-label="SLE versus HC gene volcano plots across diffusion steps; blue is HC higher and red is SLE higher" aria-describedby="volcano-caption volcano-description">
+            <source src="/research/pbisc-diffusion/assets/volcano-direction/volcano-trajectory.mp4" type="video/mp4">
+            <p><a href="/research/pbisc-diffusion/assets/volcano-direction/volcano-trajectory.mp4">Download the MP4 recording.</a></p>
           </video>
-          <figcaption id="volcano-caption"><p>This is a disease-group contrast in generated expression, not an IFNα stimulation experiment. Donors are replicates; extra generated cells are not independent biological samples.</p><div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/volcano/volcano-trajectory.mp4" download>Download MP4 ↗</a></div></figcaption>
+          <figcaption id="volcano-caption"><p>Blue / red = effect direction · Outline = IFNα set · Significance = vertical axis</p><div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/volcano-direction/volcano-trajectory.mp4" download>Download MP4 ↗</a></div></figcaption>
         </figure>
-        <div class="trajectory-volcano-guide" id="volcano-description">
-          <article><span>Horizontal axis</span><h3>SLE–HC effect</h3><p>Log₂ ratio of mean donor CPM, with a +1 pseudocount in each group. Positive values indicate higher generated expression in SLE.</p></article>
-          <article><span>Vertical axis</span><h3>Frame-specific evidence</h3><p>−log₁₀ of BH-adjusted q-values. The correction covers all six cell groups and 2,980 common genes within each frame, not significance appearing anywhere in the film.</p></article>
-          <article><span>Purple points</span><h3>A fixed gene set</h3><p>Membership in HALLMARK_INTERFERON_ALPHA_RESPONSE is set before analysis. Of its 97 members, 61 are in the common measured panel. Highlighting alone establishes neither actual exposure nor pathway activation.</p><p><a href="https://www.gsea-msigdb.org/gsea/msigdb/human/geneset/HALLMARK_INTERFERON_ALPHA_RESPONSE.html">MSigDB / M5911</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p></article>
-        </div>
-        <div class="trajectory-volcano-boundary"><strong>The endpoint is the primary comparison.</strong><p>Intermediate frames are exploratory. Cell membership and donor eligibility stay fixed; each eligible donor/type needs at least 20 endpoint cells, with at least five donors per group. Unsupported panels remain explicit. Welch tests use donor aggregates and do not include uncertainty from the generator, checkpoint, or transferred labels.</p></div>
-        <figure class="trajectory-comparison">
-          <a href="/research/pbisc-diffusion/assets/volcano/volcano-endpoint-comparison.png"><img src="/research/pbisc-diffusion/assets/volcano/volcano-endpoint-comparison.png" loading="lazy" decoding="async" alt="Final generated SLE–HC effects compared with observed donor-level effects, separated by predicted cell group."></a>
-          <figcaption>Final generated and observed donor-level contrasts are shown together. The observed profiles contribute to conditioning; this comparison assesses agreement within the available cohort and is not independent validation.</figcaption>
-        </figure>
-        <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/volcano/volcano-methods.json">Statistical methods (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano/volcano-stats.csv.gz">Framewise results (CSV.gz) ↗</a><a href="/research/pbisc-diffusion/assets/volcano/volcano-endpoint-diagnostics.csv">Endpoint diagnostics (CSV) ↗</a></div>
+        <div class="trajectory-axis-key" id="volcano-description"><span>X · log₂ fold change · SLE / HC</span><span>Y · −log₁₀ adjusted q</span></div>
+        <figure class="trajectory-comparison"><a href="/research/pbisc-diffusion/assets/volcano-direction/volcano-endpoint-comparison.png"><img src="/research/pbisc-diffusion/assets/volcano-direction/volcano-endpoint-comparison.png" loading="lazy" decoding="async" alt="Final generated and ground truth gene volcano plots: blue indicates HC higher, red indicates SLE higher, outlined genes belong to the IFN alpha response set."></a><figcaption>Final generated vs ground truth</figcaption></figure>
       </section>
 
-      <section class="trajectory-methods" aria-labelledby="methods-title">
-        <div><p class="section-label">Recording notes</p><h2 id="methods-title">What is fixed.<br>What is changing.</h2></div>
-        <div>
-          <dl>
-            <div><dt>Selected checkpoint</dt><dd>6K gene model · 1× trunk<br>Context 2,048 · epoch 12 · EMA</dd></div>
-            <div><dt>Generated cells</dt><dd>2,048 generated cells<br>4,362 observed reference cells</dd></div>
-            <div><dt>Conditioning</dt><dd>One fixed PBMC pseudobulk profile<br>2,980 common measured genes for projection</dd></div>
-            <div><dt>Sampling</dt><dd>50 denoising steps<br>Recorded states, without motion interpolation</dd></div>
-          </dl>
-          <div class="trajectory-method-copy">
-            <p>Both projections are fitted only on observed cells from the same conditioning donor. For the actual-state PCA, observed counts are encoded with the checkpoint’s value scaler and support rule. Expression UMAP uses common-panel normalization to 10,000, log1p, reference scaling, and PCA. Generated cells use the same fixed transforms through the final frame; axes remain fixed. The two panels use different coordinate systems.</p>
-            <p>Early predictions can lie outside the observed reference distribution; UMAP still places them near reference neighbors. Apparent clusters or trajectories can therefore be projection effects. These are computational denoising steps, not cell differentiation or biological time. Final labels come from one seeded Poisson readout for frozen annotation; projection and expression analysis retain continuous generated expression.</p>
-            <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/v2/methods.json">Recording metadata (JSON) ↗</a><a href="/research/#pbisc">Read the PBISC research context →</a><a href="/research/pbisc-diffusion/assets/diffusion-trajectory.mp4">Original generated-reference recording (v1) ↗</a></div>
-          </div>
-        </div>
+      <section class="trajectory-methods trajectory-methods-compact" aria-labelledby="methods-title">
+        <h2 id="methods-title">Methods & data</h2>
+        <details class="trajectory-method-downloads"><summary>Recording metadata · Statistics · Downloads</summary>
+          <div class="trajectory-badges"><span>Disease contrast · SLE vs HC</span><span>IFNα set · 61 / 97 genes measured</span><span>≥20 cells / donor / type · ≥5 donors / group</span><span>Other · Insufficient donors</span></div>
+          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/v3/methods.json">Sampling metadata (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-direction/volcano-methods.json">Volcano methods (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-direction/volcano-stats.csv.gz">Gene statistics (CSV.gz) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-direction/volcano-endpoint-diagnostics.csv">Endpoint diagnostics (CSV) ↗</a><a href="/research/pbisc-diffusion/assets/v2/diffusion-trajectory.mp4">Previous recording (v2) ↗</a></div>
+        </details>
+        <p class="trajectory-gene-source"><a href="https://www.gsea-msigdb.org/gsea/msigdb/human/geneset/HALLMARK_INTERFERON_ALPHA_RESPONSE.html">MSigDB · HALLMARK_INTERFERON_ALPHA_RESPONSE</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
       </section>
     </main>
     <footer class="site-footer">

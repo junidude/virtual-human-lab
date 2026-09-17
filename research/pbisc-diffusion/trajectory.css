@@ -26,6 +26,128 @@
   color: var(--accent-dark);
 }
 
+.trajectory-hero.trajectory-compact {
+  display: block;
+}
+
+.trajectory-compact h1 {
+  max-width: none;
+  font-size: clamp(2rem, 5.8vw, 6.4rem);
+}
+
+.trajectory-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  font: 0.75rem/1.7 var(--font-mono);
+}
+
+.trajectory-point-key {
+  width: var(--content);
+  margin: 0 auto 28px;
+}
+
+.trajectory-point-key table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.trajectory-point-key caption {
+  margin-bottom: 10px;
+  text-align: left;
+  font: 0.72rem var(--font-mono);
+  color: var(--muted);
+}
+
+.trajectory-point-key th,
+.trajectory-point-key td {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+
+.trajectory-point-key th {
+  width: 35%;
+  padding-right: 18px;
+  font-weight: 500;
+}
+
+.trajectory-reading.trajectory-reading-compact {
+  padding-block: 0 36px;
+}
+
+.trajectory-short-note {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.trajectory-volcano-intro.trajectory-volcano-intro-compact {
+  display: block;
+}
+
+.trajectory-volcano-intro-compact h2 {
+  margin-block: 16px 20px;
+}
+
+.trajectory-label-legend.trajectory-direction-legend {
+  padding-top: 0;
+  padding-bottom: 22px;
+}
+
+.trajectory-label-legend i.trajectory-gene-outline {
+  width: 12px;
+  height: 12px;
+  background: transparent;
+  border: 2px solid #111827;
+}
+
+.trajectory-axis-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 30px;
+  margin-top: 18px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.trajectory-methods.trajectory-methods-compact {
+  display: block;
+}
+
+.trajectory-method-downloads {
+  margin-top: 26px;
+  border-block: 1px solid var(--rule);
+  padding-block: 18px;
+}
+
+.trajectory-method-downloads summary {
+  cursor: pointer;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.trajectory-method-downloads .trajectory-badges,
+.trajectory-method-downloads .trajectory-links {
+  margin-top: 24px;
+}
+
+.trajectory-gene-source {
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.trajectory-gene-source a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .trajectory-label-legend {
   display: flex;
   flex-wrap: wrap;
@@ -513,6 +635,11 @@
   html[lang="ko"] .trajectory-hero h1 {
     font-size: clamp(2.4rem, 10vw, 3.4rem);
     line-height: 1.15;
+  }
+
+  .trajectory-hero.trajectory-compact h1,
+  html[lang="ko"] .trajectory-hero.trajectory-compact h1 {
+    font-size: clamp(1.8rem, 7.6vw, 2.8rem);
   }
 
   .trajectory-player-top,
