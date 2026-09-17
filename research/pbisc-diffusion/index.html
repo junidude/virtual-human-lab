@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inside PBISC Diffusion | Virtual Human Lab</title>
+    <meta name="description" content="Watch a recorded PBISC-Diffusion sampling run in two fixed views: the actual noisy state in PCA and predicted clean expression in UMAP.">
+    <meta property="og:title" content="Inside PBISC Diffusion | Virtual Human Lab">
+    <meta property="og:description" content="Watch a recorded PBISC-Diffusion sampling run in two fixed views: the actual noisy state in PCA and predicted clean expression in UMAP.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.virtualhumanlab.com/research/pbisc-diffusion/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:image" content="https://www.virtualhumanlab.com/research/pbisc-diffusion/assets/poster.png">
+    <meta property="og:image:alt" content="PBISC-Diffusion sampling trajectory in PCA and UMAP">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/">
+    <link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/">
+    <link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/ko/">
+    <link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=20260814-3">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260917-1">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Virtual Human Lab home">
+          <span class="brand-code" aria-hidden="true">VHL</span>
+          <span class="brand-name">Virtual Human Lab</span>
+        </a>
+        <div class="header-actions">
+          <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+            <a href="/research/">Research</a><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/notes/">Notes</a><a href="/members/">Members</a><a class="nav-contact" href="/#contact">Contact</a>
+          </nav>
+          <nav class="site-language" aria-label="Language selection"><span lang="en" aria-current="page">EN</span><a href="/research/pbisc-diffusion/ko/" lang="ko" hreflang="ko" aria-label="한국어로 보기">KR</a></nav>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">Open navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <section class="trajectory-hero" aria-labelledby="trajectory-title">
+        <div>
+          <a class="trajectory-back" href="/research/#pbisc">← Research / PBISC</a>
+          <p class="eyebrow">Model study / PBISC–Diffusion</p>
+          <h1 id="trajectory-title">From noise to<br><em>generated cells.</em></h1>
+          <p class="trajectory-deck">Follow the same generated cells through a diffusion sampling run. Two synchronized views show how the noisy state changes and how the model’s prediction of the final expression pattern develops.</p>
+        </div>
+        <aside class="trajectory-record">
+          <span>A view inside the sampler</span>
+          <p>One fixed PBMC pseudobulk condition.<br>The same cells, from start to finish.</p>
+          <small>Recorded model states<br>Fixed projections · Fixed cell identities</small>
+        </aside>
+      </section>
+
+      <figure class="trajectory-player" aria-label="PBISC-Diffusion sampling trajectory in PCA and UMAP">
+        <div class="trajectory-player-top"><span>Sampling trajectory / 50 steps</span><span>2,048 tracked cells · 2 fixed views</span></div>
+        <video controls playsinline preload="metadata" poster="/research/pbisc-diffusion/assets/poster.png" aria-label="PBISC-Diffusion sampling trajectory in PCA and UMAP" aria-describedby="video-caption video-description">
+          <source src="/research/pbisc-diffusion/assets/diffusion-trajectory.mp4" type="video/mp4">
+          <p>Your browser cannot play this video. Download the MP4 or view the keyframes below. <a href="/research/pbisc-diffusion/assets/diffusion-trajectory.mp4">MP4</a></p>
+        </video>
+        <figcaption id="video-caption">
+          <p>A silent recording of computational sampling steps. Use the player controls to pause, seek, or view fullscreen. The text below describes both panels.</p>
+          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/diffusion-trajectory.mp4" download>Download MP4 ↗</a></div>
+        </figcaption>
+      </figure>
+
+      <section class="trajectory-reading" id="video-description" aria-labelledby="reading-title">
+        <div class="trajectory-reading-header">
+          <p class="section-label">How to read the film</p>
+          <h2 id="reading-title">Two views of the same generation process.</h2>
+        </div>
+        <div class="trajectory-views">
+          <article>
+            <span class="trajectory-view-label">Left / actual noisy state / PCA</span>
+            <h3>What the sampler holds.</h3>
+            <p>Each point is one generated cell’s current diffusion state, xₜ. This state contains a value channel and a support channel for every modeled gene. A fixed linear PCA projection lets us follow that state as noise is removed.</p>
+          </article>
+          <article>
+            <span class="trajectory-view-label">Right / predicted clean expression / UMAP</span>
+            <h3>What the model expects.</h3>
+            <p>At each step, the denoiser predicts a clean state, x̂₀(t). Its expression output is placed in a fixed UMAP reference. This panel shows how the current estimate of the completed profile changes as sampling proceeds.</p>
+          </article>
+        </div>
+        <div class="trajectory-note">
+          <strong>Keep your eye on the same points.</strong>
+          <p>Colors identify groups in the final generated expression profiles and stay attached to the same cell IDs throughout the film. These groups are not biological cell-type annotations. The horizontal progression represents computation, not cell differentiation or biological time.</p>
+        </div>
+      </section>
+
+      <section class="trajectory-keyframes" aria-labelledby="keyframes-title">
+        <div class="trajectory-keyframes-header">
+          <div><p class="section-label">A closer look</p><h2 id="keyframes-title">Selected recorded states.</h2></div>
+          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/keyframes.png">Open full-size image ↗</a></div>
+        </div>
+        <figure>
+          <a href="/research/pbisc-diffusion/assets/keyframes.png"><img src="/research/pbisc-diffusion/assets/keyframes.png" alt="Selected sampling steps shown side by side, with the actual noisy state in PCA and predicted clean expression in UMAP. Point colors and projection axes are fixed across steps." loading="lazy" decoding="async"></a>
+          <figcaption>These frames show recorded model outputs. Changes between panels reflect successive sampling states; an apparently smooth or separated UMAP pattern alone does not establish biological structure.</figcaption>
+        </figure>
+      </section>
+
+      <section class="trajectory-methods" aria-labelledby="methods-title">
+        <div><p class="section-label">Recording notes</p><h2 id="methods-title">What is fixed.<br>What is changing.</h2></div>
+        <div>
+          <dl>
+            <div><dt>Selected checkpoint</dt><dd>6K gene model · 1× trunk<br>Context 2,048 · epoch 12 · EMA</dd></div>
+            <div><dt>Generated cells</dt><dd>2,048 tracked cells<br>1,024 separate reference cells</dd></div>
+            <div><dt>Conditioning</dt><dd>One fixed PBMC pseudobulk profile</dd></div>
+            <div><dt>Sampling</dt><dd>50 denoising steps<br>Recorded states, without motion interpolation</dd></div>
+          </dl>
+          <div class="trajectory-method-copy">
+            <p>The projection reference is built from separately generated final profiles. PCA and UMAP are fit once, and the tracked cells pass through the same transforms at every recorded step, including the final frame. Each panel keeps its own fixed axis limits. The two panels are different coordinate systems; their distances cannot be compared directly.</p>
+            <p>Early states can lie far from the final reference distribution. UMAP still places them near reference neighbors, so early clusters or apparent trajectories can be projection effects. The actual-state PCA provides a complementary view, but neither panel measures generation quality on its own.</p>
+            <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/methods.json">Recording metadata (JSON) ↗</a><a href="/research/#pbisc">Read the PBISC research context →</a></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-identity"><span class="brand-code">VHL</span><p>Independent, non-commercial research toward computational models of individual biology.</p></div>
+        <div class="footer-column"><span>Research</span><a href="/research/">What we study</a><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/notes/">Notes</a><a href="/members/">Members</a></div>
+        <div class="footer-column footer-secondary"><span>Records</span><a href="/governance/">Governance</a><a href="/bylaws/">Bylaws</a><a href="/research-integrity/">Research practice</a><a href="/disclosures/">Disclosures</a></div>
+        <div class="footer-column"><span>Contact</span><a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a><p>Republic of Korea</p></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Virtual Human Lab</span><span>Affiliations do not imply institutional sponsorship.</span></div>
+    </footer>
+    <script src="/script.js?v=20260814-3"></script>
+  </body>
+</html>

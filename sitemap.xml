@@ -96,4 +96,16 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/members/ko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/members/"/>
   </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/research/pbisc-diffusion/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/research/pbisc-diffusion/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/"/>
+  </url>
 </urlset>

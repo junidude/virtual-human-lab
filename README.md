@@ -14,6 +14,7 @@ Then open `http://localhost:4173`.
 
 - `/` and `/ko/` — English and Korean home pages
 - `/research/` and `/research/ko/` — long-term virtual-human research agenda and current RNA work
+- `/research/pbisc-diffusion/` and `/research/pbisc-diffusion/ko/` — recorded diffusion sampling video with fixed PCA and UMAP views
 - `/papers/` and `/papers/ko/` — blurred manuscript previews and email-draft access request
 - `/blog/` and `/blog/ko/` — signed essays on research direction
 - `/notes/` and `/notes/ko/` — technical-note scope and current evidence register
