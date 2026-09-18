@@ -316,7 +316,7 @@
   display: inline-block;
   width: 16px;
   height: 6px;
-  background: var(--ink);
+  background: var(--cell-color, var(--ink));
 }
 
 .one-cell-legend i.dash {
@@ -332,6 +332,7 @@
 .one-cell-legend i.line {
   width: 1px;
   height: 12px;
+  background: var(--ink);
 }
 
 /* ---- inset and charts -------------------------------------------------------------------- */

@@ -311,7 +311,7 @@
     }
     for (const h of hlines) {
       g.append(svg("line", { x1: L, x2: W - R, y1: Y(h.v), y2: Y(h.v), stroke: MUTED, "stroke-dasharray": "2 3", "stroke-width": 0.8 }));
-      const tx = svg("text", { x: W - R, y: Y(h.v) - 4, "text-anchor": "end", class: "tick" }); tx.textContent = h.label; g.append(tx);
+      const tx = svg("text", { x: L + 4, y: Y(h.v) - 4, "text-anchor": "start", class: "tick" }); tx.textContent = h.label; g.append(tx);
     }
     for (const s of [0, 10, 20, 30, 40, 50]) {
       const tx = svg("text", { x: X(s), y: H - 10, "text-anchor": "middle", class: "tick" }); tx.textContent = String(s); g.append(tx);
@@ -452,6 +452,7 @@
     const cell = S.meta.cells.find((c) => c.slug === slug) || S.meta.cells.find((c) => c.slug === "monocyte") || S.meta.cells[0];
     if (!S.bins.has(cell.slug)) S.bins.set(cell.slug, await get(cell.file));
     S.cell = cell;
+    root.style.setProperty("--cell-color", COLOR[cell.label]);
     root.querySelectorAll(".one-cell-picker button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.slug === cell.slug)));
     $(".one-cell-cell-title").textContent = TXT.cellOf(cell.label, cell.tracked_index);
     if (location.hash.slice(1) !== cell.slug) history.replaceState(null, "", `#${cell.slug}`);

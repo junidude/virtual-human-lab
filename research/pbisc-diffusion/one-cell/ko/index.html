@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=20260814-3">
     <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260918-1">
-    <link rel="stylesheet" href="/research/pbisc-diffusion/one-cell/one-cell.css?v=20260918-1">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/one-cell/one-cell.css?v=20260918-2">
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -99,6 +99,7 @@
               </figure>
               <div class="one-cell-colorbar"><span>0</span><i aria-hidden="true"></i><span><span data-stat="vmax"></span> · log1p(CP10k)</span></div>
               <p class="one-cell-note">타일 하나 = 유전자 하나. 타일에 마우스를 올리거나 탭하면 유전자 이름이 보입니다. 블록과 유전자 순서는 생성 세포가 아니라 이 donor의 실제 세포로 정했습니다.</p>
+              <p class="one-cell-note"><strong>Shared</strong> = 거의 모든 세포가 발현하는 유전자(리보솜, 미토콘드리아, FOS·JUN 같은 초기 반응 유전자)라서 어떤 유형이든 켜져 있습니다. <strong>예측이 매 단계 바뀌는 이유</strong>는 모델이 노이즈가 조금 더 걷힌 입력으로 예측을 다시 하기 때문입니다. 세포 유형은 몇 단계 만에 정해지고, 그 뒤로는 이 세포에만 있는 유전자들이 채워집니다.</p>
               <div class="one-cell-tip" hidden></div>
             </section>
 
@@ -188,6 +189,6 @@
       <div class="footer-bottom"><span>© 2026 Virtual Human Lab</span><span>서면 합의가 없는 한 소속 표시는 기관의 후원이나 승인을 의미하지 않습니다.</span></div>
     </footer>
     <script src="/script.js?v=20260814-3"></script>
-    <script src="/research/pbisc-diffusion/one-cell/one-cell.js?v=20260918-1"></script>
+    <script src="/research/pbisc-diffusion/one-cell/one-cell.js?v=20260918-2"></script>
   </body>
 </html>

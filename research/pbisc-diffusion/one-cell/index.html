@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=20260814-3">
     <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260918-1">
-    <link rel="stylesheet" href="/research/pbisc-diffusion/one-cell/one-cell.css?v=20260918-1">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/one-cell/one-cell.css?v=20260918-2">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -89,6 +89,7 @@
               </figure>
               <div class="one-cell-colorbar"><span>0</span><i aria-hidden="true"></i><span><span data-stat="vmax"></span> · log1p(CP10k)</span></div>
               <p class="one-cell-note">One tile = one gene. Hover or tap a tile for its name. Blocks and gene order come from real cells of this donor, never from the generated cell.</p>
+              <p class="one-cell-note"><strong>Shared</strong> = genes almost every cell expresses (ribosome, mitochondria, early-response genes such as FOS and JUN), so they are on for every type. <strong>The prediction changes at every step</strong> because the model redoes it from a less noisy input: the cell type is fixed within a few steps, then the genes specific to this one cell are filled in.</p>
               <div class="one-cell-tip" hidden></div>
             </section>
 
@@ -178,6 +179,6 @@
       <div class="footer-bottom"><span>© 2026 Virtual Human Lab</span><span>Affiliations do not imply institutional sponsorship.</span></div>
     </footer>
     <script src="/script.js?v=20260814-3"></script>
-    <script src="/research/pbisc-diffusion/one-cell/one-cell.js?v=20260918-1"></script>
+    <script src="/research/pbisc-diffusion/one-cell/one-cell.js?v=20260918-2"></script>
   </body>
 </html>
