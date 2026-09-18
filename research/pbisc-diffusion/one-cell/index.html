@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>One Cell, Step by Step | Virtual Human Lab</title>
+    <meta name="description" content="Step through one recorded PBISC-Diffusion cell: the noisy state, the model's prediction, a cell-type gauge, named marker genes and its path on the UMAP.">
+    <meta property="og:title" content="One Cell, Step by Step | Virtual Human Lab">
+    <meta property="og:description" content="Step through one recorded PBISC-Diffusion cell: the noisy state, the model's prediction, a cell-type gauge, named marker genes and its path on the UMAP.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.virtualhumanlab.com/research/pbisc-diffusion/one-cell/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:image" content="https://www.virtualhumanlab.com/research/pbisc-diffusion/assets/one-cell-v2/poster.png">
+    <meta property="og:image:alt" content="One generated cell: noisy state and predicted clean cell as gene tiles, with a cell-type gauge">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/one-cell/">
+    <link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/one-cell/">
+    <link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/one-cell/ko/">
+    <link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/one-cell/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=20260814-3">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260918-1">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/one-cell/one-cell.css?v=20260918-1">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Virtual Human Lab home">
+          <span class="brand-code" aria-hidden="true">VHL</span>
+          <span class="brand-name">Virtual Human Lab</span>
+        </a>
+        <div class="header-actions">
+          <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+            <a href="/research/">Research</a><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/notes/">Notes</a><a href="/members/">Members</a><a class="nav-contact" href="/#contact">Contact</a>
+          </nav>
+          <nav class="site-language" aria-label="Language selection"><span lang="en" aria-current="page">EN</span><a href="/research/pbisc-diffusion/one-cell/ko/" lang="ko" hreflang="ko" aria-label="한국어로 보기">KR</a></nav>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">Open navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <section class="trajectory-hero trajectory-compact" aria-labelledby="one-cell-title">
+        <a class="trajectory-back" href="/research/pbisc-diffusion/#single-cell">← PBISC-Diffusion / One cell</a>
+        <p class="eyebrow">Interactive / Recorded sampling / 50 steps</p>
+        <h1 id="one-cell-title">One cell, <em>step by step.</em></h1>
+        <p class="one-cell-deck">The model starts from pure noise and removes a little of it at each of 50 steps. At every step it also predicts the finished cell. The prediction picks a cell type within a few steps. The noisy state catches up much later.</p>
+        <div class="trajectory-badges"><span>ctx2048 · E12 · EMA</span><span>50 steps</span><span>2,980 genes</span><span>One cell per type</span><span>Recorded run · no new inference</span></div>
+      </section>
+
+      <div class="one-cell" data-one-cell data-assets="/research/pbisc-diffusion/assets/one-cell-v2/">
+        <p class="one-cell-status" role="status">Loading the recorded run…</p>
+        <div class="one-cell-body">
+          <div class="one-cell-controls">
+            <div class="one-cell-picker" role="group" aria-label="Choose a generated cell"></div>
+            <div class="one-cell-transport">
+              <button class="one-cell-play" type="button" aria-pressed="false">Play</button>
+              <button class="one-cell-prev" type="button" aria-label="Previous step">‹</button>
+              <input class="one-cell-slider" type="range" min="0" max="50" step="1" value="0" aria-label="Denoising step">
+              <button class="one-cell-next" type="button" aria-label="Next step">›</button>
+              <output class="one-cell-readout" aria-live="off"></output>
+            </div>
+          </div>
+
+          <div class="one-cell-stage">
+            <section class="one-cell-maps" aria-labelledby="maps-title">
+              <div class="one-cell-panel-head">
+                <div><p class="one-cell-kicker">Genes</p><h3 id="maps-title">Noise in, cell out</h3><p class="one-cell-cell-title"></p></div>
+                <div class="one-cell-toggle" role="group" aria-label="Genes shown">
+                  <button type="button" data-genes="key" aria-pressed="true">Named blocks · <span data-stat="key-genes"></span></button>
+                  <button type="button" data-genes="all" aria-pressed="false">All <span data-stat="all-genes"></span></button>
+                </div>
+              </div>
+              <figure class="one-cell-map">
+                <figcaption><strong>What the model sees</strong><span>Noisy state x<sub>t</sub></span></figcaption>
+                <canvas data-map="xt" aria-label="Noisy diffusion state of the selected cell at this step, one tile per gene"></canvas>
+              </figure>
+              <figure class="one-cell-map">
+                <figcaption><strong>What the model predicts</strong><span>Clean cell x̂<sub>0</sub></span></figcaption>
+                <canvas data-map="x0" aria-label="The model's prediction of the finished cell at this step, one tile per gene"></canvas>
+              </figure>
+              <figure class="one-cell-map is-reference">
+                <figcaption><strong>Reference</strong><span class="one-cell-ref-label"></span></figcaption>
+                <canvas data-map="ref" aria-label="Average of real cells of the same type from the same donor, one tile per gene"></canvas>
+              </figure>
+              <div class="one-cell-colorbar"><span>0</span><i aria-hidden="true"></i><span><span data-stat="vmax"></span> · log1p(CP10k)</span></div>
+              <p class="one-cell-note">One tile = one gene. Hover or tap a tile for its name. Blocks and gene order come from real cells of this donor, never from the generated cell.</p>
+              <div class="one-cell-tip" hidden></div>
+            </section>
+
+            <aside class="one-cell-side">
+              <section aria-labelledby="gauge-title">
+                <p class="one-cell-kicker">Cell type</p>
+                <h3 id="gauge-title">Which cell type is it becoming?</h3>
+                <p class="one-cell-callout" aria-live="polite"></p>
+                <div class="one-cell-gauge-rows"></div>
+                <div class="one-cell-legend"><span><i></i>Prediction</span><span><i class="dash"></i>Noisy state</span><span><i class="line"></i>1 = typical real cell</span></div>
+                <p class="one-cell-note">0 = the average of all five types. A type counts as settled once it stays on top above 0.5.</p>
+              </section>
+              <section class="one-cell-umap" aria-labelledby="umap-title">
+                <p class="one-cell-kicker">Map</p>
+                <h3 id="umap-title">Where the prediction sits</h3>
+                <canvas data-umap aria-label="The prediction's path on the fixed UMAP from the main page"></canvas>
+                <div class="one-cell-legend"><span><i style="background:#9ca3af"></i>Real cells</span><span><i style="background:linear-gradient(90deg,#0072B2,#D55E00,#009E73,#CC79A7,#E69F00);opacity:.55"></i>Generated endpoints · final type</span><span><i style="background:#f0522d;height:8px;width:8px;border-radius:50%"></i>Now</span><span><i style="background:transparent;border:1px solid #62645d;width:7px;height:7px"></i>Step 0</span></div>
+                <p class="one-cell-note">Same fixed UMAP as the main recording.</p>
+              </section>
+              <section aria-labelledby="similarity-title">
+                <p class="one-cell-kicker">Similarity</p>
+                <h3 id="similarity-title">How close to real cells?</h3>
+                <div class="one-cell-similarity-chart"></div>
+                <div class="one-cell-legend"><span><i></i>Prediction</span><span><i class="dash"></i>Noisy state</span><span><i class="band"></i><span class="one-cell-similarity-band"></span></span></div>
+                <p class="one-cell-note">Cosine to the real average of this type, over all 2,980 genes. For scale: a real cell against its nearest other real cell scores <span data-stat="nn-median"></span> (median) and never above <span data-stat="nn-max"></span>. Counting noise in single cells sets that ceiling, so a match near 1.0 is not expected.</p>
+              </section>
+            </aside>
+          </div>
+
+          <section class="one-cell-section" aria-labelledby="markers-title">
+            <div class="one-cell-section-head">
+              <h2 id="markers-title">Named genes</h2>
+              <p>Each bar is the selected cell at this step. The gray bar with a black edge is the real average for its type, from the same donor.</p>
+            </div>
+            <div class="one-cell-marker-key">
+              <div class="one-cell-toggle" role="group" aria-label="Values shown in the bars">
+                <button type="button" data-source="x0" aria-pressed="true">Prediction x̂<sub>0</sub></button>
+                <button type="button" data-source="xt" aria-pressed="false">Noisy state x<sub>t</sub></button>
+              </div>
+              <div class="one-cell-legend"><span><i style="background:#141512;opacity:.15;border-right:2px solid #141512"></i><span class="one-cell-ref-label"></span></span></div>
+            </div>
+            <div class="one-cell-marker-grid"></div>
+          </section>
+
+          <section class="one-cell-section" aria-labelledby="population-title">
+            <div class="one-cell-section-head">
+              <h2 id="population-title">All <span data-stat="cells"></span> generated cells</h2>
+              <p>The same measurement for every recorded cell, not only the one shown above.</p>
+            </div>
+            <div class="one-cell-population">
+              <dl class="one-cell-stats">
+                <div><dt>Prediction settles</dt><dd>Step <span data-stat="settle-pred"></span><small>median · p10–p90 <span data-stat="settle-pred-range"></span></small></dd></div>
+                <div><dt>Noisy state settles</dt><dd>Step <span data-stat="settle-noisy"></span><small>median · p10–p90 <span data-stat="settle-noisy-range"></span></small></dd></div>
+                <div><dt>Gauge vs scANVI</dt><dd><span data-stat="agree-real"></span><small>agreement on real cells · <span data-stat="agree-endpoint"></span> on generated endpoints</small></dd></div>
+                <div><dt>Never settle</dt><dd><span data-stat="never"></span><small>cells whose final type stays below 0.5</small></dd></div>
+              </dl>
+              <div>
+                <div class="one-cell-population-chart"></div>
+                <div class="one-cell-legend"><span><i></i>Prediction</span><span><i class="dash"></i>Noisy state</span></div>
+                <p class="one-cell-note one-cell-population-summary"></p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <section class="one-cell-methods" aria-labelledby="one-cell-methods-title">
+        <h2 id="one-cell-methods-title" class="section-label">Methods & data</h2>
+        <ul>
+          <li>Recorded run: PBISC-Diffusion ctx2048 E12 (EMA weights), DDIM with 50 steps and no added noise, one pseudobulk condition from GSE135779, <span data-stat="cells"></span> generated cells. This page runs no new model inference.</li>
+          <li>Shown cells: for each type, the first generated cell whose final scANVI label is that type. The rule was fixed before looking at any result. The Monocyte is the same cell as on the main page.</li>
+          <li>Gene blocks come from the <span data-stat="real-cells"></span> real cells of the same donor. A marker is at least 0.5 log1p(CP10k) above the next type and detected in at least 20% of its type. IFN-α = the measured genes of MSigDB HALLMARK_INTERFERON_ALPHA_RESPONSE. Shared = detected in at least half the cells of every type.</li>
+          <li>Gauge: marker genes only. 0 = the average of the five type averages, 1 = a typical real cell of that type. It agrees with scANVI on <span data-stat="agree-real"></span> of real cells and <span data-stat="agree-endpoint"></span> of generated endpoints.</li>
+          <li>The noisy state is the decoded diffusion state. Its early steps are not biological counts. All values are log1p(CP10k) on the 2,980-gene panel, stored to 1/255 of the colour range.</li>
+          <li class="trajectory-links"><a href="/research/pbisc-diffusion/assets/one-cell-v2/meta.json">Page data (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/one-cell-v2/umap.json">UMAP points (JSON) ↗</a><a href="/research/pbisc-diffusion/#single-cell">Main recording ↗</a></li>
+        </ul>
+        <noscript><p class="one-cell-note">This page needs JavaScript. The <a href="/research/pbisc-diffusion/#single-cell">main page</a> has a video version.</p></noscript>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-identity"><span class="brand-code">VHL</span><p>Independent, non-commercial research toward computational models of individual biology.</p></div>
+        <div class="footer-column"><span>Research</span><a href="/research/">What we study</a><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/notes/">Notes</a><a href="/members/">Members</a></div>
+        <div class="footer-column footer-secondary"><span>Records</span><a href="/governance/">Governance</a><a href="/bylaws/">Bylaws</a><a href="/research-integrity/">Research practice</a><a href="/disclosures/">Disclosures</a></div>
+        <div class="footer-column"><span>Contact</span><a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a><p>Republic of Korea</p></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Virtual Human Lab</span><span>Affiliations do not imply institutional sponsorship.</span></div>
+    </footer>
+    <script src="/script.js?v=20260814-3"></script>
+    <script src="/research/pbisc-diffusion/one-cell/one-cell.js?v=20260918-1"></script>
+  </body>
+</html>
