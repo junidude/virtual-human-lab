@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=20260814-3">
-    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260917-3">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260918-1">
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -60,7 +60,7 @@
         <div class="trajectory-badges"><span>ctx2048 · E12 · EMA</span><span>입력 · Pseudobulk</span><span>Generated · 4,096 cells</span><span>Ground truth · 4,362 cells</span></div>
       </section>
 
-      <nav class="trajectory-tabs" aria-label="기록한 분석"><a href="#sampling">01 / 세포</a><a href="#volcano">02 / 유전자</a><a href="#methods-title">방법</a></nav>
+      <nav class="trajectory-tabs" aria-label="기록한 분석"><a href="#sampling">01 / 세포</a><a href="#single-cell">02 / 세포 한 개</a><a href="#volcano">03 / 유전자</a><a href="#methods-title">방법</a></nav>
 
       <div class="trajectory-point-key">
         <table><caption>점 하나</caption><tbody><tr><th scope="row">PCA / UMAP</th><td>세포 하나</td></tr><tr><th scope="row">Volcano</th><td>유전자 하나 · 패널당 최대 2,980개</td></tr></tbody></table>
@@ -84,6 +84,20 @@
         <figure><a href="/research/pbisc-diffusion/assets/v3/keyframes.png"><img src="/research/pbisc-diffusion/assets/v3/keyframes.png" alt="기록한 샘플링 단계: 생성 세포 4,096개는 최종 PBMC5 및 Other 색상, ground truth 세포 4,362개는 회색입니다." loading="lazy" decoding="async"></a></figure>
       </section>
 
+      <section class="trajectory-volcano trajectory-single-cell" id="single-cell" aria-labelledby="single-cell-title">
+        <div class="trajectory-volcano-intro trajectory-volcano-intro-compact"><p class="section-label">Noise → Expression</p><h2 id="single-cell-title">세포 한 개</h2><div class="trajectory-badges"><span>Generated · 1 cell</span><span>Ground truth · 1 cell</span><span>유전자 2,980개</span></div></div>
+        <figure class="trajectory-player trajectory-volcano-player trajectory-single-cell-player">
+          <div class="trajectory-player-top"><span>Denoising</span><span>Ground truth · Nearest cell</span></div>
+          <video controls playsinline preload="metadata" poster="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-poster.png" aria-label="생성 세포 한 개의 실제 denoising 상태를 유전자 발현 heatmap으로 표시합니다. 최종 발현과 가장 가까운 실제 세포 한 개는 고정합니다." aria-describedby="single-cell-caption">
+            <source src="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-trajectory.mp4" type="video/mp4">
+            <p><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-trajectory.mp4">MP4 영상을 다운로드해 주세요.</a></p>
+          </video>
+          <figcaption id="single-cell-caption"><p>한 칸 = 유전자 하나 · 최종 결과 기준 최근접 세포</p><div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-trajectory.mp4" download>MP4 다운로드 ↗</a></div></figcaption>
+        </figure>
+        <figure class="trajectory-comparison"><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-keyframes.png"><img src="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-keyframes.png" loading="lazy" decoding="async" alt="생성 세포 한 개의 주요 denoising 단계. 한 칸은 유전자 하나이며, 최종 결과와 가장 가까운 실제 세포 한 개를 Ground truth로 고정합니다."></a><figcaption>주요 단계</figcaption></figure>
+        <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-keyframes.png">원본 이미지 ↗</a><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-keyframes.pdf" download>PDF ↗</a></div>
+      </section>
+
       <section class="trajectory-volcano" id="volcano" aria-labelledby="volcano-title">
         <div class="trajectory-volcano-intro trajectory-volcano-intro-compact"><p class="section-label">유전자 발현 / SLE vs HC</p><h2 id="volcano-title">SLE vs HC</h2><div class="trajectory-badges"><span>HC · 12명</span><span>SLE · 30명</span><span>생성 세포 · 63,000개</span></div></div>
         <div class="trajectory-label-legend trajectory-direction-legend" aria-label="유전자 발현 차이의 방향"><span><i style="--label-color:#2563EB" aria-hidden="true"></i>HC에서 높음</span><span><i style="--label-color:#DC2626" aria-hidden="true"></i>SLE에서 높음</span><span><i class="trajectory-gene-outline" aria-hidden="true"></i>테두리 · IFNα 유전자</span><span><i style="--label-color:#9CA3AF" aria-hidden="true"></i>회색 · 0 / 판정 불가</span></div>
@@ -103,7 +117,7 @@
         <h2 id="methods-title">방법 및 데이터</h2>
         <details class="trajectory-method-downloads"><summary>기록 메타데이터 · 통계 · 다운로드</summary>
           <div class="trajectory-badges"><span>질환 그룹 비교 · SLE vs HC</span><span>IFNα 집합 · 97개 중 61개 측정</span><span>기증자·유형당 세포 ≥20개 · 그룹당 기증자 ≥5명</span><span>Other · 기증자 수 부족</span></div>
-          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/v3/methods.json">샘플링 메타데이터 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-methods.json">Volcano 방법 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-stats.csv.gz">유전자별 통계 (CSV.gz) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-endpoint-diagnostics.csv">최종 결과 진단 (CSV) ↗</a><a href="/research/pbisc-diffusion/assets/v2/diffusion-trajectory.mp4">이전 영상 (v2) ↗</a></div>
+          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/v3/methods.json">샘플링 메타데이터 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-methods.json">단일 세포 방법 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-methods.json">Volcano 방법 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-stats.csv.gz">유전자별 통계 (CSV.gz) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-endpoint-diagnostics.csv">최종 결과 진단 (CSV) ↗</a><a href="/research/pbisc-diffusion/assets/v2/diffusion-trajectory.mp4">이전 영상 (v2) ↗</a></div>
         </details>
         <p class="trajectory-gene-source"><a href="https://www.gsea-msigdb.org/gsea/msigdb/human/geneset/HALLMARK_INTERFERON_ALPHA_RESPONSE.html">MSigDB · HALLMARK_INTERFERON_ALPHA_RESPONSE</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
       </section>

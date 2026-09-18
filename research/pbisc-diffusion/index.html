@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=20260814-3">
-    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260917-3">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260918-1">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -50,7 +50,7 @@
         <div class="trajectory-badges"><span>ctx2048 · E12 · EMA</span><span>Input · Pseudobulk</span><span>Generated · 4,096 cells</span><span>Ground truth · 4,362 cells</span></div>
       </section>
 
-      <nav class="trajectory-tabs" aria-label="Recorded studies"><a href="#sampling">01 / Cells</a><a href="#volcano">02 / Genes</a><a href="#methods-title">Methods</a></nav>
+      <nav class="trajectory-tabs" aria-label="Recorded studies"><a href="#sampling">01 / Cells</a><a href="#single-cell">02 / One cell</a><a href="#volcano">03 / Genes</a><a href="#methods-title">Methods</a></nav>
 
       <div class="trajectory-point-key">
         <table><caption>One dot</caption><tbody><tr><th scope="row">PCA / UMAP</th><td>Cell</td></tr><tr><th scope="row">Volcano</th><td>Gene · up to 2,980 / panel</td></tr></tbody></table>
@@ -74,6 +74,20 @@
         <figure><a href="/research/pbisc-diffusion/assets/v3/keyframes.png"><img src="/research/pbisc-diffusion/assets/v3/keyframes.png" alt="Recorded sampling steps: 4,096 generated cells in final PBMC5 plus Other colors, and 4,362 ground truth cells in gray." loading="lazy" decoding="async"></a></figure>
       </section>
 
+      <section class="trajectory-volcano trajectory-single-cell" id="single-cell" aria-labelledby="single-cell-title">
+        <div class="trajectory-volcano-intro trajectory-volcano-intro-compact"><p class="section-label">Noise → Expression</p><h2 id="single-cell-title">One cell</h2><div class="trajectory-badges"><span>Generated · 1 cell</span><span>Ground truth · 1 cell</span><span>2,980 genes</span></div></div>
+        <figure class="trajectory-player trajectory-volcano-player trajectory-single-cell-player">
+          <div class="trajectory-player-top"><span>Denoising</span><span>Ground truth · Nearest cell</span></div>
+          <video controls playsinline preload="metadata" poster="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-poster.png" aria-label="One generated cell’s recorded denoising states as gene-expression heatmaps, alongside the fixed observed cell nearest to its final expression" aria-describedby="single-cell-caption">
+            <source src="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-trajectory.mp4" type="video/mp4">
+            <p><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-trajectory.mp4">Download the MP4 recording.</a></p>
+          </video>
+          <figcaption id="single-cell-caption"><p>One tile = one gene · Endpoint-matched comparison</p><div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-trajectory.mp4" download>Download MP4 ↗</a></div></figcaption>
+        </figure>
+        <figure class="trajectory-comparison"><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-keyframes.png"><img src="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-keyframes.png" loading="lazy" decoding="async" alt="Selected denoising steps for one generated cell: each tile is a gene; the same nearest observed cell remains fixed as Ground truth."></a><figcaption>Selected steps</figcaption></figure>
+        <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-keyframes.png">Full-size image ↗</a><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-keyframes.pdf" download>PDF ↗</a></div>
+      </section>
+
       <section class="trajectory-volcano" id="volcano" aria-labelledby="volcano-title">
         <div class="trajectory-volcano-intro trajectory-volcano-intro-compact"><p class="section-label">Gene expression / SLE vs HC</p><h2 id="volcano-title">SLE vs HC</h2><div class="trajectory-badges"><span>HC · 12 donors</span><span>SLE · 30 donors</span><span>Generated · 63,000 cells</span></div></div>
         <div class="trajectory-label-legend trajectory-direction-legend" aria-label="Gene expression direction"><span><i style="--label-color:#2563EB" aria-hidden="true"></i>HC higher</span><span><i style="--label-color:#DC2626" aria-hidden="true"></i>SLE higher</span><span><i class="trajectory-gene-outline" aria-hidden="true"></i>Outline · IFNα genes</span><span><i style="--label-color:#9CA3AF" aria-hidden="true"></i>Gray · Equal / undefined</span></div>
@@ -93,7 +107,7 @@
         <h2 id="methods-title">Methods & data</h2>
         <details class="trajectory-method-downloads"><summary>Recording metadata · Statistics · Downloads</summary>
           <div class="trajectory-badges"><span>Disease contrast · SLE vs HC</span><span>IFNα set · 61 / 97 genes measured</span><span>≥20 cells / donor / type · ≥5 donors / group</span><span>Other · Insufficient donors</span></div>
-          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/v3/methods.json">Sampling metadata (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-methods.json">Volcano methods (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-stats.csv.gz">Gene statistics (CSV.gz) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-endpoint-diagnostics.csv">Endpoint diagnostics (CSV) ↗</a><a href="/research/pbisc-diffusion/assets/v2/diffusion-trajectory.mp4">Previous recording (v2) ↗</a></div>
+          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/v3/methods.json">Sampling metadata (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-methods.json">One-cell methods (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-methods.json">Volcano methods (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-stats.csv.gz">Gene statistics (CSV.gz) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-endpoint-diagnostics.csv">Endpoint diagnostics (CSV) ↗</a><a href="/research/pbisc-diffusion/assets/v2/diffusion-trajectory.mp4">Previous recording (v2) ↗</a></div>
         </details>
         <p class="trajectory-gene-source"><a href="https://www.gsea-msigdb.org/gsea/msigdb/human/geneset/HALLMARK_INTERFERON_ALPHA_RESPONSE.html">MSigDB · HALLMARK_INTERFERON_ALPHA_RESPONSE</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
       </section>

@@ -1,0 +1,110 @@
+{
+  "schema_version": "pbisc.single_cell_heatmap.v1",
+  "status": "completed",
+  "checkpoint": "ctx2048 E12 EMA",
+  "checkpoint_sha256": "f634f0ef06d06cd547e7c53cef58942520f3d998b8d99eba4798ca53fb09f315",
+  "new_model_inference": false,
+  "compute": "CPU on server_2",
+  "generated_cells_displayed": 1,
+  "ground_truth_cells_displayed": 1,
+  "genes_displayed": 2980,
+  "recorded_states": 51,
+  "sampling_steps": 50,
+  "generated_cell": {
+    "index_zero_based": 0,
+    "label": "Monocyte",
+    "label_source": "Frozen endpoint scANVI annotation",
+    "selection": "First seeded cell; selected before matching, without a quality screen"
+  },
+  "ground_truth": {
+    "label": "Monocyte",
+    "candidate_cells": 4362,
+    "source": "Observed raw UMI counts; same donor as the pseudobulk condition; GSE135779",
+    "selection": "Maximum cosine similarity to the final generated expression on all 2980 common measured genes",
+    "normalization": "Sum normalization to 10000 within common measured genes, then log1p",
+    "cell_type_restriction": false,
+    "tie_break": "Lowest observed matrix row",
+    "fixed_across_frames": true,
+    "interpretation": "Post-hoc nearest observed comparison, not a paired reconstruction target or independent test cell. No monotonic convergence is imposed."
+  },
+  "display": {
+    "animated_quantity": "Decoded noisy diffusion state x_t, not predicted x0",
+    "decoding": "clip((value + 1)/2, 0, 1) * 8; zero genes where analog support <= 0; expm1; common-panel CP10k; log1p",
+    "intermediate_units": "Noisy states are decoded for display; early frames are not observed or valid biological counts.",
+    "fixed_gene_order": "Alphabetical symbol, Ensembl ID tie break",
+    "grid": [
+      50,
+      60
+    ],
+    "empty_tiles": 20,
+    "colormap": "magma",
+    "fixed_color_limits": [
+      0,
+      8.5
+    ],
+    "color_units": "log1p(CP10k)",
+    "temporal_interpolation": false,
+    "synthetic_noise": false,
+    "duration_seconds": 20,
+    "fps": 20,
+    "resolution": [
+      1600,
+      1000
+    ]
+  },
+  "validation": {
+    "final_decoding_bit_identical_to_saved_endpoint": true,
+    "final_support_identical": true,
+    "source_gene_ids_identical": true,
+    "endpoint_cosine_similarity": 0.7807461993723347,
+    "initial_cosine_similarity": 0.15339190858770738,
+    "similarity_decreasing_transitions": 3,
+    "source_raw_cell_sha256": "06b4f1459573846d1d05e7bbb4096ae44de5f0acbc771eb6e04e3dcf34291d28",
+    "observed_input_files": {
+      "real_reference_counts.npz": {
+        "sha256": "208d699a204213dd56e0fb4f40dbf740c331b7cd4ab4998c92cc3280b8de72a9"
+      },
+      "gene_ids.npy": {
+        "sha256": "c874339c97a97e46eaaf56b2b62dea0311e60dec0af5ab40deb6ff96d7f65508"
+      },
+      "gene_symbols.npy": {
+        "sha256": "8a4ef225ade8120af72a95d70554e694005213836365f1934c2440acb7228f33"
+      },
+      "model_column_indices.npy": {
+        "sha256": "2c938250300acea1a4e44e0b7a89ce049c1e31595bdad22d0f384b5604f0a8d8"
+      }
+    },
+    "capture_manifest_sha256": "f3607992afe390fe9f043323ac305f41df19fa5e36472818ad3c4704633a88e8",
+    "renderer_sha256": "676e57216562c9bd6c02cc7ea7896d13b38969edd010e06e939d8a1f107f6927"
+  },
+  "assets": {
+    "single-cell-endpoint.png": {
+      "bytes": 75703,
+      "sha256": "27a4729cdc518634dbbd751533debd04da24c174e96270c7cd1e93c419f2c0ea"
+    },
+    "single-cell-keyframes.pdf": {
+      "bytes": 45602,
+      "sha256": "494f36b27c0de7449ef4cf70843d55cf15a372b2a2eea47f92dd83c6cc512480"
+    },
+    "single-cell-keyframes.png": {
+      "bytes": 169927,
+      "sha256": "992f1486454dbdec8c8ec05a45689fae4e4685461ea8797bb3fc643a597ea405"
+    },
+    "single-cell-metrics.csv": {
+      "bytes": 3123,
+      "sha256": "22f5ac1987f85fee3a7117d157e8733f5aa21e0349659457ae20240ab9e5ea49"
+    },
+    "single-cell-poster.png": {
+      "bytes": 75513,
+      "sha256": "da49f90d37136dc84302e0c856c83ec79b92ca00ddd793d70c9e22ee6cade645"
+    },
+    "single-cell-trajectory.mp4": {
+      "bytes": 536530,
+      "sha256": "a0d5b7f817cc2e0fb940e5ec9288326fe60dc72d29cda43797d965e5d5189fdb"
+    },
+    "single-cell-values.npz": {
+      "bytes": 1495870,
+      "sha256": "b366112bd3b09c46f7c25a167a037ec34baae87f0585ac4de10c58434c90748b"
+    }
+  }
+}
