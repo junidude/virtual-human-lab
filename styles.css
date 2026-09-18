@@ -772,6 +772,18 @@ a {
   font-size: 15px;
 }
 
+.page-head .back {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.page-head .back:hover {
+  color: var(--blue);
+}
+
 .section-label {
   color: var(--muted);
   font-size: 14px;

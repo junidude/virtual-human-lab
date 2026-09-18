@@ -16,6 +16,7 @@ Then open `http://localhost:4173`.
 - `/research/` and `/research/ko/` — the three research projects: PBISC, RNA-LLM and RL-env
 - `/research/pbisc-diffusion/` and `/research/pbisc-diffusion/ko/` — recorded diffusion sampling video with fixed PCA and UMAP views
 - `/research/pbisc-diffusion/one-cell/` and its `/ko/` page — interactive step-by-step view of one generated cell
+- `/research/talk/` and `/research/talk/ko/` — TALK playground: recorded RNA-LLM answers for real cells (data from `python tools/make_talk_demo.py`)
 - `/papers/` and `/papers/ko/` — blurred manuscript previews and email-draft access request
 - `/blog/` and `/blog/ko/` — signed essays on research direction
 - `/notes/` and `/notes/ko/` — what a technical note will contain (none are public yet)

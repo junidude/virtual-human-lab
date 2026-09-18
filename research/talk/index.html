@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TALK | Virtual Human Lab</title>
+    <meta name="description" content="Pick real cells, hand them to our RNA-language model TALK as RNA tokens, and read its recorded answers.">
+    <meta property="og:title" content="TALK | Virtual Human Lab">
+    <meta property="og:description" content="Pick real cells, hand them to our RNA-language model TALK as RNA tokens, and read its recorded answers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.virtualhumanlab.com/research/talk/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:image" content="https://www.virtualhumanlab.com/assets/og-image.png?v=20260919-1">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.virtualhumanlab.com/research/talk/">
+    <link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/talk/">
+    <link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/talk/ko/">
+    <link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/talk/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=20260919-3">
+    <link rel="stylesheet" href="/research/talk/talk.css?v=20260919-3">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Virtual Human Lab home"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation"><a href="/research/" aria-current="page">Research</a><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/members/">Members</a></nav>
+        <div class="header-end">
+          <a class="header-link" href="mailto:junidude14@gmail.com">Contact</a>
+          <a class="site-language" href="/research/talk/ko/" lang="ko" hreflang="ko" aria-label="한국어로 보기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3C9.5 5.6 8.2 8.6 8.2 12s1.3 6.4 3.8 9"/></svg><span>한국어</span></a>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">Open navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-head" aria-labelledby="talk-title">
+        <a class="back" href="/research/#rna-llm">← Research</a>
+        <h1 id="talk-title">TALK</h1>
+        <p>Give a language model real cells as RNA tokens and ask what they are. Every answer here is a recorded run of our trained models; nothing runs live.</p>
+        <p class="meta">RNA-LLM · Public PBMC data (Kang et al. 2018) · 256 cells · 3 model versions</p>
+      </section>
+
+      <section class="talk" data-talk data-src="/research/talk/data/talk-demo.json?v=20260919-1" aria-label="TALK">
+        <p class="talk-status" role="status">Loading the recorded answers…</p>
+        <div class="talk-body">
+          <div class="talk-controls">
+            <div class="talk-field"><span>Cells</span><div class="seg" data-pick="type" role="group" aria-label="Cells"></div></div>
+            <div class="talk-field"><span>Condition</span><div class="seg" data-pick="state" role="group" aria-label="Condition"></div></div>
+            <div class="talk-field"><span>How many</span><div class="seg" data-pick="n" role="group" aria-label="How many"></div></div>
+            <div class="talk-field"><span>Model</span><div class="seg" data-pick="model" role="group" aria-label="Model"></div></div>
+          </div>
+          <p class="talk-models-note">Fine-tuned = supervised training. GRPO and DAPO add 500 steps of reinforcement learning to it.</p>
+          <div class="talk-stage">
+            <div class="talk-col">
+              <h2>What TALK gets</h2>
+              <figure class="talk-map">
+                <canvas aria-label="Each dot is one cell’s RNA vector, the input TALK reads. Selected cells are bright."></canvas>
+                <div class="talk-map-legend" aria-hidden="true"><span><i style="--c:#3AA0FF"></i>B</span><span><i style="--c:#1FD1A0"></i>Monocyte</span><span><i style="--c:#FF8A3D"></i>CD4 T</span><span><i style="--c:#E58BFF"></i>NK</span><span><i style="--c:#fff"></i>Control</span><span><i class="ring"></i>IFN-β</span></div>
+                <figcaption>Each dot is one cell’s RNA vector, the input TALK reads. Selected cells are bright.</figcaption>
+              </figure>
+              <div class="bubble bubble-user"><span class="bubble-label">Prompt · <span class="talk-prompt-count"></span></span><p class="talk-prompt"></p></div>
+              <div class="talk-panel"><h3>Measured in these cells</h3><p>Mean log1p(CP10k) of marker genes. TALK never sees these numbers as text.</p><div class="talk-bars"></div></div>
+            </div>
+            <div class="talk-col">
+              <h2>What TALK says</h2>
+              <div class="bubble bubble-model" aria-live="polite">
+                <span class="bubble-label">TALK</span>
+                <details class="talk-think" open><summary></summary><div class="talk-reasoning"></div></details>
+                <div class="talk-answer" hidden></div>
+              </div>
+              <p class="talk-truth"></p>
+              <p class="talk-gene-summary talk-run"></p>
+              <p class="talk-gene-key"><mark class="yes">GENE</mark> detected in these cells · <mark class="no">GENE</mark> not detected. Hover a gene for the count.</p>
+              <p class="talk-run"></p>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="talk-how">
+        <div class="section-head"><h2 id="talk-how">How often it’s right</h2></div>
+        <div class="talk-stats">
+          <div class="talk-stat"><strong>8/8</strong><p>With 8 cells, all three models named the cell type of every group. With one cell: 4–5 of 8.</p></div>
+          <div class="talk-stat"><strong>4/8</strong><p>Condition is not solved yet. With 8 or 16 cells no model ever answered IFN-β, which scores the same as always saying control.</p></div>
+          <div class="talk-stat"><strong>42%</strong><p>On average, a gene TALK names in its reasoning is detected in 42% of its input cells, versus 31% of cells of other types (8-cell groups).</p></div>
+        </div>
+        <details class="talk-table">
+          <summary>All scores: type · condition, out of 8 groups</summary>
+          <div class="table-scroll"><table><thead><tr><th>Model</th><th>1 cell</th><th>8 cells</th><th>16 cells</th><th>32 cells</th></tr></thead><tbody><tr><td>Fine-tuned</td><td>4/8 · 5/8</td><td>8/8 · 4/8</td><td>8/8 · 4/8</td><td>6/8 · 5/8</td></tr><tr><td>GRPO</td><td>4/8 · 5/8</td><td>8/8 · 4/8</td><td>8/8 · 4/8</td><td>7/8 · 5/8</td></tr><tr><td>DAPO</td><td>5/8 · 5/8</td><td>8/8 · 4/8</td><td>7/8 · 4/8</td><td>8/8 · 4/8</td></tr></tbody></table></div>
+          <p>Eight groups (4 cell types × control or IFN-β), one sampled answer each, thinking on, temperature 0.6. A small probe, not a benchmark. Cells come from a public study that is not in TALK’s training data by its recorded study metadata.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-identity"><a class="brand" href="/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>Independent, non-commercial research toward computational models of individual biology.</p></div>
+        <div class="footer-column"><span>Research</span><a href="/research/#pbisc">PBISC</a><a href="/research/#rna-llm">RNA-LLM</a><a href="/research/#rl-env">RL-env</a><a href="/research/pbisc-diffusion/">PBISC-Diffusion</a><a href="/research/talk/">TALK</a></div>
+        <div class="footer-column"><span>Lab</span><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/notes/">Notes</a><a href="/members/">Members</a></div>
+        <div class="footer-column"><span>Records</span><a href="/governance/">Governance</a><a href="/bylaws/">Bylaws</a><a href="/research-integrity/">Research practice</a><a href="/disclosures/">Disclosures</a></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Virtual Human Lab · <a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a> · Republic of Korea</span><span>A research group, not a medical provider. Affiliations do not imply institutional sponsorship.</span></div>
+    </footer>
+    <script src="/script.js?v=20260919-3"></script>
+    <script src="/research/talk/talk.js?v=20260919-3" defer></script>
+  </body>
+</html>
