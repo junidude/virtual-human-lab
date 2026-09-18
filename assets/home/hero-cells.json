@@ -1,0 +1,43 @@
+{
+ "source": "research/pbisc-diffusion/assets/v3/coordinates.npz, raw_pca (ctx2048 E12, DDIM 50, recorded noisy states)",
+ "cells": 2048,
+ "sample_seed": 20260919,
+ "steps": [
+  0,
+  2,
+  4,
+  6,
+  8,
+  10,
+  12,
+  14,
+  16,
+  18,
+  20,
+  22,
+  24,
+  26,
+  28,
+  30,
+  32,
+  34,
+  36,
+  38,
+  40,
+  42,
+  44,
+  46,
+  48,
+  50
+ ],
+ "scale": 2.81,
+ "labels": [
+  "T cell",
+  "B cell",
+  "Monocyte",
+  "NK cell",
+  "DC",
+  "Other"
+ ],
+ "layout": "uint8 label[cells], then int16 xy[steps][cells][2]; value/32767*scale; each step centred on its 1-99 percentile box and divided by RMS radius"
+}

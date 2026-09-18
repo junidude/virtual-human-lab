@@ -21,40 +21,27 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=20260814-3">
-    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260918-1">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=20260919-1">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260919-1">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" data-header>
       <div class="header-inner">
-        <a class="brand" href="/" aria-label="Virtual Human Lab home">
-          <span class="brand-code" aria-hidden="true">VHL</span>
-          <span class="brand-name">Virtual Human Lab</span>
-        </a>
-        <div class="header-actions">
-          <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
-            <a href="/research/">Research</a><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/notes/">Notes</a><a href="/members/">Members</a><a class="nav-contact" href="/#contact">Contact</a>
-          </nav>
-          <nav class="site-language" aria-label="Language selection"><span lang="en" aria-current="page">EN</span><a href="/research/pbisc-diffusion/ko/" lang="ko" hreflang="ko" aria-label="한국어로 보기">KR</a></nav>
+        <a class="brand" href="/" aria-label="Virtual Human Lab home"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation"><a href="/research/" aria-current="page">Research</a><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/members/">Members</a></nav>
+        <div class="header-end">
+          <a class="header-link" href="mailto:junidude14@gmail.com">Contact</a>
+          <a class="site-language" href="/research/pbisc-diffusion/ko/" lang="ko" hreflang="ko" aria-label="한국어로 보기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3C9.5 5.6 8.2 8.6 8.2 12s1.3 6.4 3.8 9"/></svg><span>한국어</span></a>
           <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">Open navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
         </div>
       </div>
     </header>
     <main id="main">
-      <section class="trajectory-hero trajectory-compact" aria-labelledby="trajectory-title">
-        <a class="trajectory-back" href="/research/#pbisc">← Research / PBISC</a>
-        <p class="eyebrow">Recorded sampling / 50 steps</p>
-        <h1 id="trajectory-title">PBISC–<em>Diffusion.</em></h1>
-        <div class="trajectory-badges"><span>ctx2048 · E12 · EMA</span><span>Input · Pseudobulk</span><span>Generated · 4,096 cells</span><span>Ground truth · 4,362 cells</span></div>
-      </section>
+      <section class="page-head" aria-labelledby="trajectory-title"><a class="back" href="/research/#pbisc">← Research</a><h1 id="trajectory-title">PBISC-Diffusion</h1><p>Watch a diffusion model turn noise into 4,096 blood cells over 50 steps, then compare them with real cells.</p><p class="meta">ctx2048 · E12 · EMA · Input · Pseudobulk · Generated · 4,096 cells · Ground truth · 4,362 cells</p></section>
 
       <nav class="trajectory-tabs" aria-label="Recorded studies"><a href="#sampling">01 / Cells</a><a href="#single-cell">02 / One cell</a><a href="#volcano">03 / Genes</a><a href="#methods-title">Methods</a></nav>
-
-      <div class="trajectory-point-key">
-        <table><caption>One dot</caption><tbody><tr><th scope="row">PCA / UMAP</th><td>Cell</td></tr><tr><th scope="row">Volcano</th><td>Gene · up to 2,980 / panel</td></tr></tbody></table>
-      </div>
 
       <figure id="sampling" class="trajectory-player" aria-label="PBISC-Diffusion sampling, with denoising in PCA and expression estimates in UMAP">
         <div class="trajectory-player-top"><span>Denoising · PCA</span><span>Expression estimate · UMAP</span></div>
@@ -114,13 +101,13 @@
     </main>
     <footer class="site-footer">
       <div class="footer-grid">
-        <div class="footer-identity"><span class="brand-code">VHL</span><p>Independent, non-commercial research toward computational models of individual biology.</p></div>
-        <div class="footer-column"><span>Research</span><a href="/research/">What we study</a><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/notes/">Notes</a><a href="/members/">Members</a></div>
-        <div class="footer-column footer-secondary"><span>Records</span><a href="/governance/">Governance</a><a href="/bylaws/">Bylaws</a><a href="/research-integrity/">Research practice</a><a href="/disclosures/">Disclosures</a></div>
-        <div class="footer-column"><span>Contact</span><a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a><p>Republic of Korea</p></div>
+        <div class="footer-identity"><a class="brand" href="/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>Independent, non-commercial research toward computational models of individual biology.</p></div>
+        <div class="footer-column"><span>Research</span><a href="/research/#pbisc">PBISC</a><a href="/research/#rna-llm">RNA-LLM</a><a href="/research/#rl-env">RL-env</a><a href="/research/pbisc-diffusion/">PBISC-Diffusion</a></div>
+        <div class="footer-column"><span>Lab</span><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/notes/">Notes</a><a href="/members/">Members</a></div>
+        <div class="footer-column"><span>Records</span><a href="/governance/">Governance</a><a href="/bylaws/">Bylaws</a><a href="/research-integrity/">Research practice</a><a href="/disclosures/">Disclosures</a></div>
       </div>
-      <div class="footer-bottom"><span>© 2026 Virtual Human Lab</span><span>Affiliations do not imply institutional sponsorship.</span></div>
+      <div class="footer-bottom"><span>© 2026 Virtual Human Lab · <a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a> · Republic of Korea</span><span>A research group, not a medical provider. Affiliations do not imply institutional sponsorship.</span></div>
     </footer>
-    <script src="/script.js?v=20260814-3"></script>
+    <script src="/script.js?v=20260919-1"></script>
   </body>
 </html>

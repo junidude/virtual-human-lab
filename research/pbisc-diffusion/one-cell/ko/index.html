@@ -21,46 +21,26 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=20260814-3">
-    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260918-1">
-    <link rel="stylesheet" href="/research/pbisc-diffusion/one-cell/one-cell.css?v=20260918-2">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=20260919-1">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260919-1">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/one-cell/one-cell.css?v=20260919-1">
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
     <header class="site-header" data-header>
       <div class="header-inner">
-        <a class="brand" href="/ko/" aria-label="Virtual Human Lab 홈">
-          <span class="brand-code" aria-hidden="true">VHL</span>
-          <span class="brand-name">Virtual Human Lab</span>
-        </a>
-        <div class="header-actions">
-          <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
-            <a href="/research/ko/">연구</a>
-            <a href="/papers/ko/">논문</a>
-            <a href="/blog/ko/">블로그</a>
-            <a href="/notes/ko/">노트</a>
-            <a href="/members/ko/">구성원</a>
-            <a class="nav-contact" href="/ko/#contact">문의</a>
-          </nav>
-          <nav class="site-language" aria-label="언어 선택">
-            <a href="/research/pbisc-diffusion/one-cell/" lang="en" hreflang="en" aria-label="View in English">EN</a><span lang="ko" aria-current="page">KR</span>
-          </nav>
-          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-            <span class="sr-only">메뉴 열기</span>
-            <span aria-hidden="true"></span><span aria-hidden="true"></span>
-          </button>
+        <a class="brand" href="/ko/" aria-label="Virtual Human Lab 홈"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a>
+        <nav class="site-nav" id="site-nav" aria-label="주 메뉴"><a href="/research/ko/" aria-current="page">연구</a><a href="/papers/ko/">논문</a><a href="/blog/ko/">블로그</a><a href="/members/ko/">구성원</a></nav>
+        <div class="header-end">
+          <a class="header-link" href="mailto:junidude14@gmail.com">문의</a>
+          <a class="site-language" href="/research/pbisc-diffusion/one-cell/" lang="en" hreflang="en" aria-label="View in English"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3C9.5 5.6 8.2 8.6 8.2 12s1.3 6.4 3.8 9"/></svg><span>English</span></a>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">메뉴 열기</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
         </div>
       </div>
     </header>
     <main id="main">
-      <section class="trajectory-hero trajectory-compact" aria-labelledby="one-cell-title">
-        <a class="trajectory-back" href="/research/pbisc-diffusion/ko/#single-cell">← PBISC-Diffusion / 한 세포</a>
-        <p class="eyebrow">인터랙티브 / 샘플링 기록 / 50단계</p>
-        <h1 id="one-cell-title">한 세포, <em>단계별로.</em></h1>
-        <p class="one-cell-deck">모델은 순수한 노이즈에서 출발해 50단계에 걸쳐 노이즈를 조금씩 걷어냅니다. 각 단계마다 완성될 세포도 함께 예측합니다. 예측은 몇 단계 만에 세포 유형을 정하고, 노이즈 상태는 한참 뒤에야 따라옵니다.</p>
-        <div class="trajectory-badges"><span>ctx2048 · E12 · EMA</span><span>50단계</span><span>유전자 2,980개</span><span>유형별 세포 하나</span><span>기록된 실행 · 새 추론 없음</span></div>
-      </section>
+      <section class="page-head" aria-labelledby="one-cell-title"><a class="back" href="/research/pbisc-diffusion/ko/#single-cell">← PBISC-Diffusion</a><h1 id="one-cell-title">한 세포, 단계별로.</h1><p>모델은 순수한 노이즈에서 출발해 50단계에 걸쳐 노이즈를 조금씩 걷어냅니다. 각 단계마다 완성될 세포도 함께 예측합니다. 예측은 몇 단계 만에 세포 유형을 정하고, 노이즈 상태는 한참 뒤에야 따라옵니다.</p><p class="meta">ctx2048 · E12 · EMA · 50단계 · 유전자 2,980개 · 유형별 세포 하나 · 기록된 실행 · 새 추론 없음</p></section>
 
       <div class="one-cell" data-one-cell data-assets="/research/pbisc-diffusion/assets/one-cell-v2/">
         <p class="one-cell-status" role="status">기록된 데이터를 불러오는 중…</p>
@@ -181,14 +161,14 @@
     </main>
     <footer class="site-footer">
       <div class="footer-grid">
-        <div class="footer-identity"><span class="brand-code">VHL</span><p>개인 생물학의 계산 모델을 향한 독립적·비상업적 연구.</p></div>
-        <div class="footer-column"><span>연구</span><a href="/research/ko/">연구 분야</a><a href="/papers/ko/">논문</a><a href="/blog/ko/">블로그</a><a href="/notes/ko/">노트</a><a href="/members/ko/">구성원</a></div>
-        <div class="footer-column footer-secondary"><span>공개 기록</span><a href="/governance/ko/">운영 구조</a><a href="/bylaws/ko/">회칙</a><a href="/research-integrity/ko/">연구 원칙</a><a href="/disclosures/ko/">공개 사항</a></div>
-        <div class="footer-column"><span>문의</span><a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a><p>대한민국</p></div>
+        <div class="footer-identity"><a class="brand" href="/ko/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>개인의 생물학을 계산 모델로 옮기기 위한 독립적이고 비상업적인 연구.</p></div>
+        <div class="footer-column"><span>연구</span><a href="/research/ko/#pbisc">PBISC</a><a href="/research/ko/#rna-llm">RNA-LLM</a><a href="/research/ko/#rl-env">RL-env</a><a href="/research/pbisc-diffusion/ko/">PBISC-Diffusion</a></div>
+        <div class="footer-column"><span>랩</span><a href="/papers/ko/">논문</a><a href="/blog/ko/">블로그</a><a href="/notes/ko/">노트</a><a href="/members/ko/">구성원</a></div>
+        <div class="footer-column"><span>기록</span><a href="/governance/ko/">운영 체계</a><a href="/bylaws/ko/">회칙</a><a href="/research-integrity/ko/">연구 윤리와 실무</a><a href="/disclosures/ko/">공개 사항</a></div>
       </div>
-      <div class="footer-bottom"><span>© 2026 Virtual Human Lab</span><span>서면 합의가 없는 한 소속 표시는 기관의 후원이나 승인을 의미하지 않습니다.</span></div>
+      <div class="footer-bottom"><span>© 2026 Virtual Human Lab · <a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a> · 대한민국</span><span>VHL은 연구 그룹이며 의료 기관이 아닙니다. 소속 표시는 기관의 후원을 의미하지 않습니다.</span></div>
     </footer>
-    <script src="/script.js?v=20260814-3"></script>
+    <script src="/script.js?v=20260919-1"></script>
     <script src="/research/pbisc-diffusion/one-cell/one-cell.js?v=20260918-2"></script>
   </body>
 </html>

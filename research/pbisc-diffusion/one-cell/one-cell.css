@@ -30,8 +30,10 @@
   display: grid;
   gap: 14px;
   padding: 16px 20px;
-  border: 1px solid var(--ink);
-  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 24px rgba(28, 43, 51, 0.06);
 }
 
 .one-cell-picker,
@@ -48,11 +50,12 @@
   align-items: center;
   gap: 8px;
   min-height: 34px;
-  padding: 5px 12px;
+  padding: 5px 14px;
   border: 1px solid var(--rule);
+  border-radius: 999px;
   background: transparent;
   color: var(--ink);
-  font: 0.76rem var(--font-mono);
+  font: 500 0.82rem var(--font-mono);
   cursor: pointer;
 }
 
@@ -104,7 +107,8 @@
 
 .one-cell-readout {
   min-width: 170px;
-  font: 0.76rem var(--font-mono);
+  font: 0.82rem var(--font-mono);
+  font-variant-numeric: tabular-nums;
   text-align: right;
 }
 
@@ -114,8 +118,10 @@
   display: grid;
   grid-template-columns: minmax(0, 1.65fr) minmax(280px, 1fr);
   gap: 0;
-  margin-top: 22px;
-  border: 1px solid var(--ink);
+  margin-top: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
   background: var(--white);
 }
 
@@ -156,9 +162,7 @@
 
 .one-cell-kicker {
   color: var(--accent-dark);
-  font: 0.68rem var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font: 600 0.78rem var(--font-mono);
 }
 
 .one-cell-cell-title {
@@ -219,9 +223,11 @@
   display: grid;
   gap: 2px;
   max-width: 320px;
-  padding: 8px 10px;
-  border: 1px solid var(--ink);
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
   background: var(--white);
+  box-shadow: 0 8px 24px rgba(28, 43, 51, 0.12);
   font: 0.72rem/1.45 var(--font-mono);
   pointer-events: none;
 }
@@ -364,9 +370,7 @@
 /* ---- lower sections ---------------------------------------------------------------------- */
 
 .one-cell-section {
-  margin-top: 56px;
-  padding-top: 30px;
-  border-top: 1px solid var(--ink);
+  margin-top: clamp(64px, 8vw, 104px);
 }
 
 .one-cell-section-head {
@@ -378,9 +382,9 @@
 }
 
 .one-cell-section h2 {
-  font-size: clamp(1.7rem, 3vw, 2.8rem);
-  letter-spacing: -0.045em;
-  line-height: 1.08;
+  font-size: clamp(28px, 3.4vw, 40px);
+  letter-spacing: -0.015em;
+  line-height: 1.12;
 }
 
 .one-cell-section-head p {
@@ -487,8 +491,7 @@
 .one-cell-stats dt {
   margin-bottom: 6px;
   color: var(--muted);
-  font: 0.68rem var(--font-mono);
-  text-transform: uppercase;
+  font: 0.8rem var(--font-mono);
 }
 
 .one-cell-stats dd {
@@ -528,7 +531,7 @@
 
   .one-cell-side {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    border-top: 1px solid var(--ink);
+    border-top: 1px solid var(--rule);
     border-left: 0;
   }
 
