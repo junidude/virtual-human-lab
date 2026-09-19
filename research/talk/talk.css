@@ -90,9 +90,15 @@
 
 .talk-stage {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  align-items: start;
   gap: 16px;
   margin-top: 16px;
+}
+
+.talk-side {
+  position: sticky;
+  top: calc(var(--header-height) + 16px);
 }
 
 .talk-col {
@@ -188,9 +194,36 @@
   box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.85);
 }
 
+.talk-head,
 .talk-tokens {
   display: block;
-  margin: 4px 0 8px;
+}
+
+.talk-tokens {
+  margin: 2px 0 10px;
+}
+
+.talk-codes {
+  margin-top: 10px;
+}
+
+.talk-codes summary {
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.talk-codes p {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.talk-prompt-note {
+  color: var(--muted);
+  font-size: 13px;
 }
 
 .talk-panel {
@@ -393,6 +426,10 @@
   .talk-stage,
   .talk-stats {
     grid-template-columns: 1fr;
+  }
+
+  .talk-side {
+    position: static;
   }
 
   .talk-controls {

@@ -21,8 +21,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=20260919-3">
-    <link rel="stylesheet" href="/research/talk/talk.css?v=20260919-3">
+    <link rel="stylesheet" href="/styles.css?v=20260920-1">
+    <link rel="stylesheet" href="/research/talk/talk.css?v=20260920-1">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -58,17 +58,9 @@
           <p class="talk-models-note">Fine-tuned = supervised training. GRPO and DAPO add 500 steps of reinforcement learning to it.</p>
           <div class="talk-stage">
             <div class="talk-col">
-              <h2>What TALK gets</h2>
-              <figure class="talk-map">
-                <canvas aria-label="Each dot is one cell’s RNA vector, the input TALK reads. Selected cells are bright."></canvas>
-                <div class="talk-map-legend" aria-hidden="true"><span><i style="--c:#3AA0FF"></i>B</span><span><i style="--c:#1FD1A0"></i>Monocyte</span><span><i style="--c:#FF8A3D"></i>CD4 T</span><span><i style="--c:#E58BFF"></i>NK</span><span><i style="--c:#fff"></i>Control</span><span><i class="ring"></i>IFN-β</span></div>
-                <figcaption>Each dot is one cell’s RNA vector, the input TALK reads. Selected cells are bright.</figcaption>
-              </figure>
+              <h2>Prompt and answer</h2>
               <div class="bubble bubble-user"><span class="bubble-label">Prompt · <span class="talk-prompt-count"></span></span><p class="talk-prompt"></p></div>
-              <div class="talk-panel"><h3>Measured in these cells</h3><p>Mean log1p(CP10k) of marker genes. TALK never sees these numbers as text.</p><div class="talk-bars"></div></div>
-            </div>
-            <div class="talk-col">
-              <h2>What TALK says</h2>
+              <p class="talk-prompt-note"></p>
               <div class="bubble bubble-model" aria-live="polite">
                 <span class="bubble-label">TALK</span>
                 <details class="talk-think" open><summary></summary><div class="talk-reasoning"></div></details>
@@ -79,6 +71,15 @@
               <p class="talk-gene-key"><mark class="yes">GENE</mark> detected in these cells · <mark class="no">GENE</mark> not detected. Hover a gene for the count.</p>
               <p class="talk-run"></p>
               
+            </div>
+            <div class="talk-col talk-side">
+              <h2>What TALK gets</h2>
+              <figure class="talk-map">
+                <canvas aria-label="Each dot is one cell’s RNA vector, the input TALK reads. Selected cells are bright."></canvas>
+                <div class="talk-map-legend" aria-hidden="true"><span><i style="--c:#3AA0FF"></i>B</span><span><i style="--c:#1FD1A0"></i>Monocyte</span><span><i style="--c:#FF8A3D"></i>CD4 T</span><span><i style="--c:#E58BFF"></i>NK</span><span><i style="--c:#fff"></i>Control</span><span><i class="ring"></i>IFN-β</span></div>
+                <figcaption>Each dot is one cell’s RNA vector, the input TALK reads. Selected cells are bright.</figcaption>
+              </figure>
+              <div class="talk-panel"><h3>Measured in these cells</h3><p>Mean log1p(CP10k) of marker genes. TALK never sees these numbers as text.</p><div class="talk-bars"></div></div>
             </div>
           </div>
         </div>
@@ -108,7 +109,7 @@
       </div>
       <div class="footer-bottom"><span>© 2026 Virtual Human Lab · <a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a> · Republic of Korea</span><span>A research group, not a medical provider. Affiliations do not imply institutional sponsorship.</span></div>
     </footer>
-    <script src="/script.js?v=20260919-3"></script>
-    <script src="/research/talk/talk.js?v=20260919-3" defer></script>
+    <script src="/script.js?v=20260920-1"></script>
+    <script src="/research/talk/talk.js?v=20260920-1" defer></script>
   </body>
 </html>

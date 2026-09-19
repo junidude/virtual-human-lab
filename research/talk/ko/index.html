@@ -21,8 +21,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=20260919-3">
-    <link rel="stylesheet" href="/research/talk/talk.css?v=20260919-3">
+    <link rel="stylesheet" href="/styles.css?v=20260920-1">
+    <link rel="stylesheet" href="/research/talk/talk.css?v=20260920-1">
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -58,17 +58,9 @@
           <p class="talk-models-note">지도학습 = 정답 문장으로 학습한 모델. GRPO와 DAPO는 여기에 강화학습 500단계를 더한 모델입니다.</p>
           <div class="talk-stage">
             <div class="talk-col">
-              <h2>TALK가 받는 것</h2>
-              <figure class="talk-map">
-                <canvas aria-label="점 하나는 세포 하나의 RNA 벡터, 곧 TALK가 읽는 입력입니다. 고른 세포가 밝게 표시됩니다."></canvas>
-                <div class="talk-map-legend" aria-hidden="true"><span><i style="--c:#3AA0FF"></i>B</span><span><i style="--c:#1FD1A0"></i>단핵구</span><span><i style="--c:#FF8A3D"></i>CD4 T</span><span><i style="--c:#E58BFF"></i>NK</span><span><i style="--c:#fff"></i>대조군</span><span><i class="ring"></i>IFN-β 자극</span></div>
-                <figcaption>점 하나는 세포 하나의 RNA 벡터, 곧 TALK가 읽는 입력입니다. 고른 세포가 밝게 표시됩니다.</figcaption>
-              </figure>
-              <div class="bubble bubble-user"><span class="bubble-label">질문 · <span class="talk-prompt-count"></span></span><p class="talk-prompt"></p></div>
-              <div class="talk-panel"><h3>이 세포들에서 측정된 값</h3><p>마커 유전자의 평균 log1p(CP10k). TALK는 이 숫자를 글로 받지 않습니다.</p><div class="talk-bars"></div></div>
-            </div>
-            <div class="talk-col">
-              <h2>TALK의 답</h2>
+              <h2>질문과 답</h2>
+              <div class="bubble bubble-user"><span class="bubble-label">프롬프트 · <span class="talk-prompt-count"></span></span><p class="talk-prompt"></p></div>
+              <p class="talk-prompt-note"></p>
               <div class="bubble bubble-model" aria-live="polite">
                 <span class="bubble-label">TALK</span>
                 <details class="talk-think" open><summary></summary><div class="talk-reasoning"></div></details>
@@ -79,6 +71,15 @@
               <p class="talk-gene-key"><mark class="yes">유전자</mark> 이 세포들에서 검출 · <mark class="no">유전자</mark> 검출 안 됨. 유전자에 마우스를 올리면 개수가 보입니다.</p>
               <p class="talk-run"></p>
               <p class="talk-run">모델의 추론과 답은 영어 원문 그대로입니다.</p>
+            </div>
+            <div class="talk-col talk-side">
+              <h2>TALK가 받는 것</h2>
+              <figure class="talk-map">
+                <canvas aria-label="점 하나는 세포 하나의 RNA 벡터, 곧 TALK가 읽는 입력입니다. 고른 세포가 밝게 표시됩니다."></canvas>
+                <div class="talk-map-legend" aria-hidden="true"><span><i style="--c:#3AA0FF"></i>B</span><span><i style="--c:#1FD1A0"></i>단핵구</span><span><i style="--c:#FF8A3D"></i>CD4 T</span><span><i style="--c:#E58BFF"></i>NK</span><span><i style="--c:#fff"></i>대조군</span><span><i class="ring"></i>IFN-β 자극</span></div>
+                <figcaption>점 하나는 세포 하나의 RNA 벡터, 곧 TALK가 읽는 입력입니다. 고른 세포가 밝게 표시됩니다.</figcaption>
+              </figure>
+              <div class="talk-panel"><h3>이 세포들에서 측정된 값</h3><p>마커 유전자의 평균 log1p(CP10k). TALK는 이 숫자를 글로 받지 않습니다.</p><div class="talk-bars"></div></div>
             </div>
           </div>
         </div>
@@ -108,7 +109,7 @@
       </div>
       <div class="footer-bottom"><span>© 2026 Virtual Human Lab · <a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a> · 대한민국</span><span>VHL은 연구 그룹이며 의료 기관이 아닙니다. 소속 표시는 기관의 후원을 의미하지 않습니다.</span></div>
     </footer>
-    <script src="/script.js?v=20260919-3"></script>
-    <script src="/research/talk/talk.js?v=20260919-3" defer></script>
+    <script src="/script.js?v=20260920-1"></script>
+    <script src="/research/talk/talk.js?v=20260920-1" defer></script>
   </body>
 </html>

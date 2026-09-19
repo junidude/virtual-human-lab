@@ -8,6 +8,7 @@ Inputs (homogeneous group-size evaluation, 2026-09-11):
   fixtures/homogeneous_groups_20260911/selected_cells.csv   stratum and order of each cell
   provenance/homogeneous_groups_20260911/encoding_retry1/cell_embeddings.f32.npy   the RNA vectors the model read
   results/homogeneous_groups_20260911/{sft,grpo,dapo}_homogeneous_think16384.jsonl   recorded generations
+  fixtures/homogeneous_groups_20260911/questions.jsonl       the prompt text, identical for every group size
   results/homogeneous_groups_20260911/homogeneous_comparison.json   frozen grading of those generations
 Output: research/talk/data/talk-demo.json
 """
@@ -90,6 +91,13 @@ def main():
     xy = umap.UMAP(n_neighbors=15, min_dist=0.35, metric="cosine", random_state=UMAP_SEED).fit_transform(emb)
     xy = (xy - xy.min(axis=0)) / (xy.max(axis=0) - xy.min(axis=0))
 
+    questions = [json.loads(line) for line in open(fx / "questions.jsonl")]
+    headers = {q["prompt"].split("\n\n", 1)[0].splitlines()[0] for q in questions}
+    instructions = {q["prompt"].split("\n\n", 1)[1] for q in questions}
+    assert len(headers) == len(instructions) == 1, (headers, instructions)
+    # One wording was used for every group size, including a single cell.
+    prompt = {"header": headers.pop(), "instruction": instructions.pop()}
+
     comparison = json.load(open(res / "homogeneous_comparison.json"))
     graded = {(r["model"], r["id"]): r for r in comparison["replies"]}
     generations = {}
@@ -126,7 +134,7 @@ def main():
                 nat = g["natural"]
                 pred = nat.get("parsed_object") or {}
                 mentions = {}
-                for tok in re.findall(r"(?<![A-Za-z0-9-])[A-Z][A-Z0-9-]{2,}(?:\.[0-9]+)?(?![A-Za-z0-9-])", reasoning):
+                for tok in re.findall(r"(?<![A-Za-z0-9_-])[A-Z][A-Z0-9-]{2,}(?:\.[0-9]+)?(?![A-Za-z0-9_-])", reasoning):
                     if tok in NOT_GENES or tok in mentions:
                         continue
                     ex = expression(cells, tok)
@@ -175,6 +183,7 @@ def main():
         "settings": {"thinking": True, "temperature": 0.6, "top_p": 0.95, "top_k": 20, "max_new_tokens": 16384,
                      "seed": "one fixed seed per cell group, shared across models and group sizes"},
         "types": TYPES, "states": STATES, "sizes": SIZES, "models": MODELS,
+        "prompt": prompt,
         "panel": PANEL,
         "cells": [{"x": round(float(a), 4), "y": round(float(b), 4), "s": s} for (a, b), s in zip(xy, stratum_of)],
         "groups": groups,
@@ -183,7 +192,7 @@ def main():
         "gene_mentions": {m: {"detected": d, "mentioned": t} for m, (d, t) in mention_stats.items()},
         "gene_specificity": specificity,
         "sources": {p.name: sha256(p) for p in [fx / "encoding_input.npz", fx / "selected_cells.csv", emb_path, args.gene_table,
-                                                res / "homogeneous_comparison.json",
+                                                fx / "questions.jsonl", res / "homogeneous_comparison.json",
                                                 *[res / f"{m.lower()}_homogeneous_think16384.jsonl" for m in MODELS]]},
         "umap": {"input": "cell_embeddings.f32.npy (256 x 2048)", "metric": "cosine", "n_neighbors": 15,
                  "min_dist": 0.35, "random_state": UMAP_SEED},

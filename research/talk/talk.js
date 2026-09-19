@@ -20,7 +20,9 @@
         loading: "기록된 답변을 불러오는 중…",
         failed: "데이터를 불러오지 못했습니다.",
         cells: (n) => `세포 ${n}개`,
-        question: "이 프로필들은 같은 세포 유형과 같은 실험 조건입니다. 세포 유형과 조건은 무엇인가요?",
+        codes: "유형·조건 코드와 출력 형식",
+        single: "평가에서는 세포 개수와 상관없이 이 문구를 그대로 썼습니다. 세포 1개일 때도 “These profiles”입니다.",
+        verbatim: "평가에서 쓴 프롬프트 원문입니다.",
         reasoning: (tok, sec) => `추론 과정 · ${tok.toLocaleString()} 토큰 · ${sec}초`,
         type: "유형",
         state: "조건",
@@ -34,7 +36,9 @@
         loading: "Loading the recorded answers…",
         failed: "Could not load the recorded answers.",
         cells: (n) => `${n} cell${n > 1 ? "s" : ""}`,
-        question: "These profiles share one cell type and one experimental condition. What are they?",
+        codes: "Type and state codes, and the output format",
+        single: "The evaluation used this same wording for every group size, so a single cell still reads “These profiles”.",
+        verbatim: "The prompt text is the evaluation’s own wording, shown unchanged.",
         reasoning: (tok, sec) => `Reasoning · ${tok.toLocaleString()} tokens · ${sec} s`,
         type: "Type",
         state: "Condition",
@@ -123,12 +127,23 @@
 
   function renderPrompt(group) {
     const color = TYPE_COLOR[S.type];
-    const shown = Math.min(group.cells.length, 8);
+    const n = group.cells.length;
+    const shown = Math.min(n, 8);
     let tokens = "";
     for (let i = 0; i < shown; i += 1) tokens += `${i ? " " : ""}Cell ${i + 1}: <i class="rna-token" style="--c:${color}" aria-hidden="true"></i>`;
-    if (group.cells.length > shown) tokens += ` … Cell ${group.cells.length}: <i class="rna-token" style="--c:${color}" aria-hidden="true"></i>`;
-    $(".talk-prompt").innerHTML = `<span class="talk-tokens">${tokens}</span>${T.question}`;
-    $(".talk-prompt-count").textContent = T.cells(group.cells.length);
+    if (n > shown) tokens += ` … Cell ${n}: <i class="rna-token" style="--c:${color}" aria-hidden="true"></i>`;
+    // The prompt text is the evaluation's own wording; only the cell lines change with the group size.
+    const [lead, codes] = splitInstruction(D.prompt.instruction);
+    $(".talk-prompt").innerHTML =
+      `<span class="talk-head">${D.prompt.header}</span><span class="talk-tokens">${tokens}</span>${lead}` +
+      `<details class="talk-codes"><summary>${T.codes}</summary><p>${codes}</p></details>`;
+    $(".talk-prompt-count").textContent = T.cells(n);
+    $(".talk-prompt-note").textContent = n === 1 ? T.single : T.verbatim;
+  }
+
+  function splitInstruction(text) {
+    const cut = text.indexOf("Type codes:");
+    return cut < 0 ? [text, ""] : [text.slice(0, cut).trim(), text.slice(cut).trim()];
   }
 
   function renderPanel(group) {
@@ -143,7 +158,7 @@
   }
 
   function reasoningNodes(text, genes, n) {
-    const parts = text.split(/((?<![A-Za-z0-9-])[A-Z][A-Z0-9-]{2,}(?:\.[0-9]+)?(?![A-Za-z0-9-]))/);
+    const parts = text.split(/((?<![A-Za-z0-9_-])[A-Z][A-Z0-9-]{2,}(?:\.[0-9]+)?(?![A-Za-z0-9_-]))/);
     return parts.map((part, i) => {
       if (i % 2 === 1 && part in genes) {
         const m = document.createElement("mark");
@@ -166,6 +181,7 @@
     const answer = $(".talk-answer");
     answer.hidden = true;
     const finish = () => {
+      box.scrollTop = 0;  // start the reasoning at its first sentence once it has finished typing
       answer.hidden = false;
       if (a.type || a.state) {
         answer.innerHTML = [
