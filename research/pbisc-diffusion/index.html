@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/styles.css?v=20260920-1">
     <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260920-gutters-40ecf69fb1">
     <link rel="stylesheet" href="/research/pbisc-diffusion/interactive-figures.css?v=20260920-1">
+    <link rel="stylesheet" href="/research/architecture/architecture.css?v=20260921-1">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -42,7 +43,16 @@
     <main id="main">
       <section class="page-head" aria-labelledby="trajectory-title"><a class="back" href="/research/#pbisc">← Research</a><h1 id="trajectory-title">PBISC-Diffusion</h1><p>Noise → Cells → Genes</p><p class="meta">ctx2048 · E12 · EMA · Pseudobulk → 50 steps</p></section>
 
-      <nav class="trajectory-tabs" aria-label="Explore the run"><a href="#sampling">01 / Cells</a><a href="#single-cell">02 / One cell</a><a href="#volcano">03 / Genes</a><a href="#methods-title">Methods</a></nav>
+      <nav class="trajectory-tabs" aria-label="Explore the run"><a href="#architecture">Architecture</a><a href="#sampling">01 / Cells</a><a href="#single-cell">02 / One cell</a><a href="#volcano">03 / Genes</a><a href="#methods-title">Methods</a></nav>
+
+      <section class="architecture" id="architecture" data-architecture="diffusion" aria-labelledby="architecture-title">
+        <div class="architecture-head"><div><p class="arch-eyebrow">Architecture · Figure 1</p><h2 id="architecture-title">From bulk to cells</h2></div><a href="#sampling">Explore the run ↓</a></div>
+        <div class="architecture-card">
+          <div class="architecture-visual"><p class="arch-fallback">Pseudobulk → conditioned denoiser ↻ → generated cells</p></div>
+          <p class="arch-status" role="status">Loading the diagram…</p>
+        </div>
+        <noscript><p>Enable JavaScript to animate the diagram.</p></noscript>
+      </section>
 
       <section class="trajectory-study" id="sampling" aria-labelledby="sampling-title">
         <div class="trajectory-study-head"><div><p class="section-label">01 / Cell maps</p><h2 id="sampling-title">4,096 cells</h2></div><div class="trajectory-badges"><span>Generated · 4,096</span><span>Ground truth · 4,362</span><span>PBMC5 + Other</span></div></div>
@@ -116,5 +126,6 @@
     </footer>
     <script src="/script.js?v=20260920-1"></script>
     <script src="/research/pbisc-diffusion/interactive-figures.js?v=20260920-1" defer></script>
+    <script type="module" src="/research/architecture/architecture.js?v=20260921-1"></script>
   </body>
 </html>

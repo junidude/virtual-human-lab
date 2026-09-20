@@ -23,6 +23,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=20260920-1">
     <link rel="stylesheet" href="/research/talk/talk.css?v=20260920-1">
+    <link rel="stylesheet" href="/research/architecture/architecture.css?v=20260921-1">
+    <link rel="stylesheet" href="/research/architecture/talk.css?v=20260921-1">
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -46,7 +48,16 @@
         <p class="meta">RNA-LLM · 공개 PBMC 데이터(Kang et al. 2018) · 세포 256개 · 모델 3종</p>
       </section>
 
-      <section class="talk" data-talk data-src="/research/talk/data/talk-demo.json?v=20260919-1" aria-label="TALK">
+      <section class="architecture" id="architecture" data-architecture="talk" aria-labelledby="architecture-title">
+        <div class="architecture-head"><div><p class="arch-eyebrow">Architecture · Figure 1</p><h2 id="architecture-title">RNA에서 언어로</h2></div><a href="#talk-playground">TALK 체험 ↓</a></div>
+        <div class="architecture-card">
+          <div class="architecture-visual"><p class="arch-fallback">RNA → encoder → Q-Former → RNA prefix + question → Qwen3 → answer</p></div>
+          <p class="arch-status" role="status">구조도를 불러오는 중…</p>
+        </div>
+        <noscript><p>애니메이션은 JavaScript가 필요합니다.</p></noscript>
+      </section>
+
+      <section class="talk" id="talk-playground" data-talk data-src="/research/talk/data/talk-demo.json?v=20260919-1" aria-label="TALK">
         <p class="talk-status" role="status">기록된 답변을 불러오는 중…</p>
         <div class="talk-body">
           <div class="talk-controls">
@@ -111,5 +122,6 @@
     </footer>
     <script src="/script.js?v=20260920-1"></script>
     <script src="/research/talk/talk.js?v=20260920-1" defer></script>
+    <script type="module" src="/research/architecture/architecture.js?v=20260921-1"></script>
   </body>
 </html>

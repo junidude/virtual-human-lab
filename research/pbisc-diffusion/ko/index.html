@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/styles.css?v=20260920-1">
     <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260920-gutters-40ecf69fb1">
     <link rel="stylesheet" href="/research/pbisc-diffusion/interactive-figures.css?v=20260920-1">
+    <link rel="stylesheet" href="/research/architecture/architecture.css?v=20260921-1">
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -42,7 +43,16 @@
     <main id="main">
       <section class="page-head" aria-labelledby="trajectory-title"><a class="back" href="/research/ko/#pbisc">← 연구</a><h1 id="trajectory-title">PBISC-Diffusion</h1><p>노이즈 → 세포 → 유전자</p><p class="meta">ctx2048 · E12 · EMA · Pseudobulk → 50단계</p></section>
 
-      <nav class="trajectory-tabs" aria-label="분석 탐색"><a href="#sampling">01 / 세포</a><a href="#single-cell">02 / 세포 한 개</a><a href="#volcano">03 / 유전자</a><a href="#methods-title">방법</a></nav>
+      <nav class="trajectory-tabs" aria-label="분석 탐색"><a href="#architecture">구조</a><a href="#sampling">01 / 세포</a><a href="#single-cell">02 / 세포 한 개</a><a href="#volcano">03 / 유전자</a><a href="#methods-title">방법</a></nav>
+
+      <section class="architecture" id="architecture" data-architecture="diffusion" aria-labelledby="architecture-title">
+        <div class="architecture-head"><div><p class="arch-eyebrow">Architecture · Figure 1</p><h2 id="architecture-title">Bulk에서 세포로</h2></div><a href="#sampling">생성 과정 보기 ↓</a></div>
+        <div class="architecture-card">
+          <div class="architecture-visual"><p class="arch-fallback">Pseudobulk → 조건부 denoiser ↻ → 생성 세포</p></div>
+          <p class="arch-status" role="status">구조도를 불러오는 중…</p>
+        </div>
+        <noscript><p>애니메이션은 JavaScript가 필요합니다.</p></noscript>
+      </section>
 
       <section class="trajectory-study" id="sampling" aria-labelledby="sampling-title">
         <div class="trajectory-study-head"><div><p class="section-label">01 / 세포 지도</p><h2 id="sampling-title">세포 4,096개</h2></div><div class="trajectory-badges"><span>Generated · 4,096</span><span>Ground truth · 4,362</span><span>PBMC5 + Other</span></div></div>
@@ -116,5 +126,6 @@
     </footer>
     <script src="/script.js?v=20260920-1"></script>
     <script src="/research/pbisc-diffusion/interactive-figures.js?v=20260920-1" defer></script>
+    <script type="module" src="/research/architecture/architecture.js?v=20260921-1"></script>
   </body>
 </html>

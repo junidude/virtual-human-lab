@@ -23,6 +23,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=20260920-1">
     <link rel="stylesheet" href="/research/talk/talk.css?v=20260920-1">
+    <link rel="stylesheet" href="/research/architecture/architecture.css?v=20260921-1">
+    <link rel="stylesheet" href="/research/architecture/talk.css?v=20260921-1">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -46,7 +48,16 @@
         <p class="meta">RNA-LLM · Public PBMC data (Kang et al. 2018) · 256 cells · 3 model versions</p>
       </section>
 
-      <section class="talk" data-talk data-src="/research/talk/data/talk-demo.json?v=20260919-1" aria-label="TALK">
+      <section class="architecture" id="architecture" data-architecture="talk" aria-labelledby="architecture-title">
+        <div class="architecture-head"><div><p class="arch-eyebrow">Architecture · Figure 1</p><h2 id="architecture-title">From RNA to language</h2></div><a href="#talk-playground">Try TALK ↓</a></div>
+        <div class="architecture-card">
+          <div class="architecture-visual"><p class="arch-fallback">RNA → encoder → Q-Former → RNA prefix + question → Qwen3 → answer</p></div>
+          <p class="arch-status" role="status">Loading the diagram…</p>
+        </div>
+        <noscript><p>Enable JavaScript to animate the diagram.</p></noscript>
+      </section>
+
+      <section class="talk" id="talk-playground" data-talk data-src="/research/talk/data/talk-demo.json?v=20260919-1" aria-label="TALK">
         <p class="talk-status" role="status">Loading the recorded answers…</p>
         <div class="talk-body">
           <div class="talk-controls">
@@ -111,5 +122,6 @@
     </footer>
     <script src="/script.js?v=20260920-1"></script>
     <script src="/research/talk/talk.js?v=20260920-1" defer></script>
+    <script type="module" src="/research/architecture/architecture.js?v=20260921-1"></script>
   </body>
 </html>

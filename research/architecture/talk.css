@@ -1,0 +1,89 @@
+/* TALK's paper architecture, styled as part of the VHL research page. */
+.arch-talk { color: var(--ink, #1c2b33); }
+.arch-talk .arch-talk-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 18px; margin-bottom: 28px; }
+.arch-talk .arch-talk-route { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--surface, #f1f4f7); }
+.arch-talk .arch-talk-route button { min-height: 40px; min-width: 80px; border: 0; border-radius: 999px; padding: 8px 20px; color: var(--ink, #1c2b33); background: transparent; font: inherit; font-size: 14px; font-weight: 500; cursor: pointer; }
+.arch-talk .arch-talk-route button:hover { background: #e3e9ee; }
+.arch-talk .arch-talk-route button[aria-pressed="true"] { color: #fff; background: var(--ink, #1c2b33); }
+.arch-talk .arch-talk-route button:focus-visible,
+.arch-talk .arch-talk-details summary:focus-visible { outline: 3px solid var(--blue, #0064e0); outline-offset: 4px; }
+.arch-talk .arch-talk-route-description { color: var(--muted, #627385); font-size: 14px; line-height: 1.5; }
+.arch-talk .arch-talk-flow { display: grid; grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr) 34px minmax(0, 1fr); gap: 10px; align-items: start; }
+.arch-talk .arch-talk-panel { min-width: 0; }
+.arch-talk .arch-talk-panel > h3 { display: flex; gap: 10px; align-items: baseline; margin: 0 0 18px; color: var(--ink, #1c2b33); font-size: 18px; font-weight: 500; line-height: 1.35; letter-spacing: -0.02em; }
+.arch-talk .arch-talk-panel > h3 > span { color: var(--muted, #627385); font-size: 12px; font-weight: 400; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.arch-talk .arch-talk-node { min-width: 0; padding: 20px 18px; border: 1px solid #e0e6eb; border-radius: 18px; background: #f7f9fb; }
+.arch-talk .arch-talk-node.is-active { border-color: #72a8db; background: #f3f8ff; }
+.arch-talk .arch-talk-node.is-complete { border-color: #c9d9e7; }
+.arch-talk .arch-talk-node-title { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 7px 10px; }
+.arch-talk .arch-talk-node h4 { margin: 0; font-size: 18px; font-weight: 500; line-height: 1.35; letter-spacing: -0.02em; }
+.arch-talk .arch-talk-meta { margin: 8px 0 0; color: var(--muted, #627385); font-size: 13px; line-height: 1.5; }
+.arch-talk .arch-talk-node-title > .arch-talk-meta { margin: 0; }
+.arch-talk .arch-talk-badge { display: inline-block; padding: 3px 8px; border: 1px solid #d7e0e7; border-radius: 999px; background: #fff; color: #5e6d7b; font-size: 12px; font-weight: 500; line-height: 1.4; }
+.arch-talk .arch-talk-trained { border-color: #c1d7ec; color: #3b678b; }
+.arch-talk .arch-talk-expression,
+.arch-talk .arch-talk-features { display: block; width: 100%; height: 48px; margin-top: 18px; }
+.arch-talk .arch-talk-queries { display: block; width: 100%; height: 66px; margin-top: 13px; }
+.arch-talk .arch-talk-down { display: flex; height: 42px; justify-content: center; align-items: center; }
+.arch-talk .arch-talk-down svg { width: 32px; height: 24px; transform: rotate(90deg); }
+.arch-talk .arch-talk-between { position: relative; align-self: stretch; }
+.arch-talk .arch-talk-between svg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.arch-talk .arch-talk-down path,
+.arch-talk .arch-talk-between path { fill: none; stroke: #bdc9d3; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.arch-talk .arch-talk-down.is-complete path,
+.arch-talk .arch-talk-between.is-complete path { stroke: #478dc9; }
+.arch-talk .arch-talk-tokens { display: flex; gap: 8px; margin-top: 15px; }
+.arch-talk .arch-talk-tokens span { display: flex; flex: 1; height: 43px; align-items: center; justify-content: center; border: 1px solid #d6e0e8; border-radius: 7px; color: #647688; background: #eaf0f5; font-size: 15px; }
+.arch-talk .arch-talk-tokens span.is-filled { color: #135b93; border-color: #8cb7dc; background: #dcecf9; }
+.arch-talk .arch-talk-tokens sub { align-self: center; margin-top: 7px; font-size: 10px; }
+.arch-talk .arch-talk-question { display: flex; gap: 11px; align-items: center; margin-top: 17px; padding-top: 16px; border-top: 1px solid #dfe7ee; }
+.arch-talk .arch-talk-sequence { color: #6c8498; font-size: 21px; font-weight: 400; }
+.arch-talk .arch-talk-question > div { flex: 1; min-width: 0; }
+.arch-talk .arch-talk-question strong,
+.arch-talk .arch-talk-response strong { display: block; font-size: 14px; font-weight: 500; line-height: 1.5; }
+.arch-talk .arch-talk-question > div > span { display: block; margin-top: 2px; color: var(--muted, #627385); font-size: 12px; line-height: 1.5; }
+.arch-talk .arch-talk-question > svg { width: 54px; height: 22px; flex-shrink: 0; }
+.arch-talk .arch-talk-question > svg path { stroke: #8c9cac; stroke-width: 3; stroke-linecap: round; }
+.arch-talk .arch-talk-language { min-height: 353px; }
+.arch-talk .arch-talk-response { margin-top: 30px; }
+.arch-talk .arch-talk-rationale { padding: 0 0 20px; }
+.arch-talk .arch-talk-lines { display: grid; gap: 10px; margin-top: 14px; }
+.arch-talk .arch-talk-lines i { position: relative; display: block; width: 100%; height: 5px; border-radius: 4px; overflow: hidden; background: #e0e7ed; }
+.arch-talk .arch-talk-lines i::after { position: absolute; inset: 0; content: ""; transform-origin: left; transform: scaleX(var(--reveal, 0)); background: #8aaac3; }
+.arch-talk .arch-talk-lines i:nth-child(2) { width: 88%; }
+.arch-talk .arch-talk-lines i:nth-child(3) { width: 62%; }
+.arch-talk .arch-talk-answer { padding: 16px; border: 1px solid #d8e3ec; border-radius: 12px; background: #fff; }
+.arch-talk .arch-talk-answer .arch-talk-lines { margin-top: 10px; }
+.arch-talk .arch-talk-answer .arch-talk-lines i { width: 65%; }
+.arch-talk .arch-talk-answer .arch-talk-lines i::after { transform: scaleX(var(--answer-reveal, 0)); background: var(--blue, #0064e0); }
+.arch-talk .arch-talk-response-note { margin-top: 18px; }
+.arch-talk .arch-talk-caption { margin: 24px 0 0; color: var(--muted, #627385); font-size: 13px; line-height: 1.7; }
+.arch-talk .arch-talk-details { margin-top: 9px; color: var(--muted, #627385); font-size: 13px; line-height: 1.7; }
+.arch-talk .arch-talk-details summary { width: fit-content; cursor: pointer; color: #476275; font-weight: 500; }
+.arch-talk .arch-talk-details p { max-width: 85ch; margin: 9px 0 0; }
+@media (max-width: 1100px) {
+  .arch-talk .arch-talk-flow { grid-template-columns: minmax(0, 1fr) 22px minmax(0, 1fr) 22px minmax(0, 1fr); gap: 7px; }
+  .arch-talk .arch-talk-node { padding: 17px 14px; }
+  .arch-talk .arch-talk-node h4 { font-size: 17px; }
+  .arch-talk .arch-talk-panel > h3 { font-size: 16px; }
+  .arch-talk .arch-talk-question > svg { display: none; }
+  .arch-talk .arch-talk-node-title > .arch-talk-meta { width: 100%; }
+}
+@media (max-width: 760px) {
+  .arch-talk .arch-talk-toolbar { margin-bottom: 24px; gap: 10px 14px; }
+  .arch-talk .arch-talk-flow { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .arch-talk .arch-talk-panel > h3 { margin-bottom: 14px; font-size: 18px; }
+  .arch-talk .arch-talk-panel { width: 100%; }
+  .arch-talk .arch-talk-node { padding: 20px; }
+  .arch-talk .arch-talk-node h4 { font-size: 18px; }
+  .arch-talk .arch-talk-node-title > .arch-talk-meta { width: auto; }
+  .arch-talk .arch-talk-between { display: flex; height: 64px; align-items: center; justify-content: center; }
+  .arch-talk .arch-talk-between svg { position: static; width: 32px; height: 24px; transform: rotate(90deg); }
+  .arch-talk .arch-talk-expression,
+  .arch-talk .arch-talk-features,
+  .arch-talk .arch-talk-queries { max-width: 400px; }
+  .arch-talk .arch-talk-language { min-height: 0; }
+  .arch-talk .arch-talk-response { margin-top: 25px; }
+  .arch-talk .arch-talk-question > svg { display: block; }
+  .arch-talk .arch-talk-caption { margin-top: 22px; }
+}

@@ -39,6 +39,15 @@ The home hero replays recorded PBISC-Diffusion sampling from `assets/home/hero-c
 artworks in `assets/home/*.svg` are generated from published site data by
 `python tools/make_home_visuals.py`.
 
+The Diffusion and TALK pages include bilingual, responsive Figure 1 architecture diagrams.
+`research/architecture/` contains their shared playback shell and separate model renderers.
+The diffusion heatmaps replay a fixed 96-gene subset of one already published monocyte recording;
+refresh the lossless subset with `python tools/make_architecture_recording.py`.
+TALK animates the paper's two alternative encoder/Q-Former routes as a schematic. Its caption
+distinguishes this architecture from the one-token-per-cell playground below it. Both diagrams
+support pause, restart and keyboard scrubbing; autoplay stops offscreen and starts paused with
+reduced-motion preferences. No model runs in the browser.
+
 The case2RL explorer exports only the project's explicitly publishable synthetic fixture and
 saved synthetic audit samples. Refresh it with
 `uv run --with pyyaml python tools/make_case2rl_demo.py --source /path/to/case2RL`
