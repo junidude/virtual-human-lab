@@ -634,7 +634,7 @@ function initNetwork() {
 }
 
 function setMenu(open, returnFocus = false) {
-  const mobile = matchMedia("(max-width: 780px)").matches;
+  const mobile = matchMedia("(max-width: 1024px)").matches;
   const showing = mobile && open;
   els.sideRail.classList.toggle("open", showing);
   els.sideRail.inert = mobile && !showing;
@@ -699,7 +699,7 @@ function bindEvents() {
   els.menuButton.addEventListener("click", () => setMenu(!els.sideRail.classList.contains("open"), els.sideRail.classList.contains("open")));
   els.menuBackdrop.addEventListener("click", () => setMenu(false, true));
   document.querySelectorAll(".rail-nav a").forEach(link => link.addEventListener("click", () => setMenu(false, true)));
-  matchMedia("(max-width: 780px)").addEventListener("change", () => setMenu(false));
+  matchMedia("(max-width: 1024px)").addEventListener("change", () => setMenu(false));
   setMenu(false);
   document.addEventListener("keydown", event => {
     if (event.key === "Escape" && els.sideRail.classList.contains("open")) { setMenu(false, true); return; }
