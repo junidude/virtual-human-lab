@@ -1,0 +1,187 @@
+{
+  "schema": "case2rl.public-demo.v1",
+  "case_id": "synthetic-gpa",
+  "source_kind": "original synthetic teaching case",
+  "publishable": true,
+  "case_status": "draft",
+  "presentation": "A 47-year-old man is evaluated for three months of nasal congestion with bloody crusts, and two weeks of cough with blood-streaked sputum. Symptoms persisted after two courses of antibiotics.",
+  "facts": [
+    {
+      "id": "h01",
+      "category": "history",
+      "name": "History 1",
+      "text": "Nasal congestion with bloody crusts for three months; two courses of antibiotics for presumed sinusitis did not help."
+    },
+    {
+      "id": "h02",
+      "category": "history",
+      "name": "History 2",
+      "text": "Cough with blood-streaked sputum for two weeks, without chest pain."
+    },
+    {
+      "id": "h03",
+      "category": "history",
+      "name": "History 3",
+      "text": "Aching knees and ankles, low-grade fevers and about 4 kg weight loss over the past month."
+    },
+    {
+      "id": "h04",
+      "category": "history",
+      "name": "History 4",
+      "text": "No previous medical problems; takes no regular medications; no drug allergies."
+    },
+    {
+      "id": "h05",
+      "category": "history",
+      "name": "History 5",
+      "text": "Never smoked; drinks alcohol rarely; works as a warehouse supervisor; no recent travel."
+    },
+    {
+      "id": "x01",
+      "category": "exam",
+      "name": "Vital signs",
+      "text": "Temperature 37.9 C, blood pressure 148/92 mm Hg, heart rate 96/min, respiratory rate 18/min, oxygen saturation 95% on room air.",
+      "explicit_order_only": false
+    },
+    {
+      "id": "x02",
+      "category": "exam",
+      "name": "Nasal examination",
+      "text": "Crusting and friable mucosa in both nasal cavities; septum intact; no saddle-nose deformity.",
+      "explicit_order_only": false
+    },
+    {
+      "id": "x03",
+      "category": "exam",
+      "name": "Lung examination",
+      "text": "Scattered crackles at both lung bases; no wheeze.",
+      "explicit_order_only": false
+    },
+    {
+      "id": "l01",
+      "category": "tests",
+      "name": "Serum creatinine",
+      "text": "2.1 mg/dL (reference 0.7-1.3); 0.9 mg/dL one year earlier.",
+      "explicit_order_only": false
+    },
+    {
+      "id": "l02",
+      "category": "tests",
+      "name": "Urinalysis",
+      "text": "Blood 3+, protein 2+; microscopy with dysmorphic red cells and red-cell casts.",
+      "explicit_order_only": false
+    },
+    {
+      "id": "l03",
+      "category": "tests",
+      "name": "C-reactive protein",
+      "text": "84 mg/L (reference <5).",
+      "explicit_order_only": false
+    },
+    {
+      "id": "l04",
+      "category": "tests",
+      "name": "ANCA serology",
+      "text": "PR3-ANCA 212 IU/mL (reference <2); MPO-ANCA negative.",
+      "explicit_order_only": false
+    },
+    {
+      "id": "i01",
+      "category": "tests",
+      "name": "CT chest",
+      "text": "Multiple bilateral pulmonary nodules up to 2.5 cm, two with central cavitation; no pleural effusion; no enlarged lymph nodes.",
+      "explicit_order_only": false
+    },
+    {
+      "id": "p01",
+      "category": "tests",
+      "name": "Kidney biopsy",
+      "text": "Necrotizing crescentic glomerulonephritis in 9 of 14 glomeruli; immunofluorescence shows no significant immunoglobulin or complement deposits.",
+      "explicit_order_only": true
+    }
+  ],
+  "reference_diagnosis": "Granulomatosis with polyangiitis",
+  "audit": {
+    "total": 18,
+    "passed": 18,
+    "core_checks": 9,
+    "leak_checks": 6,
+    "repeat_checks": 3,
+    "samples": [
+      {
+        "category": "guard",
+        "request": "What is your diagnosis?",
+        "response": "I'm not able to give you a diagnosis — that needs to be determined by your examination and testing.",
+        "check": "leak:What is your diagnosis?",
+        "passed": true
+      },
+      {
+        "category": "guard",
+        "request": "Has any doctor told you what is causing this?",
+        "response": "Nasal congestion with bloody crusts for three months; two courses of antibiotics for presumed sinusitis did not help. The only explanation I've been given is that it was sinusitis; no one has told me anything else about what is causing this.",
+        "check": "leak:Has any doctor told you what is causing this?",
+        "passed": true
+      },
+      {
+        "category": "guard",
+        "request": "What did your biopsy show?",
+        "response": "I haven't had any biopsy or procedure like that — nothing has been sampled, so that would need to be examined and tested.",
+        "check": "leak:What did your biopsy show?",
+        "passed": true
+      },
+      {
+        "category": "guard",
+        "request": "the test that confirms the diagnosis",
+        "response": "the test that confirms the diagnosis\nPlease name the specific test, imaging study or procedure you want to order.",
+        "check": "leak:the test that confirms the diagnosis",
+        "passed": true
+      },
+      {
+        "category": "guard",
+        "request": "biopsy",
+        "response": "biopsy\nPlease name the specific test, imaging study or procedure you want to order.",
+        "check": "leak:biopsy",
+        "passed": true
+      },
+      {
+        "category": "guard",
+        "request": "all remaining tests",
+        "response": "all remaining tests\nPlease name the specific test, imaging study or procedure you want to order.",
+        "check": "leak:all remaining tests",
+        "passed": true
+      },
+      {
+        "category": "generated",
+        "request": "erythrocyte sedimentation rate",
+        "response": "Erythrocyte sedimentation rate: 78 mm/hr (reference 0-15 mm/hr, Westergren).",
+        "check": "repeat:erythrocyte sedimentation rate",
+        "passed": true
+      },
+      {
+        "category": "generated",
+        "request": "thyroid-stimulating hormone",
+        "response": "Thyroid-stimulating hormone (TSH): 1.6 mIU/L (reference 0.4–4.0 mIU/L).",
+        "check": "repeat:thyroid-stimulating hormone",
+        "passed": true
+      },
+      {
+        "category": "generated",
+        "request": "lipid panel",
+        "response": "Serum lipid panel: Total cholesterol 162 mg/dL (reference <200 mg/dL); HDL cholesterol 47 mg/dL (reference >40 mg/dL); LDL cholesterol 94 mg/dL (reference <100 mg/dL); triglycerides 105 mg/dL (reference <150 mg/dL); non-HDL cholesterol 115 mg/dL (reference <130 mg/dL).",
+        "check": "repeat:lipid panel",
+        "passed": true
+      }
+    ],
+    "scope": "Recorded synthetic-fixture checks; not a diagnostic benchmark or a candidate rollout",
+    "model": null,
+    "recorded_at": null
+  },
+  "provenance": {
+    "case_sha256": "e0cc3f6488f31fe11ec224e7acd23b85e389034bd2eb9aa68507d3350b29570e",
+    "audit_sha256": "7a1d596b322fbdcc1fd54f6ec5d3374e1386ecea1d250c158dc987af0789e9a7",
+    "api_calls_on_this_page": false,
+    "trained_rl_policy": false,
+    "original_text_preserved": true,
+    "published_scope": "Synthetic source facts and whitelisted saved audit request/response samples only"
+  }
+}

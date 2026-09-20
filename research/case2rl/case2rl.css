@@ -1,0 +1,109 @@
+/* case2RL: source facts and recorded checks, in the shared VHL design system. */
+.c2-wrap {
+  width: min(1280px, calc(100vw - 2 * var(--gutter)));
+  margin: 0 auto;
+}
+.c2-wrap [hidden] { display: none !important; }
+.c2-wrap button, .c2-wrap select { font: inherit; }
+.c2-wrap button { cursor: pointer; }
+.c2-wrap button:focus-visible, .c2-wrap select:focus-visible, .c2-wrap summary:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 4px;
+}
+.c2-flow { margin: 0 0 56px; }
+.c2-flow ol { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); list-style: none; padding: 0; border: 1px solid var(--line); border-radius: var(--radius-lg); }
+.c2-flow li { position: relative; display: flex; flex-direction: column; gap: 3px; padding: 22px 24px; }
+.c2-flow li + li { border-left: 1px solid var(--line); }
+.c2-flow strong { font-size: 17px; font-weight: 600; }
+.c2-flow li > span:last-child { color: var(--muted); font-size: 13px; }
+.c2-flow .c2-number { color: var(--blue); font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+.c2-section { margin-top: 56px; }
+.c2-section-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 18px; }
+.c2-section-head h2, .c2-contract h2 { font-size: clamp(22px, 2.6vw, 28px); line-height: 1.2; margin: 6px 0 0; }
+.c2-eyebrow { display: block; color: var(--muted); font-size: 13px; font-weight: 500; }
+.c2-chip { color: var(--muted); font-size: 13px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; }
+.c2-status { padding: 28px; border-radius: var(--radius); background: var(--surface); color: var(--muted); }
+.c2-fallback { margin: 16px 0; }
+.c2-stage { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: 20px; align-items: start; }
+.c2-context, .c2-browser { min-width: 0; }
+.c2-opening { padding: 28px; border-radius: var(--radius-lg); background: var(--blue); color: white; }
+.c2-opening .c2-eyebrow, .c2-original { color: rgba(255,255,255,.8); font-size: 12px; }
+.c2-opening p { margin: 18px 0; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.65; }
+.c2-reference { margin-top: 16px; padding: 20px 24px; border: 1px solid var(--line); border-radius: var(--radius); }
+.c2-reveal { padding: 0; min-height: 40px; margin-top: 6px; color: var(--blue); background: none; border: 0; text-align: left; font-weight: 600 !important; }
+.c2-reveal::after { content: ' +'; }
+.c2-reveal[aria-expanded="true"]::after { content: ' −'; }
+.c2-reference p { margin-top: 10px; font-size: 18px; font-weight: 600; }
+.c2-reference small { display: block; margin-top: 8px; color: var(--muted); }
+.c2-controls { padding: 18px 20px; background: var(--surface); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.c2-segment { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 24px; background: white; }
+.c2-segment button { padding: 8px 15px; min-height: 40px; border: 0; border-radius: 999px; background: transparent; color: var(--ink); font-size: 14px; }
+.c2-segment button:hover { background: var(--surface); }
+.c2-segment button[aria-pressed="true"] { background: var(--ink); color: white; }
+.c2-fields { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 12px; margin-top: 14px; }
+.c2-fields label { display: flex; flex-direction: column; gap: 6px; min-width: 0; color: var(--muted); font-size: 12px; font-weight: 500; }
+.c2-fields select { min-width: 0; width: 100%; min-height: 44px; border: 1px solid var(--line); background: white; border-radius: 9px; padding: 8px 28px 8px 10px; color: var(--ink); font-size: 14px; text-overflow: ellipsis; }
+.c2-record { padding: 24px; min-height: 260px; border: 1px solid var(--line); border-top: 0; border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+.c2-record-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 18px; }
+.c2-badge { display: inline-flex; padding: 4px 8px; border-radius: 5px; background: var(--blue-soft); color: #004baf; font-size: 11px; font-weight: 600; }
+.c2-badge[data-kind="guard"] { color: var(--ink-2); background: var(--surface); }
+.c2-badge[data-kind="generated"] { color: #795018; background: #fff1db; }
+.c2-protected { background: var(--surface); color: var(--ink-2); }
+.c2-record-id { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+.c2-record h3 { font-size: 19px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.c2-record-caption { margin-top: 18px; color: var(--muted); font-size: 12px; }
+.c2-record-text { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: 6px; font-size: 16px; line-height: 1.7; }
+.c2-record-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-top: 24px; color: var(--muted); font-size: 12px; }
+.c2-audit { margin-top: 16px; border-bottom: 1px solid var(--line); padding: 14px 0; color: var(--muted); font-size: 13px; }
+.c2-audit summary, .c2-methods summary { cursor: pointer; }
+.c2-audit summary strong { float: right; color: var(--ink); margin-left: 12px; }
+.c2-audit p { margin-top: 8px; }
+.c2-provenance { margin-top: 14px; color: var(--muted); font-size: 12px; }
+.c2-provenance a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+.c2-actions { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.c2-actions li { background: var(--surface); padding: 22px; border-radius: var(--radius); }
+.c2-action-number { color: var(--muted); font-size: 12px; }
+.c2-actions h3 { margin-top: 14px; font-size: 20px; font-weight: 600; }
+.c2-actions code { font-size: 12px; color: var(--blue); }
+.c2-actions p { font-size: 13px; color: var(--muted); margin-top: 10px; }
+.c2-contract { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: 32px; align-items: center; }
+.c2-rules { margin: 20px 0 0; }
+.c2-rules > div { display: grid; grid-template-columns: 120px minmax(0,1fr); gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.c2-rules dt { font-weight: 600; }
+.c2-rules dd { margin: 0; color: var(--muted); }
+.c2-reward { background: var(--night); color: white; padding: 32px; border-radius: var(--radius-lg); }
+.c2-reward .c2-eyebrow, .c2-reward small { color: #afc0d0; }
+.c2-reward p { font-size: clamp(21px,2.3vw,28px); line-height: 1.5; margin: 18px 0; }
+.c2-project-status { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.c2-project-status > div { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); }
+.c2-project-status h3 { display: flex; align-items: center; gap: 10px; font-size: 17px; }
+.c2-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+.c2-dot-next { background: white; border: 1.5px solid var(--muted); }
+.c2-project-status ul { display: flex; flex-wrap: wrap; list-style: none; gap: 10px 22px; padding: 0; margin-top: 16px; font-size: 14px; color: var(--muted); }
+.c2-methods { margin-top: 24px; color: var(--muted); font-size: 13px; }
+.c2-methods p { margin-top: 12px; max-width: 800px; }
+@media (max-width: 900px) {
+  .c2-flow li { padding: 18px 14px; }
+  .c2-flow strong { font-size: 15px; }
+  .c2-stage { grid-template-columns: 1fr 1.2fr; gap: 16px; }
+  .c2-opening, .c2-record { padding: 22px; }
+  .c2-fields { grid-template-columns: 1fr; }
+  .c2-contract { gap: 24px; }
+}
+@media (max-width: 650px) {
+  .c2-flow { margin-bottom: 40px; }
+  .c2-flow ol { grid-template-columns: 1fr; border-radius: var(--radius); }
+  .c2-flow li { display: grid; grid-template-columns: 26px minmax(0,1fr) minmax(0,1fr); align-items: center; gap: 8px; padding: 12px 16px; }
+  .c2-flow li + li { border-left: 0; border-top: 1px solid var(--line); }
+  .c2-flow .c2-number { margin: 0; }
+  .c2-flow li > span:last-child { text-align: right; font-size: 12px; }
+  .c2-stage, .c2-contract, .c2-project-status { grid-template-columns: 1fr; }
+  .c2-fields { grid-template-columns: minmax(0,.75fr) minmax(0,1.25fr); }
+  .c2-section { margin-top: 40px; }
+  .c2-actions { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .c2-actions li { padding: 18px; }
+  .c2-opening p { font-size: 18px; }
+  .c2-project-status { gap: 12px; }
+  .c2-rules > div { grid-template-columns: 95px minmax(0,1fr); }
+}
+@media (prefers-reduced-motion: reduce) { .c2-wrap * { scroll-behavior: auto; } }

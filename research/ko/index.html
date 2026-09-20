@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>연구 | Virtual Human Lab</title>
-    <meta name="description" content="개인 반응 모델을 향한 세 프로젝트: PBISC(벌크 RNA → 단일 세포), RNA-LLM(RNA를 언어 모델 토큰 하나로), RL-env(AI 에이전트를 위한 임상 환경).">
+    <meta name="description" content="개인 반응 모델을 향한 세 프로젝트: PBISC(벌크 RNA → 단일 세포), RNA-LLM(RNA를 언어 모델 토큰 하나로), case2RL(증례 보고 → 진단 환경).">
     <meta property="og:title" content="연구 | Virtual Human Lab">
-    <meta property="og:description" content="개인 반응 모델을 향한 세 프로젝트: PBISC(벌크 RNA → 단일 세포), RNA-LLM(RNA를 언어 모델 토큰 하나로), RL-env(AI 에이전트를 위한 임상 환경).">
+    <meta property="og:description" content="개인 반응 모델을 향한 세 프로젝트: PBISC(벌크 RNA → 단일 세포), RNA-LLM(RNA를 언어 모델 토큰 하나로), case2RL(증례 보고 → 진단 환경).">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.virtualhumanlab.com/research/ko/">
     <meta property="og:locale" content="ko_KR">
@@ -69,17 +69,18 @@
         <div class="facts"><div class="fact"><span>질문</span><p>수천 개의 유전자 값을 글자로 풀어 쓰지 않고도 언어 모델이 RNA에 대해 추론할 수 있을까?</p></div><div class="fact"><span>방법</span><p>학습된 연결 모듈이 단일세포, 의사벌크, 벌크 프로필을 모델이 읽는 토큰 하나로 압축합니다.</p></div><div class="fact"><span>현황</span><p>BIBM에서 원고 심사 중.</p><a class="link" href="/papers/ko/#rna-llm">사본 요청 →</a></div></div>
       </section>
 
-      <section class="section section-tight" id="rl-env" aria-labelledby="rl-env-title">
+      <section class="section section-tight" id="case2rl" aria-labelledby="case2rl-title">
+        <span id="rl-env" aria-hidden="true"></span>
         <div class="feature">
-          <img src="/assets/home/rl-env.svg?v=20260919-1" alt="" loading="lazy">
+          <img src="/assets/home/case2rl.svg?v=20260921-1" alt="" loading="lazy">
           <div class="feature-body">
-            <p class="feature-kicker">03 · 임상 추론</p>
-            <h2 id="rl-env-title">RL-env</h2>
-            <p>AI 에이전트가 환자 증례를 한 단계씩 풀어 가는 환경.</p>
-            
+            <p class="feature-kicker">03 · 증례 보고 → 진단 환경</p>
+            <h2 id="case2rl-title">case2RL</h2>
+            <p>증례 보고를 단계별 진단 환경으로.</p>
+            <div class="btn-group"><a class="btn btn-primary" href="/research/case2rl/ko/">프로젝트 보기</a></div>
           </div>
         </div>
-        <div class="facts"><div class="fact"><span>질문</span><p>AI 에이전트가 임상의처럼 증례를 풀어 가도록 배우고, 그 과정을 공정하게 채점받을 수 있을까?</p></div><div class="fact"><span>방법</span><p>에이전트가 병력을 묻고, 진찰하고, 검사를 낸 뒤 결정을 내립니다. 정확도, 검사 비용, 안전성으로 점수를 받습니다.</p></div><div class="fact"><span>현황</span><p>초기 단계. 첫 과제는 항핵항체(ANA) 양성 환자의 분류(트리아지)와 출판된 증례 보고에서 만든 진단 과제입니다. 합성 증례만 사용합니다.</p><p class="fact-lead">담당: <a class="link" href="/members/ko/">Seung Jun Lee</a></p></div></div>
+        <div class="facts"><div class="fact"><span>흐름</span><p>증례 PDF → 환경 설정 → 단계별 진단 → 보상·검토.</p></div><div class="fact"><span>행동</span><p>문진 · 진찰 · 검사 요청 · 진단.</p></div><div class="fact"><span>현황</span><p>초기 프로토타입: PDF 변환기, 진단 환경, 파일럿 실행 기록, 로컬 검토 UI.</p><p>다음: 다중 증례 검토, 보상 조정, RL 학습기 연동.</p><p class="fact-lead">담당: <a class="link" href="/members/ko/">Seung Jun Lee</a></p></div></div>
       </section>
 
       <section class="section-band" aria-labelledby="how-title">
@@ -98,7 +99,7 @@
     <footer class="site-footer">
       <div class="footer-grid">
         <div class="footer-identity"><a class="brand" href="/ko/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>개인의 생물학을 계산 모델로 옮기기 위한 독립적이고 비상업적인 연구.</p></div>
-        <div class="footer-column"><span>연구</span><a href="/research/ko/#pbisc">PBISC</a><a href="/research/ko/#rna-llm">RNA-LLM</a><a href="/research/ko/#rl-env">RL-env</a><a href="/research/pbisc-diffusion/ko/">PBISC-Diffusion</a><a href="/research/talk/ko/">TALK</a></div>
+        <div class="footer-column"><span>연구</span><a href="/research/ko/#pbisc">PBISC</a><a href="/research/ko/#rna-llm">RNA-LLM</a><a href="/research/case2rl/ko/">case2RL</a><a href="/research/pbisc-diffusion/ko/">PBISC-Diffusion</a><a href="/research/talk/ko/">TALK</a></div>
         <div class="footer-column"><span>랩</span><a href="/papers/ko/">논문</a><a href="/blog/ko/">블로그</a><a href="/notes/ko/">노트</a><a href="/members/ko/">구성원</a></div>
         <div class="footer-column"><span>기록</span><a href="/governance/ko/">운영 체계</a><a href="/bylaws/ko/">회칙</a><a href="/research-integrity/ko/">연구 윤리와 실무</a><a href="/disclosures/ko/">공개 사항</a></div>
       </div>

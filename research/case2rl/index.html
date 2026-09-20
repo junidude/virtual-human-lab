@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>case2RL | Virtual Human Lab</title>
+    <meta name="description" content="A research prototype for turning case reports into sequential diagnostic environments.">
+    <meta property="og:title" content="case2RL | Virtual Human Lab">
+    <meta property="og:description" content="A research prototype for turning case reports into sequential diagnostic environments.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.virtualhumanlab.com/research/case2rl/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:image" content="https://www.virtualhumanlab.com/assets/home/case2rl.svg?v=20260921-1">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.virtualhumanlab.com/research/case2rl/">
+    <link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/case2rl/">
+    <link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/case2rl/ko/">
+    <link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/case2rl/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=20260920-1">
+    <link rel="stylesheet" href="/research/case2rl/case2rl.css?v=20260921-1">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Virtual Human Lab home"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation"><a href="/research/" aria-current="page">Research</a><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/members/">Members</a></nav>
+        <div class="header-end">
+          <a class="header-link" href="mailto:junidude14@gmail.com">Contact</a>
+          <a class="site-language" href="/research/case2rl/ko/" lang="ko" hreflang="ko" aria-label="한국어로 보기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3C9.5 5.6 8.2 8.6 8.2 12s1.3 6.4 3.8 9"/></svg><span>한국어</span></a>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">Open navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </header>
+
+
+    <main id="main">
+      <section class="page-head" aria-labelledby="case2rl-title">
+        <a class="back" href="/research/#case2rl">← Research</a>
+        <h1 id="case2rl-title">case2RL</h1>
+        <p>Case reports → diagnostic environments</p>
+        <p class="meta">Research prototype</p>
+      </section>
+
+      <div class="c2-wrap">
+        <section class="c2-flow" aria-label="From report to environment">
+          <ol><li><span class="c2-number">01</span><strong>Case report</strong><span>PDF</span></li><li><span class="c2-number">02</span><strong>Case config</strong><span>Draft</span></li><li><span class="c2-number">03</span><strong>Checks</strong><span>Schema · source pages</span></li><li><span class="c2-number">04</span><strong>Diagnosis</strong><span>Sequential actions</span></li><li><span class="c2-number">05</span><strong>Reward</strong><span>Score · cost · review</span></li></ol>
+        </section>
+
+        <section class="c2-explorer" id="explorer" data-case2rl data-src="/research/case2rl/assets/synthetic-demo.json?v=20260921-1" aria-labelledby="explorer-title">
+          <div class="c2-section-head"><div><span class="c2-eyebrow">01 / Source facts · Saved checks</span><h2 id="explorer-title">Explore one synthetic case</h2></div><span class="c2-chip">Synthetic case</span></div>
+          <p class="c2-status" data-status role="status">Loading the saved example…</p>
+          <noscript><p class="c2-fallback">JavaScript is off. Browse the source facts and saved responses in the JSON file.</p></noscript>
+          <div class="c2-explorer-body" hidden>
+            <div class="c2-stage">
+              <aside class="c2-context">
+                <div class="c2-opening"><span class="c2-eyebrow">Opening presentation · Source text</span><p data-presentation lang="en"></p><span class="c2-original">Original English</span></div>
+                <div class="c2-reference"><span class="c2-eyebrow">Reference answer</span><button type="button" class="c2-reveal" data-reveal aria-expanded="false" aria-controls="reference-answer">Reveal diagnosis</button><div id="reference-answer" hidden><p data-diagnosis lang="en"></p><small>Synthetic case answer · Hidden from the candidate</small></div></div>
+              </aside>
+              <div class="c2-browser">
+                <div class="c2-controls">
+                  <div class="c2-segment" role="group" aria-label="Explore"><button type="button" data-mode="facts" aria-pressed="true">Source facts</button><button type="button" data-mode="checks" aria-pressed="false">Recorded checks</button></div>
+                  <div class="c2-fields"><label for="case-category">Category<select id="case-category" data-category></select></label><label for="case-item"><span data-item-label>Finding</span><select id="case-item" data-item></select></label></div>
+                </div>
+                <article class="c2-record" aria-live="polite" aria-atomic="true">
+                  <div class="c2-record-meta"><span class="c2-badge" data-record-kind>Source</span><span class="c2-record-id" data-record-id></span><span class="c2-badge c2-protected" data-protected hidden></span></div>
+                  <h3 data-record-title>Select a finding</h3>
+                  <p class="c2-record-caption" data-record-caption>Source text</p>
+                  <p class="c2-record-text" data-record-text lang="en"></p>
+                  <div class="c2-record-foot"><span data-record-foot></span><span>Original English</span></div>
+                </article>
+              </div>
+            </div>
+            <details class="c2-audit"><summary><span>Recorded synthetic checks</span><strong data-audit-total></strong></summary><p>9 core · 6 disclosure · 3 repeat</p><p>Synthetic-fixture checks, not diagnostic accuracy.</p></details>
+          </div>
+          <p class="c2-provenance">case2RL synthetic fixture · Saved audit <span aria-hidden="true">·</span> <a href="/research/case2rl/assets/synthetic-demo.json">Example data (JSON)</a></p>
+        </section>
+
+        <section class="c2-section" aria-labelledby="actions-title"><div class="c2-section-head"><div><span class="c2-eyebrow">02 / Environment</span><h2 id="actions-title">Four actions</h2></div></div><ol class="c2-actions"><li><span class="c2-action-number">01</span><h3>Ask</h3><code>ask_patient</code><p>Patient history</p></li><li><span class="c2-action-number">02</span><h3>Examine</h3><code>examine</code><p>Physical findings</p></li><li><span class="c2-action-number">03</span><h3>Test</h3><code>order_tests</code><p>Named investigations</p></li><li><span class="c2-action-number">04</span><h3>Diagnose</h3><code>diagnose</code><p>Final answer</p></li></ol></section>
+
+        <section class="c2-section c2-contract" aria-label="Inside the environment"><div><h2>Inside the environment</h2><dl class="c2-rules"><div><dt>Documented</dt><dd>Source findings, verbatim.</dd></div><div><dt>Undocumented</dt><dd>Generated responses, with configured checks.</dd></div><div><dt>Protected</dt><dd>Exact investigation required.</dd></div><div><dt>Auditable</dt><dd>Source, generated findings, and cost ledger.</dd></div></dl></div><div class="c2-reward"><span class="c2-eyebrow">Reward</span><p>Diagnosis score − Cost − Error penalties</p><small>Weights and prices: placeholders.</small></div></section>
+
+        <section class="c2-section" aria-labelledby="status-title"><div class="c2-section-head"><div><span class="c2-eyebrow">03 / Status</span><h2 id="status-title">Project status</h2></div></div><div class="c2-project-status"><div><h3><span class="c2-dot" aria-hidden="true"></span>Implemented</h3><ul><li>Environment</li><li>PDF converter</li><li>Pilot rollouts</li><li>Local review UI</li></ul></div><div><h3><span class="c2-dot c2-dot-next" aria-hidden="true"></span>Next</h3><ul><li>Multi-case evaluation</li><li>Clinician review</li><li>Reward calibration</li><li>RL trainer adapter</li></ul></div></div><details class="c2-methods"><summary>Source & scope</summary><p>Original synthetic fixture and saved audit samples. The PDF converter produces drafts and checks numeric tokens and page bounds; clinical review remains pending. This page makes no model calls.</p></details></section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-identity"><a class="brand" href="/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>Independent, non-commercial research toward computational models of individual biology.</p></div>
+        <div class="footer-column"><span>Research</span><a href="/research/#pbisc">PBISC</a><a href="/research/#rna-llm">RNA-LLM</a><a href="/research/case2rl/">case2RL</a><a href="/research/pbisc-diffusion/">PBISC-Diffusion</a><a href="/research/talk/">TALK</a></div>
+        <div class="footer-column"><span>Lab</span><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/notes/">Notes</a><a href="/members/">Members</a></div>
+        <div class="footer-column"><span>Records</span><a href="/governance/">Governance</a><a href="/bylaws/">Bylaws</a><a href="/research-integrity/">Research practice</a><a href="/disclosures/">Disclosures</a></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Virtual Human Lab · <a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a> · Republic of Korea</span><span>A research group, not a medical provider. Affiliations do not imply institutional sponsorship.</span></div>
+    </footer>
+    <script src="/script.js?v=20260920-1"></script>
+    <script src="/research/case2rl/case2rl.js?v=20260921-1" defer></script>
+  </body>
+</html>

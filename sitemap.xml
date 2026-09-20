@@ -132,4 +132,16 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/talk/ko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/talk/"/>
   </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/research/case2rl/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/case2rl/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/case2rl/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/case2rl/"/>
+  </url>
+  <url>
+    <loc>https://www.virtualhumanlab.com/research/case2rl/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/case2rl/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/case2rl/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/case2rl/"/>
+  </url>
 </urlset>

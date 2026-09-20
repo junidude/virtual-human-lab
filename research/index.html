@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Research | Virtual Human Lab</title>
-    <meta name="description" content="Three projects toward models of individual response: PBISC (bulk RNA to single cells), RNA-LLM (RNA as one language-model token) and RL-env (clinical environments for AI agents).">
+    <meta name="description" content="Three projects toward models of individual response: PBISC (bulk RNA to single cells), RNA-LLM (RNA as one language-model token) and case2RL (case reports to diagnostic environments).">
     <meta property="og:title" content="Research | Virtual Human Lab">
-    <meta property="og:description" content="Three projects toward models of individual response: PBISC (bulk RNA to single cells), RNA-LLM (RNA as one language-model token) and RL-env (clinical environments for AI agents).">
+    <meta property="og:description" content="Three projects toward models of individual response: PBISC (bulk RNA to single cells), RNA-LLM (RNA as one language-model token) and case2RL (case reports to diagnostic environments).">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.virtualhumanlab.com/research/">
     <meta property="og:locale" content="en_US">
@@ -69,17 +69,18 @@
         <div class="facts"><div class="fact"><span>Question</span><p>Can a language model reason over RNA without reading thousands of gene values as text?</p></div><div class="fact"><span>Approach</span><p>A learned bridge compresses a single-cell, pseudobulk or bulk profile into one token the model reads.</p></div><div class="fact"><span>Status</span><p>Manuscript under review at BIBM.</p><a class="link" href="/papers/#rna-llm">Request a copy →</a></div></div>
       </section>
 
-      <section class="section section-tight" id="rl-env" aria-labelledby="rl-env-title">
+      <section class="section section-tight" id="case2rl" aria-labelledby="case2rl-title">
+        <span id="rl-env" aria-hidden="true"></span>
         <div class="feature">
-          <img src="/assets/home/rl-env.svg?v=20260919-1" alt="" loading="lazy">
+          <img src="/assets/home/case2rl.svg?v=20260921-1" alt="" loading="lazy">
           <div class="feature-body">
-            <p class="feature-kicker">03 · Clinical reasoning</p>
-            <h2 id="rl-env-title">RL-env</h2>
-            <p>Environments where AI agents work up a patient case, step by step.</p>
-            
+            <p class="feature-kicker">03 · Case reports → diagnostic environments</p>
+            <h2 id="case2rl-title">case2RL</h2>
+            <p>Turn case reports into step-by-step diagnostic environments.</p>
+            <div class="btn-group"><a class="btn btn-primary" href="/research/case2rl/">Explore the project</a></div>
           </div>
         </div>
-        <div class="facts"><div class="fact"><span>Question</span><p>Can an AI agent learn to work up a case the way a clinician does, and be scored fairly for it?</p></div><div class="fact"><span>Approach</span><p>The agent takes a history, examines and orders tests, then commits to a decision. It is scored on accuracy, test cost and safety.</p></div><div class="fact"><span>Status</span><p>Early work. First tasks: triage after a positive antinuclear-antibody (ANA) test, and diagnosis tasks built from published case reports. Synthetic cases only.</p><p class="fact-lead">Lead: <a class="link" href="/members/">Seung Jun Lee</a></p></div></div>
+        <div class="facts"><div class="fact"><span>Workflow</span><p>Case PDF → Environment config → Sequential diagnosis → Reward and review.</p></div><div class="fact"><span>Actions</span><p>Ask · Examine · Order tests · Diagnose.</p></div><div class="fact"><span>Status</span><p>Early prototype: PDF converter, diagnostic environment, pilot rollouts and local review UI.</p><p>Next: multi-case review, reward calibration and an RL trainer adapter.</p><p class="fact-lead">Lead: <a class="link" href="/members/">Seung Jun Lee</a></p></div></div>
       </section>
 
       <section class="section-band" aria-labelledby="how-title">
@@ -98,7 +99,7 @@
     <footer class="site-footer">
       <div class="footer-grid">
         <div class="footer-identity"><a class="brand" href="/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>Independent, non-commercial research toward computational models of individual biology.</p></div>
-        <div class="footer-column"><span>Research</span><a href="/research/#pbisc">PBISC</a><a href="/research/#rna-llm">RNA-LLM</a><a href="/research/#rl-env">RL-env</a><a href="/research/pbisc-diffusion/">PBISC-Diffusion</a><a href="/research/talk/">TALK</a></div>
+        <div class="footer-column"><span>Research</span><a href="/research/#pbisc">PBISC</a><a href="/research/#rna-llm">RNA-LLM</a><a href="/research/case2rl/">case2RL</a><a href="/research/pbisc-diffusion/">PBISC-Diffusion</a><a href="/research/talk/">TALK</a></div>
         <div class="footer-column"><span>Lab</span><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/notes/">Notes</a><a href="/members/">Members</a></div>
         <div class="footer-column"><span>Records</span><a href="/governance/">Governance</a><a href="/bylaws/">Bylaws</a><a href="/research-integrity/">Research practice</a><a href="/disclosures/">Disclosures</a></div>
       </div>

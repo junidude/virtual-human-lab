@@ -6,7 +6,7 @@ Run from the repository root:
 Inputs are already on the site:
   assets/home/hero-cells.bin            recorded PBISC-Diffusion states (see hero-cells.json)
   research/pbisc-diffusion/assets/one-cell-v2/cell-monocyte.bin   one generated cell, 2,980 genes
-Outputs: assets/home/{pbisc,rna-llm,rl-env}.svg (research cards) and
+Outputs: assets/home/{pbisc,rna-llm,case2rl}.svg (research cards) and
          assets/home/essay-{trusting-parameters,virtual-human}.svg (blog covers)
 """
 
@@ -120,7 +120,7 @@ def rna_llm():
     return svg("".join(streams) + "".join(tiles) + tok + "".join(words), "#120d1f")
 
 
-def rl_env():
+def case2rl():
     """A branching decision tree: ask, examine, test, decide; one scored path highlighted."""
     rng = np.random.default_rng(5)
     levels = [1, 3, 7, 12, 16]
@@ -207,7 +207,7 @@ def essay_virtual_human():
 
 
 def main():
-    for name, build in (("pbisc", pbisc), ("rna-llm", rna_llm), ("rl-env", rl_env),
+    for name, build in (("pbisc", pbisc), ("rna-llm", rna_llm), ("case2rl", case2rl),
                         ("essay-trusting-parameters", essay_trusting_parameters), ("essay-virtual-human", essay_virtual_human)):
         path = OUT / f"{name}.svg"
         path.write_text(build())

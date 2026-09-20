@@ -13,10 +13,11 @@ Then open `http://localhost:4173`.
 ## Public pages
 
 - `/` and `/ko/` — English and Korean home pages
-- `/research/` and `/research/ko/` — the three research projects: PBISC, RNA-LLM and RL-env
+- `/research/` and `/research/ko/` — the three research projects: PBISC, RNA-LLM and case2RL
 - `/research/pbisc-diffusion/` and `/research/pbisc-diffusion/ko/` — recorded diffusion sampling video with fixed PCA and UMAP views
 - `/research/pbisc-diffusion/one-cell/` and its `/ko/` page — interactive step-by-step view of one generated cell
 - `/research/talk/` and `/research/talk/ko/` — TALK playground: recorded RNA-LLM answers for real cells (data from `python tools/make_talk_demo.py`)
+- `/research/case2rl/` and `/research/case2rl/ko/` — case2RL: case-report PDFs, diagnostic environments, pilot rollouts and review
 - `/papers/` and `/papers/ko/` — blurred manuscript previews and email-draft access request
 - `/blog/` and `/blog/ko/` — signed essays on research direction
 - `/notes/` and `/notes/ko/` — what a technical note will contain (none are public yet)
@@ -36,6 +37,12 @@ The home hero replays recorded PBISC-Diffusion sampling from `assets/home/hero-c
 `hero-cells.json`; `assets/home/hero.js` draws it and never runs a model). The research-card and essay
 artworks in `assets/home/*.svg` are generated from published site data by
 `python tools/make_home_visuals.py`.
+
+The case2RL explorer exports only the project's explicitly publishable synthetic fixture and
+saved synthetic audit samples. Refresh it with
+`uv run --with pyyaml python tools/make_case2rl_demo.py --source /path/to/case2RL`
+(add `--check` to verify source parity without writing). This does not call a model or include
+source papers, private case-derived material, candidate rollouts, or the local review backend.
 
 ## Bilingual publishing
 
