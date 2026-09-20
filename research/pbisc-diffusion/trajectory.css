@@ -261,6 +261,70 @@
   overflow-wrap: anywhere;
 }
 
+/* Interactive study shells; the widgets own their controls and plots. */
+.trajectory-study {
+  width: var(--content);
+  margin-inline: auto;
+  scroll-margin-top: 20px;
+}
+
+.trajectory-study + .trajectory-study {
+  margin-top: clamp(64px, 8vw, 104px);
+}
+
+.trajectory-study-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 32px;
+  margin-bottom: 22px;
+}
+
+.trajectory-study-head .section-label {
+  margin-bottom: 8px;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.trajectory-study-head h2 {
+  font-size: clamp(28px, 3.4vw, 40px);
+  letter-spacing: -0.015em;
+}
+
+.trajectory-study-link {
+  margin-top: 16px;
+}
+
+.trajectory-archive {
+  margin-top: 20px;
+  padding-block: 14px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.trajectory-archive > summary {
+  width: fit-content;
+  max-width: 100%;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.trajectory-archive[open] > summary {
+  margin-bottom: 18px;
+}
+
+.trajectory-archive .trajectory-player {
+  width: 100%;
+}
+
+.trajectory-archive > .trajectory-links {
+  margin-top: 16px;
+}
+
 @media (max-width: 720px) {
   .trajectory-player-top,
   .trajectory-player figcaption {
