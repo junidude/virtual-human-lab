@@ -9,8 +9,9 @@
 .trajectory-keyframes,
 .trajectory-methods,
 .trajectory-tabs,
-.trajectory-volcano {
-  width: var(--content);
+.trajectory-volcano,
+.trajectory-study {
+  width: min(1280px, calc(100vw - 2 * var(--gutter, 24px)));
   margin-inline: auto;
 }
 
@@ -263,8 +264,6 @@
 
 /* Interactive study shells; the widgets own their controls and plots. */
 .trajectory-study {
-  width: var(--content);
-  margin-inline: auto;
   scroll-margin-top: 20px;
 }
 
