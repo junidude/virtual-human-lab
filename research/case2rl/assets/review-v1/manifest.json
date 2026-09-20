@@ -1,0 +1,51 @@
+{
+  "schema_version": "case2rl.public-review-manifest.v1",
+  "runs": [
+    {
+      "id": "igg4-sialadenitis/20260918T224112Z-deepseek-flash-000.json",
+      "candidate_label": "Candidate A",
+      "model": "deepseek-flash",
+      "case_label": "Case 24-2009",
+      "started_at": "2026-09-18T22:37:59+00:00",
+      "finished_at": "2026-09-18T22:41:12+00:00",
+      "run_sha256": "511767be6fd8829f2d46efdce7be12e058f100611684b7983401c0ed3010c988",
+      "cost_usd": 9150.0,
+      "case_id": "igg4-sialadenitis",
+      "turns": 17,
+      "file": "run-a.json",
+      "file_sha256": "2009405ab4b10f11fa33de4e0a2ef826069619cf7cac38fc77daaf9aeeeb47c2",
+      "reward": 0.5425,
+      "dx_score": 5,
+      "complete": true,
+      "penalty_count": 1
+    },
+    {
+      "id": "igg4-sialadenitis/20260918T224152Z-deepseek-v4-pro-000.json",
+      "candidate_label": "Candidate B",
+      "model": "deepseek-v4-pro",
+      "case_label": "Case 24-2009",
+      "started_at": "2026-09-18T22:38:00+00:00",
+      "finished_at": "2026-09-18T22:41:52+00:00",
+      "run_sha256": "0386113a4cbb7470eddf177d50f2ddb61c744d6380b262f0ef8b2705ed03e23b",
+      "cost_usd": 9050.0,
+      "case_id": "igg4-sialadenitis",
+      "turns": 14,
+      "file": "run-b.json",
+      "file_sha256": "64f98d91809921611bc677791422d78d27dc56a269d05ed1816e469ee06873bd",
+      "reward": 2.5475,
+      "dx_score": 5,
+      "complete": true,
+      "penalty_count": 0
+    }
+  ],
+  "story": {
+    "file": "story.json",
+    "sha256": "b749c85dfecfb9d9e82d6fdc1f0bf04ff13391f163cd4fe0206bc5a8502ccab0"
+  },
+  "publication_scope": "Owner-requested recorded action/response review; original paper PDF and original figures are not bundled.",
+  "storage": "Browser-local append-only snapshots with portable JSON; no shared submission backend.",
+  "source_normalizer_sha256": "d82177177f09547d75e53b699c86bdbcb6ea7013371f3393f5e766bf4883971e",
+  "exporter_sha256": "94f8d4bfeb5df824e63422f5424285d47faf230c114c6ad556756bc7ea5f1146",
+  "new_model_calls": 0,
+  "source_rollouts_unchanged": true
+}

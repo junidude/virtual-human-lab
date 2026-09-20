@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#101f25">
+  <title>case2RL · Clinician Review</title>
+  <meta name="description" content="Review two recorded case2RL trajectories, source provenance, generated findings, and diagnostic rewards. Browser-local review with JSON export.">
+  <link rel="canonical" href="https://www.virtualhumanlab.com/research/case2rl/review/">
+  <link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/case2rl/review/">
+  <link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/case2rl/review/ko/">
+  <link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/case2rl/review/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a82f6'/%3E%3Cpath d='M7 8h8l4 6h7v10h-8l-4-6H7z' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/research/case2rl/review/review.css?v=20260921-8c4e735a58">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="app-shell">
+    <aside class="side-rail" id="sideRail" aria-label="Review navigation">
+      <a class="brand-lockup" href="/research/case2rl/">
+        <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true">
+          <path d="M8 11h11l5 8h12v14H25l-5-8H8z"/>
+          <circle cx="8" cy="11" r="3"/><circle cx="36" cy="19" r="3"/>
+          <circle cx="25" cy="33" r="3"/><circle cx="8" cy="25" r="3"/>
+        </svg>
+        <div><b>case2RL</b><span>CLINICIAN REVIEW</span></div>
+      </a>
+
+      <label class="rail-search">
+        <span class="sr-only">Search turns</span>
+        <input id="searchInput" type="search" placeholder="Search turns" autocomplete="off">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.15A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+      </label>
+
+      <nav class="rail-nav">
+        <a href="#overview" data-nav="overview"><span>Overview</span><small>01</small></a>
+        <a href="#trajectory" data-nav="trajectory"><span>Trajectory</span><small>02</small></a>
+        <a href="#evaluation" data-nav="evaluation"><span>Evaluation</span><small>03</small></a>
+        <a href="#reference" data-nav="reference"><span>Reference</span><small>04</small></a>
+      </nav>
+
+      <a class="source-overview" href="/research/case2rl/#source-case">← Case report & environment</a>
+      <div class="rail-groups">
+        <details open>
+          <summary>Review status</summary>
+          <div class="rail-progress"><i id="railProgressBar"></i></div>
+          <p><strong id="railProgressText">0 / 0</strong> turns reviewed</p>
+        </details>
+        <details>
+          <summary>Keyboard</summary>
+          <ul><li><kbd>J</kbd> next turn</li><li><kbd>K</kbd> previous turn</li><li><kbd>S</kbd> save snapshot</li></ul>
+        </details>
+      </div>
+
+      <div class="rail-footer">
+        <span class="privacy-light"></span>
+        <div><b>This browser</b><small>Export JSON · No server submission</small></div>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuButton" type="button" aria-expanded="false" aria-controls="sideRail">
+          <span></span><span></span><span></span><span class="sr-only">Open menu</span>
+        </button>
+        <a class="mobile-brand" href="/research/case2rl/">case2RL</a>
+        <div class="topbar-actions"><a class="language-link" href="/research/case2rl/review/ko/" lang="ko">한국어</a>
+          <button class="outline-pill" id="blindToggle" type="button" aria-pressed="true">
+            <span class="status-dot"></span><span>Blinded</span>
+          </button>
+          <button class="primary-pill" id="saveButton" type="button">Save review <span>↗</span></button>
+        </div>
+      </header>
+
+      <main id="main">
+        <section class="hero" id="overview" aria-labelledby="heroTitle">
+          <canvas id="networkCanvas" aria-hidden="true"></canvas>
+          <div class="hero-content">
+            <p class="eyebrow">CLINICIAN REVIEW CONSOLE · RECORDED ROLLOUTS</p>
+            <h1 id="heroTitle">Review the evidence.<br>Turn by turn.</h1>
+            <p class="hero-copy">Two candidates. One case. Every action and response.<br>Recorded text · English original</p>
+
+            <div class="run-loader" aria-label="Select rollout">
+              <span class="prompt-mark">$</span>
+              <label for="runSelect" class="sr-only">Select rollout</label>
+              <select id="runSelect"><option>Loading trajectories…</option></select>
+              <button id="loadRunButton" type="button">Load <span>↗</span></button>
+            </div>
+            <p id="loadStatus" class="load-status" role="status" aria-live="polite">Loading recorded runs…</p>
+            <button class="text-link" id="nextUnreviewedButton" type="button">Open first unresolved turn <span>→</span></button>
+          </div>
+        </section>
+
+        <section class="content-section run-overview" aria-labelledby="overviewTitle">
+          <div class="section-heading">
+            <div><p class="eyebrow">RUN OVERVIEW</p><h2 id="overviewTitle">At a glance</h2></div>
+            <p id="runTimestamp">—</p>
+          </div>
+          <div class="metric-grid" id="metricGrid" aria-live="polite"></div>
+          <p class="method-note">Modeled encounter cost · Placeholder prices, not API bills. Judge-generated scores need review.</p>
+          <details class="integrity-details"><summary>Source integrity · SHA-256</summary><dl id="integrityDetails"></dl></details>
+        </section>
+
+        <section class="content-section trajectory-section" id="trajectory" aria-labelledby="trajectoryTitle">
+          <div class="section-heading sticky-heading">
+            <div><p class="eyebrow">02 · TRAJECTORY</p><h2 id="trajectoryTitle">Clinical path</h2></div>
+            <div class="section-tools">
+              <div class="filter-tabs" role="group" aria-label="Turn filter">
+                <button type="button" class="active" data-filter="all">All</button>
+                <button type="button" data-filter="flagged">Flagged</button>
+                <button type="button" data-filter="unreviewed">Unreviewed</button>
+              </div>
+              <span id="visibleTurnCount">0 turns</span>
+            </div>
+          </div>
+
+          <div class="trajectory-layout">
+            <div class="timeline" id="timeline" aria-live="polite"></div>
+            <aside class="reviewer-panel" aria-labelledby="reviewerTitle">
+              <p class="eyebrow">REVIEWER</p>
+              <h3 id="reviewerTitle">Your review</h3>
+              <label>Reviewer ID<input id="reviewerId" type="text" maxlength="120" autocomplete="off" placeholder="e.g. rheum-01"></label>
+              <label>Specialty<input id="reviewerSpecialty" type="text" maxlength="200" autocomplete="off" placeholder="Rheumatology"></label>
+              <button class="panel-button" id="resumeButton" type="button">Resume latest snapshot</button>
+              <div class="portable-actions"><button class="panel-button" id="exportButton" type="button">Export JSON</button><button class="panel-button" id="importButton" type="button">Import JSON</button><input id="importFile" type="file" accept="application/json,.json" hidden></div>
+              <p id="storageStatus" class="storage-status" role="status">Enter a reviewer ID to begin.</p>
+              <div class="session-readout">
+                <div><span>Reviewed</span><strong id="reviewedCount">0</strong></div>
+                <div><span>Flagged</span><strong id="flaggedCount">0</strong></div>
+                <div><span>Saved versions</span><strong id="versionCount">0</strong></div>
+              </div>
+              <p class="panel-note">This browser only. Each save adds a snapshot. Export JSON to keep a copy.</p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="content-section evaluation-section" id="evaluation" aria-labelledby="evaluationTitle">
+          <div class="section-heading">
+            <div><p class="eyebrow">03 · EVALUATION</p><h2 id="evaluationTitle">Final decision</h2></div>
+            <span class="shadow-badge">MODEL-GRADED · REVIEW REQUIRED</span>
+          </div>
+          <div class="evaluation-grid">
+            <article class="decision-card" id="decisionCard"></article>
+            <form class="final-review" id="finalReviewForm">
+              <fieldset>
+                <legend>Diagnosis agreement</legend>
+                <div class="choice-grid three">
+                  <label><input type="radio" name="diagnosis_agreement" value="agree"><span>Agree</span></label>
+                  <label><input type="radio" name="diagnosis_agreement" value="partial"><span>Partial</span></label>
+                  <label><input type="radio" name="diagnosis_agreement" value="disagree"><span>Disagree</span></label>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>Penalty agreement</legend>
+                <div class="choice-grid three">
+                  <label><input type="radio" name="penalty_agreement" value="agree"><span>Agree</span></label>
+                  <label><input type="radio" name="penalty_agreement" value="missing"><span>Missing issue</span></label>
+                  <label><input type="radio" name="penalty_agreement" value="overcalled"><span>Overcalled</span></label>
+                </div>
+              </fieldset>
+              <label>Overall verdict
+                <select name="overall_verdict">
+                  <option value="">Select a verdict</option>
+                  <option value="acceptable">Acceptable trajectory</option>
+                  <option value="minor_revision">Minor clinical concerns</option>
+                  <option value="major_revision">Major clinical concerns</option>
+                  <option value="unsafe">Unsafe trajectory</option>
+                  <option value="indeterminate">Cannot determine</option>
+                </select>
+              </label>
+              <label>Final review notes<textarea name="notes" rows="5" maxlength="20000" placeholder="Evidence, concerns, corrections."></textarea></label>
+            </form>
+          </div>
+        </section>
+
+        <section class="content-section reference-section" id="reference" aria-labelledby="referenceTitle">
+          <div class="section-heading">
+            <div><p class="eyebrow">04 · REFERENCE</p><h2 id="referenceTitle">Evidence contract</h2></div>
+            <button class="text-link" id="referenceToggle" type="button" aria-expanded="false">Reveal reference <span>↓</span></button>
+          </div>
+          <div class="reference-grid" id="referenceGrid"></div>
+          <p class="method-note">Model blinding is a display setting. Recorded data can be inspected in source files.</p>
+        </section>
+
+        <section class="completion-band">
+          <div><p class="eyebrow">SAVE YOUR ASSESSMENT</p><h2>Keep a snapshot.<br>Export your review.</h2></div>
+          <button class="light-pill" id="footerSaveButton" type="button">Save review <span>↗</span></button>
+        </section>
+
+        <footer class="page-footer">
+          <div class="brand-lockup compact">
+            <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true"><path d="M8 11h11l5 8h12v14H25l-5-8H8z"/><circle cx="8" cy="11" r="3"/><circle cx="36" cy="19" r="3"/><circle cx="25" cy="33" r="3"/><circle cx="8" cy="25" r="3"/></svg>
+            <b>case2RL</b>
+          </div>
+          <p>Recorded rollout review · Browser storage · JSON export</p>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <button class="menu-backdrop" id="menuBackdrop" type="button" tabindex="-1" aria-label="Close menu" hidden></button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/research/case2rl/review/review-store.js?v=20260921-ea7a913b8a" defer></script>
+  <script src="/research/case2rl/review/review.js?v=20260921-c8e499af83" defer></script>
+</body>
+</html>

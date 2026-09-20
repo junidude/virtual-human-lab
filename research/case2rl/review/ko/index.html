@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#101f25">
+  <title>case2RL · 롤아웃 검토</title>
+  <meta name="description" content="case2RL의 두 롤아웃에서 전체 행동, 원문 근거, 생성된 정보, 진단 보상을 검토하세요. 브라우저 저장과 JSON 내보내기를 지원합니다.">
+  <link rel="canonical" href="https://www.virtualhumanlab.com/research/case2rl/review/ko/">
+  <link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/case2rl/review/">
+  <link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/case2rl/review/ko/">
+  <link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/case2rl/review/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a82f6'/%3E%3Cpath d='M7 8h8l4 6h7v10h-8l-4-6H7z' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/research/case2rl/review/review.css?v=20260921-8c4e735a58">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <div class="app-shell">
+    <aside class="side-rail" id="sideRail" aria-label="검토 탐색">
+      <a class="brand-lockup" href="/research/case2rl/ko/">
+        <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true">
+          <path d="M8 11h11l5 8h12v14H25l-5-8H8z"/>
+          <circle cx="8" cy="11" r="3"/><circle cx="36" cy="19" r="3"/>
+          <circle cx="25" cy="33" r="3"/><circle cx="8" cy="25" r="3"/>
+        </svg>
+        <div><b>case2RL</b><span>CLINICIAN REVIEW</span></div>
+      </a>
+
+      <label class="rail-search">
+        <span class="sr-only">턴 검색</span>
+        <input id="searchInput" type="search" placeholder="턴 검색" autocomplete="off">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.15A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+      </label>
+
+      <nav class="rail-nav">
+        <a href="#overview" data-nav="overview"><span>개요</span><small>01</small></a>
+        <a href="#trajectory" data-nav="trajectory"><span>행동 기록</span><small>02</small></a>
+        <a href="#evaluation" data-nav="evaluation"><span>최종 평가</span><small>03</small></a>
+        <a href="#reference" data-nav="reference"><span>원문 근거</span><small>04</small></a>
+      </nav>
+
+      <a class="source-overview" href="/research/case2rl/ko/#source-case">← 증례와 환경</a>
+      <div class="rail-groups">
+        <details open>
+          <summary>검토 현황</summary>
+          <div class="rail-progress"><i id="railProgressBar"></i></div>
+          <p><strong id="railProgressText">0 / 0</strong> 턴 검토</p>
+        </details>
+        <details>
+          <summary>키보드</summary>
+          <ul><li><kbd>J</kbd> 다음 턴</li><li><kbd>K</kbd> 이전 턴</li><li><kbd>S</kbd> 스냅샷 저장</li></ul>
+        </details>
+      </div>
+
+      <div class="rail-footer">
+        <span class="privacy-light"></span>
+        <div><b>이 브라우저</b><small>JSON 내보내기 · 서버 전송 없음</small></div>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuButton" type="button" aria-expanded="false" aria-controls="sideRail">
+          <span></span><span></span><span></span><span class="sr-only">메뉴 열기</span>
+        </button>
+        <a class="mobile-brand" href="/research/case2rl/ko/">case2RL</a>
+        <div class="topbar-actions"><a class="language-link" href="/research/case2rl/review/" lang="en">EN</a>
+          <button class="outline-pill" id="blindToggle" type="button" aria-pressed="true">
+            <span class="status-dot"></span><span>블라인드</span>
+          </button>
+          <button class="primary-pill" id="saveButton" type="button">검토 저장 <span>↗</span></button>
+        </div>
+      </header>
+
+      <main id="main">
+        <section class="hero" id="overview" aria-labelledby="heroTitle">
+          <canvas id="networkCanvas" aria-hidden="true"></canvas>
+          <div class="hero-content">
+            <p class="eyebrow">임상 검토 콘솔 · 저장된 롤아웃</p>
+            <h1 id="heroTitle">근거를 따라.<br>한 턴씩 검토.</h1>
+            <p class="hero-copy">두 후보. 하나의 증례. 전체 행동과 응답.<br>저장된 기록 · 영문 원문</p>
+
+            <div class="run-loader" aria-label="롤아웃 선택">
+              <span class="prompt-mark">$</span>
+              <label for="runSelect" class="sr-only">롤아웃 선택</label>
+              <select id="runSelect"><option>불러오는 중…</option></select>
+              <button id="loadRunButton" type="button">불러오기 <span>↗</span></button>
+            </div>
+            <p id="loadStatus" class="load-status" role="status" aria-live="polite">롤아웃 불러오는 중…</p>
+            <button class="text-link" id="nextUnreviewedButton" type="button">미검토 턴 열기 <span>→</span></button>
+          </div>
+        </section>
+
+        <section class="content-section run-overview" aria-labelledby="overviewTitle">
+          <div class="section-heading">
+            <div><p class="eyebrow">롤아웃 개요</p><h2 id="overviewTitle">한눈에 보기</h2></div>
+            <p id="runTimestamp">—</p>
+          </div>
+          <div class="metric-grid" id="metricGrid" aria-live="polite"></div>
+          <p class="method-note">비용: 모형 내 가정값 · API 요금 아님. 자동 평가는 검토가 필요합니다.</p>
+          <details class="integrity-details"><summary>원본 무결성 · SHA-256</summary><dl id="integrityDetails"></dl></details>
+        </section>
+
+        <section class="content-section trajectory-section" id="trajectory" aria-labelledby="trajectoryTitle">
+          <div class="section-heading sticky-heading">
+            <div><p class="eyebrow">02 · 행동 기록</p><h2 id="trajectoryTitle">행동 기록</h2></div>
+            <div class="section-tools">
+              <div class="filter-tabs" role="group" aria-label="턴 필터">
+                <button type="button" class="active" data-filter="all">전체</button>
+                <button type="button" data-filter="flagged">주의</button>
+                <button type="button" data-filter="unreviewed">미검토</button>
+              </div>
+              <span id="visibleTurnCount">0 turns</span>
+            </div>
+          </div>
+
+          <div class="trajectory-layout">
+            <div class="timeline" id="timeline" aria-live="polite"></div>
+            <aside class="reviewer-panel" aria-labelledby="reviewerTitle">
+              <p class="eyebrow">REVIEWER</p>
+              <h3 id="reviewerTitle">검토 세션</h3>
+              <label>Reviewer ID<input id="reviewerId" type="text" maxlength="120" autocomplete="off" placeholder="e.g. rheum-01"></label>
+              <label>전문 분야<input id="reviewerSpecialty" type="text" maxlength="200" autocomplete="off" placeholder="Rheumatology"></label>
+              <button class="panel-button" id="resumeButton" type="button">최신 스냅샷 복원</button>
+              <div class="portable-actions"><button class="panel-button" id="exportButton" type="button">JSON 내보내기</button><button class="panel-button" id="importButton" type="button">JSON 가져오기</button><input id="importFile" type="file" accept="application/json,.json" hidden></div>
+              <p id="storageStatus" class="storage-status" role="status">Reviewer ID를 입력하세요.</p>
+              <div class="session-readout">
+                <div><span>검토 완료</span><strong id="reviewedCount">0</strong></div>
+                <div><span>주의</span><strong id="flaggedCount">0</strong></div>
+                <div><span>저장 버전</span><strong id="versionCount">0</strong></div>
+              </div>
+              <p class="panel-note">이 브라우저에 저장 · 스냅샷 추가 · JSON 내보내기</p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="content-section evaluation-section" id="evaluation" aria-labelledby="evaluationTitle">
+          <div class="section-heading">
+            <div><p class="eyebrow">03 · 최종 평가</p><h2 id="evaluationTitle">최종 판단</h2></div>
+            <span class="shadow-badge">자동 평가 · 검토 필요</span>
+          </div>
+          <div class="evaluation-grid">
+            <article class="decision-card" id="decisionCard"></article>
+            <form class="final-review" id="finalReviewForm">
+              <fieldset>
+                <legend>진단 동의</legend>
+                <div class="choice-grid three">
+                  <label><input type="radio" name="diagnosis_agreement" value="agree"><span>동의</span></label>
+                  <label><input type="radio" name="diagnosis_agreement" value="partial"><span>부분 동의</span></label>
+                  <label><input type="radio" name="diagnosis_agreement" value="disagree"><span>비동의</span></label>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>Penalty 동의</legend>
+                <div class="choice-grid three">
+                  <label><input type="radio" name="penalty_agreement" value="agree"><span>동의</span></label>
+                  <label><input type="radio" name="penalty_agreement" value="missing"><span>누락 있음</span></label>
+                  <label><input type="radio" name="penalty_agreement" value="overcalled"><span>과대 판정</span></label>
+                </div>
+              </fieldset>
+              <label>전체 판정
+                <select name="overall_verdict">
+                  <option value="">판정 선택</option>
+                  <option value="acceptable">적절함</option>
+                  <option value="minor_revision">경미한 문제</option>
+                  <option value="major_revision">중대한 문제</option>
+                  <option value="unsafe">안전 문제</option>
+                  <option value="indeterminate">판정 불가</option>
+                </select>
+              </label>
+              <label>최종 검토 메모<textarea name="notes" rows="5" maxlength="20000" placeholder="근거, 문제점, 수정 제안."></textarea></label>
+            </form>
+          </div>
+        </section>
+
+        <section class="content-section reference-section" id="reference" aria-labelledby="referenceTitle">
+          <div class="section-heading">
+            <div><p class="eyebrow">04 · 원문 근거</p><h2 id="referenceTitle">원문 근거</h2></div>
+            <button class="text-link" id="referenceToggle" type="button" aria-expanded="false">원문 진단 보기 <span>↓</span></button>
+          </div>
+          <div class="reference-grid" id="referenceGrid"></div>
+          <p class="method-note">모델 블라인드는 화면 표시 설정입니다. 데이터 파일에서는 확인할 수 있습니다.</p>
+        </section>
+
+        <section class="completion-band">
+          <div><p class="eyebrow">검토 기록 저장</p><h2>검토를 저장하고.<br>JSON으로 보관하세요.</h2></div>
+          <button class="light-pill" id="footerSaveButton" type="button">검토 저장 <span>↗</span></button>
+        </section>
+
+        <footer class="page-footer">
+          <div class="brand-lockup compact">
+            <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true"><path d="M8 11h11l5 8h12v14H25l-5-8H8z"/><circle cx="8" cy="11" r="3"/><circle cx="36" cy="19" r="3"/><circle cx="25" cy="33" r="3"/><circle cx="8" cy="25" r="3"/></svg>
+            <b>case2RL</b>
+          </div>
+          <p>저장된 롤아웃 검토 · 브라우저 저장 · JSON 내보내기</p>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <button class="menu-backdrop" id="menuBackdrop" type="button" tabindex="-1" aria-label="메뉴 닫기" hidden></button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/research/case2rl/review/review-store.js?v=20260921-ea7a913b8a" defer></script>
+  <script src="/research/case2rl/review/review.js?v=20260921-c8e499af83" defer></script>
+</body>
+</html>

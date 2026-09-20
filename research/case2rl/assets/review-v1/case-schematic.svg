@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="540" viewBox="0 0 840 540" role="img" aria-labelledby="title desc">
+  <title id="title">Case 24-2009 — neck swelling schematic</title>
+  <desc id="desc">Original simplified illustration of the head and neck, highlighting the bilateral submandibular region. This is not a patient photograph or a reproduction of a journal figure.</desc>
+  <rect width="840" height="540" rx="28" fill="#101f25"/>
+  <g stroke="#30454f" stroke-width="1" opacity=".6"><path d="M80 90H760M80 180H760M80 270H760M80 360H760M80 450H760"/><path d="M150 65V475M285 65V475M420 65V475M555 65V475M690 65V475"/></g>
+  <g fill="none" stroke="#9fb2bd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M326 274C304 246 300 191 310 142C319 97 350 71 396 71C442 71 473 97 482 142C492 191 488 246 466 274L442 307V341C477 371 529 376 553 410L571 471H221L239 410C263 376 315 371 350 341V307Z" fill="#172d35"/>
+    <path d="M326 274L358 302Q396 321 434 302L466 274M351 343Q396 364 441 343M270 414L343 376M522 414L449 376"/>
+  </g>
+  <g><ellipse cx="350" cy="314" rx="28" ry="21" fill="#0a82f6" opacity=".22"/><ellipse cx="442" cy="314" rx="28" ry="21" fill="#0a82f6" opacity=".22"/><ellipse cx="350" cy="314" rx="17" ry="12" fill="#37a1ff"/><ellipse cx="442" cy="314" rx="17" ry="12" fill="#37a1ff"/></g>
+  <g fill="none" stroke="#78d9ff" stroke-width="1.5"><path d="M461 314H558L583 285H745"/><path d="M331 314H252L226 285H95"/></g>
+  <g font-family="Arial,sans-serif" fill="#f5f8fa"><text x="36" y="42" font-size="15" letter-spacing="2">CASE 24–2009</text><text x="36" y="509" font-size="14" fill="#9fb2bd">Original schematic · not a patient photograph</text><text x="581" y="258" font-size="17">Submandibular</text><text x="581" y="280" font-size="17">region</text><text x="95" y="257" font-size="15">Bilateral</text><text x="95" y="279" font-size="15">swelling</text></g>
+</svg>

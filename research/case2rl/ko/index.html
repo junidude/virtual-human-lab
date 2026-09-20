@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=20260920-1">
-    <link rel="stylesheet" href="/research/case2rl/case2rl.css?v=20260921-1">
+    <link rel="stylesheet" href="/research/case2rl/case2rl.css?v=20260921-2">
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -43,14 +43,23 @@
       <section class="page-head" aria-labelledby="case2rl-title">
         <a class="back" href="/research/ko/#case2rl">← 연구</a>
         <h1 id="case2rl-title">case2RL</h1>
-        <p>증례 보고 → 진단 환경</p>
+        <p>원문 근거 유지 · 미기록 결과 생성 · Reward 설계</p>
         <p class="meta">연구 프로토타입</p>
       </section>
 
       <div class="c2-wrap">
         <section class="c2-flow" aria-label="보고서에서 환경으로">
-          <ol><li><span class="c2-number">01</span><strong>증례 보고</strong><span>PDF</span></li><li><span class="c2-number">02</span><strong>케이스 설정</strong><span>초안</span></li><li><span class="c2-number">03</span><strong>검증</strong><span>스키마 · 원문 페이지</span></li><li><span class="c2-number">04</span><strong>진단</strong><span>순차적 행동</span></li><li><span class="c2-number">05</span><strong>보상</strong><span>점수 · 비용 · 검토</span></li></ol>
+          <ol><li><span class="c2-number">01</span><strong>증례 보고</strong><span>PDF</span></li><li><span class="c2-number">02</span><strong>케이스 설정</strong><span>초안</span></li><li><span class="c2-number">03</span><strong>검증</strong><span>스키마 · 원문 페이지</span></li><li><span class="c2-number">04</span><strong>환경</strong><span>근거 조회 · 결과 생성</span></li><li><span class="c2-number">05</span><strong>보상</strong><span>점수 · 비용 · 검토</span></li></ol>
         </section>
+
+
+        <div data-case2rl-study data-story="/research/case2rl/assets/review-v1/story.json?v=20260921-2">
+          <section class="c2-review-invitation" aria-labelledby="review-console-title"><div><span class="c2-eyebrow">ROLLOUT REVIEW</span><h2 id="review-console-title">원문 근거부터 최종 판단까지</h2><p>17턴 · 14턴 · 모델 블라인드 · 턴별 판정</p><div class="c2-provenance-pills"><span>core</span><span>generated</span><span>mixed</span><span>refused</span></div></div><a class="btn btn-primary" href="/research/case2rl/review/ko/">전체 rollout 검토 ↗</a></section>
+          <section class="c2-section" id="source-case" aria-labelledby="source-case-title"><div class="c2-section-head"><div><span class="c2-eyebrow">01 / CASE REPORT</span><h2 id="source-case-title">실제 출발점: 원본 증례</h2></div></div><div class="c2-paper-grid"><figure><img src="/research/case2rl/assets/review-v1/case-schematic.svg" alt="별도 제작한 도식 · 실제 환자 사진 아님" width="840" height="540"><figcaption>별도 제작한 도식 · 실제 환자 사진 아님</figcaption></figure><article><p class="c2-eyebrow">NEJM · 2009 · 361:511–518</p><h3>Case 24-2009 · 목의 통증과 종창을 보인 26세 여성</h3><p>병력·검사·목 영상·조직 소견을 환경의 근거로 연결합니다.</p><p class="c2-original-count">병력 16 · 소견 44 · 출처 페이지 연결</p><p class="c2-paper-authors">Stone JH · Caruso PA · Deshpande V</p><a class="link" href="https://www.nejm.org/doi/10.1056/NEJMcpc0902221" target="_blank" rel="noreferrer">원문 및 원본 그림 보기 ↗</a></article></div></section>
+          <section class="c2-section" id="generation" aria-labelledby="generation-title"><div class="c2-section-head"><div><span class="c2-eyebrow">02 / ENVIRONMENT COMPLETION</span><h2 id="generation-title">원문에 없는 요청에도 답하는 환경</h2></div></div><p>원문 근거는 유지하고, 미기록 결과는 증례에 맞춰 생성합니다.</p><p class="c2-generation-route">요청 → 근거 매칭 → 미기록 항목 생성 → 검사·재시도 → 캐시·기록</p><div class="c2-generation-inputs"><div><strong>생성기에 주는 정보</strong><p>증례 전체 흐름 · 기록된 병력 · 알려진 결과 · 새 요청</p></div><div><strong>검사와 일관성</strong><p>진단명·기록 항목 중복 검사 · 최대 2회 시도 · 같은 실행에서는 결과 캐시</p></div></div><p data-story-status role="status">실제 기록을 불러오는 중…</p><div class="c2-missing-examples" data-missing-examples></div><details class="c2-methods"><summary>혼합 응답과 거절된 생성 보기</summary><div data-extra-examples></div></details><p class="c2-scope-note">생성값은 환자의 관측값이 아닙니다. 현재 검사는 진단명·기록된 검사명 중복을 확인하며, 임상적 일관성은 별도 검토합니다.</p></section>
+          <section class="c2-section" id="reward-design" aria-labelledby="reward-design-title"><div class="c2-section-head"><div><span class="c2-eyebrow">03 / REWARD DESIGN</span><h2 id="reward-design-title">RL의 학습 신호를 설계하기</h2></div></div><p>진단 정확성 · 과정 비용 · 근거 없는 주장과 오류</p><p class="c2-formula">R = w<sub>dx</sub> × (score − 1) / 4 − w<sub>cost</sub> × min(1, cost / scale) − Σ penalties</p><h3 class="c2-mini-title">기록된 reward</h3><div class="c2-recorded-rewards" data-recorded-rewards></div><p class="c2-scope-note">환경이 생성한 결과와 에이전트의 근거 없는 주장은 별도로 판정합니다. A의 페널티는 최종 rationale의 미지원 주장에 대한 판정입니다.</p><div class="c2-workbench"><div class="c2-section-head"><h3>가중치를 바꿔 보기</h3><button type="button" data-reward-reset>기록 설정으로 초기화</button></div><div class="c2-weight-inputs"><label>진단 가중치<input data-weight="dx_weight" type="number" min="0" max="10" step="0.1" value="3"></label><label>비용 가중치<input data-weight="cost_weight" type="number" min="0" max="5" step="0.1" value="0.5"></label><label>비용 정규화 기준<input data-weight="cost_scale_usd" type="number" min="1" max="100000" step="100" value="10000"></label><label>기록된 페널티 배수<input data-weight="penalty_multiplier" type="number" min="0" max="5" step="0.1" value="1"></label></div><div class="c2-whatif" data-whatif role="status" aria-live="polite"></div><p class="c2-scope-note">같은 rollout의 가중치만 바꾼 예시입니다. 원래 reward·판정은 유지됩니다. 가격과 가중치는 보정 전의 임시 설정입니다.</p></div></section>
+        </div>
+        <details class="c2-synthetic-archive"><summary>별도 합성 예시 · 원문과 저장된 검사</summary>
 
         <section class="c2-explorer" id="explorer" data-case2rl data-src="/research/case2rl/assets/synthetic-demo.json?v=20260921-1" aria-labelledby="explorer-title">
           <div class="c2-section-head"><div><span class="c2-eyebrow">01 / 원문 정보 · 저장된 검증</span><h2 id="explorer-title">합성 증례 살펴보기</h2></div><span class="c2-chip">합성 증례</span></div>
@@ -81,11 +90,13 @@
           <p class="c2-provenance">case2RL 합성 증례 · 저장된 검증 <span aria-hidden="true">·</span> <a href="/research/case2rl/assets/synthetic-demo.json">예시 데이터 (JSON)</a></p>
         </section>
 
-        <section class="c2-section" aria-labelledby="actions-title"><div class="c2-section-head"><div><span class="c2-eyebrow">02 / Environment</span><h2 id="actions-title">네 가지 행동</h2></div></div><ol class="c2-actions"><li><span class="c2-action-number">01</span><h3>문진</h3><code>ask_patient</code><p>환자 병력</p></li><li><span class="c2-action-number">02</span><h3>진찰</h3><code>examine</code><p>신체 소견</p></li><li><span class="c2-action-number">03</span><h3>검사</h3><code>order_tests</code><p>지정한 검사</p></li><li><span class="c2-action-number">04</span><h3>진단</h3><code>diagnose</code><p>최종 답변</p></li></ol></section>
+        </details>
 
-        <section class="c2-section c2-contract" aria-label="환경 구성"><div><h2>환경 구성</h2><dl class="c2-rules"><div><dt>기록된 소견</dt><dd>원문 그대로 제공</dd></div><div><dt>미기록 소견</dt><dd>설정된 검증을 거쳐 생성</dd></div><div><dt>보호된 소견</dt><dd>정확한 검사명 필요</dd></div><div><dt>감사 기록</dt><dd>원문 · 생성 · 비용 기록</dd></div></dl></div><div class="c2-reward"><span class="c2-eyebrow">보상</span><p>진단 점수 − 비용 − 오류 페널티</p><small>가중치·가격: 임시 설정</small></div></section>
+        <section class="c2-section" aria-labelledby="actions-title"><div class="c2-section-head"><div><span class="c2-eyebrow">04 / Environment</span><h2 id="actions-title">네 가지 행동</h2></div></div><ol class="c2-actions"><li><span class="c2-action-number">01</span><h3>문진</h3><code>ask_patient</code><p>환자 병력</p></li><li><span class="c2-action-number">02</span><h3>진찰</h3><code>examine</code><p>신체 소견</p></li><li><span class="c2-action-number">03</span><h3>검사</h3><code>order_tests</code><p>지정한 검사</p></li><li><span class="c2-action-number">04</span><h3>진단</h3><code>diagnose</code><p>최종 답변</p></li></ol></section>
 
-        <section class="c2-section" aria-labelledby="status-title"><div class="c2-section-head"><div><span class="c2-eyebrow">03 / Status</span><h2 id="status-title">프로젝트 현황</h2></div></div><div class="c2-project-status"><div><h3><span class="c2-dot" aria-hidden="true"></span>구현</h3><ul><li>진단 환경</li><li>PDF 변환기</li><li>파일럿 실행</li><li>로컬 검토 UI</li></ul></div><div><h3><span class="c2-dot c2-dot-next" aria-hidden="true"></span>다음 단계</h3><ul><li>다중 증례 평가</li><li>임상의 검토</li><li>보상 보정</li><li>RL 학습기 연결</li></ul></div></div><details class="c2-methods"><summary>출처 및 범위</summary><p>직접 작성한 합성 증례와 저장된 검증 예시입니다. PDF 변환기는 초안을 만들고 수치 토큰과 페이지 범위를 확인합니다. 임상 검토는 후속 단계이며, 이 페이지에서 모델을 호출하지 않습니다.</p></details></section>
+        <section class="c2-section c2-contract" aria-label="환경 구성"><div><h2>환경 구성</h2><dl class="c2-rules"><div><dt>기록된 소견</dt><dd>원문 그대로 제공</dd></div><div><dt>미기록 소견</dt><dd>설정된 검증을 거쳐 생성</dd></div><div><dt>보호된 소견</dt><dd>정확한 검사명 필요</dd></div><div><dt>감사 기록</dt><dd>원문 · 생성 · 비용 기록</dd></div></dl></div><div class="c2-reward"><span class="c2-eyebrow">검토 기록</span><p>응답 · provenance · 원문 페이지 · 비용</p><a class="link" href="/research/case2rl/review/ko/">전체 턴 검토하기 →</a><small>이 브라우저 저장 · JSON 이동</small></div></section>
+
+        <section class="c2-section" aria-labelledby="status-title"><div class="c2-section-head"><div><span class="c2-eyebrow">05 / Status</span><h2 id="status-title">프로젝트 현황</h2></div></div><div class="c2-project-status"><div><h3><span class="c2-dot" aria-hidden="true"></span>구현</h3><ul><li>진단 환경</li><li>PDF 변환기</li><li>파일럿 실행</li><li>Rollout 검토 UI</li></ul></div><div><h3><span class="c2-dot c2-dot-next" aria-hidden="true"></span>다음 단계</h3><ul><li>다중 증례 평가</li><li>임상의 검토</li><li>보상 보정</li><li>RL 학습기 연결</li></ul></div></div><details class="c2-methods"><summary>출처 및 범위</summary><p>직접 작성한 합성 증례와 저장된 검증 예시입니다. PDF 변환기는 초안을 만들고 수치 토큰과 페이지 범위를 확인합니다. 임상 검토는 후속 단계이며, 이 페이지에서 모델을 호출하지 않습니다.</p></details></section>
       </div>
     </main>
 
@@ -99,6 +110,6 @@
       <div class="footer-bottom"><span>© 2026 Virtual Human Lab · <a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a> · 대한민국</span><span>VHL은 연구 그룹이며 의료 기관이 아닙니다. 소속 표시는 기관의 후원을 의미하지 않습니다.</span></div>
     </footer>
     <script src="/script.js?v=20260920-1"></script>
-    <script src="/research/case2rl/case2rl.js?v=20260921-1" defer></script>
+    <script src="/research/case2rl/case2rl.js?v=20260921-2" defer></script>
   </body>
 </html>

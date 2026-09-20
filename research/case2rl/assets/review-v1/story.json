@@ -1,0 +1,147 @@
+{
+  "schema_version": "case2rl.public-story.v1",
+  "paper": {
+    "title": "Case 24-2009: A 26-year-old woman with painful swelling of the neck",
+    "authors": "Stone JH, Caruso PA, Deshpande V",
+    "journal": "N Engl J Med 2009;361:511–518",
+    "doi": "10.1056/NEJMcpc0902221",
+    "url": "https://www.nejm.org/doi/10.1056/NEJMcpc0902221",
+    "description_en": "A young woman with bilateral submandibular swelling. The case connects history, laboratory results, neck imaging and tissue findings.",
+    "description_ko": "양측 턱밑샘이 부은 젊은 여성의 증례. 병력·검사·목 영상·조직 소견을 연결합니다.",
+    "visual": "case-schematic.svg",
+    "visual_kind": "Original schematic; not a patient photograph",
+    "original_report_assets_bundled": false
+  },
+  "source_counts": {
+    "history": 16,
+    "findings": 44
+  },
+  "examples": [
+    {
+      "kind": "mixed",
+      "candidate_label": "Candidate A",
+      "turn": 10,
+      "request": "Complete blood count with differential",
+      "response": "Complete blood count: The complete blood count was normal on two occasions, without leukopenia, lymphopenia, or thrombocytopenia.\nDifferential leukocyte count: neutrophils 58% (reference range 40-70%), lymphocytes 32% (reference range 20-45%), monocytes 7% (reference range 2-10%), eosinophils 2% (reference range 1-4%), basophils 1% (reference range 0-1%). Absolute neutrophil count 3.5 x10^9/L (reference range 1.8-7.7 x10^9/L), absolute lymphocyte count 1.9 x10^9/L (reference range 1.0-4.8 x10^9/L). No atypical lymphocytes or immature forms seen on the peripheral smear.",
+      "generated_text": "Differential leukocyte count: neutrophils 58% (reference range 40-70%), lymphocytes 32% (reference range 20-45%), monocytes 7% (reference range 2-10%), eosinophils 2% (reference range 1-4%), basophils 1% (reference range 0-1%). Absolute neutrophil count 3.5 x10^9/L (reference range 1.8-7.7 x10^9/L), absolute lymphocyte count 1.9 x10^9/L (reference range 1.0-4.8 x10^9/L). No atypical lymphocytes or immature forms seen on the peripheral smear.",
+      "source_ids": [
+        "l02"
+      ],
+      "sources": [
+        {
+          "id": "l02",
+          "kind": "lab",
+          "label": "Complete blood count",
+          "result": "The complete blood count was normal on two occasions, without leukopenia, lymphopenia, or thrombocytopenia.",
+          "pages": [
+            1,
+            2,
+            4
+          ]
+        }
+      ],
+      "provenance": "mixed"
+    },
+    {
+      "kind": "missing",
+      "candidate_label": "Candidate A",
+      "turn": 10,
+      "request": "Erythrocyte sedimentation rate (ESR)",
+      "response": "Erythrocyte sedimentation rate (ESR): 62 mm per hour (reference range, 0 to 20).",
+      "generated_text": "Erythrocyte sedimentation rate (ESR): 62 mm per hour (reference range, 0 to 20).",
+      "source_ids": [],
+      "provenance": "generated"
+    },
+    {
+      "kind": "missing",
+      "candidate_label": "Candidate B",
+      "turn": 7,
+      "request": "Erythrocyte sedimentation rate (ESR)",
+      "response": "Erythrocyte sedimentation rate (ESR): 68 mm per hour (reference range, 0 to 20).",
+      "generated_text": "Erythrocyte sedimentation rate (ESR): 68 mm per hour (reference range, 0 to 20).",
+      "source_ids": [],
+      "provenance": "generated"
+    },
+    {
+      "kind": "refused",
+      "candidate_label": "Candidate B",
+      "turn": 13,
+      "request": "Flow cytometry of submandibular gland biopsy tissue",
+      "response": "This request could not be carried out as worded; please rephrase it.",
+      "notes": [
+        "generation attempt 1 rejected: reported documented items ['kappa lambda ratio', 'submandibular gland biopsy']",
+        "generation attempt 2 rejected: reported documented items ['submandibular gland biopsy']"
+      ],
+      "source_ids": [],
+      "provenance": "refused"
+    }
+  ],
+  "reward_config": {
+    "dx_weight": 3.0,
+    "cost_weight": 0.5,
+    "cost_scale_usd": 10000.0,
+    "hallucination_penalty": 2.0,
+    "missed_red_flag_penalty": 3.0,
+    "contraindicated_penalty": 3.0,
+    "rejected_action_penalty": 0.1,
+    "no_diagnosis_penalty": 1.0
+  },
+  "runs": [
+    {
+      "candidate_label": "Candidate A",
+      "turns": 17,
+      "cost_usd": 9150.0,
+      "reward": {
+        "dx_score": 5,
+        "dx_term": 3.0,
+        "cost_usd": 9150.0,
+        "cost_term": 0.4575,
+        "penalties": [
+          {
+            "kind": "hallucinated_finding",
+            "penalty": 2.0,
+            "item_id": null,
+            "evidence": "[{\"claim\": \"sterile bacterial/mycobacterial/fungal cultures and stains\", \"why\": \"The transcript reports Gram's stain and stains for acid-fast bacilli showing no organisms, and sterile bacterial, mycobacterial, and anaerobic cultures. No fungal stain or fungal culture result is documented.\"}, {\"claim\": \"absence of clonal lymphocytes\", \"why\": \"No clonality assessment such as flow cytometry, light-chain restriction, or direct description of clonal lymphocytes is documented. The transcript notes no atypical lymphoid cells and polytypic plasma cells, but not absence of clonal lymphocytes.\"}]",
+            "method": "llm"
+          }
+        ],
+        "penalty_total": 2.0,
+        "total": 0.5425,
+        "complete": true,
+        "errors": []
+      },
+      "provenance_counts": {
+        "mixed": 13,
+        "core": 14,
+        "generated": 8
+      }
+    },
+    {
+      "candidate_label": "Candidate B",
+      "turns": 14,
+      "cost_usd": 9050.0,
+      "reward": {
+        "dx_score": 5,
+        "dx_term": 3.0,
+        "cost_usd": 9050.0,
+        "cost_term": 0.4525,
+        "penalties": [],
+        "penalty_total": 0.0,
+        "total": 2.5475,
+        "complete": true,
+        "errors": []
+      },
+      "provenance_counts": {
+        "mixed": 7,
+        "core": 19,
+        "generated": 11,
+        "refused": 1
+      }
+    }
+  ],
+  "interpretation": {
+    "generated": "Simulator completions are not observed patient measurements and are not automatically candidate hallucinations.",
+    "reward": "Recorded configured reward; default weights and modeled prices await calibration.",
+    "what_if": "Reweighting the same fixed traces; no new generation or judge call."
+  }
+}

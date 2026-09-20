@@ -1,0 +1,1215 @@
+{
+  "schema_version": "case2rl-clinician-view-0.1",
+  "id": "igg4-sialadenitis/20260918T224152Z-deepseek-v4-pro-000.json",
+  "candidate_label": "Candidate B",
+  "model": "deepseek-v4-pro",
+  "simulator_models": {
+    "patient": "deepseek-flash",
+    "investigation_match": "deepseek-flash",
+    "investigation_generate": "deepseek-flash",
+    "diagnosis_judge": "deepseek-v4-pro",
+    "penalty_judge": "deepseek-v4-pro",
+    "converter": "deepseek-v4-pro"
+  },
+  "case": {
+    "id": "igg4-sialadenitis",
+    "presentation": "A 26-year-old woman is seen in the rheumatology clinic because of painful swelling on both sides of the neck. Symptoms have persisted despite several courses of antibiotics.",
+    "reference_diagnosis": "IgG4-associated chronic sclerosing sialadenitis",
+    "accepted_diagnoses": [
+      "Chronic sclerosing sialadenitis",
+      "IgG4-related chronic sclerosing sialadenitis",
+      "IgG4-related sialadenitis",
+      "Kuttner tumor",
+      "Kuttner's tumor",
+      "Kuettner tumor"
+    ],
+    "citation": "Stone JH, Caruso PA, Deshpande V. Case 24-2009: A 26-year-old woman with painful swelling of the neck. N Engl J Med 2009;361:511-8.",
+    "doi": "10.1056/NEJMcpc0902221"
+  },
+  "started_at": "2026-09-18T22:38:00+00:00",
+  "finished_at": "2026-09-18T22:41:52+00:00",
+  "turns": [
+    {
+      "turn": 1,
+      "accepted": true,
+      "error": null,
+      "kind": "ask_patient",
+      "title": "Can you tell me more about the swelling in your neck: when did it start, is it constant or intermittent, and what makes it better or worse?",
+      "action": {
+        "kind": "ask_patient",
+        "question": "Can you tell me more about the swelling in your neck: when did it start, is it constant or intermittent, and what makes it better or worse?",
+        "request": null,
+        "tests": null,
+        "diagnosis": null,
+        "rationale": null
+      },
+      "exchanges": [
+        {
+          "route": "ask_patient",
+          "request": "Can you tell me more about the swelling in your neck: when did it start, is it constant or intermittent, and what makes it better or worse?",
+          "response": "Two weeks later, submental swelling occurred that was associated with local tenderness, pain on swallowing (with solids more than with liquids), and decreased appetite. A 10-day course of penicillin was given, and later amoxicillin-clavulanic acid for 2 weeks; the swelling persisted. The swelling has been there continuously since it started and has never gone away. It is tender to touch, and it hurts more when I swallow, especially solid food. The antibiotics I was given did not make it better, and ibuprofen only helped a little with the pain.",
+          "provenance": "mixed",
+          "generated_text": "The swelling has been there continuously since it started and has never gone away. It is tender to touch, and it hurts more when I swallow, especially solid food. The antibiotics I was given did not make it better, and ibuprofen only helped a little with the pain.",
+          "cost_usd": 300.0,
+          "notes": [],
+          "source_ids": [
+            "h02",
+            "h06"
+          ],
+          "sources": [
+            {
+              "id": "h02",
+              "kind": "history",
+              "label": "Two weeks later, submental swelling occurred that was associated with local tenderness, pain on swallowing (with solids more than with liquids), and decreased appetite.",
+              "pages": [
+                1
+              ]
+            },
+            {
+              "id": "h06",
+              "kind": "history",
+              "label": "A 10-day course of penicillin was given, and later amoxicillin-clavulanic acid for 2 weeks; the swelling persisted.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "turn_cost_usd": 300.0
+    },
+    {
+      "turn": 2,
+      "accepted": true,
+      "error": null,
+      "kind": "ask_patient",
+      "title": "Have you had any fever, night sweats, unintentional weight loss, fatigue, or generalized aches?",
+      "action": {
+        "kind": "ask_patient",
+        "question": "Have you had any fever, night sweats, unintentional weight loss, fatigue, or generalized aches?",
+        "request": null,
+        "tests": null,
+        "diagnosis": null,
+        "rationale": null
+      },
+      "exchanges": [
+        {
+          "route": "ask_patient",
+          "request": "Have you had any fever, night sweats, unintentional weight loss, fatigue, or generalized aches?",
+          "response": "She had lost 7 kg in weight during the previous 2 months because of discomfort associated with eating and swallowing food; at the rheumatology visit she reported a weight loss of 10 kg. She did not have joint pain, weakness, alopecia, photosensitivity, malar rash, oral or tongue ulcers, lymphadenopathy, shortness of breath, chest pain, fevers, or night sweats. Her menses were normal. I have not had any fever or night sweats, and I have not noticed generalized aches or unusual fatigue.",
+          "provenance": "mixed",
+          "generated_text": "I have not had any fever or night sweats, and I have not noticed generalized aches or unusual fatigue.",
+          "cost_usd": 0.0,
+          "notes": [],
+          "source_ids": [
+            "h09",
+            "h14"
+          ],
+          "sources": [
+            {
+              "id": "h09",
+              "kind": "history",
+              "label": "She had lost 7 kg in weight during the previous 2 months because of discomfort associated with eating and swallowing food; at the rheumatology visit she reported a weight loss of 10 kg.",
+              "pages": [
+                2
+              ]
+            },
+            {
+              "id": "h14",
+              "kind": "history",
+              "label": "She did not have joint pain, weakness, alopecia, photosensitivity, malar rash, oral or tongue ulcers, lymphadenopathy, shortness of breath, chest pain, fevers, or night sweats. Her menses were normal.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "turn_cost_usd": 0.0
+    },
+    {
+      "turn": 3,
+      "accepted": true,
+      "error": null,
+      "kind": "ask_patient",
+      "title": "Besides the neck swelling, have you noticed any pain with swallowing, difficulty swallowing, voice changes, trouble breathing, or pain in your ears or jaw?",
+      "action": {
+        "kind": "ask_patient",
+        "question": "Besides the neck swelling, have you noticed any pain with swallowing, difficulty swallowing, voice changes, trouble breathing, or pain in your ears or jaw?",
+        "request": null,
+        "tests": null,
+        "diagnosis": null,
+        "rationale": null
+      },
+      "exchanges": [
+        {
+          "route": "ask_patient",
+          "request": "Besides the neck swelling, have you noticed any pain with swallowing, difficulty swallowing, voice changes, trouble breathing, or pain in your ears or jaw?",
+          "response": "Two weeks later, submental swelling occurred that was associated with local tenderness, pain on swallowing (with solids more than with liquids), and decreased appetite. During the next 2 weeks, pain developed in both ears. I have not had any voice changes, trouble breathing, or jaw pain.",
+          "provenance": "mixed",
+          "generated_text": "I have not had any voice changes, trouble breathing, or jaw pain.",
+          "cost_usd": 0.0,
+          "notes": [],
+          "source_ids": [
+            "h02",
+            "h04"
+          ],
+          "sources": [
+            {
+              "id": "h02",
+              "kind": "history",
+              "label": "Two weeks later, submental swelling occurred that was associated with local tenderness, pain on swallowing (with solids more than with liquids), and decreased appetite.",
+              "pages": [
+                1
+              ]
+            },
+            {
+              "id": "h04",
+              "kind": "history",
+              "label": "During the next 2 weeks, pain developed in both ears.",
+              "pages": [
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "turn_cost_usd": 0.0
+    },
+    {
+      "turn": 4,
+      "accepted": true,
+      "error": null,
+      "kind": "examine",
+      "title": "neck: inspect and palpate the swelling, thyroid gland, lymph nodes, and salivary glands; note tenderness, warmth, erythema, mobility, and any bruits",
+      "action": {
+        "kind": "examine",
+        "question": null,
+        "request": "neck: inspect and palpate the swelling, thyroid gland, lymph nodes, and salivary glands; note tenderness, warmth, erythema, mobility, and any bruits",
+        "tests": null,
+        "diagnosis": null,
+        "rationale": null
+      },
+      "exchanges": [
+        {
+          "route": "examine",
+          "request": "neck: inspect and palpate the swelling, thyroid gland, lymph nodes, and salivary glands; note tenderness, warmth, erythema, mobility, and any bruits",
+          "response": "Submandibular gland examination: Emergency department: the submandibular glands were symmetrically enlarged, irregular, bosselated, and tender. Infectious disease clinic: the submandibular glands were tender, firm, and enlarged (3 to 4 cm in diameter). Rheumatology clinic: the submandibular glands were enlarged symmetrically and mildly tender.\nParotid, sublingual and thyroid gland examination: The parotid, sublingual, and thyroid glands were normal on examination at the rheumatology clinic.\nLymph node examination: There was no cervical, axillary, or inguinal lymphadenopathy; the cervical, supraclavicular, axillary, and inguinal lymph-node chains were normal.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 0.0,
+          "notes": [],
+          "source_ids": [
+            "x02",
+            "x05",
+            "x06"
+          ],
+          "sources": [
+            {
+              "id": "x02",
+              "kind": "exam",
+              "label": "Submandibular gland examination",
+              "result": "Emergency department: the submandibular glands were symmetrically enlarged, irregular, bosselated, and tender. Infectious disease clinic: the submandibular glands were tender, firm, and enlarged (3 to 4 cm in diameter). Rheumatology clinic: the submandibular glands were enlarged symmetrically and mildly tender.",
+              "pages": [
+                1,
+                2
+              ]
+            },
+            {
+              "id": "x05",
+              "kind": "exam",
+              "label": "Parotid, sublingual and thyroid gland examination",
+              "result": "The parotid, sublingual, and thyroid glands were normal on examination at the rheumatology clinic.",
+              "pages": [
+                2
+              ]
+            },
+            {
+              "id": "x06",
+              "kind": "exam",
+              "label": "Lymph node examination",
+              "result": "There was no cervical, axillary, or inguinal lymphadenopathy; the cervical, supraclavicular, axillary, and inguinal lymph-node chains were normal.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "turn_cost_usd": 0.0
+    },
+    {
+      "turn": 5,
+      "accepted": true,
+      "error": null,
+      "kind": "examine",
+      "title": "oropharynx and ears: pharyngeal erythema/exudate, tonsils, dentition, oral mucosa, tympanic membranes",
+      "action": {
+        "kind": "examine",
+        "question": null,
+        "request": "oropharynx and ears: pharyngeal erythema/exudate, tonsils, dentition, oral mucosa, tympanic membranes",
+        "tests": null,
+        "diagnosis": null,
+        "rationale": null
+      },
+      "exchanges": [
+        {
+          "route": "examine",
+          "request": "oropharynx and ears: pharyngeal erythema/exudate, tonsils, dentition, oral mucosa, tympanic membranes",
+          "response": "Oral examination: The oropharynx was dry, with a diminished salivary pool. No purulent discharge was noted on milking the salivary glands.\nDental examination: Moderate generalized plaque-induced gingivitis and periodontitis; two lower molars were impacted. She has dental caries, but her dentition is generally good.\nEar, nose and throat examination: Anterior rhinoscopy revealed a minimally deviated septum and mildly edematous turbinates. The remainder of the examination was normal.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 0.0,
+          "notes": [],
+          "source_ids": [
+            "x03",
+            "x04",
+            "x08"
+          ],
+          "sources": [
+            {
+              "id": "x03",
+              "kind": "exam",
+              "label": "Oral examination",
+              "result": "The oropharynx was dry, with a diminished salivary pool. No purulent discharge was noted on milking the salivary glands.",
+              "pages": [
+                2
+              ]
+            },
+            {
+              "id": "x04",
+              "kind": "exam",
+              "label": "Dental examination",
+              "result": "Moderate generalized plaque-induced gingivitis and periodontitis; two lower molars were impacted. She has dental caries, but her dentition is generally good.",
+              "pages": [
+                2,
+                5
+              ]
+            },
+            {
+              "id": "x08",
+              "kind": "exam",
+              "label": "Ear, nose and throat examination",
+              "result": "Anterior rhinoscopy revealed a minimally deviated septum and mildly edematous turbinates. The remainder of the examination was normal.",
+              "pages": [
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "turn_cost_usd": 0.0
+    },
+    {
+      "turn": 6,
+      "accepted": true,
+      "error": null,
+      "kind": "examine",
+      "title": "vital signs including temperature, heart rate, blood pressure, respiratory rate",
+      "action": {
+        "kind": "examine",
+        "question": null,
+        "request": "vital signs including temperature, heart rate, blood pressure, respiratory rate",
+        "tests": null,
+        "diagnosis": null,
+        "rationale": null
+      },
+      "exchanges": [
+        {
+          "route": "examine",
+          "request": "vital signs including temperature, heart rate, blood pressure, respiratory rate",
+          "response": "Vital signs: The vital signs were normal (emergency department and rheumatology clinic); the weight was 55 kg.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 0.0,
+          "notes": [],
+          "source_ids": [
+            "x01"
+          ],
+          "sources": [
+            {
+              "id": "x01",
+              "kind": "exam",
+              "label": "Vital signs",
+              "result": "The vital signs were normal (emergency department and rheumatology clinic); the weight was 55 kg.",
+              "pages": [
+                1,
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "turn_cost_usd": 0.0
+    },
+    {
+      "turn": 7,
+      "accepted": true,
+      "error": null,
+      "kind": "order_tests",
+      "title": "CBC with differential, Erythrocyte sedimentation rate (ESR), C-reactive protein (CRP), Antinuclear antibody (ANA), Anti-SSA/Ro antibodies, Anti-SSB/La antibodies, Rheumatoid factor, Serum IgG4 concentration, Serum protein electrophoresis, Thyroid-stimulating hormone (TSH), HIV antibody test, Hepatitis C antibody",
+      "action": {
+        "kind": "order_tests",
+        "question": null,
+        "request": null,
+        "tests": [
+          "CBC with differential",
+          "Erythrocyte sedimentation rate (ESR)",
+          "C-reactive protein (CRP)",
+          "Antinuclear antibody (ANA)",
+          "Anti-SSA/Ro antibodies",
+          "Anti-SSB/La antibodies",
+          "Rheumatoid factor",
+          "Serum IgG4 concentration",
+          "Serum protein electrophoresis",
+          "Thyroid-stimulating hormone (TSH)",
+          "HIV antibody test",
+          "Hepatitis C antibody"
+        ],
+        "diagnosis": null,
+        "rationale": null
+      },
+      "exchanges": [
+        {
+          "route": "order_test",
+          "request": "CBC with differential",
+          "response": "Complete blood count: The complete blood count was normal on two occasions, without leukopenia, lymphopenia, or thrombocytopenia.\nDifferential leukocyte count: neutrophils 58% (reference range 40-70%), lymphocytes 32% (reference range 20-45%), monocytes 7% (reference range 2-10%), eosinophils 2% (reference range 1-4%), basophils 1% (reference range 0-1%). Absolute neutrophil count 3.9 x 10^9 per liter (reference range 1.8-7.7 x 10^9 per liter), absolute lymphocyte count 2.1 x 10^9 per liter (reference range 1.0-4.8 x 10^9 per liter). Peripheral blood smear: normochromic, normocytic red blood cells with no anisocytosis or poikilocytosis; platelets adequate and morphologically normal; no atypical or reactive lymphocytes, no immature or blast forms, and no rouleaux.",
+          "provenance": "mixed",
+          "generated_text": "Differential leukocyte count: neutrophils 58% (reference range 40-70%), lymphocytes 32% (reference range 20-45%), monocytes 7% (reference range 2-10%), eosinophils 2% (reference range 1-4%), basophils 1% (reference range 0-1%). Absolute neutrophil count 3.9 x 10^9 per liter (reference range 1.8-7.7 x 10^9 per liter), absolute lymphocyte count 2.1 x 10^9 per liter (reference range 1.0-4.8 x 10^9 per liter). Peripheral blood smear: normochromic, normocytic red blood cells with no anisocytosis or poikilocytosis; platelets adequate and morphologically normal; no atypical or reactive lymphocytes, no immature or blast forms, and no rouleaux.",
+          "cost_usd": 100.0,
+          "notes": [],
+          "source_ids": [
+            "l02"
+          ],
+          "sources": [
+            {
+              "id": "l02",
+              "kind": "lab",
+              "label": "Complete blood count",
+              "result": "The complete blood count was normal on two occasions, without leukopenia, lymphopenia, or thrombocytopenia.",
+              "pages": [
+                1,
+                2,
+                4
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Erythrocyte sedimentation rate (ESR)",
+          "response": "Erythrocyte sedimentation rate (ESR): 68 mm per hour (reference range, 0 to 20).",
+          "provenance": "generated",
+          "generated_text": "Erythrocyte sedimentation rate (ESR): 68 mm per hour (reference range, 0 to 20).",
+          "cost_usd": 50.0,
+          "notes": [],
+          "source_ids": [],
+          "sources": []
+        },
+        {
+          "route": "order_test",
+          "request": "C-reactive protein (CRP)",
+          "response": "C-reactive protein: 1.2 mg per deciliter (reference range, less than 0.5).",
+          "provenance": "generated",
+          "generated_text": "C-reactive protein: 1.2 mg per deciliter (reference range, less than 0.5).",
+          "cost_usd": 50.0,
+          "notes": [],
+          "source_ids": [],
+          "sources": []
+        },
+        {
+          "route": "order_test",
+          "request": "Antinuclear antibody (ANA)",
+          "response": "Antinuclear antibodies: A test for antinuclear antibodies was positive, at 1:160, with a speckled pattern.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 50.0,
+          "notes": [],
+          "source_ids": [
+            "l11"
+          ],
+          "sources": [
+            {
+              "id": "l11",
+              "kind": "lab",
+              "label": "Antinuclear antibodies",
+              "result": "A test for antinuclear antibodies was positive, at 1:160, with a speckled pattern.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Anti-SSA/Ro antibodies",
+          "response": "Anti-SSA and anti-SSB antibodies: Tests for antibodies to SSA (Ro) and SSB (La) were negative.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 50.0,
+          "notes": [],
+          "source_ids": [
+            "l12"
+          ],
+          "sources": [
+            {
+              "id": "l12",
+              "kind": "lab",
+              "label": "Anti-SSA and anti-SSB antibodies",
+              "result": "Tests for antibodies to SSA (Ro) and SSB (La) were negative.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Anti-SSB/La antibodies",
+          "response": "Anti-SSA and anti-SSB antibodies: Tests for antibodies to SSA (Ro) and SSB (La) were negative.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 50.0,
+          "notes": [],
+          "source_ids": [
+            "l12"
+          ],
+          "sources": [
+            {
+              "id": "l12",
+              "kind": "lab",
+              "label": "Anti-SSA and anti-SSB antibodies",
+              "result": "Tests for antibodies to SSA (Ro) and SSB (La) were negative.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Rheumatoid factor",
+          "response": "Rheumatoid factor: A test for rheumatoid factor was negative.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 50.0,
+          "notes": [],
+          "source_ids": [
+            "l14"
+          ],
+          "sources": [
+            {
+              "id": "l14",
+              "kind": "lab",
+              "label": "Rheumatoid factor",
+              "result": "A test for rheumatoid factor was negative.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Serum IgG4 concentration",
+          "response": "Serum IgG4: The serum level of IgG4 was 12.5 mg per deciliter (reference range, 8.0 to 140.0).",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 50.0,
+          "notes": [],
+          "source_ids": [
+            "l16"
+          ],
+          "sources": [
+            {
+              "id": "l16",
+              "kind": "lab",
+              "label": "Serum IgG4",
+              "result": "The serum level of IgG4 was 12.5 mg per deciliter (reference range, 8.0 to 140.0).",
+              "pages": [
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Serum protein electrophoresis",
+          "response": "Serum and urine protein electrophoresis: Serum and urine protein electrophoresis studies were normal.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 50.0,
+          "notes": [],
+          "source_ids": [
+            "l09"
+          ],
+          "sources": [
+            {
+              "id": "l09",
+              "kind": "lab",
+              "label": "Serum and urine protein electrophoresis",
+              "result": "Serum and urine protein electrophoresis studies were normal.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Thyroid-stimulating hormone (TSH)",
+          "response": "Serum thyroid-stimulating hormone (TSH): 1.8 mIU per liter (reference range, 0.4 to 4.0).",
+          "provenance": "generated",
+          "generated_text": "Serum thyroid-stimulating hormone (TSH): 1.8 mIU per liter (reference range, 0.4 to 4.0).",
+          "cost_usd": 50.0,
+          "notes": [],
+          "source_ids": [],
+          "sources": []
+        },
+        {
+          "route": "order_test",
+          "request": "HIV antibody test",
+          "response": "HIV test: A test for human immunodeficiency virus was negative.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 100.0,
+          "notes": [],
+          "source_ids": [
+            "m05"
+          ],
+          "sources": [
+            {
+              "id": "m05",
+              "kind": "microbiology",
+              "label": "HIV test",
+              "result": "A test for human immunodeficiency virus was negative.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Hepatitis C antibody",
+          "response": "Hepatitis C test: A test for hepatitis C virus was negative.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 100.0,
+          "notes": [],
+          "source_ids": [
+            "m06"
+          ],
+          "sources": [
+            {
+              "id": "m06",
+              "kind": "microbiology",
+              "label": "Hepatitis C test",
+              "result": "A test for hepatitis C virus was negative.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "turn_cost_usd": 750.0
+    },
+    {
+      "turn": 8,
+      "accepted": true,
+      "error": null,
+      "kind": "ask_patient",
+      "title": "Have you noticed dry eyes, a gritty or sandy feeling in your eyes, dry mouth, difficulty eating dry foods without liquids, or needing to drink water at night? Any eye redness or vision changes?",
+      "action": {
+        "kind": "ask_patient",
+        "question": "Have you noticed dry eyes, a gritty or sandy feeling in your eyes, dry mouth, difficulty eating dry foods without liquids, or needing to drink water at night? Any eye redness or vision changes?",
+        "request": null,
+        "tests": null,
+        "diagnosis": null,
+        "rationale": null
+      },
+      "exchanges": [
+        {
+          "route": "ask_patient",
+          "request": "Have you noticed dry eyes, a gritty or sandy feeling in your eyes, dry mouth, difficulty eating dry foods without liquids, or needing to drink water at night? Any eye redness or vision changes?",
+          "response": "She had been well until approximately 3 months earlier, when dry mouth and increased thirst developed. She reported thirst, xerostomia, dry eyes, vaginal dryness, mild hair loss, and weight loss. I have not had any eye redness or changes in my vision.",
+          "provenance": "mixed",
+          "generated_text": "I have not had any eye redness or changes in my vision.",
+          "cost_usd": 300.0,
+          "notes": [],
+          "source_ids": [
+            "h01",
+            "h13"
+          ],
+          "sources": [
+            {
+              "id": "h01",
+              "kind": "history",
+              "label": "She had been well until approximately 3 months earlier, when dry mouth and increased thirst developed.",
+              "pages": [
+                1
+              ]
+            },
+            {
+              "id": "h13",
+              "kind": "history",
+              "label": "She reported thirst, xerostomia, dry eyes, vaginal dryness, mild hair loss, and weight loss.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "turn_cost_usd": 300.0
+    },
+    {
+      "turn": 9,
+      "accepted": true,
+      "error": null,
+      "kind": "ask_patient",
+      "title": "Do you have any cough, shortness of breath, wheeze, skin lumps or rashes, nasal crusting, sinus problems, or blood in your urine? Any known TB exposure or travel to areas with TB?",
+      "action": {
+        "kind": "ask_patient",
+        "question": "Do you have any cough, shortness of breath, wheeze, skin lumps or rashes, nasal crusting, sinus problems, or blood in your urine? Any known TB exposure or travel to areas with TB?",
+        "request": null,
+        "tests": null,
+        "diagnosis": null,
+        "rationale": null
+      },
+      "exchanges": [
+        {
+          "route": "ask_patient",
+          "request": "Do you have any cough, shortness of breath, wheeze, skin lumps or rashes, nasal crusting, sinus problems, or blood in your urine? Any known TB exposure or travel to areas with TB?",
+          "response": "She did not have joint pain, weakness, alopecia, photosensitivity, malar rash, oral or tongue ulcers, lymphadenopathy, shortness of breath, chest pain, fevers, or night sweats. Her menses were normal. She was born in an urban area of Morocco and immigrated to the United States 22 months before presentation; a chest radiograph was reportedly normal at that time. Six months before presentation, a tuberculin skin test had been positive. She did not know whether she had received BCG vaccine. Prophylaxis with isoniazid was recommended, but she declined. She did not smoke, drink alcohol, or use illicit drugs. She had no contacts with anyone who was sick and had not drunk unpasteurized milk or traveled recently. I have not had any cough, wheeze, skin lumps or rashes, nasal crusting, sinus problems, or blood in my urine.",
+          "provenance": "mixed",
+          "generated_text": "I have not had any cough, wheeze, skin lumps or rashes, nasal crusting, sinus problems, or blood in my urine.",
+          "cost_usd": 0.0,
+          "notes": [],
+          "source_ids": [
+            "h14",
+            "h07",
+            "h08",
+            "h11"
+          ],
+          "sources": [
+            {
+              "id": "h14",
+              "kind": "history",
+              "label": "She did not have joint pain, weakness, alopecia, photosensitivity, malar rash, oral or tongue ulcers, lymphadenopathy, shortness of breath, chest pain, fevers, or night sweats. Her menses were normal.",
+              "pages": [
+                2
+              ]
+            },
+            {
+              "id": "h07",
+              "kind": "history",
+              "label": "She was born in an urban area of Morocco and immigrated to the United States 22 months before presentation; a chest radiograph was reportedly normal at that time.",
+              "pages": [
+                1,
+                2
+              ]
+            },
+            {
+              "id": "h08",
+              "kind": "history",
+              "label": "Six months before presentation, a tuberculin skin test had been positive. She did not know whether she had received BCG vaccine. Prophylaxis with isoniazid was recommended, but she declined.",
+              "pages": [
+                2
+              ]
+            },
+            {
+              "id": "h11",
+              "kind": "history",
+              "label": "She did not smoke, drink alcohol, or use illicit drugs. She had no contacts with anyone who was sick and had not drunk unpasteurized milk or traveled recently.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "turn_cost_usd": 0.0
+    },
+    {
+      "turn": 10,
+      "accepted": true,
+      "error": null,
+      "kind": "ask_patient",
+      "title": "What medications, supplements, or recreational drugs do you take? Any allergies? Any family history of autoimmune or rheumatic disease?",
+      "action": {
+        "kind": "ask_patient",
+        "question": "What medications, supplements, or recreational drugs do you take? Any allergies? Any family history of autoimmune or rheumatic disease?",
+        "request": null,
+        "tests": null,
+        "diagnosis": null,
+        "rationale": null
+      },
+      "exchanges": [
+        {
+          "route": "ask_patient",
+          "request": "What medications, supplements, or recreational drugs do you take? Any allergies? Any family history of autoimmune or rheumatic disease?",
+          "response": "She was taking no other medications and had no allergies. Her mother had type 2 diabetes mellitus and thyroid dysfunction; her father had allergies, and her siblings and children were healthy.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 0.0,
+          "notes": [],
+          "source_ids": [
+            "h12",
+            "h15"
+          ],
+          "sources": [
+            {
+              "id": "h12",
+              "kind": "history",
+              "label": "She was taking no other medications and had no allergies.",
+              "pages": [
+                2
+              ]
+            },
+            {
+              "id": "h15",
+              "kind": "history",
+              "label": "Her mother had type 2 diabetes mellitus and thyroid dysfunction; her father had allergies, and her siblings and children were healthy.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "turn_cost_usd": 0.0
+    },
+    {
+      "turn": 11,
+      "accepted": true,
+      "error": null,
+      "kind": "order_tests",
+      "title": "Chest radiograph (posteroanterior and lateral), Serum angiotensin-converting enzyme (ACE) level, Serum calcium, Urinalysis, Anti-neutrophil cytoplasmic antibodies (ANCA), Interferon-gamma release assay (QuantiFERON-TB Gold), Ultrasound of the submandibular glands and neck",
+      "action": {
+        "kind": "order_tests",
+        "question": null,
+        "request": null,
+        "tests": [
+          "Chest radiograph (posteroanterior and lateral)",
+          "Serum angiotensin-converting enzyme (ACE) level",
+          "Serum calcium",
+          "Urinalysis",
+          "Anti-neutrophil cytoplasmic antibodies (ANCA)",
+          "Interferon-gamma release assay (QuantiFERON-TB Gold)",
+          "Ultrasound of the submandibular glands and neck"
+        ],
+        "diagnosis": null,
+        "rationale": null
+      },
+      "exchanges": [
+        {
+          "route": "order_test",
+          "request": "Chest radiograph (posteroanterior and lateral)",
+          "response": "Chest radiograph: A chest radiograph was normal.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 600.0,
+          "notes": [],
+          "source_ids": [
+            "i03"
+          ],
+          "sources": [
+            {
+              "id": "i03",
+              "kind": "imaging",
+              "label": "Chest radiograph",
+              "result": "A chest radiograph was normal.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Serum angiotensin-converting enzyme (ACE) level",
+          "response": "Angiotensin-converting enzyme: The serum level of angiotensin-converting enzyme was normal.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 50.0,
+          "notes": [],
+          "source_ids": [
+            "l08"
+          ],
+          "sources": [
+            {
+              "id": "l08",
+              "kind": "lab",
+              "label": "Angiotensin-converting enzyme",
+              "result": "The serum level of angiotensin-converting enzyme was normal.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Serum calcium",
+          "response": "Serum calcium and glucose: Serum levels of calcium and glucose were normal.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 50.0,
+          "notes": [],
+          "source_ids": [
+            "l05"
+          ],
+          "sources": [
+            {
+              "id": "l05",
+              "kind": "lab",
+              "label": "Serum calcium and glucose",
+              "result": "Serum levels of calcium and glucose were normal.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Urinalysis",
+          "response": "Urinalysis: A urinalysis was normal.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 50.0,
+          "notes": [],
+          "source_ids": [
+            "l06"
+          ],
+          "sources": [
+            {
+              "id": "l06",
+              "kind": "lab",
+              "label": "Urinalysis",
+              "result": "A urinalysis was normal.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Anti-neutrophil cytoplasmic antibodies (ANCA)",
+          "response": "Anti-neutrophil cytoplasmic antibodies (ANCA): negative by indirect immunofluorescence; anti-proteinase 3 (PR3) and anti-myeloperoxidase (MPO) antibodies not detected by enzyme immunoassay.",
+          "provenance": "generated",
+          "generated_text": "Anti-neutrophil cytoplasmic antibodies (ANCA): negative by indirect immunofluorescence; anti-proteinase 3 (PR3) and anti-myeloperoxidase (MPO) antibodies not detected by enzyme immunoassay.",
+          "cost_usd": 50.0,
+          "notes": [],
+          "source_ids": [],
+          "sources": []
+        },
+        {
+          "route": "order_test",
+          "request": "Interferon-gamma release assay (QuantiFERON-TB Gold)",
+          "response": "Interferon-gamma release assay (QuantiFERON-TB Gold): negative. Nil control: 0.05 IU per milliliter; mitogen control: greater than 10.0 IU per milliliter; TB antigen response: 0.03 IU per milliliter (reference range: less than 0.35 IU per milliliter is negative).",
+          "provenance": "generated",
+          "generated_text": "Interferon-gamma release assay (QuantiFERON-TB Gold): negative. Nil control: 0.05 IU per milliliter; mitogen control: greater than 10.0 IU per milliliter; TB antigen response: 0.03 IU per milliliter (reference range: less than 0.35 IU per milliliter is negative).",
+          "cost_usd": 100.0,
+          "notes": [],
+          "source_ids": [],
+          "sources": []
+        },
+        {
+          "route": "order_test",
+          "request": "Ultrasound of the submandibular glands and neck",
+          "response": "Ultrasound of the neck was performed with a high-frequency linear transducer. The right submandibular gland measured 3.4 x 2.1 x 1.8 cm and the left submandibular gland measured 3.2 x 2.0 x 1.7 cm; both were enlarged, with diffusely heterogeneous, hypoechoic parenchyma containing multiple small anechoic tubular and cystic spaces. No discrete solid mass, calcification, or acoustic shadowing was identified within either gland. The sublingual glands were not separately resolved. The parotid glands were normal in size and echotexture. No dilated salivary ducts or calculi were seen along the course of Wharton or Stensen ducts. The thyroid gland was normal in size and echotexture without nodules. No abnormal fluid collection or abscess was identified in the submental or submandibular regions.",
+          "provenance": "generated",
+          "generated_text": "Ultrasound of the neck was performed with a high-frequency linear transducer. The right submandibular gland measured 3.4 x 2.1 x 1.8 cm and the left submandibular gland measured 3.2 x 2.0 x 1.7 cm; both were enlarged, with diffusely heterogeneous, hypoechoic parenchyma containing multiple small anechoic tubular and cystic spaces. No discrete solid mass, calcification, or acoustic shadowing was identified within either gland. The sublingual glands were not separately resolved. The parotid glands were normal in size and echotexture. No dilated salivary ducts or calculi were seen along the course of Wharton or Stensen ducts. The thyroid gland was normal in size and echotexture without nodules. No abnormal fluid collection or abscess was identified in the submental or submandibular regions.",
+          "cost_usd": 600.0,
+          "notes": [
+            "generation attempt 1 rejected: reported documented items ['cervical lymph nodes']"
+          ],
+          "source_ids": [],
+          "sources": []
+        }
+      ],
+      "turn_cost_usd": 1500.0
+    },
+    {
+      "turn": 12,
+      "accepted": true,
+      "error": null,
+      "kind": "order_tests",
+      "title": "Schirmer test (without anesthesia) in both eyes, Lissamine green ocular surface staining, Unstimulated whole salivary flow rate, Minor labial salivary gland biopsy with histopathologic examination and focus score",
+      "action": {
+        "kind": "order_tests",
+        "question": null,
+        "request": null,
+        "tests": [
+          "Schirmer test (without anesthesia) in both eyes",
+          "Lissamine green ocular surface staining",
+          "Unstimulated whole salivary flow rate",
+          "Minor labial salivary gland biopsy with histopathologic examination and focus score"
+        ],
+        "diagnosis": null,
+        "rationale": null
+      },
+      "exchanges": [
+        {
+          "route": "order_test",
+          "request": "Schirmer test (without anesthesia) in both eyes",
+          "response": "Schirmer test (without anesthesia, both eyes): 4 mm of wetting of the filter paper strip in the right eye and 5 mm in the left eye over 5 minutes.",
+          "provenance": "generated",
+          "generated_text": "Schirmer test (without anesthesia, both eyes): 4 mm of wetting of the filter paper strip in the right eye and 5 mm in the left eye over 5 minutes.",
+          "cost_usd": 0.0,
+          "notes": [],
+          "source_ids": [],
+          "sources": []
+        },
+        {
+          "route": "order_test",
+          "request": "Lissamine green ocular surface staining",
+          "response": "Lissamine green staining of the ocular surface: no punctate epithelial staining of the conjunctiva or cornea was observed; the ocular surface appeared normal.",
+          "provenance": "generated",
+          "generated_text": "Lissamine green staining of the ocular surface: no punctate epithelial staining of the conjunctiva or cornea was observed; the ocular surface appeared normal.",
+          "cost_usd": 0.0,
+          "notes": [],
+          "source_ids": [],
+          "sources": []
+        },
+        {
+          "route": "order_test",
+          "request": "Unstimulated whole salivary flow rate",
+          "response": "Unstimulated whole salivary flow rate: 0.04 mL per minute (reference range, greater than or equal to 0.1 mL per minute).",
+          "provenance": "generated",
+          "generated_text": "Unstimulated whole salivary flow rate: 0.04 mL per minute (reference range, greater than or equal to 0.1 mL per minute).",
+          "cost_usd": 0.0,
+          "notes": [],
+          "source_ids": [],
+          "sources": []
+        },
+        {
+          "route": "order_test",
+          "request": "Minor labial salivary gland biopsy with histopathologic examination and focus score",
+          "response": "Minor labial salivary gland biopsy: Hematoxylin and eosin-stained sections show lobules of salivary gland parenchyma with a sparse to moderate mononuclear inflammatory infiltrate composed predominantly of lymphocytes and plasma cells. The inflammatory cells are distributed in small clusters within the interstitial connective tissue, with focal periductal and perivascular aggregation. No discrete lymphoid follicles with germinal centers are identified. The focus score is 0 (no focus of 50 or more mononuclear cells per 4 mm² of glandular tissue). Acinar architecture is largely preserved, with no significant acinar atrophy, interstitial fibrosis, or ductal dilatation. No lymphoepithelial lesions, granulomas, or atypical lymphoid cells are seen. Immunohistochemical stains for cytokeratin and CD20/CD3 highlight preserved ductal and lymphoid architecture without evidence of a clonal B-cell population.",
+          "provenance": "generated",
+          "generated_text": "Minor labial salivary gland biopsy: Hematoxylin and eosin-stained sections show lobules of salivary gland parenchyma with a sparse to moderate mononuclear inflammatory infiltrate composed predominantly of lymphocytes and plasma cells. The inflammatory cells are distributed in small clusters within the interstitial connective tissue, with focal periductal and perivascular aggregation. No discrete lymphoid follicles with germinal centers are identified. The focus score is 0 (no focus of 50 or more mononuclear cells per 4 mm² of glandular tissue). Acinar architecture is largely preserved, with no significant acinar atrophy, interstitial fibrosis, or ductal dilatation. No lymphoepithelial lesions, granulomas, or atypical lymphoid cells are seen. Immunohistochemical stains for cytokeratin and CD20/CD3 highlight preserved ductal and lymphoid architecture without evidence of a clonal B-cell population.",
+          "cost_usd": 1200.0,
+          "notes": [
+            "generation attempt 1 rejected: reported documented items ['IgG4-positive plasma cells']"
+          ],
+          "source_ids": [],
+          "sources": []
+        }
+      ],
+      "turn_cost_usd": 1200.0
+    },
+    {
+      "turn": 13,
+      "accepted": true,
+      "error": null,
+      "kind": "order_tests",
+      "title": "Ultrasound-guided core needle biopsy of the submandibular gland, Histopathology with hematoxylin and eosin staining of submandibular gland biopsy, Immunohistochemical staining for IgG4 and IgG on submandibular gland biopsy, Flow cytometry of submandibular gland biopsy tissue, Acid-fast bacilli stain and mycobacterial culture of submandibular gland biopsy, Fungal stain and culture of submandibular gland biopsy",
+      "action": {
+        "kind": "order_tests",
+        "question": null,
+        "request": null,
+        "tests": [
+          "Ultrasound-guided core needle biopsy of the submandibular gland",
+          "Histopathology with hematoxylin and eosin staining of submandibular gland biopsy",
+          "Immunohistochemical staining for IgG4 and IgG on submandibular gland biopsy",
+          "Flow cytometry of submandibular gland biopsy tissue",
+          "Acid-fast bacilli stain and mycobacterial culture of submandibular gland biopsy",
+          "Fungal stain and culture of submandibular gland biopsy"
+        ],
+        "diagnosis": null,
+        "rationale": null
+      },
+      "exchanges": [
+        {
+          "route": "order_test",
+          "request": "Ultrasound-guided core needle biopsy of the submandibular gland",
+          "response": "Ultrasound-guided core needle biopsy of the right submandibular gland: three core fragments of salivary gland parenchyma, each 0.8 to 1.2 cm in length and 0.1 cm in diameter, tan-white and firm. Microscopic examination shows salivary gland tissue with a dense, diffuse lymphoplasmacytic infiltrate that partially obscures the lobular architecture. Reactive lymphoid follicles with germinal centers are present. There is loss of acinar cells with replacement by the inflammatory infiltrate, and increased collagenous stroma with interstitial fibrosis. No granulomas, necrosis, or viral cytopathic changes are identified. No lymphoepithelial lesions are seen. Immunohistochemical stains for kappa and lambda light chains show a polytypic plasma cell population. No atypical lymphoid cells or monoclonal population is identified. No organisms are seen on Gram, acid-fast bacilli, or fungal stains.",
+          "provenance": "generated",
+          "generated_text": "Ultrasound-guided core needle biopsy of the right submandibular gland: three core fragments of salivary gland parenchyma, each 0.8 to 1.2 cm in length and 0.1 cm in diameter, tan-white and firm. Microscopic examination shows salivary gland tissue with a dense, diffuse lymphoplasmacytic infiltrate that partially obscures the lobular architecture. Reactive lymphoid follicles with germinal centers are present. There is loss of acinar cells with replacement by the inflammatory infiltrate, and increased collagenous stroma with interstitial fibrosis. No granulomas, necrosis, or viral cytopathic changes are identified. No lymphoepithelial lesions are seen. Immunohistochemical stains for kappa and lambda light chains show a polytypic plasma cell population. No atypical lymphoid cells or monoclonal population is identified. No organisms are seen on Gram, acid-fast bacilli, or fungal stains.",
+          "cost_usd": 1200.0,
+          "notes": [
+            "generation attempt 1 rejected: reported documented items ['IgG4-positive plasma cells']"
+          ],
+          "source_ids": [],
+          "sources": []
+        },
+        {
+          "route": "order_test",
+          "request": "Histopathology with hematoxylin and eosin staining of submandibular gland biopsy",
+          "response": "Excision of the submandibular gland: The resected submandibular gland was characterized by a marked lymphoplasmacytic infiltrate, with florid reactive lymphoid follicular hyperplasia, acinar atrophy, and interstitial fibrosis. Lymphoepithelial lesions were not evident. In situ hybridization for kappa and lambda light chains showed numerous polytypic plasma cells. Obliterative phlebitis was not present.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 1200.0,
+          "notes": [],
+          "source_ids": [
+            "p02"
+          ],
+          "sources": [
+            {
+              "id": "p02",
+              "kind": "pathology",
+              "label": "Excision of the submandibular gland",
+              "result": "The resected submandibular gland was characterized by a marked lymphoplasmacytic infiltrate, with florid reactive lymphoid follicular hyperplasia, acinar atrophy, and interstitial fibrosis. Lymphoepithelial lesions were not evident. In situ hybridization for kappa and lambda light chains showed numerous polytypic plasma cells. Obliterative phlebitis was not present.",
+              "pages": [
+                5
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Immunohistochemical staining for IgG4 and IgG on submandibular gland biopsy",
+          "response": "IgG4 immunostain of the submandibular gland: Immunohistochemical stains for IgG and IgG4 showed 19 IgG4-positive plasma cells per high-power field and an IgG4:IgG ratio of more than 0.5.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 1200.0,
+          "notes": [],
+          "source_ids": [
+            "p03"
+          ],
+          "sources": [
+            {
+              "id": "p03",
+              "kind": "pathology",
+              "label": "IgG4 immunostain of the submandibular gland",
+              "result": "Immunohistochemical stains for IgG and IgG4 showed 19 IgG4-positive plasma cells per high-power field and an IgG4:IgG ratio of more than 0.5.",
+              "pages": [
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Flow cytometry of submandibular gland biopsy tissue",
+          "response": "This request could not be carried out as worded; please rephrase it.",
+          "provenance": "refused",
+          "generated_text": null,
+          "cost_usd": 0.0,
+          "notes": [
+            "generation attempt 1 rejected: reported documented items ['kappa lambda ratio', 'submandibular gland biopsy']",
+            "generation attempt 2 rejected: reported documented items ['submandibular gland biopsy']"
+          ],
+          "source_ids": [],
+          "sources": []
+        },
+        {
+          "route": "order_test",
+          "request": "Acid-fast bacilli stain and mycobacterial culture of submandibular gland biopsy",
+          "response": "Stains and cultures of the aspirate: Gram's stain and stains for acid-fast bacilli showed no organisms, and bacterial, mycobacterial, and anaerobic cultures were sterile.",
+          "provenance": "core",
+          "generated_text": null,
+          "cost_usd": 100.0,
+          "notes": [],
+          "source_ids": [
+            "m09"
+          ],
+          "sources": [
+            {
+              "id": "m09",
+              "kind": "microbiology",
+              "label": "Stains and cultures of the aspirate",
+              "result": "Gram's stain and stains for acid-fast bacilli showed no organisms, and bacterial, mycobacterial, and anaerobic cultures were sterile.",
+              "pages": [
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "route": "order_test",
+          "request": "Fungal stain and culture of submandibular gland biopsy",
+          "response": "Excision of the submandibular gland: The resected submandibular gland was characterized by a marked lymphoplasmacytic infiltrate, with florid reactive lymphoid follicular hyperplasia, acinar atrophy, and interstitial fibrosis. Lymphoepithelial lesions were not evident. In situ hybridization for kappa and lambda light chains showed numerous polytypic plasma cells. Obliterative phlebitis was not present.\nFungal stain (Gomori methenamine silver and periodic acid–Schiff) of the submandibular gland tissue: no fungal elements identified. Fungal culture of the submandibular gland tissue: no growth after 4 weeks of incubation at 30°C and 37°C.",
+          "provenance": "mixed",
+          "generated_text": "Fungal stain (Gomori methenamine silver and periodic acid–Schiff) of the submandibular gland tissue: no fungal elements identified. Fungal culture of the submandibular gland tissue: no growth after 4 weeks of incubation at 30°C and 37°C.",
+          "cost_usd": 1300.0,
+          "notes": [
+            "generation attempt 1 rejected: reported documented items ['culture of the aspirate']"
+          ],
+          "source_ids": [
+            "p02"
+          ],
+          "sources": [
+            {
+              "id": "p02",
+              "kind": "pathology",
+              "label": "Excision of the submandibular gland",
+              "result": "The resected submandibular gland was characterized by a marked lymphoplasmacytic infiltrate, with florid reactive lymphoid follicular hyperplasia, acinar atrophy, and interstitial fibrosis. Lymphoepithelial lesions were not evident. In situ hybridization for kappa and lambda light chains showed numerous polytypic plasma cells. Obliterative phlebitis was not present.",
+              "pages": [
+                5
+              ]
+            }
+          ]
+        }
+      ],
+      "turn_cost_usd": 5000.0
+    },
+    {
+      "turn": 14,
+      "accepted": true,
+      "error": null,
+      "kind": "diagnose",
+      "title": "IgG4-related sialadenitis (Mikulicz disease) involving the submandibular glands",
+      "action": {
+        "kind": "diagnose",
+        "question": null,
+        "request": null,
+        "tests": null,
+        "diagnosis": "IgG4-related sialadenitis (Mikulicz disease) involving the submandibular glands",
+        "rationale": "This 26-year-old woman presented with persistent, tender bilateral submandibular gland enlargement, odynophagia, dry mouth/eyes, and weight loss despite antibiotics. Imaging showed symmetrically enlarged submandibular glands with heterogeneous hypoechoic parenchyma and cystic spaces, without stones or masses. Serologies were notable for ANA positivity but negative anti-SSA/SSB, normal serum IgG4, and negative HIV/HCV. Minor labial salivary gland biopsy showed no focal lymphocytic sialadenitis (focus score 0) and no granulomas, making Sjögren syndrome and sarcoidosis unlikely. Submandibular gland biopsy showed a dense lymphoplasmacytic infiltrate with reactive lymphoid follicles, acinar atrophy, interstitial fibrosis, and polytypic plasma cells, without lymphoepithelial lesions or obliterative phlebitis. Immunohistochemistry showed 19 IgG4-positive plasma cells per high-power field and an IgG4:IgG ratio greater than 0.5, meeting the histopathologic criteria for IgG4-related sialadenitis (Mikulicz disease), even though the serum IgG4 level was normal."
+      },
+      "exchanges": [],
+      "turn_cost_usd": 0
+    }
+  ],
+  "final": {
+    "diagnosis": "IgG4-related sialadenitis (Mikulicz disease) involving the submandibular glands",
+    "rationale": "This 26-year-old woman presented with persistent, tender bilateral submandibular gland enlargement, odynophagia, dry mouth/eyes, and weight loss despite antibiotics. Imaging showed symmetrically enlarged submandibular glands with heterogeneous hypoechoic parenchyma and cystic spaces, without stones or masses. Serologies were notable for ANA positivity but negative anti-SSA/SSB, normal serum IgG4, and negative HIV/HCV. Minor labial salivary gland biopsy showed no focal lymphocytic sialadenitis (focus score 0) and no granulomas, making Sjögren syndrome and sarcoidosis unlikely. Submandibular gland biopsy showed a dense lymphoplasmacytic infiltrate with reactive lymphoid follicles, acinar atrophy, interstitial fibrosis, and polytypic plasma cells, without lymphoepithelial lesions or obliterative phlebitis. Immunohistochemistry showed 19 IgG4-positive plasma cells per high-power field and an IgG4:IgG ratio greater than 0.5, meeting the histopathologic criteria for IgG4-related sialadenitis (Mikulicz disease), even though the serum IgG4 level was normal.",
+    "judgement": {
+      "score": 5,
+      "rationale": "The candidate diagnosis is the same core disease as the reference—IgG4-related sialadenitis—and specifies the correct submandibular gland involvement; the added Mikulicz disease term is a related IgG4-related salivary gland disorder and does not change management.",
+      "method": "llm"
+    }
+  },
+  "reward": {
+    "dx_score": 5,
+    "dx_term": 3.0,
+    "cost_usd": 9050.0,
+    "cost_term": 0.4525,
+    "penalties": [],
+    "penalty_total": 0.0,
+    "total": 2.5475,
+    "complete": true,
+    "errors": []
+  },
+  "cost_usd": 9050.0,
+  "visits": 2,
+  "source_counts": {
+    "history": 16,
+    "findings": 44
+  },
+  "run_sha256": "0386113a4cbb7470eddf177d50f2ddb61c744d6380b262f0ef8b2705ed03e23b",
+  "case_sha256": "e1ee188b7d349b41efd8496c93cb20732077e9962865aec5791237ace0a8826d",
+  "case_label": "Case 24-2009",
+  "provenance_counts": {
+    "mixed": 7,
+    "core": 19,
+    "generated": 11,
+    "refused": 1
+  },
+  "reward_config": {
+    "dx_weight": 3.0,
+    "cost_weight": 0.5,
+    "cost_scale_usd": 10000.0,
+    "hallucination_penalty": 2.0,
+    "missed_red_flag_penalty": 3.0,
+    "contraindicated_penalty": 3.0,
+    "rejected_action_penalty": 0.1,
+    "no_diagnosis_penalty": 1.0
+  }
+}

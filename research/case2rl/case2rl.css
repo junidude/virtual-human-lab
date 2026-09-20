@@ -107,3 +107,51 @@
   .c2-rules > div { grid-template-columns: 95px minmax(0,1fr); }
 }
 @media (prefers-reduced-motion: reduce) { .c2-wrap * { scroll-behavior: auto; } }
+
+/* Source → completion → reward, backed by the two preserved trajectories. */
+.c2-review-invitation { display:flex;align-items:center;justify-content:space-between;gap:28px;padding:36px;border-radius:24px;background:#101f25;color:#f5f8fa; }
+.c2-review-invitation .c2-eyebrow { color:#78d9ff; }
+.c2-review-invitation h2 { font-size:clamp(25px,3vw,38px);line-height:1.15;margin:12px 0; }
+.c2-review-invitation p { color:#afc0d0;font-size:14px; }
+.c2-review-invitation .btn { flex-shrink:0; }
+.c2-provenance-pills { display:flex;gap:8px;flex-wrap:wrap;margin-top:20px; }
+.c2-provenance-pills span { border:1px solid #30454f;border-radius:99px;padding:4px 10px;font:12px var(--font-mono);color:#bfd7e3; }
+.c2-paper-grid { display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:34px; }
+.c2-paper-grid figure { margin:0; }
+.c2-paper-grid img { display:block;width:100%;height:auto; }
+.c2-paper-grid figcaption { font-size:12px;color:var(--muted);margin-top:8px; }
+.c2-paper-grid h3 { font-size:clamp(22px,2.5vw,30px);line-height:1.25;margin:14px 0; }
+.c2-paper-grid p { margin-bottom:16px; }
+.c2-original-count { color:var(--blue);font-size:14px; }
+.c2-paper-authors { font-size:13px;color:var(--muted); }
+.c2-generation-route { padding:18px 20px;background:var(--surface);border-radius:14px;margin:20px 0;font-size:14px;line-height:1.8; }
+.c2-generation-inputs { display:grid;grid-template-columns:1fr 1fr;gap:18px; }
+.c2-generation-inputs>div { padding:18px 20px;border:1px solid var(--line);border-radius:14px; }
+.c2-generation-inputs strong { font-size:14px; }
+.c2-generation-inputs p { margin-top:8px;font-size:13px;color:var(--muted);line-height:1.7; }
+.c2-missing-examples,.c2-recorded-rewards { display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px; }
+.c2-example,.c2-reward-record { border:1px solid var(--line);border-radius:16px;padding:24px;min-width:0; }
+.c2-example h3 { font-size:18px;margin:12px 0; }
+.c2-example pre { white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.7 var(--font-sans);margin-top:12px; }
+.c2-example small { color:var(--muted);font-size:12px; }
+.c2-example[data-kind="generated"] { border-top:3px solid #d38b29; }
+[data-extra-examples] { display:grid;gap:14px;margin-top:16px; }
+.c2-scope-note { color:var(--muted);font-size:13px;line-height:1.7;margin-top:16px; }
+.c2-formula { margin:22px 0;padding:24px;background:var(--night);color:#f5f8fa;border-radius:16px;font:clamp(14px,1.5vw,18px)/1.8 var(--font-mono);overflow-wrap:anywhere; }
+.c2-mini-title { font-size:17px;margin-top:24px; }
+.c2-reward-record strong { display:block;font:600 36px var(--font-mono);color:var(--blue);margin:12px 0; }
+.c2-reward-record .c2-term { font:13px/1.8 var(--font-mono);color:var(--muted); }
+.c2-workbench { margin-top:26px;padding:26px;border-radius:20px;background:var(--surface); }
+.c2-workbench button { border:1px solid var(--line);padding:8px 14px;border-radius:99px;background:white;font-size:13px; }
+.c2-weight-inputs { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px; }
+.c2-weight-inputs label { display:grid;gap:8px;color:var(--muted);font-size:12px; }
+.c2-weight-inputs input { width:100%;min-width:0;border:1px solid var(--line);background:white;border-radius:10px;padding:10px;color:var(--ink);font:15px var(--font-mono); }
+.c2-whatif { display:flex;flex-wrap:wrap;gap:18px 40px;margin-top:24px;font:500 20px var(--font-mono); }
+.c2-synthetic-archive { margin-top:56px;border-block:1px solid var(--line);padding-block:18px; }
+.c2-synthetic-archive>summary { cursor:pointer;font-size:15px;color:var(--muted); }
+.c2-synthetic-archive[open]>summary { margin-bottom:30px; }
+.c2-reward .link { color:#78d9ff; }
+.c2-reward small { display:block;margin-top:12px; }
+@media(max-width:850px){.c2-review-invitation{align-items:flex-start;flex-direction:column}.c2-paper-grid{gap:24px}.c2-weight-inputs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.c2-review-invitation{padding:26px}.c2-paper-grid,.c2-missing-examples,.c2-recorded-rewards{grid-template-columns:1fr}.c2-workbench{padding:20px}.c2-paper-grid h3{font-size:23px}}
+@media(max-width:650px){.c2-generation-inputs{grid-template-columns:1fr}}

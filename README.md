@@ -18,6 +18,7 @@ Then open `http://localhost:4173`.
 - `/research/pbisc-diffusion/one-cell/` and its `/ko/` page — interactive step-by-step view of one generated cell
 - `/research/talk/` and `/research/talk/ko/` — TALK playground: recorded RNA-LLM answers for real cells (data from `python tools/make_talk_demo.py`)
 - `/research/case2rl/` and `/research/case2rl/ko/` — case2RL: case-report PDFs, diagnostic environments, pilot rollouts and review
+- `/research/case2rl/review/` and its `/ko/` page — two recorded rollouts, blinded labels, turn-level review, browser snapshots and JSON import/export
 - `/papers/` and `/papers/ko/` — blurred manuscript previews and email-draft access request
 - `/blog/` and `/blog/ko/` — signed essays on research direction
 - `/notes/` and `/notes/ko/` — what a technical note will contain (none are public yet)
@@ -43,6 +44,14 @@ saved synthetic audit samples. Refresh it with
 `uv run --with pyyaml python tools/make_case2rl_demo.py --source /path/to/case2RL`
 (add `--check` to verify source parity without writing). This does not call a model or include
 source papers, private case-derived material, candidate rollouts, or the local review backend.
+
+The separate rollout reviewer contains two owner-requested recorded diagnostic runs. Its fixed,
+hash-pinned export is built with `python tools/make_case2rl_review.py --source /path/to/case2RL`.
+Original report PDFs and photos are not bundled; the overview links to the paper and uses an
+original schematic. The public console is a static adaptation of the local reviewer, not its
+unauthenticated server. Review drafts and append-only snapshots stay in the visitor's browser;
+JSON export/import provides portability. Blinding is at the interface level. Recorded rewards
+are preserved; the overview's reweighting controls are a separate what-if calculation.
 
 ## Bilingual publishing
 
