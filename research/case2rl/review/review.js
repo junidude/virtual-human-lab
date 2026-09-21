@@ -50,6 +50,7 @@ const els = {
   loadStatus: document.querySelector("#loadStatus"),
   storageStatus: document.querySelector("#storageStatus"),
   integrityDetails: document.querySelector("#integrityDetails"),
+  problemSetting: document.querySelector("#problem-setting"),
 };
 
 const ISSUE_TAGS = [
@@ -179,6 +180,9 @@ async function loadRun(index) {
   resetVisibility();
   renderSelector();
   [els.timeline, els.metricGrid, els.decisionCard, els.referenceGrid, els.integrityDetails].forEach(el => { el.replaceChildren(); });
+  els.problemSetting.replaceChildren();
+  delete els.problemSetting.dataset.runSha;
+  els.problemSetting.textContent = tr("Verifying starting information…", "초기 정보 확인 중…");
   els.finalReviewForm.reset();
   els.runTimestamp.textContent = "—";
   els.visibleTurnCount.textContent = "—";
@@ -208,6 +212,7 @@ async function loadRun(index) {
     els.loadStatus.textContent = tr("Unable to load: ", "불러오기 실패: ") + error.message;
     els.loadStatus.classList.add("error");
     els.timeline.innerHTML = `<div class="empty-state">${escapeHtml(tr("No run displayed. Retry Load.", "표시할 기록이 없습니다. 다시 불러오세요."))}</div>`;
+    els.problemSetting.textContent = tr("Starting information unavailable. Retry Load below.", "초기 정보를 불러오지 못했습니다. 아래에서 다시 불러오세요.");
     setReviewEnabled();
     showToast(error.message, true);
   }
@@ -260,6 +265,7 @@ function switchReviewer() {
 
 function renderAll() {
   if (!state.run) return;
+  renderProblem();
   renderOverview();
   renderTimeline();
   renderDecision();
@@ -269,6 +275,31 @@ function renderAll() {
   els.runTimestamp.textContent = `${tr("Recorded", "기록")} ${formatDate(state.run.started_at)}`;
   els.integrityDetails.innerHTML = `<dt>${tr("Original rollout", "원본 롤아웃")}</dt><dd>${escapeHtml(state.entry.run_sha256)}</dd><dt>${tr("Public view", "공개 데이터")}</dt><dd>${escapeHtml(state.entry.file_sha256)}</dd>`;
   setReviewEnabled();
+}
+
+function renderProblem() {
+  if (els.problemSetting.dataset.runSha === state.entry.run_sha256) return;
+  const presentation = state.run.case?.presentation || "";
+  // The two hash-pinned recordings share messages[0] (instructions) and messages[1]
+  // (presentation). Keep these opening facts separate from all later exchanges.
+  const originalPresentation = "A 26-year-old woman is seen in the rheumatology clinic because of painful swelling on both sides of the neck. Symptoms have persisted despite several courses of antibiotics.";
+  const translatedPresentation = "26세 여성이 양측 목의 통증성 부종으로 류마티스내과 외래를 방문했습니다. 여러 차례 항생제 치료를 받았지만 증상이 지속됩니다.";
+  const instructions = "You are a physician working up a diagnostic case one step at a time. You start with a brief presentation and must gather the rest yourself.\n\nUse the tools to ask the patient about their history, examine specific body systems, and order specific tests (name each test; vague orders such as \"blood work\" are refused). Every visit and every test has a cost, so prefer informative, cost-effective steps. When you are confident, call `diagnose` once with a single specific final diagnosis and a rationale that cites only information you were actually given. You can take at most 30 actions.";
+  const translated = isKo && presentation === originalPresentation;
+  const actions = [["ask_patient", tr("History", "문진")], ["examine", tr("Examination", "진찰")], ["order_tests", tr("Tests", "검사")], ["diagnose", tr("Final diagnosis", "최종 진단")]];
+  els.problemSetting.innerHTML = `
+    <div class="problem-heading"><h2>${tr("Starting information", "초기 환자 정보")}</h2><span>${escapeHtml(state.run.case_label)} · ${tr("Same for both candidates", "두 후보에게 동일하게 제공")}</span></div>
+    <p class="case-presentation" id="casePresentation" lang="${translated ? "ko" : "en"}">${escapeHtml(translated ? translatedPresentation : presentation)}</p>
+    <div class="problem-task"><span>${tr("TASK", "과제")}</span><p>${tr("Gather evidence. Submit one diagnosis and a supported rationale.", "정보를 수집하고, 확인된 근거로 하나의 최종 진단과 이유를 제출합니다.")}</p></div>
+    <div class="problem-actions" role="group" aria-label="${tr("Available actions", "가능한 행동")}">${actions.map(([id,label]) => `<span data-problem-action="${id}">${label}</span>`).join("")}</div>
+    <p class="problem-rules">${tr("Up to 30 actions · Costs tracked · Ends at diagnosis", "최대 30회 행동 · 비용 반영 · 진단 제출 시 종료")}</p>
+    <details class="problem-instructions"><summary>${tr("Original starting information & instructions", "초기 정보·지시문 원문")}</summary>
+      <h3>${tr("Initial presentation", "초기 환자 정보")}</h3><p id="initialPresentationOriginal" lang="en">${escapeHtml(presentation)}</p>
+      <h3>${tr("Candidate instructions", "후보에게 주어진 지시문")}</h3><p id="initialInstructions" lang="en">${escapeHtml(instructions)}</p>
+      <p class="problem-review-note">${tr("Review: evidence, safety, timing and cost. Provenance labels are shown only to reviewers; candidates received the response text.", "검토 기준: 근거·안전·시점·비용. 출처 태그는 검토자용이며, 후보에게는 응답 텍스트가 전달됐습니다.")}</p>
+    </details>
+    <a class="problem-reference-link" href="#reference">${tr("Reference diagnosis · reveal separately", "정답 진단 · 별도로 펼쳐보기")} →</a>`;
+  els.problemSetting.dataset.runSha = state.entry.run_sha256;
 }
 
 function identityLabel() {

@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/research/case2rl/review/review.css?v=20260921-polish-487ae6f30a">
+  <link rel="stylesheet" href="/research/case2rl/review/review.css?v=20260921-setting-5e553b5525">
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -37,7 +37,7 @@
       </label>
 
       <nav class="rail-nav">
-        <a href="#overview" data-nav="overview"><span>개요</span><small>01</small></a>
+        <a href="#overview" data-nav="overview"><span>문제 세팅</span><small>01</small></a>
         <a href="#trajectory" data-nav="trajectory"><span>행동 기록</span><small>02</small></a>
         <a href="#evaluation" data-nav="evaluation"><span>최종 평가</span><small>03</small></a>
         <a href="#reference" data-nav="reference"><span>원문 근거</span><small>04</small></a>
@@ -81,9 +81,18 @@
           <canvas id="networkCanvas" aria-hidden="true"></canvas>
           <div class="hero-content">
             <p class="eyebrow">임상 검토 콘솔 · 저장된 롤아웃</p>
-            <h1 id="heroTitle">근거를 따라.<br>한 턴씩 검토.</h1>
-            <p class="hero-copy">두 후보. 하나의 증례. 전체 행동과 응답.<br>저장된 기록 · 영문 원문</p>
+            <h1 id="heroTitle">하나의 증례.<br>두 후보의 진단 과정.</h1>
+            <p class="hero-copy">초기 환자 정보 → 정보 수집 → 최종 진단</p>
 
+            <div class="problem-setting" id="problem-setting" aria-label="문제 세팅" aria-live="polite">초기 정보 확인 중…</div>
+          </div>
+        </section>
+
+        <section class="content-section run-overview" id="run-overview" aria-labelledby="overviewTitle">
+          <div class="section-heading">
+            <div><p class="eyebrow">롤아웃 개요</p><h2 id="overviewTitle">한눈에 보기</h2></div>
+            <p id="runTimestamp">—</p>
+          </div>
             <div class="run-loader" aria-label="롤아웃 선택">
               <span class="prompt-mark">$</span>
               <label for="runSelect" class="sr-only">롤아웃 선택</label>
@@ -92,14 +101,6 @@
             </div>
             <p id="loadStatus" class="load-status" role="status" aria-live="polite">롤아웃 불러오는 중…</p>
             <button class="text-link" id="nextUnreviewedButton" type="button">미검토 턴 열기 <span>→</span></button>
-          </div>
-        </section>
-
-        <section class="content-section run-overview" aria-labelledby="overviewTitle">
-          <div class="section-heading">
-            <div><p class="eyebrow">롤아웃 개요</p><h2 id="overviewTitle">한눈에 보기</h2></div>
-            <p id="runTimestamp">—</p>
-          </div>
           <div class="metric-grid" id="metricGrid" aria-live="polite"></div>
           <p class="method-note">비용: 모형 내 가정값 · API 요금 아님. 자동 평가는 검토가 필요합니다.</p>
           <details class="integrity-details"><summary>원본 무결성 · SHA-256</summary><dl id="integrityDetails"></dl></details>
@@ -205,6 +206,6 @@
   <button class="menu-backdrop" id="menuBackdrop" type="button" tabindex="-1" aria-label="메뉴 닫기" hidden></button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="/research/case2rl/review/review-store.js?v=20260921-ea7a913b8a" defer></script>
-  <script src="/research/case2rl/review/review.js?v=20260921-polish-061be39d3a" defer></script>
+  <script src="/research/case2rl/review/review.js?v=20260921-setting-7dd28305ef" defer></script>
 </body>
 </html>

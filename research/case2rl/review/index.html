@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/research/case2rl/review/review.css?v=20260921-polish-487ae6f30a">
+  <link rel="stylesheet" href="/research/case2rl/review/review.css?v=20260921-setting-5e553b5525">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -37,7 +37,7 @@
       </label>
 
       <nav class="rail-nav">
-        <a href="#overview" data-nav="overview"><span>Overview</span><small>01</small></a>
+        <a href="#overview" data-nav="overview"><span>Problem setting</span><small>01</small></a>
         <a href="#trajectory" data-nav="trajectory"><span>Trajectory</span><small>02</small></a>
         <a href="#evaluation" data-nav="evaluation"><span>Evaluation</span><small>03</small></a>
         <a href="#reference" data-nav="reference"><span>Reference</span><small>04</small></a>
@@ -81,9 +81,18 @@
           <canvas id="networkCanvas" aria-hidden="true"></canvas>
           <div class="hero-content">
             <p class="eyebrow">CLINICIAN REVIEW CONSOLE · RECORDED ROLLOUTS</p>
-            <h1 id="heroTitle">Review the evidence.<br>Turn by turn.</h1>
-            <p class="hero-copy">Two candidates. One case. Every action and response.<br>Recorded text · English original</p>
+            <h1 id="heroTitle">One case.<br>Two diagnostic paths.</h1>
+            <p class="hero-copy">Starting information → Evidence gathering → Final diagnosis</p>
 
+            <div class="problem-setting" id="problem-setting" aria-label="Problem setting" aria-live="polite">Loading starting information…</div>
+          </div>
+        </section>
+
+        <section class="content-section run-overview" id="run-overview" aria-labelledby="overviewTitle">
+          <div class="section-heading">
+            <div><p class="eyebrow">RUN OVERVIEW</p><h2 id="overviewTitle">At a glance</h2></div>
+            <p id="runTimestamp">—</p>
+          </div>
             <div class="run-loader" aria-label="Select rollout">
               <span class="prompt-mark">$</span>
               <label for="runSelect" class="sr-only">Select rollout</label>
@@ -92,14 +101,6 @@
             </div>
             <p id="loadStatus" class="load-status" role="status" aria-live="polite">Loading recorded runs…</p>
             <button class="text-link" id="nextUnreviewedButton" type="button">Open first unresolved turn <span>→</span></button>
-          </div>
-        </section>
-
-        <section class="content-section run-overview" aria-labelledby="overviewTitle">
-          <div class="section-heading">
-            <div><p class="eyebrow">RUN OVERVIEW</p><h2 id="overviewTitle">At a glance</h2></div>
-            <p id="runTimestamp">—</p>
-          </div>
           <div class="metric-grid" id="metricGrid" aria-live="polite"></div>
           <p class="method-note">Modeled encounter cost · Placeholder prices, not API bills. Judge-generated scores need review.</p>
           <details class="integrity-details"><summary>Source integrity · SHA-256</summary><dl id="integrityDetails"></dl></details>
@@ -205,6 +206,6 @@
   <button class="menu-backdrop" id="menuBackdrop" type="button" tabindex="-1" aria-label="Close menu" hidden></button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="/research/case2rl/review/review-store.js?v=20260921-ea7a913b8a" defer></script>
-  <script src="/research/case2rl/review/review.js?v=20260921-polish-061be39d3a" defer></script>
+  <script src="/research/case2rl/review/review.js?v=20260921-setting-7dd28305ef" defer></script>
 </body>
 </html>

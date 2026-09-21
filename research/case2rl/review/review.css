@@ -162,6 +162,30 @@ main { overflow: clip; }
 .eyebrow { margin: 0 0 14px; color: var(--muted); font-size: 13px; font-weight: 500; letter-spacing: .07em; line-height: 1.5; }
 .hero h1 { max-width: 760px; margin: 0 auto 24px; font-family: var(--display); font-size: clamp(48px, 4vw, 64px); font-weight: 400; letter-spacing: -.035em; line-height: 1.08; text-wrap: balance; }
 .hero-copy { max-width: 620px; margin: 0 auto 32px; color: #d7e1e7; font-size: 18px; line-height: 1.65; }
+.problem-setting { margin-top: 28px; padding: clamp(22px, 2.5vw, 32px); text-align: left; background: var(--night-deep); border: 1px solid var(--line); border-radius: var(--radius); }
+.problem-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; }
+.problem-heading h2 { margin: 0; color: var(--cyan); font-size: 16px; font-weight: 500; }
+.problem-heading > span { color: var(--muted); font-size: 13px; }
+.case-presentation { margin: 18px 0 24px; color: var(--ink); font-size: 19px; line-height: 1.65; }
+.problem-task { padding-top: 20px; border-top: 1px solid var(--line); }
+.problem-task > span { color: var(--quiet); font-size: 12px; font-weight: 500; letter-spacing: .05em; }
+.problem-task p { margin: 6px 0 16px; font-size: 16px; line-height: 1.6; }
+.problem-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.problem-actions span { padding: 5px 12px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-pill); font-size: 13px; }
+.problem-rules { margin: 14px 0 0; color: var(--muted); font-size: 13px; }
+.problem-instructions { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; }
+.problem-instructions summary { min-height: 32px; color: var(--cyan); cursor: pointer; }
+.problem-instructions h3 { margin: 18px 0 8px; color: var(--quiet); font-size: 13px; font-weight: 500; }
+.problem-instructions p { margin: 0 0 14px; font-size: 15px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.problem-instructions .problem-review-note { padding-top: 14px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
+.problem-reference-link { display: inline-block; margin-top: 12px; color: var(--muted); font-size: 13px; }
+.problem-reference-link:hover { color: var(--cyan); text-decoration: underline; text-underline-offset: 4px; }
+.run-overview .run-loader { width: 100%; margin: 0 0 10px; }
+.run-overview #nextUnreviewedButton { margin-bottom: 28px; }
+@media (max-width: 680px) {
+  .case-presentation { font-size: 17px; }
+  .problem-task p { font-size: 15px; }
+}
 .run-loader { display: grid; width: min(720px, 100%); min-height: 80px; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; margin: 0 auto 14px; padding: 14px 18px; text-align: left; background: #112128; border: 1px solid var(--line); border-radius: var(--radius); }
 .prompt-mark { color: var(--blue-bright); font-family: var(--mono); font-size: 22px; }
 .run-loader select { min-width: 0; width: 100%; min-height: 48px; padding: 0 10px; color: var(--ink); font-family: var(--mono); font-size: 16px; background: transparent; border: 0; border-radius: 6px; }
