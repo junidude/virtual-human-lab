@@ -35,7 +35,7 @@ export async function mountDiffusion(root, {ko}) {
       <span class="arch-flow-arrow" aria-hidden="true">→</span>
       <div class="arch-node">
         <span class="arch-node-kicker">03 / ${t('PREDICT', '예측')}</span>
-        <h3>${t('Clean estimate', '노이즈 없는 상태 예측')}</h3>
+        <h3>${t('Expression estimate', '발현 예측')}</h3>
         <p class="arch-node-note">${t('Value + soft support · x̂₀', '발현값 + soft support · x̂₀')}</p>
         <svg class="arch-matrix" data-matrix="prediction" viewBox="0 0 240 160" role="img" aria-label="${t('Decoded clean-expression estimate for the same cell and genes', '같은 세포와 유전자의 디코딩된 발현 예측')}"></svg>
         <div class="arch-matrix-status"><span>${t('Expression estimate', '발현 예측')}</span><span data-prediction-time></span></div>

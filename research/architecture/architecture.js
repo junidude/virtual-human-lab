@@ -13,7 +13,7 @@ async function mount(section) {
   const status = section.querySelector('.arch-status');
   try {
     const kind = section.dataset.architecture;
-    const module = kind === 'diffusion' ? await import('./diffusion.js?v=20260921-1') : await import('./talk.js?v=20260921-1');
+    const module = kind === 'diffusion' ? await import('./diffusion.js?v=20260922-copy-49cb83414f') : await import('./talk.js?v=20260922-copy-3bc9f71374');
     const model = await (kind === 'diffusion' ? module.mountDiffusion : module.mountTalk)(visual, {ko});
     const footer = document.createElement('div');
     footer.className = 'arch-controls';

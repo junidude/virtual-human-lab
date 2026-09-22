@@ -34,6 +34,13 @@ Blog, Members, Contact, language link) and the footer are identical on every pag
 everywhere at once. Bump the `?v=` cache key on `styles.css` and `script.js` in every page when either
 changes.
 
+Copy follows the owner's review: use simple, direct wording and keep useful English terms in
+Korean sentences (for example, Digital Twin, bulk RNA, donor, cell type, inference and reward).
+Do not translate every technical term merely to make the Korean page monolingual. Keep the
+meaning aligned across languages, while allowing natural wording in each. Preserve recorded
+model responses, source quotations, scientific values and formal bylaws. Apply copy edits to
+the existing layout; remove retired pages when requested instead of redesigning them.
+
 The home hero replays recorded PBISC-Diffusion sampling from `assets/home/hero-cells.bin` (see
 `hero-cells.json`; `assets/home/hero.js` draws it and never runs a model). The research-card and essay
 artworks in `assets/home/*.svg` are generated from published site data by

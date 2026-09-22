@@ -40,20 +40,20 @@
     <main id="main">
       <section class="page-head" aria-labelledby="research-title">
         <h1 id="research-title">연구</h1>
-        <p>한 사람의 생물학을 읽고 그에 대해 추론하는 방법을 연구합니다. 세 개의 프로젝트가 하나의 장기 목표, 곧 개인의 반응을 예측하는 모델을 향합니다.</p>
+        <p>개인의 생물학적 데이터를 해석하는 모델을 연구합니다. 장기 목표는 개인별 반응을 예측하는 Digital Twin입니다.</p>
       </section>
 
       <section class="section section-tight" id="pbisc" aria-labelledby="pbisc-title">
         <div class="feature">
           <img src="/assets/home/pbisc.svg?v=20260919-1" alt="" loading="lazy">
           <div class="feature-body">
-            <p class="feature-kicker">01 · 벌크 RNA → 단일 세포</p>
+            <p class="feature-kicker">01 · Bulk RNA → single cells</p>
             <h2 id="pbisc-title">PBISC</h2>
-            <p>벌크 혈액 샘플 하나에서 단일 세포 수준의 그림을 만듭니다.</p>
+            <p>혈액 샘플 하나의 bulk RNA에서 single-cell RNA profile을 생성합니다.</p>
             <div class="btn-group"><a class="btn btn-primary" href="/research/pbisc-diffusion/ko/">모델 작동 보기</a></div>
           </div>
         </div>
-        <div class="facts"><div class="fact"><span>질문</span><p>저렴하고 널리 쌓여 있는 혈액 벌크 RNA 프로필로 쓸모 있는 단일 세포 수준의 그림을 얻을 수 있을까?</p></div><div class="fact"><span>방법</span><p>확산 모델이 벌크 PBMC RNA-seq에서 세포 단위 카운트를 생성합니다. 사용 시점에 짝지은 단일세포 참조 데이터가 필요 없습니다.</p></div><div class="fact"><span>현황</span><p>BIBM에서 원고 심사 중.</p><a class="link" href="/papers/ko/#pbisc">사본 요청 →</a></div></div>
+        <div class="facts"><div class="fact"><span>질문</span><p>널리 수집되는 혈액 bulk RNA에서 유용한 single-cell RNA profile을 얻을 수 있을까?</p></div><div class="fact"><span>방법</span><p>확산 모델이 벌크 PBMC RNA-seq에서 세포 단위 카운트를 생성합니다. Inference에 같은 샘플의 single-cell 데이터는 필요하지 않습니다.</p></div><div class="fact"><span>현황</span><p>BIBM에서 원고 심사 중.</p><a class="link" href="/papers/ko/#pbisc">사본 요청 →</a></div></div>
       </section>
 
       <section class="section section-tight" id="rna-llm" aria-labelledby="rna-llm-title">
@@ -87,9 +87,9 @@
         <div class="section">
           <div class="section-head"><h2 id="how-title">모델을 검증하는 방식</h2></div>
           <div class="cards">
-            <article class="card"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="7" width="11" height="18" rx="3"/><rect x="18" y="7" width="11" height="18" rx="3" stroke-dasharray="3 3"/></svg><h3>처음 보는 사람과 연구로 평가</h3><p>학습에 쓰지 않은 기증자와 연구 코호트로만 성능을 잽니다.</p></article>
-            <article class="card"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 10v8M16 22.5v.5"/></svg><h3>한계를 먼저 밝힘</h3><p>결과마다 보여 줄 수 없는 것과 쓰면 안 되는 조건을 함께 적습니다.</p></article>
-            <article class="card"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11l6 6v20H8z"/><path d="M19 3v6h6M12 16h9M12 21h9"/></svg><h3>기록과 정정</h3><p>데이터 출처, 방법, 날짜가 붙은 정정 내역을 남깁니다. <a class="link" href="/research-integrity/ko/">연구 윤리와 실무</a></p></article>
+            <article class="card"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="7" width="11" height="18" rx="3"/><rect x="18" y="7" width="11" height="18" rx="3" stroke-dasharray="3 3"/></svg><h3>학습에서 제외한 기증자·연구 데이터로 평가</h3><p>학습에 사용하지 않은 기증자와 연구 데이터로 성능을 평가합니다.</p></article>
+            <article class="card"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 10v8M16 22.5v.5"/></svg><h3>한계를 먼저 밝힘</h3><p>각 결과의 한계와 적용할 수 없는 범위를 함께 밝힙니다.</p></article>
+            <article class="card"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11l6 6v20H8z"/><path d="M19 3v6h6M12 16h9M12 21h9"/></svg><h3>기록과 정정</h3><p>데이터 출처, 방법, 날짜가 붙은 정정 내역을 남깁니다. <a class="link" href="/research-integrity/ko/">연구 원칙</a></p></article>
           </div>
           <p class="small-note">어느 것도 임상 도구가 아닙니다. VHL은 개인의 치료 결과를 예측하거나 의학적 조언을 제공하지 않습니다.</p>
         </div>
@@ -98,10 +98,10 @@
 
     <footer class="site-footer">
       <div class="footer-grid">
-        <div class="footer-identity"><a class="brand" href="/ko/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>개인의 생물학을 계산 모델로 옮기기 위한 독립적이고 비상업적인 연구.</p></div>
+        <div class="footer-identity"><a class="brand" href="/ko/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>Digital Biology/Virtual Biology를 연구하는 독립적인 비영리 연구 단체입니다.</p></div>
         <div class="footer-column"><span>연구</span><a href="/research/ko/#pbisc">PBISC</a><a href="/research/ko/#rna-llm">RNA-LLM</a><a href="/research/case2rl/ko/">case2RL</a><a href="/research/pbisc-diffusion/ko/">PBISC-Diffusion</a><a href="/research/talk/ko/">TALK</a></div>
         <div class="footer-column"><span>랩</span><a href="/papers/ko/">논문</a><a href="/blog/ko/">블로그</a><a href="/notes/ko/">노트</a><a href="/members/ko/">구성원</a></div>
-        <div class="footer-column"><span>기록</span><a href="/governance/ko/">운영 체계</a><a href="/bylaws/ko/">회칙</a><a href="/research-integrity/ko/">연구 윤리와 실무</a><a href="/disclosures/ko/">공개 사항</a></div>
+        <div class="footer-column"><span>기록</span><a href="/governance/ko/">운영 체계</a><a href="/bylaws/ko/">회칙</a><a href="/research-integrity/ko/">연구 원칙</a><a href="/disclosures/ko/">공개 사항</a></div>
       </div>
       <div class="footer-bottom"><span>© 2026 Virtual Human Lab · <a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a> · 대한민국</span><span>VHL은 연구 그룹이며 의료 기관이 아닙니다. 소속 표시는 기관의 후원을 의미하지 않습니다.</span></div>
     </footer>

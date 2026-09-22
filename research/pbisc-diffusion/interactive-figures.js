@@ -6,22 +6,22 @@
   const KO = document.documentElement.lang.startsWith("ko");
   const T = KO ? {
     loading: "데이터 로딩…", failed: "로딩 실패 · 아래 원본 영상 이용", retry: "다시 시도",
-    play: "재생", pause: "정지", previous: "이전 단계", next: "다음 단계", speed: "재생 속도", step: "단계",
+    play: "재생", pause: "일시정지", previous: "이전 단계", next: "다음 단계", speed: "재생 속도", step: "단계",
     all: "전체", groundTruth: "Ground truth", generated: "Generated", fixed: "고정", cells: "세포",
     noisy: "노이즈 상태", estimate: "발현 예측", named: "주요 유전자 · 416", allGenes: "전체 · 2,980",
     search: "유전자 검색", find: "찾기", clear: "해제", select: "유전자 선택 · Hover / Tap / 검색",
-    notFound: "일치하는 유전자 없음", nearest: "최종 최근접 세포 · 1개", cosine: "Cosine · 전체 유전자",
+    notFound: "일치하는 유전자 없음", nearest: "최종 단계의 최근접 실제 세포 · 1개", cosine: "Cosine · 전체 유전자",
     allTested: "전체 유전자", ifna: "IFNα · 61", gene: "점 = 유전자", donors: "donor", unavailable: "N/A · donor 부족",
-    hc: "HC 높음", sle: "SLE 높음", ifnaOutline: "IFNα 테두리", neutral: "동일 / 미정",
+    hc: "HC 높음", sle: "SLE 높음", ifnaOutline: "IFNα 테두리", neutral: "차이 없음 / 추정 불가",
   } : {
     loading: "Loading recorded data…", failed: "Data unavailable · Original video below", retry: "Retry",
     play: "Play", pause: "Pause", previous: "Previous step", next: "Next step", speed: "Playback speed", step: "Step",
     all: "All", groundTruth: "Ground truth", generated: "Generated", fixed: "Fixed", cells: "cells",
     noisy: "Noisy state", estimate: "Expression estimate", named: "Key genes · 416", allGenes: "All · 2,980",
     search: "Find a gene", find: "Find", clear: "Clear", select: "Select a gene · Hover / Tap / Search",
-    notFound: "No matching gene", nearest: "Nearest endpoint cell · 1 cell", cosine: "Cosine · All genes",
+    notFound: "No matching gene", nearest: "Nearest real cell at final step · 1 cell", cosine: "Cosine · All genes",
     allTested: "All genes", ifna: "IFNα · 61", gene: "Dot = gene", donors: "donors", unavailable: "N/A · Insufficient donors",
-    hc: "HC higher", sle: "SLE higher", ifnaOutline: "IFNα outline", neutral: "Equal / undefined",
+    hc: "HC higher", sle: "SLE higher", ifnaOutline: "IFNα outline", neutral: "Zero difference / not estimable",
   };
   const C = { ink: "#19252d", muted: "#627078", line: "#dce3e7", blue: "#2563eb", red: "#dc2626", gray: "#9ca3af" };
   const BLOCK_COLORS = ["#0072B2", "#D55E00", "#009E73", "#CC79A7", "#E69F00", "#7C3AED", "#627078", "#9ca3af"];

@@ -126,9 +126,9 @@
   const select = (s) => root.querySelector(s);
   const text = (tag, value, cls) => { const e=document.createElement(tag); e.textContent=value; if(cls)e.className=cls; return e; };
   const fixed = (n) => Number(n).toFixed(4);
-  const labels = ko ? {generated:'생성된 결과 · 원문 근거 없음',mixed:'원문 + 생성',refused:'생성 거절',turn:'턴',cost:'모의 비용',units:'임시 가격 단위',actual:'기록값',
+  const labels = ko ? {generated:'생성 결과 · 원문에 미기록',mixed:'원문 + 생성',refused:'생성 거절',turn:'턴',cost:'모의 비용',units:'임시 가격 단위',actual:'기록값',
     invalid:'모든 가중치를 표시된 범위 안의 숫자로 입력하세요.',error:'기록을 불러오지 못했습니다. 전체 검토 콘솔에서 확인하세요.'}
-    : {generated:'Generated · no source measurement',mixed:'Core + generated',refused:'Generation refused',turn:'turn',cost:'Modeled cost',units:'placeholder price units',actual:'Recorded',
+    : {generated:'Generated result · not reported in source',mixed:'Core + generated',refused:'Generation refused',turn:'turn',cost:'Modeled cost',units:'placeholder price units',actual:'Recorded',
       invalid:'Enter finite weights within the displayed ranges.',error:'Recorded data could not be loaded. Open the full reviewer.'};
   let data;
   function example(entry) {

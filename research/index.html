@@ -40,7 +40,7 @@
     <main id="main">
       <section class="page-head" aria-labelledby="research-title">
         <h1 id="research-title">Research</h1>
-        <p>We study how to read a person’s biology and reason about it. Three projects, one long-term goal: a model of how an individual responds.</p>
+        <p>We build models of human biology. Our long-term goal is a Digital Twin that predicts individual responses.</p>
       </section>
 
       <section class="section section-tight" id="pbisc" aria-labelledby="pbisc-title">
@@ -49,11 +49,11 @@
           <div class="feature-body">
             <p class="feature-kicker">01 · Bulk RNA → single cells</p>
             <h2 id="pbisc-title">PBISC</h2>
-            <p>Generate a single-cell view from one bulk blood sample.</p>
+            <p>Generate single-cell RNA profiles from one bulk blood sample.</p>
             <div class="btn-group"><a class="btn btn-primary" href="/research/pbisc-diffusion/">Watch the model</a></div>
           </div>
         </div>
-        <div class="facts"><div class="fact"><span>Question</span><p>Can a bulk RNA profile of blood, which is cheap and widely collected, give a useful single-cell view?</p></div><div class="fact"><span>Approach</span><p>A diffusion model generates cell-level counts from bulk PBMC RNA-seq, with no matched single-cell reference at use time.</p></div><div class="fact"><span>Status</span><p>Manuscript under review at BIBM.</p><a class="link" href="/papers/#pbisc">Request a copy →</a></div></div>
+        <div class="facts"><div class="fact"><span>Question</span><p>Can widely collected blood bulk RNA provide useful single-cell RNA profiles?</p></div><div class="fact"><span>Approach</span><p>A diffusion model generates cell-level counts from bulk PBMC RNA-seq, without matched single-cell data at inference.</p></div><div class="fact"><span>Status</span><p>Manuscript under review at BIBM.</p><a class="link" href="/papers/#pbisc">Request a copy →</a></div></div>
       </section>
 
       <section class="section section-tight" id="rna-llm" aria-labelledby="rna-llm-title">
@@ -87,8 +87,8 @@
         <div class="section">
           <div class="section-head"><h2 id="how-title">How we test our models</h2></div>
           <div class="cards">
-            <article class="card"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="7" width="11" height="18" rx="3"/><rect x="18" y="7" width="11" height="18" rx="3" stroke-dasharray="3 3"/></svg><h3>New people, new studies</h3><p>Models are scored on donors and studies they never saw in training.</p></article>
-            <article class="card"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 10v8M16 22.5v.5"/></svg><h3>Limits stated up front</h3><p>Each result says what it cannot show and when not to use it.</p></article>
+            <article class="card"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="7" width="11" height="18" rx="3"/><rect x="18" y="7" width="11" height="18" rx="3" stroke-dasharray="3 3"/></svg><h3>Strictly held-out test data</h3><p>Models are evaluated on donors and studies excluded from training.</p></article>
+            <article class="card"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 10v8M16 22.5v.5"/></svg><h3>Limits stated up front</h3><p>We strictly state each model's limitations.</p></article>
             <article class="card"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11l6 6v20H8z"/><path d="M19 3v6h6M12 16h9M12 21h9"/></svg><h3>Records and corrections</h3><p>Data sources, methods and dated corrections stay on record. <a class="link" href="/research-integrity/">Research practice</a></p></article>
           </div>
           <p class="small-note">None of this is a clinical tool. VHL does not predict individual treatment outcomes or give medical advice.</p>
@@ -98,7 +98,7 @@
 
     <footer class="site-footer">
       <div class="footer-grid">
-        <div class="footer-identity"><a class="brand" href="/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>Independent, non-commercial research toward computational models of individual biology.</p></div>
+        <div class="footer-identity"><a class="brand" href="/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>Independent research on computational models of human biology.</p></div>
         <div class="footer-column"><span>Research</span><a href="/research/#pbisc">PBISC</a><a href="/research/#rna-llm">RNA-LLM</a><a href="/research/case2rl/">case2RL</a><a href="/research/pbisc-diffusion/">PBISC-Diffusion</a><a href="/research/talk/">TALK</a></div>
         <div class="footer-column"><span>Lab</span><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/notes/">Notes</a><a href="/members/">Members</a></div>
         <div class="footer-column"><span>Records</span><a href="/governance/">Governance</a><a href="/bylaws/">Bylaws</a><a href="/research-integrity/">Research practice</a><a href="/disclosures/">Disclosures</a></div>

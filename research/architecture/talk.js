@@ -14,7 +14,7 @@ export function mountTalk(root, { ko = false } = {}) {
     rationale: '근거', answer: '최종 답변', schematic: '응답 구조 · 개념도',
     caption: 'Figure 1 · 논문: K개 RNA 토큰/프로파일. 아래 데모: 1개 RNA 토큰/세포.',
     details: '구조 상세',
-    detailText: 'BulkFormer와 TF-Sapiens는 고정됩니다. 각 경로의 독립적인 Q-Former와 Qwen3는 함께 학습됩니다. Q-Former는 contextual features와 유효 위치 마스크를 사용합니다. RNA prefix는 질문 앞에 놓입니다. 논문은 요청당 프로파일 하나를 사용하며, K는 세포 수가 아닙니다.',
+    detailText: 'BulkFormer와 TF-Sapiens는 고정됩니다. 각 경로의 독립적인 Q-Former와 Qwen3는 함께 학습됩니다. Q-Former는 contextual features에 cross-attention을 적용하고, mask로 유효한 위치를 구분합니다. RNA prefix는 질문 앞에 놓입니다. 논문은 요청당 프로파일 하나를 사용하며, K는 세포 수가 아닙니다.',
     stages: ['RNA profile', '고정 encoder', '독립 Q-Former', 'RNA prefix + 질문', '근거 → 답변'],
     steps: '단계',
   } : {
@@ -29,7 +29,7 @@ export function mountTalk(root, { ko = false } = {}) {
     rationale: 'Rationale', answer: 'Final answer', schematic: 'Response structure · schematic',
     caption: 'Figure 1 · Paper: K RNA tokens/profile. Demo below: 1 RNA token/cell.',
     details: 'Architecture details',
-    detailText: 'BulkFormer and TF-Sapiens stay frozen. Each route has an independent Q-Former, trained jointly with Qwen3. The adapters cross-attend to contextual features and valid-position masks. The RNA prefix precedes the question. The paper uses one profile per request; K is not the number of cells.',
+    detailText: 'BulkFormer and TF-Sapiens stay frozen. Each route has an independent Q-Former, trained jointly with Qwen3. The adapters use cross-attention over contextual features, with masks marking valid positions. The RNA prefix precedes the question. The paper uses one profile per request; K is not the number of cells.',
     stages: ['RNA profile', 'Frozen encoder', 'Independent Q-Former', 'RNA prefix + question', 'Rationale → answer'],
     steps: 'Stage',
   };

@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>One Cell, Step by Step | Virtual Human Lab</title>
-    <meta name="description" content="Step through one recorded PBISC-Diffusion cell: the noisy state, the model's prediction, a cell-type gauge, named marker genes and its path on the UMAP.">
+    <meta name="description" content="Step through one recorded PBISC-Diffusion cell: its noisy state, expression estimate, cell-type scores, marker genes and UMAP path.">
     <meta property="og:title" content="One Cell, Step by Step | Virtual Human Lab">
-    <meta property="og:description" content="Step through one recorded PBISC-Diffusion cell: the noisy state, the model's prediction, a cell-type gauge, named marker genes and its path on the UMAP.">
+    <meta property="og:description" content="Step through one recorded PBISC-Diffusion cell: its noisy state, expression estimate, cell-type scores, marker genes and UMAP path.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.virtualhumanlab.com/research/pbisc-diffusion/one-cell/">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ko_KR">
     <meta property="og:image" content="https://www.virtualhumanlab.com/research/pbisc-diffusion/assets/one-cell-v2/poster.png">
-    <meta property="og:image:alt" content="One generated cell: noisy state and predicted clean cell as gene tiles, with a cell-type gauge">
+    <meta property="og:image:alt" content="One generated cell: noisy state and expression estimate as gene tiles, with cell-type scores">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/one-cell/">
     <link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/one-cell/">
@@ -40,7 +40,7 @@
       </div>
     </header>
     <main id="main">
-      <section class="page-head" aria-labelledby="one-cell-title"><a class="back" href="/research/pbisc-diffusion/#single-cell">← PBISC-Diffusion</a><h1 id="one-cell-title">One cell, step by step.</h1><p>The model starts from pure noise and removes a little of it at each of 50 steps. At every step it also predicts the finished cell. The prediction picks a cell type within a few steps. The noisy state catches up much later.</p><p class="meta">ctx2048 · E12 · EMA · 50 steps · 2,980 genes · One cell per type · Recorded run · no new inference</p></section>
+      <section class="page-head" aria-labelledby="one-cell-title"><a class="back" href="/research/pbisc-diffusion/#single-cell">← PBISC-Diffusion</a><h1 id="one-cell-title">One cell, step by step.</h1><p>Follow one generated cell through 50 denoising steps. Compare its noisy state and expression estimate with the real-cell average for its type.</p><p class="meta">ctx2048 · E12 · EMA · 50 steps · 2,980 genes · One cell per type · Recorded run · no new inference</p></section>
 
       <div class="one-cell" data-one-cell data-assets="/research/pbisc-diffusion/assets/one-cell-v2/">
         <p class="one-cell-status" role="status">Loading the recorded run…</p>
@@ -61,7 +61,7 @@
               <div class="one-cell-panel-head">
                 <div><p class="one-cell-kicker">Genes</p><h3 id="maps-title">Noise in, cell out</h3><p class="one-cell-cell-title"></p></div>
                 <div class="one-cell-toggle" role="group" aria-label="Genes shown">
-                  <button type="button" data-genes="key" aria-pressed="true">Named blocks · <span data-stat="key-genes"></span></button>
+                  <button type="button" data-genes="key" aria-pressed="true">Gene groups · <span data-stat="key-genes"></span></button>
                   <button type="button" data-genes="all" aria-pressed="false">All <span data-stat="all-genes"></span></button>
                 </div>
               </div>
@@ -70,16 +70,16 @@
                 <canvas data-map="xt" aria-label="Noisy diffusion state of the selected cell at this step, one tile per gene"></canvas>
               </figure>
               <figure class="one-cell-map">
-                <figcaption><strong>What the model predicts</strong><span>Clean cell x̂<sub>0</sub></span></figcaption>
-                <canvas data-map="x0" aria-label="The model's prediction of the finished cell at this step, one tile per gene"></canvas>
+                <figcaption><strong>What the model predicts</strong><span>Expression estimate x̂<sub>0</sub></span></figcaption>
+                <canvas data-map="x0" aria-label="The model's expression estimate at this step, one tile per gene"></canvas>
               </figure>
               <figure class="one-cell-map is-reference">
-                <figcaption><strong>Reference</strong><span class="one-cell-ref-label"></span></figcaption>
+                <figcaption><strong>Real-cell average</strong><span class="one-cell-ref-label"></span></figcaption>
                 <canvas data-map="ref" aria-label="Average of real cells of the same type from the same donor, one tile per gene"></canvas>
               </figure>
               <div class="one-cell-colorbar"><span>0</span><i aria-hidden="true"></i><span><span data-stat="vmax"></span> · log1p(CP10k)</span></div>
               <p class="one-cell-note">One tile = one gene. Hover or tap a tile for its name. Blocks and gene order come from real cells of this donor, never from the generated cell.</p>
-              <p class="one-cell-note"><strong>Shared</strong> = genes almost every cell expresses (ribosome, mitochondria, early-response genes such as FOS and JUN), so they are on for every type. <strong>The prediction changes at every step</strong> because the model redoes it from a less noisy input: the cell type is fixed within a few steps, then the genes specific to this one cell are filled in.</p>
+              <p class="one-cell-note"><strong>Shared</strong> = genes detected in at least half of the real cells in each of the five broad cell types in this donor, including ribosomal, mitochondrial and early-response genes such as FOS and JUN. <strong>The prediction changes at every step</strong> because the model recomputes it from the updated noisy state. In these examples, the leading cell type stays the same after the early steps, while expression estimates keep changing.</p>
               <div class="one-cell-tip" hidden></div>
             </section>
 
@@ -104,14 +104,14 @@
                 <h3 id="similarity-title">How close to real cells?</h3>
                 <div class="one-cell-similarity-chart"></div>
                 <div class="one-cell-legend"><span><i></i>Prediction</span><span><i class="dash"></i>Noisy state</span><span><i class="band"></i><span class="one-cell-similarity-band"></span></span></div>
-                <p class="one-cell-note">Cosine to the real average of this type, over all 2,980 genes. For scale: a real cell against its nearest other real cell scores <span data-stat="nn-median"></span> (median) and never above <span data-stat="nn-max"></span>. Counting noise in single cells sets that ceiling, so a match near 1.0 is not expected.</p>
+                <p class="one-cell-note">Cosine to the real average of this type, over all 2,980 genes. For scale: a real cell against its nearest other real cell scores <span data-stat="nn-median"></span> (median), with an observed maximum of <span data-stat="nn-max"></span>. These observed values provide context; they are not a fixed upper bound for similarity to a cell-type average.</p>
               </section>
             </aside>
           </div>
 
           <section class="one-cell-section" aria-labelledby="markers-title">
             <div class="one-cell-section-head">
-              <h2 id="markers-title">Named genes</h2>
+              <h2 id="markers-title">Selected genes</h2>
               <p>Each bar is the selected cell at this step. The gray bar with a black edge is the real average for its type, from the same donor.</p>
             </div>
             <div class="one-cell-marker-key">
@@ -151,7 +151,7 @@
         <ul>
           <li>Recorded run: PBISC-Diffusion ctx2048 E12 (EMA weights), DDIM with 50 steps and no added noise, one pseudobulk condition from GSE135779, <span data-stat="cells"></span> generated cells. This page runs no new model inference.</li>
           <li>Shown cells: for each type, the first generated cell whose final scANVI label is that type. The rule was fixed before looking at any result. The Monocyte is the same cell as on the main page.</li>
-          <li>Gene blocks come from the <span data-stat="real-cells"></span> real cells of the same donor. A marker is at least 0.5 log1p(CP10k) above the next type and detected in at least 20% of its type. IFN-α = the measured genes of MSigDB HALLMARK_INTERFERON_ALPHA_RESPONSE. Shared = detected in at least half the cells of every type.</li>
+          <li>Gene blocks come from the <span data-stat="real-cells"></span> real cells of the same donor. A marker is at least 0.5 log1p(CP10k) above the next type and detected in at least 20% of its type. IFN-α = the measured genes of MSigDB HALLMARK_INTERFERON_ALPHA_RESPONSE. Shared = detected in at least half the real cells of each of the five broad cell types in this donor.</li>
           <li>Gauge: marker genes only. 0 = the average of the five type averages, 1 = a typical real cell of that type. It agrees with scANVI on <span data-stat="agree-real"></span> of real cells and <span data-stat="agree-endpoint"></span> of generated endpoints.</li>
           <li>The noisy state is the decoded diffusion state. Its early steps are not biological counts. All values are log1p(CP10k) on the 2,980-gene panel, stored to 1/255 of the colour range.</li>
           <li class="trajectory-links"><a href="/research/pbisc-diffusion/assets/one-cell-v2/meta.json">Page data (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/one-cell-v2/umap.json">UMAP points (JSON) ↗</a><a href="/research/pbisc-diffusion/#single-cell">Main recording ↗</a></li>
@@ -161,7 +161,7 @@
     </main>
     <footer class="site-footer">
       <div class="footer-grid">
-        <div class="footer-identity"><a class="brand" href="/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>Independent, non-commercial research toward computational models of individual biology.</p></div>
+        <div class="footer-identity"><a class="brand" href="/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>Independent research on computational models of human biology.</p></div>
         <div class="footer-column"><span>Research</span><a href="/research/#pbisc">PBISC</a><a href="/research/#rna-llm">RNA-LLM</a><a href="/research/case2rl/">case2RL</a><a href="/research/pbisc-diffusion/">PBISC-Diffusion</a><a href="/research/talk/">TALK</a></div>
         <div class="footer-column"><span>Lab</span><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/notes/">Notes</a><a href="/members/">Members</a></div>
         <div class="footer-column"><span>Records</span><a href="/governance/">Governance</a><a href="/bylaws/">Bylaws</a><a href="/research-integrity/">Research practice</a><a href="/disclosures/">Disclosures</a></div>

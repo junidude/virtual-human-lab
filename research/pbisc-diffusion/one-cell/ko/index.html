@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>한 세포, 단계별로 | Virtual Human Lab</title>
-    <meta name="description" content="기록된 PBISC-Diffusion 세포 하나를 단계별로 따라갑니다. 노이즈 상태, 모델의 예측, 세포 유형 게이지, 이름 붙은 마커 유전자, UMAP 위 경로를 함께 봅니다.">
+    <meta name="description" content="PBISC-Diffusion의 세포 생성 기록을 단계별로 살펴봅니다. 노이즈 상태, 발현 예측, cell type 점수, 마커 유전자와 UMAP 경로를 확인합니다.">
     <meta property="og:title" content="한 세포, 단계별로 | Virtual Human Lab">
-    <meta property="og:description" content="기록된 PBISC-Diffusion 세포 하나를 단계별로 따라갑니다. 노이즈 상태, 모델의 예측, 세포 유형 게이지, 이름 붙은 마커 유전자, UMAP 위 경로를 함께 봅니다.">
+    <meta property="og:description" content="PBISC-Diffusion의 세포 생성 기록을 단계별로 살펴봅니다. 노이즈 상태, 발현 예측, cell type 점수, 마커 유전자와 UMAP 경로를 확인합니다.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.virtualhumanlab.com/research/pbisc-diffusion/one-cell/ko/">
     <meta property="og:locale" content="ko_KR">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:image" content="https://www.virtualhumanlab.com/research/pbisc-diffusion/assets/one-cell-v2/poster.png">
-    <meta property="og:image:alt" content="생성 세포 하나의 노이즈 상태와 예측된 깨끗한 세포를 유전자 타일로 보여 주는 화면과 세포 유형 게이지">
+    <meta property="og:image:alt" content="생성 세포 하나의 노이즈 상태와 발현 예측을 유전자 타일로 보여 주는 화면과 cell type 점수">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/one-cell/ko/">
     <link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/one-cell/">
@@ -40,7 +40,7 @@
       </div>
     </header>
     <main id="main">
-      <section class="page-head" aria-labelledby="one-cell-title"><a class="back" href="/research/pbisc-diffusion/ko/#single-cell">← PBISC-Diffusion</a><h1 id="one-cell-title">한 세포, 단계별로.</h1><p>모델은 순수한 노이즈에서 출발해 50단계에 걸쳐 노이즈를 조금씩 걷어냅니다. 각 단계마다 완성될 세포도 함께 예측합니다. 예측은 몇 단계 만에 세포 유형을 정하고, 노이즈 상태는 한참 뒤에야 따라옵니다.</p><p class="meta">ctx2048 · E12 · EMA · 50단계 · 유전자 2,980개 · 유형별 세포 하나 · 기록된 실행 · 새 추론 없음</p></section>
+      <section class="page-head" aria-labelledby="one-cell-title"><a class="back" href="/research/pbisc-diffusion/ko/#single-cell">← PBISC-Diffusion</a><h1 id="one-cell-title">한 세포, 단계별로.</h1><p>세포 하나가 생성되는 50단계를 따라갑니다. 노이즈 상태와 발현 예측을 같은 cell type의 실제 세포 평균과 비교합니다.</p><p class="meta">ctx2048 · E12 · EMA · 50단계 · 유전자 2,980개 · 유형별 세포 하나 · 기록된 실행 · 새 추론 없음</p></section>
 
       <div class="one-cell" data-one-cell data-assets="/research/pbisc-diffusion/assets/one-cell-v2/">
         <p class="one-cell-status" role="status">기록된 데이터를 불러오는 중…</p>
@@ -61,7 +61,7 @@
               <div class="one-cell-panel-head">
                 <div><p class="one-cell-kicker">유전자</p><h3 id="maps-title">노이즈에서 세포로</h3><p class="one-cell-cell-title"></p></div>
                 <div class="one-cell-toggle" role="group" aria-label="표시할 유전자">
-                  <button type="button" data-genes="key" aria-pressed="true">이름 붙은 블록 · <span data-stat="key-genes"></span></button>
+                  <button type="button" data-genes="key" aria-pressed="true">유전자 그룹 · <span data-stat="key-genes"></span></button>
                   <button type="button" data-genes="all" aria-pressed="false">전체 <span data-stat="all-genes"></span></button>
                 </div>
               </div>
@@ -70,16 +70,16 @@
                 <canvas data-map="xt" aria-label="이 단계에서 선택한 세포의 노이즈 확산 상태. 타일 하나가 유전자 하나"></canvas>
               </figure>
               <figure class="one-cell-map">
-                <figcaption><strong>모델이 예측하는 것</strong><span>깨끗한 세포 x̂<sub>0</sub></span></figcaption>
-                <canvas data-map="x0" aria-label="이 단계에서 모델이 예측한 완성 세포. 타일 하나가 유전자 하나"></canvas>
+                <figcaption><strong>모델이 예측하는 것</strong><span>발현 예측 x̂<sub>0</sub></span></figcaption>
+                <canvas data-map="x0" aria-label="이 단계에서 모델이 예측한 발현값. 타일 하나가 유전자 하나"></canvas>
               </figure>
               <figure class="one-cell-map is-reference">
-                <figcaption><strong>기준</strong><span class="one-cell-ref-label"></span></figcaption>
+                <figcaption><strong>실제 세포 평균</strong><span class="one-cell-ref-label"></span></figcaption>
                 <canvas data-map="ref" aria-label="같은 donor에서 같은 유형 실제 세포들의 평균. 타일 하나가 유전자 하나"></canvas>
               </figure>
               <div class="one-cell-colorbar"><span>0</span><i aria-hidden="true"></i><span><span data-stat="vmax"></span> · log1p(CP10k)</span></div>
               <p class="one-cell-note">타일 하나 = 유전자 하나. 타일에 마우스를 올리거나 탭하면 유전자 이름이 보입니다. 블록과 유전자 순서는 생성 세포가 아니라 이 donor의 실제 세포로 정했습니다.</p>
-              <p class="one-cell-note"><strong>Shared</strong> = 거의 모든 세포가 발현하는 유전자(리보솜, 미토콘드리아, FOS·JUN 같은 초기 반응 유전자)라서 어떤 유형이든 켜져 있습니다. <strong>예측이 매 단계 바뀌는 이유</strong>는 모델이 노이즈가 조금 더 걷힌 입력으로 예측을 다시 하기 때문입니다. 세포 유형은 몇 단계 만에 정해지고, 그 뒤로는 이 세포에만 있는 유전자들이 채워집니다.</p>
+              <p class="one-cell-note"><strong>Shared</strong> = 이 donor의 5개 broad cell type 각각에서 실제 세포의 절반 이상에서 검출된 유전자입니다. 리보솜·미토콘드리아 관련 유전자와 FOS·JUN 같은 초기 반응 유전자가 포함됩니다. <strong>예측이 매 단계 바뀌는 이유</strong>는 갱신된 노이즈 상태에서 발현을 다시 예측하기 때문입니다. 이 예시에서는 초기 단계 이후 가장 높은 점수를 받는 cell type은 유지되고, 발현 예측값은 계속 바뀝니다.</p>
               <div class="one-cell-tip" hidden></div>
             </section>
 
@@ -104,14 +104,14 @@
                 <h3 id="similarity-title">실제 세포와 얼마나 가까운가?</h3>
                 <div class="one-cell-similarity-chart"></div>
                 <div class="one-cell-legend"><span><i></i>예측</span><span><i class="dash"></i>노이즈 상태</span><span><i class="band"></i><span class="one-cell-similarity-band"></span></span></div>
-                <p class="one-cell-note">이 유형 실제 세포 평균과의 코사인 유사도입니다(유전자 2,980개). 비교하자면, 실제 세포를 가장 가까운 다른 실제 세포와 비교해도 중앙값 <span data-stat="nn-median"></span>, 최대 <span data-stat="nn-max"></span>입니다. 단일 세포의 계수 잡음이 이 상한을 정하므로 1.0에 가까운 값은 나올 수 없습니다.</p>
+                <p class="one-cell-note">이 유형 실제 세포 평균과의 코사인 유사도입니다(유전자 2,980개). 비교하자면, 실제 세포를 가장 가까운 다른 실제 세포와 비교해도 중앙값 <span data-stat="nn-median"></span>, 최대 <span data-stat="nn-max"></span>입니다. 이 관측값은 비교를 위한 참고치이며, cell type 평균과의 유사도 상한을 뜻하지 않습니다.</p>
               </section>
             </aside>
           </div>
 
           <section class="one-cell-section" aria-labelledby="markers-title">
             <div class="one-cell-section-head">
-              <h2 id="markers-title">이름 붙은 유전자</h2>
+              <h2 id="markers-title">주요 유전자</h2>
               <p>막대는 이 단계에서 선택한 세포의 값입니다. 검은 테두리의 회색 막대는 같은 donor에서 같은 유형 실제 세포들의 평균입니다.</p>
             </div>
             <div class="one-cell-marker-key">
@@ -151,9 +151,9 @@
         <ul>
           <li>기록된 실행: PBISC-Diffusion ctx2048 E12(EMA 가중치), 노이즈를 더하지 않는 50단계 DDIM, GSE135779의 pseudobulk 조건 하나, 생성 세포 <span data-stat="cells"></span>개. 이 페이지는 모델을 새로 실행하지 않습니다.</li>
           <li>보여 주는 세포: 유형마다, 최종 scANVI 라벨이 그 유형인 첫 번째 생성 세포. 결과를 보기 전에 정한 규칙입니다. Monocyte는 메인 페이지의 세포와 같습니다.</li>
-          <li>유전자 블록은 같은 donor의 실제 세포 <span data-stat="real-cells"></span>개로 정했습니다. 마커는 다음 유형보다 0.5 log1p(CP10k) 이상 높고 그 유형 세포의 20% 이상에서 검출된 유전자입니다. IFN-α는 MSigDB HALLMARK_INTERFERON_ALPHA_RESPONSE 중 측정된 유전자, Shared는 모든 유형에서 절반 이상의 세포에서 검출된 유전자입니다.</li>
+          <li>유전자 블록은 같은 donor의 실제 세포 <span data-stat="real-cells"></span>개로 정했습니다. 마커는 다음 유형보다 0.5 log1p(CP10k) 이상 높고 그 유형 세포의 20% 이상에서 검출된 유전자입니다. IFN-α는 MSigDB HALLMARK_INTERFERON_ALPHA_RESPONSE 중 측정된 유전자, Shared는 이 donor의 5개 broad cell type 각각에서 실제 세포의 절반 이상에서 검출된 유전자입니다.</li>
           <li>게이지: 마커 유전자만 씁니다. 0 = 다섯 유형 평균의 평균, 1 = 그 유형의 전형적인 실제 세포. 실제 세포의 <span data-stat="agree-real"></span>, 생성 종점의 <span data-stat="agree-endpoint"></span>에서 scANVI와 일치합니다.</li>
-          <li>노이즈 상태는 확산 상태를 해독한 값이며, 초반 단계는 생물학적 카운트가 아닙니다. 모든 값은 유전자 2,980개 패널의 log1p(CP10k)이고, 색 범위의 1/255 단위로 저장했습니다.</li>
+          <li>노이즈 상태는 diffusion 상태를 발현값으로 디코딩한 결과입니다. 초반 값은 생물학적 count가 아닙니다. 모든 값은 유전자 2,980개 패널의 log1p(CP10k)이고, 색 범위의 1/255 단위로 저장했습니다.</li>
           <li class="trajectory-links"><a href="/research/pbisc-diffusion/assets/one-cell-v2/meta.json">페이지 데이터 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/one-cell-v2/umap.json">UMAP 점 (JSON) ↗</a><a href="/research/pbisc-diffusion/ko/#single-cell">메인 녹화 ↗</a></li>
         </ul>
         <noscript><p class="one-cell-note">이 페이지는 JavaScript가 필요합니다. <a href="/research/pbisc-diffusion/ko/#single-cell">메인 페이지</a>에 영상 버전이 있습니다.</p></noscript>
@@ -161,10 +161,10 @@
     </main>
     <footer class="site-footer">
       <div class="footer-grid">
-        <div class="footer-identity"><a class="brand" href="/ko/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>개인의 생물학을 계산 모델로 옮기기 위한 독립적이고 비상업적인 연구.</p></div>
+        <div class="footer-identity"><a class="brand" href="/ko/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>Digital Biology/Virtual Biology를 연구하는 독립적인 비영리 연구 단체입니다.</p></div>
         <div class="footer-column"><span>연구</span><a href="/research/ko/#pbisc">PBISC</a><a href="/research/ko/#rna-llm">RNA-LLM</a><a href="/research/case2rl/ko/">case2RL</a><a href="/research/pbisc-diffusion/ko/">PBISC-Diffusion</a><a href="/research/talk/ko/">TALK</a></div>
         <div class="footer-column"><span>랩</span><a href="/papers/ko/">논문</a><a href="/blog/ko/">블로그</a><a href="/notes/ko/">노트</a><a href="/members/ko/">구성원</a></div>
-        <div class="footer-column"><span>기록</span><a href="/governance/ko/">운영 체계</a><a href="/bylaws/ko/">회칙</a><a href="/research-integrity/ko/">연구 윤리와 실무</a><a href="/disclosures/ko/">공개 사항</a></div>
+        <div class="footer-column"><span>기록</span><a href="/governance/ko/">운영 체계</a><a href="/bylaws/ko/">회칙</a><a href="/research-integrity/ko/">연구 원칙</a><a href="/disclosures/ko/">공개 사항</a></div>
       </div>
       <div class="footer-bottom"><span>© 2026 Virtual Human Lab · <a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a> · 대한민국</span><span>VHL은 연구 그룹이며 의료 기관이 아닙니다. 소속 표시는 기관의 후원을 의미하지 않습니다.</span></div>
     </footer>
