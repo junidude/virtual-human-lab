@@ -11,7 +11,7 @@
     <meta property="og:url" content="https://www.virtualhumanlab.com/research/pbisc-diffusion/ko/">
     <meta property="og:locale" content="ko_KR">
     <meta property="og:locale:alternate" content="en_US">
-    <meta property="og:image" content="https://www.virtualhumanlab.com/research/pbisc-diffusion/assets/v3/poster.png">
+    <meta property="og:image" content="https://www.virtualhumanlab.com/research/pbisc-diffusion/assets/recordings-white-4k-20260922/cells-poster.png">
     <meta property="og:image:alt" content="PCA와 UMAP으로 보는 PBISC-Diffusion의 샘플링 과정">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://www.virtualhumanlab.com/research/pbisc-diffusion/ko/">
@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=20260920-1">
-    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260920-gutters-40ecf69fb1">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260922-recordings-7e8d80b6a2">
     <link rel="stylesheet" href="/research/pbisc-diffusion/interactive-figures.css?v=20260920-1">
     <link rel="stylesheet" href="/research/architecture/architecture.css?v=20260921-1">
   </head>
@@ -60,14 +60,14 @@
         <noscript><p class="trajectory-short-note">단계별 탐색에는 JavaScript가 필요합니다. 아래에서 영상을 열 수 있습니다.</p></noscript>
         <details class="trajectory-archive" id="sampling-recording"><summary>영상 및 다운로드</summary>
           <figure class="trajectory-player">
-            <video controls playsinline preload="none" poster="/research/pbisc-diffusion/assets/v3/poster.png" aria-label="PCA의 노이즈 상태와 UMAP의 최종 발현 예측, 생성 세포 4,096개와 실제 세포 4,362개" aria-describedby="video-caption">
-              <source src="/research/pbisc-diffusion/assets/v3/diffusion-trajectory.mp4" type="video/mp4">
-              <p><a href="/research/pbisc-diffusion/assets/v3/diffusion-trajectory.mp4">MP4 다운로드</a></p>
+            <video controls playsinline preload="none" poster="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/cells-poster.png" aria-label="PCA의 노이즈 상태와 UMAP의 최종 발현 예측, 생성 세포 4,096개와 실제 세포 4,362개" aria-describedby="video-caption">
+              <source src="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/cells-4k.mp4" type="video/mp4">
+              <p><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/cells-4k.mp4">MP4 다운로드</a></p>
             </video>
-            <figcaption id="video-caption"><p>PCA · xₜ / UMAP · x̂₀ · 고정 좌표</p><div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/v3/diffusion-trajectory.mp4" download>MP4 ↗</a></div></figcaption>
+            <figcaption id="video-caption"><p>PCA · xₜ / UMAP · x̂₀ · 고정 좌표</p><div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/cells-4k.mp4" download>4K MP4 ↗</a></div></figcaption>
           </figure>
-          <figure class="trajectory-comparison"><a href="/research/pbisc-diffusion/assets/v3/keyframes.png"><img src="/research/pbisc-diffusion/assets/v3/keyframes.png" alt="PCA의 노이즈 상태와 UMAP의 최종 발현 예측, 생성 세포 4,096개와 실제 세포 4,362개" loading="lazy" decoding="async"></a><figcaption>주요 단계</figcaption></figure>
-          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/v3/keyframes.png">PNG ↗</a><a href="/research/pbisc-diffusion/assets/v3/methods.json">메타데이터 · JSON ↗</a></div>
+          <figure class="trajectory-comparison"><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/cells-keyframes.png"><img src="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/cells-keyframes.png" alt="PCA의 노이즈 상태와 UMAP의 최종 발현 예측, 생성 세포 4,096개와 실제 세포 4,362개" loading="lazy" decoding="async"></a><figcaption>주요 단계</figcaption></figure>
+          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/cells-keyframes.png">PNG ↗</a><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/cells-keyframes.pdf" download>PDF ↗</a><a href="/research/pbisc-diffusion/assets/v3/methods.json">메타데이터 · JSON ↗</a></div>
         </details>
       </section>
 
@@ -78,14 +78,14 @@
         <div class="trajectory-study-link trajectory-links"><a href="/research/pbisc-diffusion/one-cell/ko/#monocyte">세포형별 탐색 →</a></div>
         <details class="trajectory-archive" id="single-cell-recording"><summary>영상 및 다운로드</summary>
           <figure class="trajectory-player trajectory-single-cell-player">
-            <video controls playsinline preload="none" poster="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-poster.png" aria-label="생성 Monocyte 한 개의 노이즈 상태와 최종 발현 기준 최근접 실제 세포 한 개" aria-describedby="single-cell-caption">
-              <source src="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-trajectory.mp4" type="video/mp4">
-              <p><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-trajectory.mp4">MP4 다운로드</a></p>
+            <video controls playsinline preload="none" poster="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/single-cell-poster.png" aria-label="생성 Monocyte 한 개의 노이즈 상태와 최종 발현 기준 최근접 실제 세포 한 개" aria-describedby="single-cell-caption">
+              <source src="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/single-cell-4k.mp4" type="video/mp4">
+              <p><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/single-cell-4k.mp4">MP4 다운로드</a></p>
             </video>
-            <figcaption id="single-cell-caption"><p>한 칸 = 유전자 하나 · 최종 발현 기준 매칭</p><div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-trajectory.mp4" download>MP4 ↗</a></div></figcaption>
+            <figcaption id="single-cell-caption"><p>한 칸 = 유전자 하나 · 최종 발현 기준 매칭</p><div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/single-cell-4k.mp4" download>4K MP4 ↗</a></div></figcaption>
           </figure>
-          <figure class="trajectory-comparison"><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-keyframes.png"><img src="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-keyframes.png" alt="생성 Monocyte 한 개의 노이즈 상태와 최종 발현 기준 최근접 실제 세포 한 개" loading="lazy" decoding="async"></a><figcaption>주요 단계</figcaption></figure>
-          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-keyframes.png">PNG ↗</a><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-keyframes.pdf" download>PDF ↗</a><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-methods.json">방법 · JSON ↗</a></div>
+          <figure class="trajectory-comparison"><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/single-cell-keyframes.png"><img src="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/single-cell-keyframes.png" alt="생성 Monocyte 한 개의 노이즈 상태와 최종 발현 기준 최근접 실제 세포 한 개" loading="lazy" decoding="async"></a><figcaption>주요 단계</figcaption></figure>
+          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/single-cell-keyframes.png">PNG ↗</a><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/single-cell-keyframes.pdf" download>PDF ↗</a><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-methods.json">방법 · JSON ↗</a></div>
         </details>
       </section>
 
@@ -95,14 +95,14 @@
         <noscript><p class="trajectory-short-note">단계별 탐색에는 JavaScript가 필요합니다. 아래에서 영상을 열 수 있습니다.</p></noscript>
         <details class="trajectory-archive" id="volcano-recording"><summary>영상 및 다운로드</summary>
           <figure class="trajectory-player">
-            <video controls playsinline preload="none" poster="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-poster.png" aria-label="단계별 SLE–HC 유전자 DEG와 실제 샘플 DEG. HC에서 높음은 파랑, SLE에서 높음은 빨강" aria-describedby="volcano-caption">
-              <source src="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-trajectory.mp4" type="video/mp4">
-              <p><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-trajectory.mp4">MP4 다운로드</a></p>
+            <video controls playsinline preload="none" poster="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/volcano-poster.png" aria-label="단계별 SLE–HC 유전자 DEG와 실제 샘플 DEG. HC에서 높음은 파랑, SLE에서 높음은 빨강" aria-describedby="volcano-caption">
+              <source src="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/volcano-4k.mp4" type="video/mp4">
+              <p><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/volcano-4k.mp4">MP4 다운로드</a></p>
             </video>
-            <figcaption id="volcano-caption"><p>생성 세포 · 63,000개 · 점 하나 = 유전자 하나</p><div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-trajectory.mp4" download>MP4 ↗</a></div></figcaption>
+            <figcaption id="volcano-caption"><p>생성 세포 · 63,000개 · 점 하나 = 유전자 하나</p><div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/volcano-4k.mp4" download>4K MP4 ↗</a></div></figcaption>
           </figure>
-          <figure class="trajectory-comparison"><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-endpoint-comparison.png"><img src="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-endpoint-comparison.png" alt="단계별 SLE–HC 유전자 DEG와 실제 샘플 DEG. HC에서 높음은 파랑, SLE에서 높음은 빨강" loading="lazy" decoding="async"></a><figcaption>최종 생성 발현 vs Ground truth</figcaption></figure>
-          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-endpoint-comparison.png">PNG ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-stats.csv.gz">유전자 통계 · CSV.gz ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-methods.json">방법 · JSON ↗</a></div>
+          <figure class="trajectory-comparison"><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/volcano-keyframes.png"><img src="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/volcano-keyframes.png" alt="단계별 SLE–HC 유전자 DEG와 실제 샘플 DEG. HC에서 높음은 파랑, SLE에서 높음은 빨강" loading="lazy" decoding="async"></a><figcaption>주요 단계 · Ground truth inset</figcaption></figure>
+          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/volcano-keyframes.png">PNG ↗</a><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/volcano-keyframes.pdf" download>PDF ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-stats.csv.gz">유전자 통계 · CSV.gz ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-methods.json">방법 · JSON ↗</a></div>
         </details>
       </section>
 
@@ -110,7 +110,7 @@
         <h2 id="methods-title">방법 및 데이터</h2>
         <details class="trajectory-method-downloads"><summary>기록 메타데이터 · 통계 · 다운로드</summary>
           <div class="trajectory-badges"><span>질환 그룹 비교 · SLE vs HC</span><span>IFNα 집합 · 97개 중 61개 측정</span><span>기증자·유형당 세포 ≥20개 · 그룹당 기증자 ≥5명</span><span>Other · 기증자 수 부족</span></div>
-          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/interactive-v1/manifest.json">인터랙티브 데이터 · JSON ↗</a><a href="/research/pbisc-diffusion/assets/v3/methods.json">샘플링 메타데이터 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-methods.json">단일 세포 방법 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-methods.json">Volcano 방법 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-stats.csv.gz">유전자별 통계 (CSV.gz) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-endpoint-diagnostics.csv">최종 결과 진단 (CSV) ↗</a><a href="/research/pbisc-diffusion/assets/v2/diffusion-trajectory.mp4">이전 영상 (v2) ↗</a></div>
+          <div class="trajectory-links"><a href="/research/pbisc-diffusion/assets/recordings-white-4k-20260922/render-manifest.json">4K 영상 · JSON ↗</a><a href="/research/pbisc-diffusion/assets/interactive-v1/manifest.json">인터랙티브 데이터 · JSON ↗</a><a href="/research/pbisc-diffusion/assets/v3/methods.json">샘플링 메타데이터 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/single-cell-v1/single-cell-methods.json">단일 세포 방법 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-methods.json">Volcano 방법 (JSON) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-stats.csv.gz">유전자별 통계 (CSV.gz) ↗</a><a href="/research/pbisc-diffusion/assets/volcano-groundtruth/volcano-endpoint-diagnostics.csv">최종 결과 진단 (CSV) ↗</a><a href="/research/pbisc-diffusion/assets/v2/diffusion-trajectory.mp4">이전 영상 (v2) ↗</a></div>
         </details>
         <p class="trajectory-gene-source"><a href="https://www.gsea-msigdb.org/gsea/msigdb/human/geneset/HALLMARK_INTERFERON_ALPHA_RESPONSE.html">MSigDB · HALLMARK_INTERFERON_ALPHA_RESPONSE</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
       </section>

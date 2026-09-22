@@ -55,6 +55,22 @@ distinguishes this architecture from the one-token-per-cell playground below it.
 support pause, restart and keyboard scrubbing; autoplay stops offscreen and starts paused with
 reduced-motion preferences. No model runs in the browser.
 
+The three Diffusion recordings use the same white background, dark controls and Figtree font.
+They render the published `interactive-v1` data at native 3840×2160, 30 fps, with fixed axes and
+scientific colors. All 51 recorded states are shown without interpolation or new inference.
+`tools/recording-scene.js` and `.css` define the capture layout. To create a new version:
+
+```bash
+uv run --with playwright --with av --with pillow python tools/render_recordings.py \
+  --work-dir /path/outside/site/frames \
+  --output-dir research/pbisc-diffusion/assets/recordings-NEW-VERSION
+```
+
+This uses software Chromium (`/snap/bin/chromium`) and CPU libx264, four encoder threads.
+The output contains MP4s, posters, PNG/PDF keyframes and a manifest with source/code hashes.
+Use a new output directory; existing videos are never overwritten. Update both language pages
+after checking decoded playback and data parity. Original recordings and methods stay archived.
+
 The case2RL explorer exports only the project's explicitly publishable synthetic fixture and
 saved synthetic audit samples. Refresh it with
 `uv run --with pyyaml python tools/make_case2rl_demo.py --source /path/to/case2RL`

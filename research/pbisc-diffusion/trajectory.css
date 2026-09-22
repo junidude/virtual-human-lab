@@ -56,12 +56,9 @@
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #f5f3ed;
+  background: #fff;
 }
 
-.trajectory-single-cell-player video {
-  aspect-ratio: 8 / 5;
-}
 
 .trajectory-player figcaption {
   display: flex;
