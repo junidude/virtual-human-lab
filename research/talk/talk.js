@@ -28,8 +28,7 @@
         state: "조건",
         none: "최종 답 없음 (추론이 끝나지 않음)",
         truth: (t, s) => `정답: ${t} · ${s}`,
-        genes: (y, n) => `추론에 나온 유전자 ${y + n}개 중 ${y}개가 이 세포들에서 실제로 검출됨.`,
-        detected: (k, n) => `이 세포 ${n}개 중 ${k}개에서 검출`,
+
         run: "기록된 실행 · 온도 0.6 · 그룹마다 고정된 시드 하나",
       }
     : {
@@ -44,12 +43,63 @@
         state: "Condition",
         none: "No final answer (the reasoning did not finish)",
         truth: (t, s) => `Truth: ${t} · ${s}`,
-        genes: (y, n) => `${y} of the ${y + n} genes named in the reasoning were actually detected in these cells.`,
-        detected: (k, n) => `detected in ${k} of these ${n} cells`,
+
         run: "Recorded run · temperature 0.6 · one fixed seed per group",
       };
 
+  const G = ko ? {
+    verdict: { correct: "맞음", incorrect: "틀림", rank_mismatch: "순위 틀림", unscored: "미채점" },
+    kind: { rank: "발현 순위", absent: "발현 없음", present: "발현 있음", majority: "과반수에서 검출", minority: "절반 이하에서 검출", log2cpm: "log2(CPM)", low_support: "낮은 raw count", corpus: "Corpus 대비 발현", context: "문맥상 언급" },
+    reason: {
+      match: "언급한 내용과 측정값이 일치합니다.",
+      detection_mismatch: "발현 여부가 언급한 내용과 다릅니다.",
+      rank_mismatch: "발현은 있지만 언급한 순위 범위 밖입니다.",
+      tie_boundary: "동률이 순위 경계에 걸쳐 있어 판정을 보류합니다.",
+      missing_gene: "유전자 매핑 또는 측정값을 확인할 수 없습니다.",
+      context_only: "유전자 언급만으로 검증할 주장이 정해지지 않습니다.",
+      corpus_unavailable: "Corpus 비교는 이번 채점에 포함하지 않습니다.",
+      low_support_unavailable: "낮은 발현에 대한 주장을 확인할 근거가 부족합니다.",
+      low_support_mismatch: "Raw count가 언급한 낮은 발현 범위와 다릅니다.",
+      unsupported_claim: "이 주장은 현재 데이터로 채점할 수 없습니다.",
+      numeric_mismatch: "언급한 수치와 측정값이 다릅니다.",
+      cell_count_mismatch: "언급한 세포 범위를 특정할 수 없어 판정을 보류합니다.",
+    },
+    unavailable: "Gene 채점 불가 · 기록과 채점 데이터를 확인할 수 없습니다.",
+    noMentions: "채점할 gene 언급 없음",
+    summary: (n) => `Gene 언급 ${n}회`,
+    inspect: "근거 보기", close: "닫기", evidence: "Gene 채점 근거", claim: "LLM 주장", observed: "측정값",
+    presence: "검출", raw: "Raw UMI · 합계", rank: "실제 순위", tier: "구간", missing: "데이터 없음", notDetected: "미검출", noRank: "—",
+    counts: (k, n) => `${k} / ${n} cells`, top: (n) => `상위 ${n}%`, range: (a, b) => `상위 ${a}–${b}%`,
+    rankNote: "선택한 세포의 raw count 합계로, 검출된 유전자 안에서 계산합니다. 범위는 동률입니다.",
+  } : {
+    verdict: { correct: "Correct", incorrect: "Wrong", rank_mismatch: "Rank wrong", unscored: "Not graded" },
+    kind: { rank: "Expression rank", absent: "Not expressed", present: "Expressed", majority: "Detected in most cells", minority: "Detected in half or fewer", log2cpm: "log2(CPM)", low_support: "Low raw count", corpus: "Corpus comparison", context: "Context only" },
+    reason: {
+      match: "The claim matches the measured expression.",
+      detection_mismatch: "The claim disagrees with whether the gene was detected.",
+      rank_mismatch: "The gene is expressed, but outside the claimed rank range.",
+      tie_boundary: "Tied genes cross the rank boundary; no verdict.",
+      missing_gene: "The gene mapping or measurement is unavailable.",
+      context_only: "This mention does not make a testable expression claim.",
+      corpus_unavailable: "Corpus comparisons are not included in this grading.",
+      low_support_unavailable: "There is not enough evidence to check this low-expression claim.",
+      low_support_mismatch: "The raw count falls outside the claimed low-expression range.",
+      unsupported_claim: "This claim cannot be graded from these measurements.",
+      numeric_mismatch: "The claimed number does not match the measurement.",
+      cell_count_mismatch: "The claimed cell subset cannot be identified; no verdict.",
+    },
+    unavailable: "Gene grading unavailable · the recorded answer and grading data could not be verified.",
+    noMentions: "No gene mentions to grade",
+    summary: (n) => `${n} gene mentions`,
+    inspect: "Inspect evidence", close: "Close", evidence: "Gene claim evidence", claim: "LLM claim", observed: "Measured",
+    presence: "Detected", raw: "Raw UMI · total", rank: "Actual rank", tier: "Tier", missing: "No data", notDetected: "Not detected", noRank: "—",
+    counts: (k, n) => `${k} / ${n} cells`, top: (n) => `Top ${n}%`, range: (a, b) => `Top ${a}–${b}%`,
+    rankNote: "Ranked by summed raw counts across the selected cells, among detected genes. Ranges indicate ties.",
+  };
+  const VERDICTS = ["correct", "incorrect", "rank_mismatch", "unscored"];
   let D = null;
+  let claims = null;
+  let selectedMention = null;
   const S = { type: "B", state: "CTRL", n: 8, model: "SFT" };
   let typing = 0;
 
@@ -157,27 +207,171 @@
       .join("");
   }
 
-  function reasoningNodes(text, genes, n) {
-    const parts = text.split(/((?<![A-Za-z0-9_-])[A-Z][A-Z0-9-]{2,}(?:\.[0-9]+)?(?![A-Za-z0-9_-]))/);
-    return parts.map((part, i) => {
-      if (i % 2 === 1 && part in genes) {
-        const m = document.createElement("mark");
-        m.className = genes[part] > 0 ? "yes" : "no";
-        m.textContent = part;
-        m.title = T.detected(genes[part], n);
-        return m;
-      }
-      return document.createTextNode(part);
+  function textElement(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    node.textContent = text;
+    return node;
+  }
+
+  function percent(value) {
+    return Number.isFinite(value) ? Number(value.toFixed(2)).toLocaleString(ko ? "ko-KR" : "en-US") : "—";
+  }
+
+  function rankText(evidence) {
+    if (evidence.detected_cells === 0) return G.notDetected;
+    const interval = evidence.rank_interval;
+    if (Array.isArray(interval) && interval.length === 2 && interval.every(Number.isFinite)) {
+      return interval[0] === interval[1] ? G.top(percent(interval[0])) : G.range(percent(interval[0]), percent(interval[1]));
+    }
+    return Number.isFinite(evidence.rank_pct) ? G.top(percent(evidence.rank_pct)) : G.noRank;
+  }
+
+  function rankTier(evidence) {
+    const tier = (p) => p <= 3 + 1e-5 ? G.top("3") : p <= 10 + 1e-5 ? G.range("3", "10") : p <= 25 + 1e-5 ? G.range("10", "25") : G.range("25", "100");
+    const interval = evidence.rank_interval;
+    if (evidence.detected_cells === 0) return G.noRank;
+    if (Array.isArray(interval) && interval.every(Number.isFinite)) {
+      const first = tier(interval[0]);
+      const last = tier(interval[1]);
+      return first === last ? first : `${first} / ${last}`;
+    }
+    return Number.isFinite(evidence.rank_pct) ? tier(evidence.rank_pct) : G.noRank;
+  }
+
+  function claimText(mention) {
+    const parts = [G.kind[mention.kind] || G.kind.context];
+    if (Array.isArray(mention.range)) parts.push(mention.kind === "rank" ? (mention.range[0] === 0 ? G.top(percent(mention.range[1])) : G.range(percent(mention.range[0]), percent(mention.range[1]))) : `${percent(mention.range[0])}–${percent(mention.range[1])}`);
+    else if (mention.expected) parts.push(mention.expected);
+    else if (Number.isFinite(mention.value)) parts.push(String(mention.value));
+    else if (mention.kind === "low_support") parts.push("1–3 UMI");
+    return parts.join(" · ");
+  }
+
+  function closeEvidence(restoreFocus = false) {
+    const card = $(".talk-gene-evidence");
+    card.hidden = true;
+    if (selectedMention) {
+      selectedMention.setAttribute("aria-expanded", "false");
+      if (restoreFocus) selectedMention.focus();
+    }
+    selectedMention = null;
+  }
+
+  function showEvidence(mention, button) {
+    if (selectedMention === button) return closeEvidence();
+    closeEvidence();
+    selectedMention = button;
+    button.setAttribute("aria-expanded", "true");
+    const card = $(".talk-gene-evidence");
+    card.replaceChildren();
+    card.dataset.verdict = mention.status;
+    const heading = textElement("div", "talk-evidence-heading", "");
+    heading.append(textElement("strong", "", mention.gene), textElement("span", `talk-verdict ${mention.status}`, G.verdict[mention.status]));
+    const close = textElement("button", "talk-evidence-close", "×");
+    close.type = "button";
+    close.setAttribute("aria-label", G.close);
+    close.addEventListener("click", () => closeEvidence(true));
+    heading.append(close);
+    card.append(heading, textElement("p", "talk-evidence-claim", `${G.claim} · ${claimText(mention)}`));
+    card.append(textElement("blockquote", "talk-evidence-context", mention.context));
+    const evidence = mention.evidence || {};
+    const list = textElement("dl", "talk-evidence-values", "");
+    const values = [
+      [G.presence, Number.isFinite(evidence.detected_cells) && Number.isFinite(evidence.total_cells) ? G.counts(evidence.detected_cells, evidence.total_cells) : G.missing],
+      [G.raw, Number.isFinite(evidence.raw_count) ? evidence.raw_count.toLocaleString(ko ? "ko-KR" : "en-US") : G.missing],
+      [G.rank, rankText(evidence)],
+      [G.tier, rankTier(evidence)],
+    ];
+    if (mention.kind === "log2cpm") values.push(["log₂(1 + CPM)", Number.isFinite(evidence.log2cpm) ? percent(evidence.log2cpm) : G.missing]);
+    for (const [label, value] of values) {
+      const item = document.createElement("div");
+      item.append(textElement("dt", "", label), textElement("dd", "", value));
+      list.append(item);
+    }
+    card.append(list, textElement("p", "talk-evidence-reason", G.reason[mention.reason] || G.reason.unsupported_claim));
+    card.append(textElement("p", "talk-evidence-note", G.rankNote));
+    card.hidden = false;
+  }
+
+  function reasoningNodes(text, mentions) {
+    if (!mentions) return [document.createTextNode(text)];
+    const nodes = [];
+    let cursor = 0;
+    mentions.forEach((mention, index) => {
+      nodes.push(document.createTextNode(text.slice(cursor, mention.start)));
+      const button = textElement("button", `talk-gene-mention ${mention.status}`, mention.gene);
+      button.type = "button";
+      button.dataset.geneMention = String(index);
+      button.dataset.verdict = mention.status;
+      button.dataset.gene = mention.gene;
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-controls", "talk-gene-evidence");
+      button.setAttribute("aria-label", `${mention.gene} · ${G.verdict[mention.status]} · ${claimText(mention)} · ${G.inspect}`);
+      button.title = `${G.verdict[mention.status]} · ${claimText(mention)} · ${G.reason[mention.reason] || G.reason.unsupported_claim}`;
+      button.addEventListener("click", () => showEvidence(mention, button));
+      nodes.push(button);
+      cursor = mention.end;
     });
+    nodes.push(document.createTextNode(text.slice(cursor)));
+    return nodes;
+  }
+
+  function renderGeneSummary(mentions) {
+    const summary = $(".talk-gene-summary");
+    summary.replaceChildren();
+    if (!mentions) {
+      summary.dataset.state = "unavailable";
+      summary.textContent = G.unavailable;
+      return;
+    }
+    summary.dataset.state = "ready";
+    if (!mentions.length) {
+      summary.textContent = G.noMentions;
+      return;
+    }
+    summary.append(textElement("span", "talk-mention-count", G.summary(mentions.length)));
+    for (const verdict of VERDICTS) {
+      const count = mentions.filter((mention) => mention.status === verdict).length;
+      const chip = textElement("span", `talk-verdict ${verdict}`, `${G.verdict[verdict]} ${count}`);
+      chip.dataset.count = String(count);
+      chip.dataset.verdict = verdict;
+      summary.append(chip);
+    }
+  }
+
+  async function sha256(bytes) {
+    const digest = await window.crypto.subtle.digest("SHA-256", bytes);
+    return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
+  }
+
+  async function verifiedClaims(data, sourceBytes, annotations) {
+    if (!annotations || annotations.source_sha256 !== await sha256(sourceBytes)) return null;
+    const valid = {};
+    await Promise.all(Object.entries(data.answers).map(async ([answerKey, answer]) => {
+      const entry = annotations.answers?.[answerKey];
+      if (!entry || entry.reasoning_sha256 !== await sha256(new TextEncoder().encode(answer.reasoning)) || !Array.isArray(entry.mentions)) return;
+      let cursor = 0;
+      for (const mention of entry.mentions) {
+        if (!Number.isInteger(mention.start) || !Number.isInteger(mention.end) || mention.start < cursor || mention.end <= mention.start || mention.end > answer.reasoning.length || answer.reasoning.slice(mention.start, mention.end) !== mention.gene || !VERDICTS.includes(mention.status) || !(mention.kind in G.kind) || !(mention.reason in G.reason) || typeof mention.context !== "string" || (mention.evidence !== null && (typeof mention.evidence !== "object" || Array.isArray(mention.evidence)))) return;
+        cursor = mention.end;
+      }
+      valid[answerKey] = entry.mentions;
+    }));
+    return valid;
   }
 
   function renderAnswer(group) {
-    const a = D.answers[`${S.model}:${key()}:${S.n}`];
+    const answerKey = `${S.model}:${key()}:${S.n}`;
+    const a = D.answers[answerKey];
+    const mentions = claims?.[answerKey] || null;
+    closeEvidence();
     const box = $(".talk-reasoning");
     cancelAnimationFrame(typing);
     box.textContent = "";
     $(".talk-think summary").textContent = T.reasoning(a.tokens, a.seconds);
-    const nodes = reasoningNodes(a.reasoning, a.genes, group.cells.length);
+    const nodes = reasoningNodes(a.reasoning, mentions);
+    renderGeneSummary(mentions);
     const answer = $(".talk-answer");
     answer.hidden = true;
     const finish = () => {
@@ -209,9 +403,7 @@
       step();
     }
     $(".talk-truth").textContent = T.truth(TYPE_NAME[S.type], STATE_NAME[S.state]);
-    const yes = Object.values(a.genes).filter((k) => k > 0).length;
-    const no = Object.keys(a.genes).length - yes;
-    $(".talk-gene-summary").textContent = Object.keys(a.genes).length ? T.genes(yes, no) : "";
+
   }
 
   function render() {
@@ -229,7 +421,14 @@
     segment("state", D.states.map((s) => [s, STATE_NAME[s]]));
     segment("n", D.sizes.map((n) => [String(n), String(n)]));
     segment("model", D.models.map((m) => [m, MODEL_NAME[m]]));
-    $(".talk-run").textContent = T.run;
+    $("[data-talk-run]").textContent = T.run;
+    $(".talk-gene-evidence").setAttribute("aria-label", G.evidence);
+    root.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && selectedMention) {
+        closeEvidence(true);
+        event.preventDefault();
+      }
+    });
     root.classList.add("is-ready");
     render();
     let last = 0;
@@ -243,12 +442,24 @@
   }
 
   $(".talk-status").textContent = T.loading;
-  fetch(root.dataset.src)
-    .then((r) => {
-      if (!r.ok) throw new Error(r.status);
-      return r.json();
+  const fetchBytes = async (url) => {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(response.status);
+    return response.arrayBuffer();
+  };
+  Promise.all([
+    fetchBytes(root.dataset.src),
+    fetchBytes(root.dataset.claims).then((bytes) => JSON.parse(new TextDecoder().decode(bytes))).catch(() => null),
+  ])
+    .then(async ([sourceBytes, annotations]) => {
+      const data = JSON.parse(new TextDecoder().decode(sourceBytes));
+      try {
+        claims = await verifiedClaims(data, sourceBytes, annotations);
+      } catch (_) {
+        claims = null;
+      }
+      start(data);
     })
-    .then(start)
     .catch(() => {
       $(".talk-status").textContent = T.failed;
     });

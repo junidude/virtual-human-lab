@@ -85,6 +85,28 @@ unauthenticated server. Review drafts and append-only snapshots stay in the visi
 JSON export/import provides portability. Blinding is at the interface level. Recorded rewards
 are preserved; the overview's reweighting controls are a separate what-if calculation.
 
+TALK colors each gene mention by its claim in context: green for a supported claim, red for
+a contradicted detection/count claim, yellow for a detected gene outside the claimed rank band.
+Correct statements of non-detection are green. Generic examples, corpus comparisons, unknown
+gene mappings, ambiguous tied ranks and unresolved clauses remain gray. This evaluates gene
+expression claims, not the full biological reasoning or the final cell-type prediction.
+Click a mention for its sentence, pooled raw UMI, detection count and measured rank interval.
+
+The source caption contract pools selected cells' raw UMI and ranks all detected matrix genes,
+including columns without gene symbols. Its bands are [0,3], (3,10], and (10,25] percent from
+the top; the entire tied interval must fit. Low-support captions mean 1–3 pooled UMI.
+The separate evidence and annotation files preserve `talk-demo.json` and all recorded words:
+
+```bash
+uv run --with numpy --with scipy --with pyarrow python tools/make_talk_gene_evidence.py
+python tools/grade_talk_claims.py
+uv run --with numpy --with scipy --with pyarrow python -m unittest discover -s tools -p 'test_talk_*.py'
+```
+
+The exporter checks all nine original input hashes. The browser verifies the demo and each
+answer hash plus literal occurrence spans; mismatches disable grading visibly. The parser is
+bounded to the saved demo and caption templates. Review new wording before extending it.
+
 ## Bilingual publishing
 
 Every visitor-facing page is available in English and Korean on separate URLs. English uses the

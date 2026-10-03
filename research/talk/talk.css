@@ -289,20 +289,174 @@
   overflow-wrap: anywhere;
 }
 
-.talk-reasoning mark {
-  padding: 0 3px;
+/* A color belongs to one claim in context, never to a gene globally. */
+.talk-gene-mention,
+.talk-verdict {
+  --claim-ink: #4b5a65;
+  --claim-bg: #e4e8ec;
+  color: var(--claim-ink);
+  background: var(--claim-bg);
+}
+
+.talk-gene-mention.correct,
+.talk-verdict.correct {
+  --claim-ink: #0b5d45;
+  --claim-bg: #d8f5ea;
+}
+
+.talk-gene-mention.incorrect,
+.talk-verdict.incorrect {
+  --claim-ink: #942d24;
+  --claim-bg: #fde2dd;
+}
+
+.talk-gene-mention.rank_mismatch,
+.talk-verdict.rank_mismatch {
+  --claim-ink: #745100;
+  --claim-bg: #ffedb3;
+}
+
+.talk-gene-mention {
+  display: inline;
+  margin: 0;
+  padding: 1px 3px;
+  border: 0;
   border-radius: 4px;
+  font: inherit;
   font-weight: 600;
+  line-height: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
-.talk-reasoning mark.yes {
-  color: #0b5d45;
-  background: #d8f5ea;
+.talk-gene-mention:hover,
+.talk-gene-mention[aria-expanded="true"] {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-.talk-reasoning mark.no {
-  color: #8a2f1c;
-  background: #fde4dc;
+.talk-gene-mention:focus-visible,
+.talk-evidence-close:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.talk-gene-summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.talk-mention-count {
+  margin-right: 3px;
+}
+
+.talk-verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.talk-gene-evidence {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.talk-gene-evidence[hidden] {
+  display: none;
+}
+
+.talk-evidence-heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.talk-evidence-heading strong {
+  font-size: 15px;
+}
+
+.talk-evidence-close {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin: -7px -7px -7px auto;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: var(--ink);
+  background: var(--surface);
+  font: inherit;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.talk-evidence-claim {
+  margin: 10px 0 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.talk-evidence-context {
+  margin: 10px 0 0;
+  padding: 8px 12px;
+  border-left: 2px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.talk-evidence-values {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 16px;
+  margin: 14px 0 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.talk-evidence-values dt {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.talk-evidence-values dd {
+  margin: 2px 0 0;
+  color: var(--ink);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.talk-evidence-reason {
+  margin: 14px 0 0;
+  color: var(--ink-2);
+}
+
+.talk-evidence-note {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 11px;
 }
 
 .talk-answer {
@@ -347,21 +501,6 @@
   font-size: 13px;
 }
 
-.talk-gene-key mark {
-  padding: 0 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.talk-gene-key mark.yes {
-  color: #0b5d45;
-  background: #d8f5ea;
-}
-
-.talk-gene-key mark.no {
-  color: #8a2f1c;
-  background: #fde4dc;
-}
 
 .talk-stats {
   display: grid;
