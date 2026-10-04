@@ -93,7 +93,55 @@ class ClaimTests(unittest.TestCase):
 
     def test_corpus_claim_is_not_graded_from_presence(self):
         m = self.parse("The genes notably elevated here compared to typical cells are HLA-B.")[0]
-        self.assertEqual((m['status'],m['reason']),('unscored','corpus_unavailable'))
+        self.assertEqual((m['kind'],m['status'],m['reason']),('corpus_higher','unscored','corpus_reference_missing'))
+
+    def test_corpus_comparison_uses_baseline_not_local_rank(self):
+        claim={'kind':'corpus_higher'}
+        for baseline, expected in [(5.,'correct'), (8.641,'incorrect'), (10.,'incorrect')]:
+            fact={**evidence(interval=(70,75)), 'corpus_mean_log2cpm':baseline,
+                  'corpus_delta':8.641-baseline}
+            self.assertEqual(score(claim,fact,8,8)[0],expected)
+        self.assertEqual(score(claim,{**evidence(raw=0,detected=0),'corpus_mean_log2cpm':0,'corpus_delta':0},8,8)[0],'incorrect')
+
+    def test_corpus_qualitative_superlative_has_no_invented_top_n(self):
+        fact={**evidence(interval=(50,55)), 'corpus_mean_log2cpm':5.,'corpus_delta':3.641}
+        text="Genes showing the greatest excess over typical-cell expression include HLA-B."
+        m=self.parse(text,{'HLA-B':fact})[0]
+        self.assertEqual((m['kind'],m['status']),('corpus_higher','correct'))
+
+    def test_recorded_comparative_paraphrases(self):
+        fact={**evidence(), 'corpus_mean_log2cpm':5.,'corpus_delta':3.641}
+        templates=[
+            'Considered together, HLA-B are the genes distinguishing this set from the corpus average.',
+            'Considered with the corpus as a whole, the genes most elevated here are HLA-B.',
+            'This set of 8 cells is characterized, versus the corpus, by the gene list HLA-B.',
+            'Genes that are elevated relative to the corpus norm in this group are HLA-B.',
+            'For this set, the most distinguishing genes against typical cells are HLA-B.',
+        ]
+        for text in templates:
+            m=self.parse(text,{'HLA-B':fact})[0]
+            self.assertEqual((m['kind'],m['status']),('corpus_higher','correct'))
+
+    def test_high_in_both_uses_measured_rank_with_tie_overlap(self):
+        claim={'kind':'corpus_high'}
+        base={**evidence(interval=(2.9,3.4)), 'corpus_mean_log2cpm':8., 'corpus_delta':.641,
+              'corpus_rank_interval':[.9,1.2], 'group_rank_interval_ordinal':[40,50]}
+        self.assertEqual(score(claim,base,8,8),('correct','corpus_high_match'))
+        self.assertEqual(score(claim,{**base,'rank_interval':[4,5]},8,8)[0],'rank_mismatch')
+        self.assertEqual(score(claim,{**base,'rank_interval':[4,5],'group_rank_interval_ordinal':[20,22]},8,8)[0],'correct')
+        self.assertEqual(score(claim,{**base,'corpus_rank_interval':[1.1,1.2]},8,8)[0],'rank_mismatch')
+        self.assertEqual(score(claim,{**base,'corpus_rank_interval':None},8,8)[0],'unscored')
+
+    def test_corpus_direction_in_mixed_numeric_heading(self):
+        fact={**evidence(), 'corpus_mean_log2cpm':5.,'corpus_delta':3.641}
+        text="Measured log2CPM in the cells shown: HLA-B go high here, higher than in the typical cell context."
+        m=self.parse(text,{'HLA-B':fact})[0]
+        self.assertEqual((m['kind'],m['status']),('corpus_higher','correct'))
+
+    def test_generic_typical_markers_are_not_corpus_assertions(self):
+        fact={**evidence(), 'corpus_mean_log2cpm':5.,'corpus_delta':3.641}
+        for text in ['B cells typically express HLA-B.', 'HLA-B is typical of T cells.']:
+            self.assertEqual(self.parse(text,{'HLA-B':fact})[0]['status'],'unscored')
 
     def test_utf16_offsets_and_lowercase_symbols(self):
         text = "🧬 In the top 3% of the genes detected here: C1orf56."
@@ -120,7 +168,7 @@ class FrozenDemoTests(unittest.TestCase):
                 self.assertEqual(encoded[2*m['start']:2*m['end']].decode('utf-16-le'),m['gene'])
                 if m['status']=='rank_mismatch':
                     self.assertGreater(m['evidence']['raw_count'],0)
-                    self.assertEqual(m['kind'],'rank')
+                    self.assertIn(m['kind'],('rank','corpus_high'))
                 end=m['end']
             self.assertEqual(sum(record['counts'].values()),len(record['mentions']))
 
@@ -128,7 +176,8 @@ class FrozenDemoTests(unittest.TestCase):
         data=json.loads((DATA/'gene-claims.json').read_text())['answers']['SFT:b_ctrl:8']['mentions']
         for gene, kind, status in [('GSK3B','absent','correct'),('UTP11','absent','incorrect'),
                                    ('HLA-B','rank','correct'),('HLA-DRB1','rank','rank_mismatch'),
-                                   ('NDUFA4','rank','correct')]:
+                                   ('NDUFA4','rank','correct'),
+                                   ('HLA-DPB1','corpus_higher','correct')]:
             m=next(m for m in data if m['gene']==gene and m['kind']==kind)
             self.assertEqual(m['status'],status)
 

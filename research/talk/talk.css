@@ -448,6 +448,13 @@
   overflow-wrap: anywhere;
 }
 
+.talk-corpus-values {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
 .talk-evidence-reason {
   margin: 14px 0 0;
   color: var(--ink-2);

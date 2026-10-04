@@ -10,6 +10,7 @@ import argparse
 from collections import Counter
 import hashlib
 import json
+import math
 from pathlib import Path
 import re
 
@@ -21,8 +22,8 @@ BLOCKS = {
     "band_10_25": ("rank", [10, 25]), "undetected": ("absent", None),
     "undetected_1": ("absent", None), "detect_most": ("majority", None),
     "detect_few": ("minority", None), "low_support": ("low_support", None),
-    "housekeeping": ("corpus", None), "distinctive": ("corpus", None),
-    "top_expressed": ("corpus", None),
+    "housekeeping": ("corpus_high", None), "distinctive": ("corpus_higher", None),
+    "top_expressed": ("context", None),
 }
 NOT_GENES = {"RNA", "DNA", "UMI", "CPM", "JSON", "CTRL", "STIM", "MONO",
              "TYPE", "CELL", "SET", "MAX", "CAT", "REST", "IMPACT", "CLOCK",
@@ -89,6 +90,8 @@ def clause_claim(sentence: str, start: int, end: int, patterns: list) -> dict:
         value = re.match(r"\s+(-?\d+(?:\.\d+)?)\b", sentence[end:])
         if value:
             return {"kind": "log2cpm", "value": float(value[1])}
+        if re.search(r"higher than.*typical|elevated.*(?:typical|corpus)", lower):
+            return {"kind": "corpus_higher"}
         return {"kind": "context", "reason": "unsupported_claim"}
     if re.search(r"checked all \d+ cells;\s*none showed|has no detected genes at this depth for", lower):
         return {"kind": "absent"}
@@ -102,10 +105,10 @@ def clause_claim(sentence: str, start: int, end: int, patterns: list) -> dict:
             and re.search(r"\bhere\b|\bthis (?:cell|readout)\b|\bthese cells\b", lower)
             and not re.search(r"\b(?:no|not|without|hypothetical)\b", lower)):
         return {"kind": "present"}
-    # Checking for a gene, cell-type names, hypothetical markers and comparative
-    # biology are not automatically assertions about these input cells.
-    if re.search(r"typical|corpus|average cell|usual cells|distinguish|distinctive", lower):
-        return {"kind": "corpus"}
+    # Recorded free-form variant of the high-here-and-in-corpus caption. Generic
+    # 'B cells typically express ...' is not an assertion about the input group.
+    if "the readings here are high, as a typical cell" in lower:
+        return {"kind": "corpus_high"}
     return {"kind": "context", "reason": "context_only"}
 
 
@@ -117,10 +120,28 @@ def score(claim: dict, evidence: dict | None, scope: int, total: int) -> tuple[s
         return "unscored", "missing_gene"
     if scope != total:
         return "unscored", "cell_count_mismatch"
-    if kind == "corpus":
-        return "unscored", "corpus_unavailable"
     raw = evidence["raw_count"]
     detected = evidence["detected_cells"]
+    if kind in ("corpus_higher", "corpus_high"):
+        if raw <= 0:
+            return "incorrect", "detection_mismatch"
+        baseline = evidence.get("corpus_mean_log2cpm")
+        delta = evidence.get("corpus_delta")
+        if not all(isinstance(v, (int, float)) and math.isfinite(v) for v in (baseline, delta)):
+            return "unscored", "corpus_reference_missing"
+        if kind == "corpus_higher":
+            # Qualitative adjectives do not supply a numeric top-N cutoff.
+            # Check the stated elevation direction, not the caption list budget.
+            return ("correct", "corpus_match") if delta > 0 else ("incorrect", "corpus_lower")
+        intervals = [evidence.get(k) for k in ("rank_interval", "group_rank_interval_ordinal", "corpus_rank_interval")]
+        if not all(isinstance(v, list) and len(v) == 2 and all(isinstance(n, (int, float)) and math.isfinite(n) for n in v) for v in intervals):
+            return "unscored", "corpus_reference_missing"
+        local, ordinal, corpus = intervals
+        # Original high-abundance thresholds, with the owner's tie-overlap rule.
+        # Gene-name/housekeeping-family membership is not an abundance criterion.
+        high_here = local[0] <= 3 + 1e-5 or ordinal[0] <= 20
+        high_corpus = corpus[0] <= 1 + 1e-5
+        return ("correct", "corpus_high_match") if high_here and high_corpus else ("rank_mismatch", "corpus_high_rank_mismatch")
     if kind == "rank":
         if raw <= 0:
             return "incorrect", "detection_mismatch"
@@ -214,7 +235,10 @@ def main() -> None:
                           "tie_policy": "Owner-requested permissive overlap rule, 2026-10-04. Acceptance means compatible with the tied ranks, not uniquely within that band.",
                           "numeric": "log2(1+1e6*pooled_gene_UMI/pooled_total_UMI); tolerance 0.00501 for two-decimal claims.",
                           "low_support": "1–3 pooled raw UMI, matching the original caption contract.",
-                          "ungraded": "Generic examples, checking-for lists, unresolved clauses, mismatched group size, missing mappings and corpus-relative assertions.",
+                          "corpus_higher": "Detected and input log2(1+CPM) minus training corpus baseline > 0. Qualitative distinctive/most/greatest wording is checked for elevation direction only; no unstated top-N or biological specificity is graded.",
+                          "corpus_high": "Corpus top 1% and (input top 3% or first 20 detected genes), using original caption thresholds. Overlapping tied intervals accepted; no gene-family eligibility gate.",
+                          "corpus_units": "Corpus is the mean of log2(1+CPM) profiles of 32-cell training blocks. Delta is a difference on this scale, not an ordinary log fold change.",
+                          "ungraded": "Generic examples, checking-for lists, unresolved clauses, mismatched group size and missing gene/reference mappings.",
                           "inference": False},
               "answers": answers, "counts": dict(overall)}
     args.output.write_text(json.dumps(result, ensure_ascii=False, separators=(",", ":")) + "\n")

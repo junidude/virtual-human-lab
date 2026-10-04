@@ -87,8 +87,8 @@ are preserved; the overview's reweighting controls are a separate what-if calcul
 
 TALK colors each gene mention by its claim in context: green for a supported claim, red for
 a contradicted detection/count claim, yellow for a detected gene outside the claimed rank band.
-Correct statements of non-detection are green. Generic examples, corpus comparisons, unknown
-gene mappings and unresolved clauses remain gray. This evaluates gene
+Correct statements of non-detection are green. Generic examples, unknown
+gene/reference mappings and unresolved clauses remain gray. This evaluates gene
 expression claims, not the full biological reasoning or the final cell-type prediction.
 Click a mention for its sentence, pooled raw UMI, detection count and measured rank interval.
 
@@ -97,6 +97,18 @@ including columns without gene symbols. Its bands are [0,3], (3,10], and (10,25]
 the top. Per the owner's 2026-10-04 policy, a tied interval overlapping the claimed band is
 accepted as green; only a disjoint interval is a rank error. The evidence card explains overlap
 acceptance. Low-support captions mean 1–3 pooled UMI.
+Corpus-relative claims now compare the input's log2(1+CPM) with the frozen training corpus
+baseline, aligned by Ensembl gene ID through `model_gene_index`. That baseline is the mean
+of 119,174 logged profiles, each pooling 32 training cells. The displayed difference is a
+subtraction on this scale, not an ordinary log fold change. Baseline, mapping and provenance
+hashes are stored separately from the demo's nine original source hashes.
+
+For qualitative “elevated / distinctive / most / greatest” claims, the interface explicitly
+checks elevation direction: detected and input above corpus is green; zero or input at/below
+corpus is red. It does not invent a top-N cutoff from the caption generator's list length.
+“High here and in typical cells” uses the original abundance thresholds: corpus top 1% and
+input top 3% or first 20 genes. Tied overlap is accepted; a detected gene outside these ranks
+is yellow. Gene-family membership is not required for an abundance claim.
 The separate evidence and annotation files preserve `talk-demo.json` and all recorded words:
 
 ```bash

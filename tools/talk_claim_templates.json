@@ -291,7 +291,12 @@
       "Genes above the typical cell's level in this set: {genes}.",
       "Distinctive genes relative to a typical cell, seen here, include {genes}.",
       "Genes showing higher levels than a typical corpus cell, within this set, are {genes}.",
-      "Genes that deviate upward from a typical cell's amounts, thus distinctive here, are {genes}."
+      "Genes that deviate upward from a typical cell's amounts, thus distinctive here, are {genes}.",
+      "Considered together, {genes} are the genes distinguishing this set from the corpus average.",
+      "Considered with the corpus as a whole, the genes most elevated here are {genes}.",
+      "This set of {n} cells is characterized, versus the corpus, by the gene list {genes}.",
+      "Genes that are elevated relative to the corpus norm in this group are {genes}.",
+      "For this set, the most distinguishing genes against typical cells are {genes}."
     ],
     "top_expressed": [
       "Among the genes measured here, those with the highest expression are: {genes}.",
@@ -405,5 +410,6 @@
       "The top-expressing genes measured here are {genes}.",
       "High expression is characteristic of {genes} among the genes measured here."
     ]
-  }
+  },
+  "recorded_variants": "Additional corpus variants transcribed from the frozen demo; original response text unchanged."
 }

@@ -10,12 +10,79 @@ import scipy.sparse as sp
 
 from make_talk_gene_evidence import (
     block_stats,
+    corpus_evidence,
     export_group,
     mentioned_symbols,
     symbol_index,
     validate_legacy_detection,
     verify_sources,
 )
+
+
+class CorpusEvidenceTests(unittest.TestCase):
+    def setUp(self):
+        # Deliberately shuffle both table rows and fixture columns; baseline
+        # storage order must come exclusively from model_gene_index.
+        self.mapping = {"gene_id": ["b", "a", "d", "c"],
+                        "symbol": ["B", "A", "", "C"],
+                        "model_gene_index": [1, 0, 3, 2]}
+        self.baseline = np.array([10, 8, 8, 0], dtype=np.float32)
+
+    def test_shuffled_mapping_and_complete_ties(self):
+        evidence = corpus_evidence(["c", "a", "missing", "b", "d"], self.baseline, self.mapping)
+        self.assertEqual(evidence[0]["corpus_mean_log2cpm"], 8)
+        self.assertEqual(evidence[1]["corpus_mean_log2cpm"], 10)
+        self.assertNotIn(2, evidence)
+        np.testing.assert_allclose(evidence[0]["corpus_rank_interval"], [100 / 3, 200 / 3])
+        self.assertEqual(evidence[0]["corpus_rank_interval"], evidence[3]["corpus_rank_interval"])
+        # The unnamed zero counts toward the population, but its rank is not
+        # a named gene claim. An actual mapped baseline zero remains zero.
+        self.assertIsNone(evidence[4]["corpus_rank_interval"])
+        self.assertEqual(evidence[4]["corpus_mean_log2cpm"], 0)
+
+    def test_profile_delta_keeps_float32_log_units(self):
+        counts = sp.csr_matrix([[30, 1000, 0]])
+        evidence = corpus_evidence(["a", "b", "absent"], self.baseline, self.mapping)
+        group = export_group(counts, [0], {"A": 0, "B": 1, "X": 2}, ["A", "B", "X"], evidence)
+        profile = np.float32(np.log2(1 + 30 / 1030 * 1e6))
+        self.assertEqual(group["genes"]["A"]["log2cpm"], float(profile))
+        self.assertEqual(group["genes"]["A"]["corpus_delta"], float(profile - np.float32(10)))
+        self.assertIsNone(group["genes"]["X"]["corpus_mean_log2cpm"])
+        self.assertIsNone(group["genes"]["X"]["corpus_delta"])
+
+    def test_group_ordinal_tie_and_zero(self):
+        group = export_group(sp.csr_matrix([[5, 5, 1, 0]]), [0],
+                             {f"G{i}": i for i in range(4)}, [f"G{i}" for i in range(4)])
+        self.assertEqual(group["genes"]["G0"]["group_rank_interval_ordinal"], [1, 2])
+        self.assertEqual(group["genes"]["G1"]["group_rank_interval_ordinal"], [1, 2])
+        self.assertEqual(group["genes"]["G2"]["group_rank_interval_ordinal"], [3, 3])
+        self.assertIsNone(group["genes"]["G3"]["group_rank_interval_ordinal"])
+
+    def test_dimension_and_bad_values_fail(self):
+        for baseline in (np.zeros((2, 2)), np.array([]), np.array([1, 2, 3]),
+                         np.array([1, 2, 3, np.nan]), np.array([1, 2, 3, -1]),
+                         np.array([1, 2, 3, 25])):
+            with self.subTest(baseline=baseline), self.assertRaises(ValueError):
+                corpus_evidence(["a"], baseline, self.mapping)
+
+    def test_duplicate_ids_fail(self):
+        duplicate = {**self.mapping, "gene_id": ["a", "a", "c", "d"]}
+        with self.assertRaisesRegex(ValueError, "duplicate gene IDs"):
+            corpus_evidence(["a"], self.baseline, duplicate)
+        with self.assertRaisesRegex(ValueError, "Duplicate fixture gene IDs"):
+            corpus_evidence(["a", "a"], self.baseline, self.mapping)
+
+    def test_bad_mapping_indices_fail(self):
+        for indices in ([0, 1, 2, 4], [0, 1, 2, -1], [0, 1, 2, 2], [0, 1, 2, 1.5], [0, 1, 2, True]):
+            with self.subTest(indices=indices), self.assertRaises(ValueError):
+                corpus_evidence(["a"], self.baseline, {**self.mapping, "model_gene_index": indices})
+
+    def test_house_requires_measured_high_corpus_expression(self):
+        mapping = {"gene_id": ["a", "b", "c"], "symbol": ["RPLP1", "HLA-B", "RPS6KA1"], "model_gene_index": [0, 1, 2]}
+        evidence = corpus_evidence(["a", "b", "c"], np.array([5, 4, 3]), mapping)
+        self.assertTrue(evidence[0]["corpus_high_house"])
+        self.assertFalse(evidence[1]["corpus_high_house"])
+        self.assertFalse(evidence[2]["corpus_high_house"])
 
 
 class BlockEvidenceTests(unittest.TestCase):

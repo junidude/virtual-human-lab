@@ -49,7 +49,7 @@
 
   const G = ko ? {
     verdict: { correct: "맞음", incorrect: "틀림", rank_mismatch: "순위 틀림", unscored: "미채점" },
-    kind: { rank: "발현 순위", absent: "발현 없음", present: "발현 있음", majority: "과반수에서 검출", minority: "절반 이하에서 검출", log2cpm: "log2(CPM)", low_support: "낮은 raw count", corpus: "Corpus 대비 발현", context: "문맥상 언급" },
+    kind: { rank: "발현 순위", absent: "발현 없음", present: "발현 있음", majority: "과반수에서 검출", minority: "절반 이하에서 검출", log2cpm: "log2(CPM)", low_support: "낮은 raw count", corpus: "Corpus 대비 발현", corpus_higher: "Corpus 대비 증가", corpus_high: "Input·Corpus 고발현", context: "문맥상 언급" },
     reason: {
       match: "언급한 내용과 측정값이 일치합니다.",
       detection_mismatch: "발현 여부가 언급한 내용과 다릅니다.",
@@ -57,7 +57,12 @@
       tie_overlap: "동점 순위가 주장한 구간과 겹쳐 맞음으로 처리합니다.",
       missing_gene: "유전자 매핑 또는 측정값을 확인할 수 없습니다.",
       context_only: "유전자 언급만으로 검증할 주장이 정해지지 않습니다.",
-      corpus_unavailable: "Corpus 비교는 이번 채점에 포함하지 않습니다.",
+      corpus_unavailable: "이 Corpus 주장을 검증할 비교 기준이 명확하지 않습니다.",
+      corpus_match: "Input > Corpus · 증가 방향 일치",
+      corpus_lower: "Input이 Corpus보다 높지 않습니다.",
+      corpus_high_match: "Input과 Corpus 모두 고발현 기준에 해당합니다.",
+      corpus_high_rank_mismatch: "발현은 있지만 고발현 순위 기준을 벗어납니다.",
+      corpus_reference_missing: "이 유전자의 Corpus 기준값이 없습니다.",
       low_support_unavailable: "낮은 발현에 대한 주장을 확인할 근거가 부족합니다.",
       low_support_mismatch: "Raw count가 언급한 낮은 발현 범위와 다릅니다.",
       unsupported_claim: "이 주장은 현재 데이터로 채점할 수 없습니다.",
@@ -71,9 +76,15 @@
     presence: "검출", raw: "Raw UMI · 합계", rank: "실제 순위", tier: "구간", missing: "데이터 없음", notDetected: "미검출", noRank: "—",
     counts: (k, n) => `${k} / ${n} cells`, top: (n) => `상위 ${n}%`, range: (a, b) => `상위 ${a}–${b}%`,
     rankNote: "선택한 세포의 raw count 합계 기준입니다. 동점 범위가 주장한 구간과 겹치면 맞음으로 처리합니다.",
+    input: "Input", corpus: "Corpus", difference: "차이", inputRank: "Input 순위", corpusRank: "Corpus 순위",
+    corpusUnits: "Input · Corpus: log₂(1 + CPM). 차이 = Input − Corpus.",
+    corpusBaseline: "Corpus: 학습 데이터의 32-cell block별 log₂(1 + CPM) 평균.",
+    corpusHigherRule: "Corpus 대비 증가 방향 확인. 구체적인 최상위 순위는 채점하지 않습니다.",
+    corpusHighRule: "Input 상위 3% 또는 20위 이내 · Corpus 상위 1%. 동점 범위가 겹치면 인정합니다.",
+    corpusHighClaim: "Input: 상위 3% 또는 20위 · Corpus: 상위 1%",
   } : {
     verdict: { correct: "Correct", incorrect: "Wrong", rank_mismatch: "Rank wrong", unscored: "Not graded" },
-    kind: { rank: "Expression rank", absent: "Not expressed", present: "Expressed", majority: "Detected in most cells", minority: "Detected in half or fewer", log2cpm: "log2(CPM)", low_support: "Low raw count", corpus: "Corpus comparison", context: "Context only" },
+    kind: { rank: "Expression rank", absent: "Not expressed", present: "Expressed", majority: "Detected in most cells", minority: "Detected in half or fewer", log2cpm: "log2(CPM)", low_support: "Low raw count", corpus: "Corpus comparison", corpus_higher: "Elevated above corpus", corpus_high: "High in input and corpus", context: "Context only" },
     reason: {
       match: "The claim matches the measured expression.",
       detection_mismatch: "The claim disagrees with whether the gene was detected.",
@@ -81,7 +92,12 @@
       tie_overlap: "The tied rank range overlaps the claimed band, so the claim is accepted.",
       missing_gene: "The gene mapping or measurement is unavailable.",
       context_only: "This mention does not make a testable expression claim.",
-      corpus_unavailable: "Corpus comparisons are not included in this grading.",
+      corpus_unavailable: "This corpus claim does not specify a comparison that can be verified.",
+      corpus_match: "Input > Corpus · elevation matches",
+      corpus_lower: "The input expression is not higher than the corpus baseline.",
+      corpus_high_match: "Both input and corpus meet the high-expression rank criteria.",
+      corpus_high_rank_mismatch: "The gene is expressed, but outside the high-expression rank criteria.",
+      corpus_reference_missing: "No corpus baseline is available for this gene.",
       low_support_unavailable: "There is not enough evidence to check this low-expression claim.",
       low_support_mismatch: "The raw count falls outside the claimed low-expression range.",
       unsupported_claim: "This claim cannot be graded from these measurements.",
@@ -95,6 +111,12 @@
     presence: "Detected", raw: "Raw UMI · total", rank: "Actual rank", tier: "Tier", missing: "No data", notDetected: "Not detected", noRank: "—",
     counts: (k, n) => `${k} / ${n} cells`, top: (n) => `Top ${n}%`, range: (a, b) => `Top ${a}–${b}%`,
     rankNote: "Ranked among detected genes by summed raw counts. A tied range overlapping the claimed band is accepted.",
+    input: "Input", corpus: "Corpus", difference: "Difference", inputRank: "Input rank", corpusRank: "Corpus rank",
+    corpusUnits: "Input and Corpus: log₂(1 + CPM). Difference = Input − Corpus.",
+    corpusBaseline: "Corpus: mean log₂(1 + CPM) across 32-cell training blocks.",
+    corpusHigherRule: "Checks elevation above the training corpus. Unspecified top ranks are not graded.",
+    corpusHighRule: "Input top 3% or top 20; Corpus top 1%. Overlapping ties are accepted.",
+    corpusHighClaim: "Input: top 3% or top 20 · Corpus: top 1%",
   };
   const VERDICTS = ["correct", "incorrect", "rank_mismatch", "unscored"];
   let D = null;
@@ -218,6 +240,19 @@
     return Number.isFinite(value) ? Number(value.toFixed(2)).toLocaleString(ko ? "ko-KR" : "en-US") : "—";
   }
 
+  function expressionValue(value, signed = false) {
+    if (!Number.isFinite(value)) return G.missing;
+    const display = value.toLocaleString(ko ? "ko-KR" : "en-US", { maximumFractionDigits: 3, minimumFractionDigits: 3 });
+    return signed && value > 0 ? `+${display}` : display;
+  }
+
+  function ordinalRange(interval) {
+    if (!Array.isArray(interval) || interval.length !== 2 || !interval.every(Number.isFinite)) return G.noRank;
+    const first = interval[0].toLocaleString(ko ? "ko-KR" : "en-US");
+    const last = interval[1].toLocaleString(ko ? "ko-KR" : "en-US");
+    return interval[0] === interval[1] ? `#${first}` : `#${first}–${last}`;
+  }
+
   function rankText(evidence) {
     if (evidence.detected_cells === 0) return G.notDetected;
     const interval = evidence.rank_interval;
@@ -241,7 +276,9 @@
 
   function claimText(mention) {
     const parts = [G.kind[mention.kind] || G.kind.context];
-    if (Array.isArray(mention.range)) parts.push(mention.kind === "rank" ? (mention.range[0] === 0 ? G.top(percent(mention.range[1])) : G.range(percent(mention.range[0]), percent(mention.range[1]))) : `${percent(mention.range[0])}–${percent(mention.range[1])}`);
+    if (mention.kind === "corpus_higher") parts.push("Input > Corpus");
+    else if (mention.kind === "corpus_high") parts.push(G.corpusHighClaim);
+    else if (Array.isArray(mention.range)) parts.push(mention.kind === "rank" ? (mention.range[0] === 0 ? G.top(percent(mention.range[1])) : G.range(percent(mention.range[0]), percent(mention.range[1]))) : `${percent(mention.range[0])}–${percent(mention.range[1])}`);
     else if (mention.expected) parts.push(mention.expected);
     else if (Number.isFinite(mention.value)) parts.push(String(mention.value));
     else if (mention.kind === "low_support") parts.push("1–3 UMI");
@@ -266,6 +303,7 @@
     const card = $(".talk-gene-evidence");
     card.replaceChildren();
     card.dataset.verdict = mention.status;
+    card.dataset.claimKind = mention.kind;
     const heading = textElement("div", "talk-evidence-heading", "");
     heading.append(textElement("strong", "", mention.gene), textElement("span", `talk-verdict ${mention.status}`, G.verdict[mention.status]));
     const close = textElement("button", "talk-evidence-close", "×");
@@ -276,13 +314,32 @@
     card.append(heading, textElement("p", "talk-evidence-claim", `${G.claim} · ${claimText(mention)}`));
     card.append(textElement("blockquote", "talk-evidence-context", mention.context));
     const evidence = mention.evidence || {};
+    const corpusClaim = mention.kind === "corpus_higher" || mention.kind === "corpus_high";
+    if (corpusClaim) {
+      const comparison = textElement("dl", "talk-evidence-values talk-corpus-values", "");
+      for (const [field, label, value] of [
+        ["input", G.input, expressionValue(evidence.log2cpm)],
+        ["corpus", G.corpus, expressionValue(evidence.corpus_mean_log2cpm)],
+        ["difference", G.difference, expressionValue(evidence.corpus_delta, true)],
+      ]) {
+        const item = document.createElement("div");
+        item.dataset.measurement = field;
+        item.append(textElement("dt", "", label), textElement("dd", "", value));
+        comparison.append(item);
+      }
+      card.append(comparison, textElement("p", "talk-evidence-note", G.corpusUnits));
+    }
     const list = textElement("dl", "talk-evidence-values", "");
     const values = [
       [G.presence, Number.isFinite(evidence.detected_cells) && Number.isFinite(evidence.total_cells) ? G.counts(evidence.detected_cells, evidence.total_cells) : G.missing],
       [G.raw, Number.isFinite(evidence.raw_count) ? evidence.raw_count.toLocaleString(ko ? "ko-KR" : "en-US") : G.missing],
-      [G.rank, rankText(evidence)],
-      [G.tier, rankTier(evidence)],
     ];
+    if (mention.kind === "corpus_high") {
+      values.push([G.inputRank, `${ordinalRange(evidence.group_rank_interval_ordinal)} · ${rankTier(evidence)}`]);
+      values.push([G.corpusRank, rankText({ rank_interval: evidence.corpus_rank_interval })]);
+    } else if (!corpusClaim) {
+      values.push([G.rank, rankText(evidence)], [G.tier, rankTier(evidence)]);
+    }
     if (mention.kind === "log2cpm") values.push(["log₂(1 + CPM)", Number.isFinite(evidence.log2cpm) ? percent(evidence.log2cpm) : G.missing]);
     for (const [label, value] of values) {
       const item = document.createElement("div");
@@ -290,7 +347,12 @@
       list.append(item);
     }
     card.append(list, textElement("p", "talk-evidence-reason", G.reason[mention.reason] || G.reason.unsupported_claim));
-    card.append(textElement("p", "talk-evidence-note", G.rankNote));
+    if (corpusClaim) {
+      card.append(textElement("p", "talk-evidence-note talk-corpus-rule", mention.kind === "corpus_higher" ? G.corpusHigherRule : G.corpusHighRule));
+      card.append(textElement("p", "talk-evidence-note", G.corpusBaseline));
+    } else {
+      card.append(textElement("p", "talk-evidence-note", G.rankNote));
+    }
     card.hidden = false;
   }
 
@@ -305,6 +367,7 @@
       button.dataset.geneMention = String(index);
       button.dataset.verdict = mention.status;
       button.dataset.gene = mention.gene;
+      button.dataset.claimKind = mention.kind;
       button.setAttribute("aria-expanded", "false");
       button.setAttribute("aria-controls", "talk-gene-evidence");
       button.setAttribute("aria-label", `${mention.gene} · ${G.verdict[mention.status]} · ${claimText(mention)} · ${G.inspect}`);
