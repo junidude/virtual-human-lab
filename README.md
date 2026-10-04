@@ -121,6 +121,12 @@ The exporter checks all nine original input hashes. The browser verifies the dem
 answer hash plus literal occurrence spans; mismatches disable grading visibly. The parser is
 bounded to the saved demo and caption templates. Review new wording before extending it.
 
+The evaluation cards summarize the 24 answers given 8 cells each (8 groups × 3 models).
+The gene card reports green / (green + red + yellow) mentions, with ungraded mentions shown
+separately. It replaces the older raw-detection statistic. Refresh the cards and expanded
+model tables in both languages from `gene-claims.json` whenever grading changes; repeated
+mentions count separately, and this rate is not whole-answer accuracy.
+
 ## Bilingual publishing
 
 Every visitor-facing page is available in English and Korean on separate URLs. English uses the

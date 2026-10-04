@@ -521,6 +521,12 @@
   background: var(--surface);
 }
 
+.talk-stat h3 {
+  margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
 .talk-stat strong {
   display: block;
   font-size: clamp(36px, 4vw, 52px);
@@ -533,6 +539,13 @@
   margin-top: 12px;
   color: var(--ink-2);
   font-size: 15px;
+}
+
+.talk-stat small {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
 }
 
 .talk-table {
@@ -553,6 +566,12 @@
   border-collapse: collapse;
   font-size: 14px;
   font-variant-numeric: tabular-nums;
+}
+
+.talk-table caption {
+  padding: 12px 0 4px;
+  text-align: left;
+  font-weight: 600;
 }
 
 .talk-table th,

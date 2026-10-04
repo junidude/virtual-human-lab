@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=20260920-1">
-    <link rel="stylesheet" href="/research/talk/talk.css?v=20261004-corpus-1">
+    <link rel="stylesheet" href="/research/talk/talk.css?v=20261005-evaluation-f03ddf6e9a">
     <link rel="stylesheet" href="/research/architecture/architecture.css?v=20260921-1">
     <link rel="stylesheet" href="/research/architecture/talk.css?v=20260921-1">
   </head>
@@ -97,16 +97,20 @@
       </section>
 
       <section class="section" aria-labelledby="talk-how">
-        <div class="section-head"><h2 id="talk-how">How often it’s right</h2></div>
+        <div class="section-head"><h2 id="talk-how">Answer evaluation</h2><p>8 cells per group · 3 models · 8 groups</p></div>
         <div class="talk-stats">
-          <div class="talk-stat"><strong>8/8</strong><p>With 8 cells, all three models named the cell type of every group. With one cell: 4–5 of 8.</p></div>
-          <div class="talk-stat"><strong>4/8</strong><p>With 8 or 16 cells per group, none of the three models answered IFN-β. Their 4/8 score matched an always-control answer.</p></div>
-          <div class="talk-stat"><strong>42%</strong><p>On average, a gene TALK names in its reasoning is detected in 42% of its input cells, versus 31% of cells of other types (8-cell groups).</p></div>
+          <div class="talk-stat" data-stat="type"><h3>Cell type</h3><strong>8/8</strong><p>All three models identified the cell type in all eight groups.</p></div>
+          <div class="talk-stat" data-stat="condition"><h3>IFN-β stimulation</h3><strong>4/8</strong><p>Every answer was Control, including the IFN-β-stimulated groups.</p></div>
+          <div class="talk-stat" data-stat="genes"><h3>Gene descriptions</h3><strong>57.7%</strong><p>1,122 of 1,946 assessed gene mentions matched the measurements.</p><small>157 ungraded mentions excluded</small></div>
         </div>
         <details class="talk-table">
-          <summary>All scores: type · condition, out of 8 groups</summary>
-          <div class="table-scroll"><table><thead><tr><th>Model</th><th>1 cell</th><th>8 cells</th><th>16 cells</th><th>32 cells</th></tr></thead><tbody><tr><td>Fine-tuned</td><td>4/8 · 5/8</td><td>8/8 · 4/8</td><td>8/8 · 4/8</td><td>6/8 · 5/8</td></tr><tr><td>GRPO</td><td>4/8 · 5/8</td><td>8/8 · 4/8</td><td>8/8 · 4/8</td><td>7/8 · 5/8</td></tr><tr><td>DAPO</td><td>5/8 · 5/8</td><td>8/8 · 4/8</td><td>7/8 · 4/8</td><td>8/8 · 4/8</td></tr></tbody></table></div>
-          <p>A small exploratory test: eight groups (4 cell types × control or IFN-β), one sampled answer per group, reasoning on, temperature 0.6. According to recorded study metadata, the source study was not used to train TALK.</p>
+          <summary>Results and scoring</summary>
+          <div class="table-scroll"><table><caption>Cell type / stimulation · correct answers out of 8 groups</caption><thead><tr><th>Model</th><th>1 cell</th><th>8 cells</th><th>16 cells</th><th>32 cells</th></tr></thead><tbody><tr><td>Fine-tuned</td><td>4/8 · 5/8</td><td>8/8 · 4/8</td><td>8/8 · 4/8</td><td>6/8 · 5/8</td></tr><tr><td>GRPO</td><td>4/8 · 5/8</td><td>8/8 · 4/8</td><td>8/8 · 4/8</td><td>7/8 · 5/8</td></tr><tr><td>DAPO</td><td>5/8 · 5/8</td><td>8/8 · 4/8</td><td>7/8 · 4/8</td><td>8/8 · 4/8</td></tr></tbody></table></div>
+          <div class="table-scroll"><table id="talk-gene-scores"><caption>Gene mentions · 8 cells per group</caption><thead><tr><th>Model</th><th>Matched / assessed</th><th>Rate</th><th>Ungraded</th></tr></thead><tbody><tr><td>Fine-tuned</td><td>378 / 673</td><td>56.2%</td><td>35</td></tr><tr><td>GRPO</td><td>384 / 640</td><td>60.0%</td><td>35</td></tr><tr><td>DAPO</td><td>360 / 633</td><td>56.9%</td><td>87</td></tr><tr><td>Total</td><td>1,122 / 1,946</td><td>57.7%</td><td>157</td></tr></tbody></table></div>
+          <p>We checked detection and rank against the measurements, and corpus comparisons against the training baseline. Overlapping tied ranks count as a match. For “higher,” we check whether expression exceeds the corpus baseline. For “high in both,” the input must rank in the top 3% or top 20, and the corpus in the top 1%.</p>
+          <p>The rate is green mentions divided by all assessed mentions (green, red and yellow). Repeated mentions of the same gene are counted separately. The 157 gray mentions are excluded.</p>
+          <p>The eight groups combine four cell types with Control or IFN-β stimulation. We tested groups of 1, 8, 16 and 32 cells, with one answer per model for each group and input size. Reasoning was enabled and temperature was 0.6. Unfinished answers count as incorrect.</p>
+          <p>We used public data from Kang et al. (2018). The recorded study metadata lists this study as excluded from training.</p>
         </details>
       </section>
     </main>
