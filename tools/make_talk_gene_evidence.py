@@ -196,7 +196,7 @@ def main() -> None:
             "scope": "Only the selected input cells, pooled by raw UMI; no other groups, no new inference.",
             "expression": "log2(1 + pooled_gene_UMI / pooled_total_UMI * 1000000), float32",
             "rank": "Detected matrix genes only, including unmapped columns; stable descending expression rank; rank_pct = 100 * (1 - pr), pr = float32(1 - zero_based_rank / max(Ndet - 1, 1)).",
-            "rank_interval": "Best and worst rank_pct of the entire tied float32 expression block. Never score a boundary-crossing tie as a definite band.",
+            "rank_interval": "Best and worst rank_pct of the entire tied float32 expression block. Grading policy is defined separately in gene-claims.json.",
             "bands": [
                 {"label": "Top 3%", "pr_min_inclusive": 0.97, "pr_max_exclusive": 1.01},
                 {"label": "3–10%", "pr_min_inclusive": 0.90, "pr_max_exclusive": 0.97},

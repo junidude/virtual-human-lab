@@ -42,11 +42,16 @@ class ClaimTests(unittest.TestCase):
     def test_absent_rank_claim_is_red_not_yellow(self):
         self.assertEqual(self.parse("In the top 3% of the genes detected here: GSK3B.")[0]['status'], 'incorrect')
 
-    def test_ties_crossing_boundary_are_not_false_certainty(self):
+    def test_ties_overlapping_claimed_band_are_accepted(self):
         claim = {'kind': 'rank', 'range': [10, 25]}
-        self.assertEqual(score(claim, evidence(interval=(9.73, 12.24)), 8, 8), ('unscored', 'tie_boundary'))
+        self.assertEqual(score(claim, evidence(interval=(9.73, 12.24)), 8, 8), ('correct', 'tie_overlap'))
         self.assertEqual(score(claim, evidence(interval=(11., 12.)), 8, 8)[0], 'correct')
         self.assertEqual(score(claim, evidence(interval=(3., 9.)), 8, 8)[0], 'rank_mismatch')
+        self.assertEqual(score(claim, evidence(interval=(24., 27.)), 8, 8), ('correct', 'tie_overlap'))
+        self.assertEqual(score(claim, evidence(interval=(2., 90.)), 8, 8), ('correct', 'tie_overlap'))
+        self.assertEqual(score(claim, evidence(interval=(25., 27.)), 8, 8)[0], 'correct')
+        self.assertEqual(score(claim, evidence(interval=(9., 10.)), 8, 8)[0], 'rank_mismatch')
+        self.assertEqual(score(claim, evidence(interval=(26., 27.)), 8, 8)[0], 'rank_mismatch')
 
     def test_band_boundaries(self):
         for pct, correct_band in [(0, [0,3]), (3, [0,3]), (10, [3,10]), (25, [10,25])]:
@@ -123,7 +128,7 @@ class FrozenDemoTests(unittest.TestCase):
         data=json.loads((DATA/'gene-claims.json').read_text())['answers']['SFT:b_ctrl:8']['mentions']
         for gene, kind, status in [('GSK3B','absent','correct'),('UTP11','absent','incorrect'),
                                    ('HLA-B','rank','correct'),('HLA-DRB1','rank','rank_mismatch'),
-                                   ('NDUFA4','rank','unscored')]:
+                                   ('NDUFA4','rank','correct')]:
             m=next(m for m in data if m['gene']==gene and m['kind']==kind)
             self.assertEqual(m['status'],status)
 

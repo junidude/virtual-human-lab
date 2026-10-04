@@ -88,13 +88,15 @@ are preserved; the overview's reweighting controls are a separate what-if calcul
 TALK colors each gene mention by its claim in context: green for a supported claim, red for
 a contradicted detection/count claim, yellow for a detected gene outside the claimed rank band.
 Correct statements of non-detection are green. Generic examples, corpus comparisons, unknown
-gene mappings, ambiguous tied ranks and unresolved clauses remain gray. This evaluates gene
+gene mappings and unresolved clauses remain gray. This evaluates gene
 expression claims, not the full biological reasoning or the final cell-type prediction.
 Click a mention for its sentence, pooled raw UMI, detection count and measured rank interval.
 
 The source caption contract pools selected cells' raw UMI and ranks all detected matrix genes,
 including columns without gene symbols. Its bands are [0,3], (3,10], and (10,25] percent from
-the top; the entire tied interval must fit. Low-support captions mean 1–3 pooled UMI.
+the top. Per the owner's 2026-10-04 policy, a tied interval overlapping the claimed band is
+accepted as green; only a disjoint interval is a rank error. The evidence card explains overlap
+acceptance. Low-support captions mean 1–3 pooled UMI.
 The separate evidence and annotation files preserve `talk-demo.json` and all recorded words:
 
 ```bash

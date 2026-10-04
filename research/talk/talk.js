@@ -54,7 +54,7 @@
       match: "언급한 내용과 측정값이 일치합니다.",
       detection_mismatch: "발현 여부가 언급한 내용과 다릅니다.",
       rank_mismatch: "발현은 있지만 언급한 순위 범위 밖입니다.",
-      tie_boundary: "동률이 순위 경계에 걸쳐 있어 판정을 보류합니다.",
+      tie_overlap: "동점 순위가 주장한 구간과 겹쳐 맞음으로 처리합니다.",
       missing_gene: "유전자 매핑 또는 측정값을 확인할 수 없습니다.",
       context_only: "유전자 언급만으로 검증할 주장이 정해지지 않습니다.",
       corpus_unavailable: "Corpus 비교는 이번 채점에 포함하지 않습니다.",
@@ -70,7 +70,7 @@
     inspect: "근거 보기", close: "닫기", evidence: "Gene 채점 근거", claim: "LLM 주장", observed: "측정값",
     presence: "검출", raw: "Raw UMI · 합계", rank: "실제 순위", tier: "구간", missing: "데이터 없음", notDetected: "미검출", noRank: "—",
     counts: (k, n) => `${k} / ${n} cells`, top: (n) => `상위 ${n}%`, range: (a, b) => `상위 ${a}–${b}%`,
-    rankNote: "선택한 세포의 raw count 합계로, 검출된 유전자 안에서 계산합니다. 범위는 동률입니다.",
+    rankNote: "선택한 세포의 raw count 합계 기준입니다. 동점 범위가 주장한 구간과 겹치면 맞음으로 처리합니다.",
   } : {
     verdict: { correct: "Correct", incorrect: "Wrong", rank_mismatch: "Rank wrong", unscored: "Not graded" },
     kind: { rank: "Expression rank", absent: "Not expressed", present: "Expressed", majority: "Detected in most cells", minority: "Detected in half or fewer", log2cpm: "log2(CPM)", low_support: "Low raw count", corpus: "Corpus comparison", context: "Context only" },
@@ -78,7 +78,7 @@
       match: "The claim matches the measured expression.",
       detection_mismatch: "The claim disagrees with whether the gene was detected.",
       rank_mismatch: "The gene is expressed, but outside the claimed rank range.",
-      tie_boundary: "Tied genes cross the rank boundary; no verdict.",
+      tie_overlap: "The tied rank range overlaps the claimed band, so the claim is accepted.",
       missing_gene: "The gene mapping or measurement is unavailable.",
       context_only: "This mention does not make a testable expression claim.",
       corpus_unavailable: "Corpus comparisons are not included in this grading.",
@@ -94,7 +94,7 @@
     inspect: "Inspect evidence", close: "Close", evidence: "Gene claim evidence", claim: "LLM claim", observed: "Measured",
     presence: "Detected", raw: "Raw UMI · total", rank: "Actual rank", tier: "Tier", missing: "No data", notDetected: "Not detected", noRank: "—",
     counts: (k, n) => `${k} / ${n} cells`, top: (n) => `Top ${n}%`, range: (a, b) => `Top ${a}–${b}%`,
-    rankNote: "Ranked by summed raw counts across the selected cells, among detected genes. Ranges indicate ties.",
+    rankNote: "Ranked among detected genes by summed raw counts. A tied range overlapping the claimed band is accepted.",
   };
   const VERDICTS = ["correct", "incorrect", "rank_mismatch", "unscored"];
   let D = null;

@@ -130,13 +130,14 @@ def score(claim: dict, evidence: dict | None, scope: int, total: int) -> tuple[s
         low, high = claim["range"]
         best, worst = interval
         eps = 1e-5
-        # Match the caption contract: [0,3], (3,10], (10,25].
+        # Retain caption bands, but accept any overlapping tie per the owner's
+        # 2026-10-04 grading policy. Only disjoint intervals are rank errors.
         lower_inside = best > low + eps if low else best >= -eps
         if lower_inside and worst <= high + eps:
             return "correct", "match"
         if best > high + eps or (low and worst <= low + eps):
             return "rank_mismatch", "rank_mismatch"
-        return "unscored", "tie_boundary"
+        return "correct", "tie_overlap"
     if kind == "absent":
         correct = raw == 0
     elif kind == "present":
@@ -209,7 +210,8 @@ def main() -> None:
               "evidence_sha256": sha(args.evidence), "templates_sha256": sha(TEMPLATES),
               "methods": {"scope": "Gene expression assertions, not overall biological reasoning or final cell-type accuracy.",
                           "rank": "Pooled raw UMI; descending rank among detected input-matrix genes. Top% = 100*rank/(Ndet-1).",
-                          "bands": "[0,3], (3,10], (10,25]. Boundary-spanning ties are ungraded.",
+                          "bands": "[0,3], (3,10], (10,25]. A tied rank interval overlapping the claimed band is accepted; only disjoint intervals are rank errors.",
+                          "tie_policy": "Owner-requested permissive overlap rule, 2026-10-04. Acceptance means compatible with the tied ranks, not uniquely within that band.",
                           "numeric": "log2(1+1e6*pooled_gene_UMI/pooled_total_UMI); tolerance 0.00501 for two-decimal claims.",
                           "low_support": "1–3 pooled raw UMI, matching the original caption contract.",
                           "ungraded": "Generic examples, checking-for lists, unresolved clauses, mismatched group size, missing mappings and corpus-relative assertions.",
