@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Transcriptome Models | Virtual Human Lab</title>
-    <meta name="description" content="단일세포 모델 6종과 bulk RNA 모델 4종에서 유전자 발현을 읽는 능력과 생물학적 과제의 성능을 비교합니다.">
+    <meta name="description" content="학습 초기에 측정한 LogME로 RNA 모델의 최종 생물학적 과제 순위를 얼마나 잘 가늠할 수 있는지 살펴봅니다.">
     <meta property="og:title" content="Transcriptome Models | Virtual Human Lab">
-    <meta property="og:description" content="단일세포 모델 6종과 bulk RNA 모델 4종에서 유전자 발현을 읽는 능력과 생물학적 과제의 성능을 비교합니다.">
+    <meta property="og:description" content="학습 초기에 측정한 LogME로 RNA 모델의 최종 생물학적 과제 순위를 얼마나 잘 가늠할 수 있는지 살펴봅니다.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.virtualhumanlab.com/research/transcriptome-models/ko/">
     <meta property="og:locale" content="ko_KR">
@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260922-recordings-7e8d80b6a2">
     <link rel="stylesheet" href="/research/pbisc-diffusion/interactive-figures.css?v=20260920-1">
     <link rel="stylesheet" href="/research/transcriptome-models/explorer.css?v=20261120-2">
+    <link rel="stylesheet" href="/research/transcriptome-models/checkpoint-explorer.css?v=20261121-1">
+    <script src="/research/transcriptome-models/checkpoint-explorer.js?v=20261121-1" defer></script>
     <script src="/research/transcriptome-models/explorer.js?v=20261120-2" defer></script>
   </head>
   <body>
@@ -45,20 +47,127 @@
       <header class="page-head">
         <a href="/research/ko/#transcriptome-models" class="back">← 연구</a>
         <h1>Transcriptome Models</h1>
-        <p>유전자 발현을 잘 읽는 모델은 세포 유형이나 약물 반응도 더 잘 예측할까요?</p>
-        <p class="meta">단일세포 모델 6종 · bulk RNA 모델 4종 · 생물학적 과제 5개</p>
+        <p>학습 2만 5천 스텝에서 LogME가 높은 모델일수록 최종 성능도 높은 경향이 기존 데이터셋 5개 모두와 추가 데이터셋 9개 중 8개에서 나타났습니다.</p>
+        <p class="meta">체크포인트 4개 · 기존 데이터셋 5개와 추가 데이터셋 9개</p>
       </header>
 
       <nav class="trajectory-tabs" aria-label="연구 탐색">
-        <a href="#rankings">모델 순위</a>
+        <a href="#checkpoint-explorer">체크포인트 LogME</a>
+        <a href="#held-out">조기 모델 선택</a>
+        <a href="#rankings">유전자 발현 검사</a>
         <a href="#findings">연구 결과</a>
         <a href="#methods-title">방법</a>
       </nav>
 
+      <section class="trajectory-study" id="checkpoint-explorer" aria-labelledby="checkpoint-title">
+        <div class="trajectory-study-head">
+          <div>
+            <h2 id="checkpoint-title">초기 LogME로 최종 성능 순위 예측</h2>
+            <p class="trajectory-short-note">체크포인트마다 모델을 고정하고, 그 모델이 뽑은 특징이 과제의 학습용 정답을 얼마나 잘 설명하는지 LogME로 점수를 매겼습니다. 체크포인트를 골라 당시의 모델 순위와 최종 평가 순위를 비교해 보세요.</p>
+          </div>
+        </div>
+        <div id="checkpoint-fallback" class="tm-fallback">
+          <p>Segerstolpe 세포 유형 분류에서 모델 6종의 LogME와 최종 성능 간 순위 상관은 학습 전 −0.14에서 2만 5천 스텝 후 +0.83으로 바뀌었습니다.</p>
+          <noscript><p>다른 과제와 체크포인트를 선택하려면 JavaScript를 켜 주세요.</p></noscript>
+        </div>
+        <div id="checkpoint-interactive" class="pbx" hidden>
+          <div class="ck-card">
+            <div class="ck-top">
+              <div>
+                <h3>학습 단계별 순위 일치도</h3>
+                <p>체크포인트를 바꿔도 비교 기준인 최종 성능 점수는 같습니다.</p>
+              </div>
+              <label class="ck-task" for="checkpoint-task">데이터셋과 생물학적 과제
+                <select id="checkpoint-task">
+                  <optgroup label="기존 데이터셋">
+                    <option value="tabula" data-metric="macro-F1">Tabula Sapiens · 세포 유형</option>
+                    <option value="adamson" data-metric="Pearson r">Adamson · 유전자 교란</option>
+                    <option value="norman" data-metric="Pearson r">Norman · 유전자 교란</option>
+                    <option value="tcga" data-metric="macro-F1">TCGA · 암 유형</option>
+                    <option value="panacea" data-metric="Pearson r">PANACEA · 약물 반응</option>
+                  </optgroup>
+                  <optgroup label="추가 데이터셋">
+                    <option value="segerstolpe" data-metric="macro-F1" selected>Segerstolpe · 세포 유형</option>
+                    <option value="muraro" data-metric="macro-F1">Muraro · 세포 유형</option>
+                    <option value="darmanis" data-metric="macro-F1">Darmanis · 세포 유형</option>
+                    <option value="met500" data-metric="macro-F1">MET500 · 암 유형</option>
+                    <option value="pog570" data-metric="macro-F1">POG570 · 암 유형</option>
+                    <option value="replogle_rpe1" data-metric="Pearson r">Replogle RPE1 · 유전자 교란</option>
+                    <option value="replogle_k562_essential" data-metric="Pearson r">Replogle K562 Essential · 유전자 교란</option>
+                    <option value="nadig_hepg2" data-metric="Pearson r">Nadig HepG2 · 유전자 교란</option>
+                    <option value="gdpx2" data-metric="Pearson r">GDPx2 · 약물 반응</option>
+                  </optgroup>
+                </select>
+              </label>
+            </div>
+            <div class="ck-grid">
+              <fieldset class="ck-timeline">
+                <legend>학습 체크포인트</legend>
+                <div class="ck-plot" aria-hidden="true">
+                  <div class="ck-gridlines"><span>+1</span><span>0</span><span>−1</span></div>
+                  <div class="ck-graph">
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path id="checkpoint-curve" vector-effect="non-scaling-stroke"/></svg>
+                    <div id="checkpoint-markers"></div>
+                  </div>
+                </div>
+                <div class="ck-stages">
+                    <label><input id="ck-stage-untrained" type="radio" name="checkpoint-stage" value="untrained"><span>초기화<small data-rho="untrained"></small></span></label>
+                    <label><input id="ck-stage-25k" type="radio" name="checkpoint-stage" value="25k" checked><span><span class="ck-full">2.5만 스텝</span><span class="ck-short">2.5만</span><small data-rho="25k"></small></span></label>
+                    <label><input id="ck-stage-50k" type="radio" name="checkpoint-stage" value="50k"><span><span class="ck-full">5만 스텝</span><span class="ck-short">5만</span><small data-rho="50k"></small></span></label>
+                    <label><input id="ck-stage-final" type="radio" name="checkpoint-stage" value="final"><span>최종<small data-rho="final"></small></span></label>
+                </div>
+              </fieldset>
+              <div class="ck-result" role="status" aria-live="polite" aria-atomic="true">
+                <p class="ck-metric-label">스피어만 순위 상관</p>
+                <strong id="checkpoint-rho"></strong>
+                <p id="checkpoint-interpretation"></p>
+                <p class="ck-pick" id="checkpoint-pick"></p>
+              </div>
+            </div>
+            <details class="ck-values">
+              <summary>이 체크포인트의 전체 모델 순위 보기</summary>
+              <table>
+                <caption class="sr-only" id="checkpoint-caption"></caption>
+                <thead><tr><th scope="col">LogME<br>순위</th><th scope="col">모델</th><th scope="col">LogME</th><th scope="col">최종 순위</th><th scope="col" id="checkpoint-outcome"></th></tr></thead>
+                <tbody id="checkpoint-rows"></tbody>
+              </table>
+              <p class="ck-rounding">순위는 반올림 전 점수로 계산했습니다. 표는 소수 셋째 자리까지 표시합니다.</p>
+            </details>
+          </div>
+          <p class="trajectory-short-note" id="checkpoint-scope">각 점은 데이터셋 하나에서 단일세포 모델 6종 또는 bulk RNA 모델 4종을 비교한 값입니다. 모델마다 세 번 측정한 점수의 평균으로 순위를 매겼습니다. 초기화는 학습 전 상태이며, 최종 체크포인트는 학습 종료 시점의 비교 기준입니다.</p>
+        </div>
+        <p class="trajectory-short-note">이 시점에 LogME 1위 모델과 최종 성능 1위 모델이 일치한 데이터셋은 14개 중 7개였습니다. GDPx2에서는 두 순위가 반대 방향으로 움직였습니다(ρ = −0.80).</p>
+      </section>
+
+      <section class="trajectory-study ck-selection" id="held-out" aria-labelledby="held-out-title">
+        <div class="trajectory-study-head"><div>
+          <h2 id="held-out-title">초기에 한 모델을 고르면 최종 몇 위일까요?</h2>
+          <p class="trajectory-short-note">각 과제의 학습용 데이터에서 LogME가 가장 높은 모델을 고른 뒤, 따로 남겨 둔 평가 데이터에서 그 모델의 최종 순위를 확인했습니다. 평균 순위가 1에 가까울수록 잘 고른 것입니다.</p>
+        </div></div>
+        <div class="ck-selection-card">
+          <table>
+            <caption>선택한 모델의 평균 최종 순위</caption>
+            <thead><tr><th scope="col">기존 데이터셋</th><th scope="col">학습 전에 선택</th><th scope="col">2만 5천 단계에서 선택</th></tr></thead>
+            <tbody>
+              <tr data-dataset="tabula"><th scope="row">Tabula Sapiens <small>(6종)</small></th><td>1.71</td><td>1.29</td></tr>
+              <tr data-dataset="adamson"><th scope="row">Adamson <small>(6종)</small></th><td>3.33</td><td>2.33</td></tr>
+              <tr data-dataset="norman"><th scope="row">Norman <small>(6종)</small></th><td>3.00</td><td>2.00</td></tr>
+              <tr data-dataset="tcga"><th scope="row">TCGA <small>(4종)</small></th><td>1.07</td><td>1.07</td></tr>
+              <tr data-dataset="panacea"><th scope="row">PANACEA <small>(4종)</small></th><td>1.97</td><td>2.06</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <details class="trajectory-archive">
+          <summary>평가 데이터를 다르게 나누면 어떻게 될까요?</summary>
+          <p>기존 비교에서 2만 5천 단계에 모델을 고르면 세 단일세포 데이터셋 모두에서 평균 순위가 좋아졌습니다. TCGA는 같았고 PANACEA는 조금 낮아졌습니다. Tabula Sapiens의 순위는 조직별·평가 실행별로 다섯 폴드의 평균 성능을 사용했습니다.</p>
+          <p>Adamson과 Norman에서는 처음에 데이터를 한 번씩 나눴습니다. 평가 데이터를 바꿔 가며 다섯 폴드에서 선택을 반복하자 결과도 달라졌습니다. 학습 전과 2만 5천 단계의 선택을 비교하면 여섯 모델 중 Adamson은 평균 3.67위에서 4.33위로, Norman은 3.47위에서 4.07위로 내려갔습니다.</p>
+        </details>
+      </section>
+
       <section class="trajectory-study tm-explorer" id="rankings" aria-labelledby="explorer-title">
         <div class="trajectory-study-head">
           <div>
-            <h2 id="explorer-title">모델 순위 비교</h2>
+            <h2 id="explorer-title">유전자 발현 검사와 생물학적 과제 순위 비교</h2>
             <p class="trajectory-short-note">생물학적 과제와 발현 검사를 고른 뒤 모델 이름을 누르면 두 순위에서 그 모델을 따라갈 수 있습니다.</p>
           </div>
         </div>
@@ -138,6 +247,12 @@
 
       <section class="trajectory-methods" aria-labelledby="methods-title">
         <h2 id="methods-title">방법</h2>
+        <details class="trajectory-method-downloads" id="checkpoint-method">
+          <summary>체크포인트 예측을 해석하는 방법</summary>
+          <p>LogME는 각 모델이 RNA를 표현한 값과 특정 과제의 정답 또는 반응값으로 계산합니다. 그래서 같은 체크포인트도 과제가 달라지면 순위가 달라질 수 있습니다. 각 시점에서 학습 방식별로 세 번의 실행을 평균하고, LogME 순위와 실제 최종 성능 순위가 얼마나 일치하는지 스피어만 순위상관계수(ρ)로 계산했습니다.</p>
+          <p>학습 전, 2만 5천, 5만 단계는 사전학습의 진행 시점입니다. ‘최종’은 각 실행에서 선택한 체크포인트를 가리킵니다. 이 결과는 완료된 실험을 되짚어 비교한 것입니다. 추가 데이터셋 9개의 네 시점에서 얻은 상관계수 36개에 다중비교 보정을 적용했을 때 5% 유의수준에서 통계적으로 유의한 개별 상관은 없었습니다.</p>
+          <p><a class="link" href="https://proceedings.mlr.press/v139/you21b.html">LogME 계산법 · You 외, ICML 2021</a></p>
+        </details>
         <details class="trajectory-method-downloads tm-method">
           <summary>점수 계산 방법</summary>
           <p>모델 이름은 RNA 인코더의 학습 방식을 나타냅니다. 단일세포 모델끼리, bulk 모델끼리는 같은 데이터로 학습했습니다. 최종 점수는 세 번의 실험을 평균한 값입니다. 사전학습 증감은 매 실험에서 같은 모델의 학습 전 점수를 뺀 후 세 차이를 평균한 값입니다. 학습 전후 모두 과제의 답을 예측하는 판독기를 따로 훈련했습니다.</p>

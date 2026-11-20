@@ -16,7 +16,7 @@ Then open `http://localhost:4173`.
 - `/research/` and `/research/ko/` — PBISC, Transcriptome Models, RNA-LLM and case2RL
 - `/research/pbisc-diffusion/` and `/research/pbisc-diffusion/ko/` — recorded diffusion sampling video with fixed PCA and UMAP views
 - `/research/pbisc-diffusion/one-cell/` and its `/ko/` page — interactive step-by-step view of one generated cell
-- `/research/transcriptome-models/` and its `/ko/` page — compare model rankings on gene expression and biological tasks
+- `/research/transcriptome-models/` and its `/ko/` page — compare checkpoint LogME with final task ranks across 14 datasets, explore held-out model selection and compare expression tests with biological outcomes
 - `/research/talk/` and `/research/talk/ko/` — TALK playground: recorded RNA-LLM answers for real cells (data from `python tools/make_talk_demo.py`)
 - `/research/case2rl/` and `/research/case2rl/ko/` — case2RL: case-report PDFs, diagnostic environments, pilot rollouts and review
 - `/research/case2rl/review/` and its `/ko/` page — two recorded rollouts, blinded labels, turn-level review, browser snapshots and JSON import/export

@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Transcriptome Models | Virtual Human Lab</title>
-    <meta name="description" content="Explore how six single-cell and four bulk RNA models rank on gene expression tests and biological predictions.">
+    <meta name="description" content="Explore whether LogME measured early in training ranks RNA models in the same order as their final biological task scores.">
     <meta property="og:title" content="Transcriptome Models | Virtual Human Lab">
-    <meta property="og:description" content="Explore how six single-cell and four bulk RNA models rank on gene expression tests and biological predictions.">
+    <meta property="og:description" content="Explore whether LogME measured early in training ranks RNA models in the same order as their final biological task scores.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.virtualhumanlab.com/research/transcriptome-models/">
     <meta property="og:locale" content="en_US">
@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260922-recordings-7e8d80b6a2">
     <link rel="stylesheet" href="/research/pbisc-diffusion/interactive-figures.css?v=20260920-1">
     <link rel="stylesheet" href="/research/transcriptome-models/explorer.css?v=20261120-2">
+    <link rel="stylesheet" href="/research/transcriptome-models/checkpoint-explorer.css?v=20261121-1">
+    <script src="/research/transcriptome-models/checkpoint-explorer.js?v=20261121-1" defer></script>
     <script src="/research/transcriptome-models/explorer.js?v=20261120-2" defer></script>
   </head>
   <body>
@@ -45,20 +47,127 @@
       <header class="page-head">
         <a href="/research/#transcriptome-models" class="back">← Research</a>
         <h1>Transcriptome Models</h1>
-        <p>Can models that read gene expression well also predict cell types or drug responses?</p>
-        <p class="meta">6 single-cell models · 4 bulk RNA models · 5 biological tasks</p>
+        <p>At 25,000 steps, higher LogME tended to go with better final performance on all five original datasets and eight of nine additional datasets.</p>
+        <p class="meta">4 checkpoints · 5 original datasets and 9 additional datasets</p>
       </header>
 
       <nav class="trajectory-tabs" aria-label="Explore the study">
-        <a href="#rankings">Rankings</a>
+        <a href="#checkpoint-explorer">Checkpoint LogME</a>
+        <a href="#held-out">Early model selection</a>
+        <a href="#rankings">Gene expression tests</a>
         <a href="#findings">Findings</a>
         <a href="#methods-title">Methods</a>
       </nav>
 
+      <section class="trajectory-study" id="checkpoint-explorer" aria-labelledby="checkpoint-title">
+        <div class="trajectory-study-head">
+          <div>
+            <h2 id="checkpoint-title">Predict the final ranking with early LogME</h2>
+            <p class="trajectory-short-note">At each checkpoint, LogME scores how well a frozen model’s features fit a task’s training labels or targets. Pick a checkpoint to see how its model ranking compares with the final test results.</p>
+          </div>
+        </div>
+        <div id="checkpoint-fallback" class="tm-fallback">
+          <p>On the Segerstolpe cell-type dataset, the rank correlation between LogME and final performance across six models was −0.14 before training and +0.83 after 25,000 steps.</p>
+          <noscript><p>Enable JavaScript to switch tasks and checkpoints.</p></noscript>
+        </div>
+        <div id="checkpoint-interactive" class="pbx" hidden>
+          <div class="ck-card">
+            <div class="ck-top">
+              <div>
+                <h3>Rank agreement through training</h3>
+                <p>The final performance scores stay fixed as you change checkpoints.</p>
+              </div>
+              <label class="ck-task" for="checkpoint-task">Dataset and biological task
+                <select id="checkpoint-task">
+                  <optgroup label="Original datasets">
+                    <option value="tabula" data-metric="macro-F1">Tabula Sapiens · Cell type</option>
+                    <option value="adamson" data-metric="Pearson r">Adamson · Genetic perturbation</option>
+                    <option value="norman" data-metric="Pearson r">Norman · Genetic perturbation</option>
+                    <option value="tcga" data-metric="macro-F1">TCGA · Cancer type</option>
+                    <option value="panacea" data-metric="Pearson r">PANACEA · Drug response</option>
+                  </optgroup>
+                  <optgroup label="Additional datasets">
+                    <option value="segerstolpe" data-metric="macro-F1" selected>Segerstolpe · Cell type</option>
+                    <option value="muraro" data-metric="macro-F1">Muraro · Cell type</option>
+                    <option value="darmanis" data-metric="macro-F1">Darmanis · Cell type</option>
+                    <option value="met500" data-metric="macro-F1">MET500 · Cancer type</option>
+                    <option value="pog570" data-metric="macro-F1">POG570 · Cancer type</option>
+                    <option value="replogle_rpe1" data-metric="Pearson r">Replogle RPE1 · Genetic perturbation</option>
+                    <option value="replogle_k562_essential" data-metric="Pearson r">Replogle K562 Essential · Genetic perturbation</option>
+                    <option value="nadig_hepg2" data-metric="Pearson r">Nadig HepG2 · Genetic perturbation</option>
+                    <option value="gdpx2" data-metric="Pearson r">GDPx2 · Drug response</option>
+                  </optgroup>
+                </select>
+              </label>
+            </div>
+            <div class="ck-grid">
+              <fieldset class="ck-timeline">
+                <legend>Training checkpoint</legend>
+                <div class="ck-plot" aria-hidden="true">
+                  <div class="ck-gridlines"><span>+1</span><span>0</span><span>−1</span></div>
+                  <div class="ck-graph">
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path id="checkpoint-curve" vector-effect="non-scaling-stroke"/></svg>
+                    <div id="checkpoint-markers"></div>
+                  </div>
+                </div>
+                <div class="ck-stages">
+                    <label><input id="ck-stage-untrained" type="radio" name="checkpoint-stage" value="untrained"><span><span class="ck-full">Initialization</span><span class="ck-short">Start</span><small data-rho="untrained"></small></span></label>
+                    <label><input id="ck-stage-25k" type="radio" name="checkpoint-stage" value="25k" checked><span><span class="ck-full">25k steps</span><span class="ck-short">25k</span><small data-rho="25k"></small></span></label>
+                    <label><input id="ck-stage-50k" type="radio" name="checkpoint-stage" value="50k"><span><span class="ck-full">50k steps</span><span class="ck-short">50k</span><small data-rho="50k"></small></span></label>
+                    <label><input id="ck-stage-final" type="radio" name="checkpoint-stage" value="final"><span>Final<small data-rho="final"></small></span></label>
+                </div>
+              </fieldset>
+              <div class="ck-result" role="status" aria-live="polite" aria-atomic="true">
+                <p class="ck-metric-label">Spearman rank correlation</p>
+                <strong id="checkpoint-rho"></strong>
+                <p id="checkpoint-interpretation"></p>
+                <p class="ck-pick" id="checkpoint-pick"></p>
+              </div>
+            </div>
+            <details class="ck-values">
+              <summary>Compare every recipe at this checkpoint</summary>
+              <table>
+                <caption class="sr-only" id="checkpoint-caption"></caption>
+                <thead><tr><th scope="col">LogME<br>rank</th><th scope="col">Recipe</th><th scope="col">LogME</th><th scope="col">Final rank</th><th scope="col" id="checkpoint-outcome"></th></tr></thead>
+                <tbody id="checkpoint-rows"></tbody>
+              </table>
+              <p class="ck-rounding">Ranks use the unrounded scores. The table shows three decimal places.</p>
+            </details>
+          </div>
+          <p class="trajectory-short-note" id="checkpoint-scope">Each point compares six single-cell or four bulk RNA recipes within one dataset, using each recipe’s mean scores across three runs. Initialization precedes training. The final checkpoint gives an end-of-training reference.</p>
+        </div>
+        <p class="trajectory-short-note">At 25,000 steps, the top LogME recipe finished first on 7 of 14 datasets. On GDPx2 the rankings ran in opposite directions (ρ = −0.80).</p>
+      </section>
+
+      <section class="trajectory-study ck-selection" id="held-out" aria-labelledby="held-out-title">
+        <div class="trajectory-study-head"><div>
+          <h2 id="held-out-title">Which model would you pick early?</h2>
+          <p class="trajectory-short-note">We picked the model with the highest LogME on the training portion of each task, then checked its final performance on held-out data. A mean rank closer to 1 is better.</p>
+        </div></div>
+        <div class="ck-selection-card">
+          <table>
+            <caption>Mean final rank of the selected model</caption>
+            <thead><tr><th scope="col">Original dataset</th><th scope="col">Pick before training</th><th scope="col">Pick at 25,000 steps</th></tr></thead>
+            <tbody>
+              <tr data-dataset="tabula"><th scope="row">Tabula Sapiens <small>(6 models)</small></th><td>1.71</td><td>1.29</td></tr>
+              <tr data-dataset="adamson"><th scope="row">Adamson <small>(6 models)</small></th><td>3.33</td><td>2.33</td></tr>
+              <tr data-dataset="norman"><th scope="row">Norman <small>(6 models)</small></th><td>3.00</td><td>2.00</td></tr>
+              <tr data-dataset="tcga"><th scope="row">TCGA <small>(4 models)</small></th><td>1.07</td><td>1.07</td></tr>
+              <tr data-dataset="panacea"><th scope="row">PANACEA <small>(4 models)</small></th><td>1.97</td><td>2.06</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <details class="trajectory-archive">
+          <summary>How much did the choice depend on the data split?</summary>
+          <p>In the original comparisons, choosing at 25,000 steps improved the mean rank on all three single-cell datasets. TCGA stayed level and PANACEA slipped slightly. For Tabula Sapiens, the ranks use five-fold mean performance within each tissue and evaluation run.</p>
+          <p>Adamson and Norman originally used one split each. Repeating selection across five held-out splits changed the result. From initialization to 25,000 steps the mean rank moved from 3.67 to 4.33 on Adamson and from 3.47 to 4.07 on Norman, out of six models.</p>
+        </details>
+      </section>
+
       <section class="trajectory-study tm-explorer" id="rankings" aria-labelledby="explorer-title">
         <div class="trajectory-study-head">
           <div>
-            <h2 id="explorer-title">Compare the rankings</h2>
+            <h2 id="explorer-title">Compare gene expression and biological rankings</h2>
             <p class="trajectory-short-note">Choose a task and a gene expression test. Select a model to follow it across the two rankings.</p>
           </div>
         </div>
@@ -138,6 +247,12 @@
 
       <section class="trajectory-methods" aria-labelledby="methods-title">
         <h2 id="methods-title">Methods</h2>
+        <details class="trajectory-method-downloads" id="checkpoint-method">
+          <summary>How to interpret the checkpoint prediction</summary>
+          <p>LogME uses a frozen model’s representation and the labels or response values for a particular task. The same checkpoint can therefore rank differently on two tasks. At each stage, we averaged three runs for each training recipe and compared its LogME rank with the measured final performance rank using Spearman’s ρ.</p>
+          <p>Initialization, 25,000 and 50,000 are training steps. “Final” refers to the checkpoint selected for each training run. The comparisons are retrospective. Across the 36 checkpoint tests on the nine additional datasets, no individual correlation met the 5% threshold after correction for multiple comparisons.</p>
+          <p><a class="link" href="https://proceedings.mlr.press/v139/you21b.html">LogME method · You et al., ICML 2021</a></p>
+        </details>
         <details class="trajectory-method-downloads tm-method">
           <summary>How the scores were calculated</summary>
           <p>The model names describe different ways of training an RNA encoder. Within each RNA modality, the models trained on the same corpus. Each score is the mean of three runs. For pretraining gain, we first subtract the matching untrained score in each run, then average the three differences. Both versions use a fitted readout for the task.</p>

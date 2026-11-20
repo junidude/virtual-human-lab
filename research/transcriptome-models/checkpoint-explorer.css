@@ -1,0 +1,216 @@
+#checkpoint-explorer .trajectory-short-note { max-width: 88ch; }
+
+.ck-card {
+  overflow: hidden;
+  border: 1px solid var(--pbx-line);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.ck-top, .ck-grid { padding: clamp(16px, 2.5vw, 28px); }
+.ck-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  border-bottom: 1px solid var(--pbx-line);
+}
+.ck-top h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; }
+.ck-top p {
+  margin-top: 5px;
+  color: var(--pbx-muted);
+  font-size: .94rem;
+}
+.ck-task {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  color: var(--pbx-muted);
+  font-size: .875rem;
+  font-weight: 500;
+}
+.pbx .ck-task select {
+  width: 100%;
+  min-width: 0;
+  min-height: 40px;
+  padding: 6px 8px;
+  border: 1px solid var(--pbx-line);
+  border-radius: 9px;
+  color: var(--pbx-ink);
+  background: #fff;
+  font: inherit;
+}
+.ck-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+  align-items: stretch;
+  gap: clamp(18px, 3vw, 40px);
+}
+.ck-timeline { min-width: 0; margin: 0; padding: 0; border: 0; }
+.ck-timeline legend, .ck-metric-label {
+  padding: 0;
+  color: var(--ink-2);
+  font-size: .875rem;
+  font-weight: 600;
+}
+.ck-plot {
+  --axis-space: 24px;
+  position: relative;
+  height: clamp(105px, 11vw, 150px);
+  margin: 10px 0 5px;
+}
+.ck-gridlines, .ck-graph { position: absolute; inset: 8px 0 8px var(--axis-space); }
+.ck-gridlines span {
+  position: absolute;
+  width: calc(100% + var(--axis-space));
+  left: calc(-1 * var(--axis-space));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: .78rem;
+  font-variant-numeric: tabular-nums;
+}
+.ck-gridlines span::after {
+  content: "";
+  width: calc(100% - var(--axis-space));
+  border-top: 1px solid var(--pbx-line);
+}
+.ck-gridlines span:nth-child(2) { top: 50%; }
+.ck-gridlines span:nth-child(2)::after { border-color: #9fafbb; border-top-style: dashed; }
+.ck-gridlines span:last-child { top: 100%; }
+
+.ck-graph svg { width: 100%; height: 100%; overflow: visible; }
+#checkpoint-curve { fill: none; stroke: var(--pbx-blue); stroke-width: 2.5px; }
+.ck-marker {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.ck-marker::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--pbx-blue);
+  border-radius: 50%;
+  background: #fff;
+}
+.ck-marker.is-current::after {
+  width: 14px;
+  height: 14px;
+  background: var(--pbx-blue);
+  box-shadow: 0 0 0 4px var(--blue-soft);
+}
+.ck-stages {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-left: 24px;
+}
+.ck-stages label { position: relative; text-align: center; cursor: pointer; }
+.ck-stages input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.ck-stages label > span {
+  display: block;
+  margin: 0 2px;
+  padding: 6px 1px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  font-size: .9rem;
+  font-weight: 600;
+}
+.ck-short { display: none; }
+.ck-stages small {
+  display: block;
+  color: var(--pbx-muted);
+  font-size: .81rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.ck-stages label:hover > span { background: var(--pbx-soft); }
+.ck-stages input:checked + span { border-color: #93b7f7; background: var(--blue-soft); }
+.ck-stages input:focus-visible + span { outline: 2px solid var(--pbx-blue); outline-offset: 1px; }
+.ck-result {
+  align-self: stretch;
+  padding: 16px 20px;
+  border-radius: var(--radius);
+  background: var(--pbx-soft);
+}
+#checkpoint-rho {
+  display: block;
+  margin: 3px 0 5px;
+  color: var(--ink);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -.04em;
+  line-height: 1.12;
+  font-variant-numeric: tabular-nums;
+}
+#checkpoint-interpretation, .ck-pick { font-size: .94rem; }
+.ck-pick { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--pbx-line); }
+.ck-values { border-top: 1px solid var(--pbx-line); }
+.ck-values summary {
+  padding: 14px clamp(16px, 2.5vw, 28px);
+  color: var(--ink-2);
+  font-size: .94rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.ck-values table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.ck-values th, .ck-values td {
+  padding: 7px 12px;
+  border-top: 1px solid var(--pbx-line);
+  font-size: .875rem;
+  text-align: center;
+}
+.ck-rounding { padding: 8px 12px; color: var(--pbx-muted); font-size: .8rem; }
+.ck-values thead { color: var(--pbx-muted); background: var(--pbx-soft); }
+.ck-values th { font-weight: 600; }
+.ck-values tbody tr:first-child { background: #f0f5ff; }
+.ck-values th:nth-child(2), .ck-values tbody th { text-align: start; }
+
+@media (max-width: 760px) {
+  .ck-top { flex-direction: column; align-items: stretch; }
+  .ck-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 420px) {
+  .ck-full { display: none; }
+  .ck-short { display: inline; }
+  .ck-stages label > span { font-size: .8rem; overflow-wrap: anywhere; }
+  .ck-stages small { font-size: .75rem; }
+  .ck-values th, .ck-values td { padding: 6px 3px; font-size: .8rem; overflow-wrap: anywhere; }
+}
+
+@media (forced-colors: active) {
+  #checkpoint-curve { stroke: CanvasText; }
+  .ck-marker::after { border-color: CanvasText; }
+  .ck-marker.is-current::after { border-color: Highlight; forced-color-adjust: none; background: Highlight; }
+  .ck-stages input:checked + span { outline: 2px solid Highlight; }
+}
+
+.ck-selection-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.ck-selection table { width: 100%; border-collapse: collapse; }
+.ck-selection caption { padding: 16px; color: var(--ink); font-weight: 600; text-align: start; }
+.ck-selection th, .ck-selection td {
+  padding: 9px clamp(8px, 2vw, 20px);
+  border-top: 1px solid var(--line);
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+.ck-selection th:first-child { text-align: start; }
+.ck-selection thead { background: var(--surface); }
+.ck-selection th, .ck-selection small { font-weight: 500; }
+.ck-selection small { display: inline-block; color: var(--muted); }
+.ck-selection .trajectory-archive p { max-width: 88ch; margin-top: 10px; }
+@media (max-width: 560px) {
+  .ck-selection th, .ck-selection td { font-size: .875rem; }
+}
