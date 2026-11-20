@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>연구 | Virtual Human Lab</title>
-    <meta name="description" content="개인 반응 모델을 향한 세 프로젝트: PBISC(벌크 RNA → 단일 세포), RNA-LLM(RNA를 언어 모델 토큰 하나로), case2RL(증례 보고 → 진단 환경).">
+    <meta name="description" content="개인의 생물학적 데이터를 해석하는 네 연구 프로젝트 PBISC, Transcriptome Models, RNA-LLM, case2RL을 소개합니다.">
     <meta property="og:title" content="연구 | Virtual Human Lab">
-    <meta property="og:description" content="개인 반응 모델을 향한 세 프로젝트: PBISC(벌크 RNA → 단일 세포), RNA-LLM(RNA를 언어 모델 토큰 하나로), case2RL(증례 보고 → 진단 환경).">
+    <meta property="og:description" content="개인의 생물학적 데이터를 해석하는 네 연구 프로젝트 PBISC, Transcriptome Models, RNA-LLM, case2RL을 소개합니다.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.virtualhumanlab.com/research/ko/">
     <meta property="og:locale" content="ko_KR">
@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=20260920-1">
+    <link rel="stylesheet" href="/styles.css?v=20261120-1">
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -56,11 +56,24 @@
         <div class="facts"><div class="fact"><span>질문</span><p>널리 수집되는 혈액 bulk RNA에서 유용한 single-cell RNA profile을 얻을 수 있을까?</p></div><div class="fact"><span>방법</span><p>확산 모델이 벌크 PBMC RNA-seq에서 세포 단위 카운트를 생성합니다. Inference에 같은 샘플의 single-cell 데이터는 필요하지 않습니다.</p></div><div class="fact"><span>현황</span><p>BIBM에서 원고 심사 중.</p><a class="link" href="/papers/ko/#pbisc">사본 요청 →</a></div></div>
       </section>
 
+      <section class="section section-tight" id="transcriptome-models" aria-labelledby="transcriptome-models-title">
+        <div class="feature">
+          <img src="/assets/home/transcriptome-models.svg" alt="" loading="lazy">
+          <div class="feature-body">
+            <p class="feature-kicker">02 · RNA 사전학습</p>
+            <h2 id="transcriptome-models-title">Transcriptome Models</h2>
+            <p>생물학적 과제를 바꾸면서 발현을 읽는 순위와 과제를 푸는 순위를 비교해 보세요.</p>
+            <div class="btn-group"><a class="btn btn-primary" href="/research/transcriptome-models/ko/">모델 비교하기</a></div>
+          </div>
+        </div>
+        <div class="facts"><div class="fact"><span>질문</span><p>유전자 발현을 잘 읽는다는 사실로 생물학적 과제 성능을 얼마나 설명할 수 있을까요?</p></div><div class="fact"><span>비교</span><p>단일세포 RNA 모델 6종과 bulk RNA 모델 4종을 각각 같은 구조의 사전학습 전 모델과 비교했습니다.</p></div><div class="fact"><span>결과</span><p>사전학습을 마친 모델의 점수와 사전학습으로 달라진 점수를 각각 살펴볼 수 있습니다.</p></div></div>
+      </section>
+
       <section class="section section-tight" id="rna-llm" aria-labelledby="rna-llm-title">
         <div class="feature">
           <img src="/assets/home/rna-llm.svg?v=20260919-1" alt="" loading="lazy">
           <div class="feature-body">
-            <p class="feature-kicker">02 · RNA → 토큰 하나</p>
+            <p class="feature-kicker">03 · RNA → 토큰 하나</p>
             <h2 id="rna-llm-title">RNA-LLM</h2>
             <p>언어 모델이 전사체 전체를 토큰 하나로 읽게 합니다.</p>
             <div class="btn-group"><a class="btn btn-primary" href="/research/talk/ko/">TALK 체험하기</a></div>
@@ -74,7 +87,7 @@
         <div class="feature">
           <img src="/assets/home/case2rl.svg?v=20260921-1" alt="" loading="lazy">
           <div class="feature-body">
-            <p class="feature-kicker">03 · 증례 보고 → 진단 환경</p>
+            <p class="feature-kicker">04 · 증례 보고 → 진단 환경</p>
             <h2 id="case2rl-title">case2RL</h2>
             <p>증례 보고를 단계별 진단 환경으로.</p>
             <div class="btn-group"><a class="btn btn-primary" href="/research/case2rl/ko/">프로젝트 보기</a></div>
@@ -99,7 +112,7 @@
     <footer class="site-footer">
       <div class="footer-grid">
         <div class="footer-identity"><a class="brand" href="/ko/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>Digital Biology/Virtual Biology를 연구하는 독립적인 비영리 연구 단체입니다.</p></div>
-        <div class="footer-column"><span>연구</span><a href="/research/ko/#pbisc">PBISC</a><a href="/research/ko/#rna-llm">RNA-LLM</a><a href="/research/case2rl/ko/">case2RL</a><a href="/research/pbisc-diffusion/ko/">PBISC-Diffusion</a><a href="/research/talk/ko/">TALK</a></div>
+        <div class="footer-column"><span>연구</span><a href="/research/ko/#pbisc">PBISC</a><a href="/research/transcriptome-models/ko/">Transcriptome Models</a><a href="/research/ko/#rna-llm">RNA-LLM</a><a href="/research/case2rl/ko/">case2RL</a><a href="/research/pbisc-diffusion/ko/">PBISC-Diffusion</a><a href="/research/talk/ko/">TALK</a></div>
         <div class="footer-column"><span>랩</span><a href="/papers/ko/">논문</a><a href="/blog/ko/">블로그</a><a href="/notes/ko/">노트</a><a href="/members/ko/">구성원</a></div>
         <div class="footer-column"><span>기록</span><a href="/governance/ko/">운영 체계</a><a href="/bylaws/ko/">회칙</a><a href="/research-integrity/ko/">연구 원칙</a><a href="/disclosures/ko/">공개 사항</a></div>
       </div>

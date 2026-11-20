@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Research | Virtual Human Lab</title>
-    <meta name="description" content="Three projects toward models of individual response: PBISC (bulk RNA to single cells), RNA-LLM (RNA as one language-model token) and case2RL (case reports to diagnostic environments).">
+    <meta name="description" content="Explore PBISC, Transcriptome Models, RNA-LLM and case2RL, four projects on computational models of human biology.">
     <meta property="og:title" content="Research | Virtual Human Lab">
-    <meta property="og:description" content="Three projects toward models of individual response: PBISC (bulk RNA to single cells), RNA-LLM (RNA as one language-model token) and case2RL (case reports to diagnostic environments).">
+    <meta property="og:description" content="Explore PBISC, Transcriptome Models, RNA-LLM and case2RL, four projects on computational models of human biology.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.virtualhumanlab.com/research/">
     <meta property="og:locale" content="en_US">
@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=20260920-1">
+    <link rel="stylesheet" href="/styles.css?v=20261120-1">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -56,11 +56,24 @@
         <div class="facts"><div class="fact"><span>Question</span><p>Can widely collected blood bulk RNA provide useful single-cell RNA profiles?</p></div><div class="fact"><span>Approach</span><p>A diffusion model generates cell-level counts from bulk PBMC RNA-seq, without matched single-cell data at inference.</p></div><div class="fact"><span>Status</span><p>Manuscript under review at BIBM.</p><a class="link" href="/papers/#pbisc">Request a copy →</a></div></div>
       </section>
 
+      <section class="section section-tight" id="transcriptome-models" aria-labelledby="transcriptome-models-title">
+        <div class="feature">
+          <img src="/assets/home/transcriptome-models.svg" alt="" loading="lazy">
+          <div class="feature-body">
+            <p class="feature-kicker">02 · Learning from RNA</p>
+            <h2 id="transcriptome-models-title">Transcriptome Models</h2>
+            <p>Follow the same models across two rankings as you change the biological task.</p>
+            <div class="btn-group"><a class="btn btn-primary" href="/research/transcriptome-models/">Compare models</a></div>
+          </div>
+        </div>
+        <div class="facts"><div class="fact"><span>Question</span><p>How much does reading gene expression tell us about performance on a biological task?</p></div><div class="fact"><span>Comparison</span><p>Six single-cell and four bulk RNA model recipes, each compared with its own untrained counterpart.</p></div><div class="fact"><span>Results</span><p>Compare the final scores or see how much each score changed with pretraining.</p></div></div>
+      </section>
+
       <section class="section section-tight" id="rna-llm" aria-labelledby="rna-llm-title">
         <div class="feature">
           <img src="/assets/home/rna-llm.svg?v=20260919-1" alt="" loading="lazy">
           <div class="feature-body">
-            <p class="feature-kicker">02 · RNA → one token</p>
+            <p class="feature-kicker">03 · RNA → one token</p>
             <h2 id="rna-llm-title">RNA-LLM</h2>
             <p>Let a language model read a whole transcriptome as one token.</p>
             <div class="btn-group"><a class="btn btn-primary" href="/research/talk/">Try TALK</a></div>
@@ -74,7 +87,7 @@
         <div class="feature">
           <img src="/assets/home/case2rl.svg?v=20260921-1" alt="" loading="lazy">
           <div class="feature-body">
-            <p class="feature-kicker">03 · Case reports → diagnostic environments</p>
+            <p class="feature-kicker">04 · Case reports → diagnostic environments</p>
             <h2 id="case2rl-title">case2RL</h2>
             <p>Turn case reports into step-by-step diagnostic environments.</p>
             <div class="btn-group"><a class="btn btn-primary" href="/research/case2rl/">Explore the project</a></div>
@@ -99,7 +112,7 @@
     <footer class="site-footer">
       <div class="footer-grid">
         <div class="footer-identity"><a class="brand" href="/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>Independent research on computational models of human biology.</p></div>
-        <div class="footer-column"><span>Research</span><a href="/research/#pbisc">PBISC</a><a href="/research/#rna-llm">RNA-LLM</a><a href="/research/case2rl/">case2RL</a><a href="/research/pbisc-diffusion/">PBISC-Diffusion</a><a href="/research/talk/">TALK</a></div>
+        <div class="footer-column"><span>Research</span><a href="/research/#pbisc">PBISC</a><a href="/research/transcriptome-models/">Transcriptome Models</a><a href="/research/#rna-llm">RNA-LLM</a><a href="/research/case2rl/">case2RL</a><a href="/research/pbisc-diffusion/">PBISC-Diffusion</a><a href="/research/talk/">TALK</a></div>
         <div class="footer-column"><span>Lab</span><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/notes/">Notes</a><a href="/members/">Members</a></div>
         <div class="footer-column"><span>Records</span><a href="/governance/">Governance</a><a href="/bylaws/">Bylaws</a><a href="/research-integrity/">Research practice</a><a href="/disclosures/">Disclosures</a></div>
       </div>

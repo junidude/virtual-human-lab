@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Transcriptome Models | Virtual Human Lab</title>
+    <meta name="description" content="Explore how six single-cell and four bulk RNA models rank on gene expression tests and biological predictions.">
+    <meta property="og:title" content="Transcriptome Models | Virtual Human Lab">
+    <meta property="og:description" content="Explore how six single-cell and four bulk RNA models rank on gene expression tests and biological predictions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.virtualhumanlab.com/research/transcriptome-models/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:image" content="https://www.virtualhumanlab.com/assets/og-image.png?v=20260919-1">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.virtualhumanlab.com/research/transcriptome-models/">
+    <link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/transcriptome-models/">
+    <link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/transcriptome-models/ko/">
+    <link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/transcriptome-models/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=20261120-1">
+    <link rel="stylesheet" href="/research/transcriptome-models/explorer.css">
+    <script src="/research/transcriptome-models/explorer.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Virtual Human Lab home"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation"><a href="/research/" aria-current="page">Research</a><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/members/">Members</a></nav>
+        <div class="header-end">
+          <a class="header-link" href="mailto:junidude14@gmail.com">Contact</a>
+          <a class="site-language" href="/research/transcriptome-models/ko/" lang="ko" hreflang="ko" aria-label="한국어로 보기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3C9.5 5.6 8.2 8.6 8.2 12s1.3 6.4 3.8 9"/></svg><span>한국어</span></a>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">Open navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="tm-main">
+      <header class="tm-intro">
+        <a href="/research/" class="tm-back">Research</a>
+        <h1>Transcriptome Models</h1>
+        <p>When a model learns to read gene expression, does it also get better at biology? We compared six single-cell models and four bulk RNA models on both kinds of test.</p>
+      </header>
+
+      <section class="tm-explorer" aria-labelledby="explorer-title">
+        <div class="tm-panel-head">
+          <h2 id="explorer-title">Compare the rankings</h2>
+          <p>Choose a task and a gene expression test. Select a model to follow it across the two rankings.</p>
+        </div>
+        <div id="fallback" class="tm-fallback">
+          <p>On Tabula Sapiens, the six models ranked in the same order for gene detection and cell-type classification. On PANACEA, all four bulk models scored lower on drug response after pretraining.</p>
+          <noscript><p>Enable JavaScript to explore the scores.</p></noscript>
+        </div>
+        <div id="interactive" hidden>
+          <div class="tm-controls">
+            <label for="task">Biological task
+              <select id="task">
+                <optgroup label="Single-cell RNA">
+                  <option value="tabula">Cell type · Tabula Sapiens</option>
+                  <option value="adamson">Genetic perturbation · Adamson</option>
+                  <option value="norman">Genetic perturbation · Norman</option>
+                </optgroup>
+                <optgroup label="Bulk RNA">
+                  <option value="tcga">Cancer type · TCGA</option>
+                  <option value="panacea">Drug response · PANACEA</option>
+                </optgroup>
+              </select>
+            </label>
+            <label for="probe">Gene expression test
+              <select id="probe"></select>
+            </label>
+            <fieldset class="tm-measure">
+              <legend>Rank models by</legend>
+              <div class="tm-segment">
+                <label><input type="radio" name="measure" value="final" checked><span>Final score</span></label>
+                <label><input type="radio" name="measure" value="gain"><span>Pretraining gain</span></label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="tm-chart">
+            <div class="tm-chart-head">
+              <div><h3 id="probe-name"></h3><p id="probe-metric"></p></div>
+              <div><h3 id="task-name"></h3><p id="task-metric"></p></div>
+            </div>
+            <div class="tm-ranks">
+              <ol id="probe-list" aria-labelledby="probe-name"></ol>
+              <svg id="connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+              <ol id="task-list" aria-labelledby="task-name"></ol>
+            </div>
+            <div class="tm-detail" id="detail" role="status" aria-live="polite" aria-atomic="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="tm-below">
+        <section aria-labelledby="patterns-title">
+          <h2 id="patterns-title">Two patterns to explore</h2>
+          <div class="tm-patterns">
+            <article>
+              <h3>The same six places</h3>
+              <p>On Tabula Sapiens, every model held the same rank for gene detection and cell-type classification. The order changed when we ranked the models by how much they gained from pretraining.</p>
+              <button class="tm-preset" type="button" data-example="tabula" hidden>Compare the gains</button>
+            </article>
+            <article>
+              <h3>A lower score after pretraining</h3>
+              <p>On PANACEA, all four bulk RNA models scored lower on drug-response prediction after pretraining. Each was compared with its own untrained version.</p>
+              <button class="tm-preset" type="button" data-example="panacea" hidden>Explore drug response</button>
+            </article>
+          </div>
+        </section>
+        <details class="tm-qa">
+          <summary>Which model led on RNA-based questions?</summary>
+          <p>We also tested how much probability the six single-cell models assigned to reference answers about the identity of a cell or sample. We evaluated one training run per model.</p>
+          <table>
+            <caption class="sr-only">Highest-ranked model for each set of questions</caption>
+            <thead><tr><th scope="col">Question set</th><th scope="col">Questions</th><th scope="col">Leading model</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Without earlier conversation</th><td>94</td><td>Presence</td></tr>
+              <tr><th scope="row">With earlier conversation</th><td>13</td><td>Value</td></tr>
+            </tbody>
+          </table>
+          <p>The two sets contain different questions, so the change in the leading model cannot be attributed to conversation history alone.</p>
+        </details>
+        <details class="tm-method">
+          <summary>How the scores were calculated</summary>
+          <p>The model names describe different ways of training an RNA encoder. Within each RNA modality, the models trained on the same corpus. Each score is the mean of three runs. For pretraining gain, we first subtract the matching untrained score in each run, then average the three differences. Both versions use a fitted readout for the task.</p>
+          <p>Ranks compare models within one task. The left and right tests can use different units. These rankings describe the models tested here. Small differences in rank can correspond to nearly identical scores.</p>
+        </details>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-identity"><a class="brand" href="/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>Independent research on computational models of human biology.</p></div>
+        <div class="footer-column"><span>Research</span><a href="/research/#pbisc">PBISC</a><a href="/research/transcriptome-models/">Transcriptome Models</a><a href="/research/#rna-llm">RNA-LLM</a><a href="/research/case2rl/">case2RL</a><a href="/research/pbisc-diffusion/">PBISC-Diffusion</a><a href="/research/talk/">TALK</a></div>
+        <div class="footer-column"><span>Lab</span><a href="/papers/">Papers</a><a href="/blog/">Blog</a><a href="/notes/">Notes</a><a href="/members/">Members</a></div>
+        <div class="footer-column"><span>Records</span><a href="/governance/">Governance</a><a href="/bylaws/">Bylaws</a><a href="/research-integrity/">Research practice</a><a href="/disclosures/">Disclosures</a></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Virtual Human Lab · <a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a> · Republic of Korea</span><span>A research group, not a medical provider. Affiliations do not imply institutional sponsorship.</span></div>
+    </footer>
+    <script src="/script.js?v=20260920-1"></script>
+  </body>
+</html>

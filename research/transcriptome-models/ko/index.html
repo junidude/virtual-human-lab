@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Transcriptome Models | Virtual Human Lab</title>
+    <meta name="description" content="단일세포 모델 6종과 bulk RNA 모델 4종에서 유전자 발현을 읽는 능력과 생물학적 과제의 성능을 비교합니다.">
+    <meta property="og:title" content="Transcriptome Models | Virtual Human Lab">
+    <meta property="og:description" content="단일세포 모델 6종과 bulk RNA 모델 4종에서 유전자 발현을 읽는 능력과 생물학적 과제의 성능을 비교합니다.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.virtualhumanlab.com/research/transcriptome-models/ko/">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:image" content="https://www.virtualhumanlab.com/assets/og-image-ko.png?v=20260919-1">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.virtualhumanlab.com/research/transcriptome-models/ko/">
+    <link rel="alternate" hreflang="en" href="https://www.virtualhumanlab.com/research/transcriptome-models/">
+    <link rel="alternate" hreflang="ko" href="https://www.virtualhumanlab.com/research/transcriptome-models/ko/">
+    <link rel="alternate" hreflang="x-default" href="https://www.virtualhumanlab.com/research/transcriptome-models/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=20261120-1">
+    <link rel="stylesheet" href="/research/transcriptome-models/explorer.css">
+    <script src="/research/transcriptome-models/explorer.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="/ko/" aria-label="Virtual Human Lab 홈"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a>
+        <nav class="site-nav" id="site-nav" aria-label="주 메뉴"><a href="/research/ko/" aria-current="page">연구</a><a href="/papers/ko/">논문</a><a href="/blog/ko/">블로그</a><a href="/members/ko/">구성원</a></nav>
+        <div class="header-end">
+          <a class="header-link" href="mailto:junidude14@gmail.com">문의</a>
+          <a class="site-language" href="/research/transcriptome-models/" lang="en" hreflang="en" aria-label="View in English"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3C9.5 5.6 8.2 8.6 8.2 12s1.3 6.4 3.8 9"/></svg><span>English</span></a>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">메뉴 열기</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="tm-main">
+      <header class="tm-intro">
+        <a href="/research/ko/" class="tm-back">연구</a>
+        <h1>Transcriptome Models</h1>
+        <p>유전자 발현을 잘 읽는 모델은 세포 유형이나 약물 반응도 더 잘 예측할까요? 단일세포 모델 6종과 bulk RNA 모델 4종을 두 가지 시험으로 비교했습니다.</p>
+      </header>
+
+      <section class="tm-explorer" aria-labelledby="explorer-title">
+        <div class="tm-panel-head">
+          <h2 id="explorer-title">모델 순위 비교</h2>
+          <p>생물학적 과제와 발현 검사를 고른 뒤 모델 이름을 누르면 두 순위에서 그 모델을 따라갈 수 있습니다.</p>
+        </div>
+        <div id="fallback" class="tm-fallback">
+          <p>Tabula Sapiens에서는 유전자 발현 여부를 판별하는 순위와 세포 유형을 분류하는 순위가 여섯 모델 모두 일치했습니다. PANACEA에서는 사전학습 후 네 bulk 모델 모두 약물 반응 예측 점수가 낮아졌습니다.</p>
+          <noscript><p>점수를 직접 비교하려면 JavaScript를 켜 주세요.</p></noscript>
+        </div>
+        <div id="interactive" hidden>
+          <div class="tm-controls">
+            <label for="task">생물학적 과제
+              <select id="task">
+                <optgroup label="단일세포 RNA">
+                  <option value="tabula">세포 유형 · Tabula Sapiens</option>
+                  <option value="adamson">유전자 교란 · Adamson</option>
+                  <option value="norman">유전자 교란 · Norman</option>
+                </optgroup>
+                <optgroup label="Bulk RNA">
+                  <option value="tcga">암 유형 · TCGA</option>
+                  <option value="panacea">약물 반응 · PANACEA</option>
+                </optgroup>
+              </select>
+            </label>
+            <label for="probe">유전자 발현 검사
+              <select id="probe"></select>
+            </label>
+            <fieldset class="tm-measure">
+              <legend>순위 기준</legend>
+              <div class="tm-segment">
+                <label><input type="radio" name="measure" value="final" checked><span>최종 점수</span></label>
+                <label><input type="radio" name="measure" value="gain"><span>사전학습 증감</span></label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="tm-chart">
+            <div class="tm-chart-head">
+              <div><h3 id="probe-name"></h3><p id="probe-metric"></p></div>
+              <div><h3 id="task-name"></h3><p id="task-metric"></p></div>
+            </div>
+            <div class="tm-ranks">
+              <ol id="probe-list" aria-labelledby="probe-name"></ol>
+              <svg id="connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+              <ol id="task-list" aria-labelledby="task-name"></ol>
+            </div>
+            <div class="tm-detail" id="detail" role="status" aria-live="polite" aria-atomic="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="tm-below">
+        <section aria-labelledby="patterns-title">
+          <h2 id="patterns-title">두 가지 관찰</h2>
+          <div class="tm-patterns">
+            <article>
+              <h3>여섯 모델의 순위가 일치한 경우</h3>
+              <p>Tabula Sapiens에서는 유전자 발현 여부를 판별하는 최종 순위와 세포 유형을 분류하는 최종 순위가 모두 일치했습니다. 사전학습으로 얻은 점수를 기준으로 보면 두 순위가 달라집니다.</p>
+              <button class="tm-preset" type="button" data-example="tabula" hidden>사전학습 증감 비교</button>
+            </article>
+            <article>
+              <h3>사전학습 후 점수가 낮아진 경우</h3>
+              <p>PANACEA에서는 네 bulk RNA 모델 모두 사전학습 후 약물 반응 예측 점수가 낮아졌습니다. 각 모델의 학습 전 점수를 기준으로 계산한 결과입니다.</p>
+              <button class="tm-preset" type="button" data-example="panacea" hidden>약물 반응 결과 보기</button>
+            </article>
+          </div>
+        </section>
+        <details class="tm-qa">
+          <summary>RNA 질의응답에서는 어떤 모델이 앞섰을까요?</summary>
+          <p>단일세포 모델 6종이 세포나 샘플의 정체성을 묻는 질문에서 참조 답변에 얼마나 높은 확률을 부여하는지 평가했습니다. 모델마다 한 번의 학습 결과를 사용했습니다.</p>
+          <table>
+            <caption class="sr-only">질문 유형별 1위 모델</caption>
+            <thead><tr><th scope="col">질문 유형</th><th scope="col">문항 수</th><th scope="col">1위 모델</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">이전 대화 없음</th><td>94</td><td>Presence</td></tr>
+              <tr><th scope="row">이전 대화 있음</th><td>13</td><td>Value</td></tr>
+            </tbody>
+          </table>
+          <p>두 그룹은 서로 다른 질문으로 구성되어 있어 1위 모델이 달라진 이유를 이전 대화의 유무만으로 설명하기는 어렵습니다.</p>
+        </details>
+        <details class="tm-method">
+          <summary>점수 계산 방법</summary>
+          <p>모델 이름은 RNA 인코더의 학습 방식을 나타냅니다. 단일세포 모델끼리, bulk 모델끼리는 같은 데이터로 학습했습니다. 최종 점수는 세 번의 실험을 평균한 값입니다. 사전학습 증감은 매 실험에서 같은 모델의 학습 전 점수를 뺀 후 세 차이를 평균한 값입니다. 학습 전후 모두 과제의 답을 예측하는 판독기를 따로 훈련했습니다.</p>
+          <p>순위는 같은 과제 안에서 모델끼리 비교한 결과입니다. 왼쪽과 오른쪽 검사의 점수 단위는 다를 수 있습니다. 여기에 나온 순위는 이번에 평가한 모델에 한정되며 점수가 아주 비슷해도 순위는 갈릴 수 있습니다.</p>
+        </details>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-identity"><a class="brand" href="/ko/"><img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28"><span class="brand-name">Virtual Human Lab</span></a><p>Digital Biology/Virtual Biology를 연구하는 독립적인 비영리 연구 단체입니다.</p></div>
+        <div class="footer-column"><span>연구</span><a href="/research/ko/#pbisc">PBISC</a><a href="/research/transcriptome-models/ko/">Transcriptome Models</a><a href="/research/ko/#rna-llm">RNA-LLM</a><a href="/research/case2rl/ko/">case2RL</a><a href="/research/pbisc-diffusion/ko/">PBISC-Diffusion</a><a href="/research/talk/ko/">TALK</a></div>
+        <div class="footer-column"><span>랩</span><a href="/papers/ko/">논문</a><a href="/blog/ko/">블로그</a><a href="/notes/ko/">노트</a><a href="/members/ko/">구성원</a></div>
+        <div class="footer-column"><span>기록</span><a href="/governance/ko/">운영 체계</a><a href="/bylaws/ko/">회칙</a><a href="/research-integrity/ko/">연구 원칙</a><a href="/disclosures/ko/">공개 사항</a></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Virtual Human Lab · <a href="mailto:junidude14@gmail.com">junidude14@gmail.com</a> · 대한민국</span><span>VHL은 연구 그룹이며 의료 기관이 아닙니다. 소속 표시는 기관의 후원을 의미하지 않습니다.</span></div>
+    </footer>
+    <script src="/script.js?v=20260920-1"></script>
+  </body>
+</html>
