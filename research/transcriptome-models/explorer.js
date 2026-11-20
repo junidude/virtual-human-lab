@@ -94,7 +94,7 @@
       path.setAttribute('fill', 'none');
       path.setAttribute('vector-effect', 'non-scaling-stroke');
       const active = model.recipe === selected;
-      path.setAttribute('stroke', active ? '#007864' : '#acc5bf');
+      if (active) path.classList.add('is-selected');
       path.setAttribute('stroke-width', active ? '3.5' : '1.5');
       if (active) lines.push(path);
       else lines.unshift(path);

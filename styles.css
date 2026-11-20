@@ -712,6 +712,7 @@ a {
 
 .news-media.is-paper img {
   width: 34%;
+  min-width: 0;
   height: auto;
   object-fit: contain;
   border-radius: 10px 10px 0 0;

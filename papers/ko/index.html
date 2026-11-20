@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>논문 | Virtual Human Lab</title>
-    <meta name="description" content="심사 중인 두 편의 원고, PBISC와 RNA-LLM. 연구자는 비공개 사본을 요청할 수 있습니다.">
+    <meta name="description" content="PBISC, Transcriptome Models, RNA-LLM 원고가 심사 중입니다. 연구자는 비공개 사본을 요청할 수 있습니다.">
     <meta property="og:title" content="논문 | Virtual Human Lab">
-    <meta property="og:description" content="심사 중인 두 편의 원고, PBISC와 RNA-LLM. 연구자는 비공개 사본을 요청할 수 있습니다.">
+    <meta property="og:description" content="PBISC, Transcriptome Models, RNA-LLM 원고가 심사 중입니다. 연구자는 비공개 사본을 요청할 수 있습니다.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.virtualhumanlab.com/papers/ko/">
     <meta property="og:locale" content="ko_KR">
@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=20261120-1">
+    <link rel="stylesheet" href="/styles.css?v=20261120-2">
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -40,7 +40,7 @@
     <main id="main">
       <section class="page-head" aria-labelledby="papers-title">
         <h1 id="papers-title">논문</h1>
-        <p>두 편의 원고가 심사 중입니다. 특허 출원과 동료평가가 끝날 때까지 전문 PDF는 공개하지 않지만, 연구자는 사본을 요청할 수 있습니다.</p>
+        <p>논문 세 편이 심사 중입니다. 연구자는 비공개 사본을 요청할 수 있습니다.</p>
         <div class="btn-group"><button class="btn btn-primary" type="button" data-paper-request="General manuscript request">비공개 사본 요청</button></div>
       </section>
 
@@ -52,6 +52,15 @@
             <h2>PBISC: PBMC 벌크 RNA-seq의 참조 데이터 없는 단일세포 해상도 디콘볼루션</h2>
             <p>PBMC 벌크 RNA-seq에서 바로 분석할 수 있는 의사 단일세포 카운트 행렬을 생성합니다. 추론 시점에 짝지은 단일세포 참조 데이터가 필요 없습니다.</p>
             <button class="btn btn-primary" type="button" data-paper-request="PBISC: reference-free single-cell-resolution deconvolution of PBMC bulk RNA-seq">PBISC 요청</button>
+          </div>
+        </article>
+        <article class="paper" id="transcriptome-models">
+          <figure class="paper-cover"><img src="/assets/manuscript-previews/transcriptome-models-cover.svg" alt="" width="757" height="980" loading="lazy"><figcaption>연구 표지 일러스트</figcaption></figure>
+          <div>
+            <span class="status">심사 중</span>
+            <h2>Transcriptome Models</h2>
+            <p>단일세포 모델 6종과 bulk RNA 모델 4종을 비교해 사전학습이 유전자 발현을 읽는 능력과 생물학적 과제의 예측 성능을 얼마나 바꾸는지 살펴봤습니다. <a class="link" href="/research/transcriptome-models/ko/">연구 결과 살펴보기</a></p>
+            <button class="btn btn-primary" type="button" data-paper-request="Transcriptome Models" aria-label="Transcriptome Models 비공개 사본 요청">비공개 사본 요청</button>
           </div>
         </article>
         <article class="paper" id="rna-llm">
@@ -83,6 +92,7 @@
               <select name="paper" required>
                 <option value="General manuscript request">General inquiry</option>
                 <option value="PBISC: reference-free single-cell-resolution deconvolution of PBMC bulk RNA-seq">PBISC</option>
+                <option value="Transcriptome Models">Transcriptome Models</option>
                 <option value="RNA-LLM: transcriptomes as one language-model token">RNA-LLM</option>
               </select>
             </label>

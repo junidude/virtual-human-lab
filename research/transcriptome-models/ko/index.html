@@ -21,9 +21,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=20261120-1">
-    <link rel="stylesheet" href="/research/transcriptome-models/explorer.css">
-    <script src="/research/transcriptome-models/explorer.js" defer></script>
+    <link rel="stylesheet" href="/styles.css?v=20261120-2">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260922-recordings-7e8d80b6a2">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/interactive-figures.css?v=20260920-1">
+    <link rel="stylesheet" href="/research/transcriptome-models/explorer.css?v=20261120-2">
+    <script src="/research/transcriptome-models/explorer.js?v=20261120-2" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -39,24 +41,33 @@
       </div>
     </header>
 
-    <main id="main" class="tm-main">
-      <header class="tm-intro">
-        <a href="/research/ko/" class="tm-back">연구</a>
+    <main id="main">
+      <header class="page-head">
+        <a href="/research/ko/#transcriptome-models" class="back">← 연구</a>
         <h1>Transcriptome Models</h1>
-        <p>유전자 발현을 잘 읽는 모델은 세포 유형이나 약물 반응도 더 잘 예측할까요? 단일세포 모델 6종과 bulk RNA 모델 4종을 두 가지 시험으로 비교했습니다.</p>
+        <p>유전자 발현을 잘 읽는 모델은 세포 유형이나 약물 반응도 더 잘 예측할까요?</p>
+        <p class="meta">단일세포 모델 6종 · bulk RNA 모델 4종 · 생물학적 과제 5개</p>
       </header>
 
-      <section class="tm-explorer" aria-labelledby="explorer-title">
-        <div class="tm-panel-head">
-          <h2 id="explorer-title">모델 순위 비교</h2>
-          <p>생물학적 과제와 발현 검사를 고른 뒤 모델 이름을 누르면 두 순위에서 그 모델을 따라갈 수 있습니다.</p>
+      <nav class="trajectory-tabs" aria-label="연구 탐색">
+        <a href="#rankings">모델 순위</a>
+        <a href="#findings">연구 결과</a>
+        <a href="#methods-title">방법</a>
+      </nav>
+
+      <section class="trajectory-study tm-explorer" id="rankings" aria-labelledby="explorer-title">
+        <div class="trajectory-study-head">
+          <div>
+            <h2 id="explorer-title">모델 순위 비교</h2>
+            <p class="trajectory-short-note">생물학적 과제와 발현 검사를 고른 뒤 모델 이름을 누르면 두 순위에서 그 모델을 따라갈 수 있습니다.</p>
+          </div>
         </div>
         <div id="fallback" class="tm-fallback">
           <p>Tabula Sapiens에서는 유전자 발현 여부를 판별하는 순위와 세포 유형을 분류하는 순위가 여섯 모델 모두 일치했습니다. PANACEA에서는 사전학습 후 네 bulk 모델 모두 약물 반응 예측 점수가 낮아졌습니다.</p>
           <noscript><p>점수를 직접 비교하려면 JavaScript를 켜 주세요.</p></noscript>
         </div>
-        <div id="interactive" hidden>
-          <div class="tm-controls">
+        <div id="interactive" class="pbx" hidden>
+          <div class="pbx-controls tm-controls">
             <label for="task">생물학적 과제
               <select id="task">
                 <optgroup label="단일세포 RNA">
@@ -81,7 +92,7 @@
               </div>
             </fieldset>
           </div>
-          <div class="tm-chart">
+          <div class="pbx-stage">
             <div class="tm-chart-head">
               <div><h3 id="probe-name"></h3><p id="probe-metric"></p></div>
               <div><h3 id="task-name"></h3><p id="task-metric"></p></div>
@@ -91,28 +102,26 @@
               <svg id="connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
               <ol id="task-list" aria-labelledby="task-name"></ol>
             </div>
-            <div class="tm-detail" id="detail" role="status" aria-live="polite" aria-atomic="true"></div>
+            <div class="pbx-detail" id="detail" role="status" aria-live="polite" aria-atomic="true"></div>
           </div>
         </div>
       </section>
 
-      <div class="tm-below">
-        <section aria-labelledby="patterns-title">
-          <h2 id="patterns-title">두 가지 관찰</h2>
-          <div class="tm-patterns">
-            <article>
-              <h3>여섯 모델의 순위가 일치한 경우</h3>
-              <p>Tabula Sapiens에서는 유전자 발현 여부를 판별하는 최종 순위와 세포 유형을 분류하는 최종 순위가 모두 일치했습니다. 사전학습으로 얻은 점수를 기준으로 보면 두 순위가 달라집니다.</p>
-              <button class="tm-preset" type="button" data-example="tabula" hidden>사전학습 증감 비교</button>
-            </article>
-            <article>
-              <h3>사전학습 후 점수가 낮아진 경우</h3>
-              <p>PANACEA에서는 네 bulk RNA 모델 모두 사전학습 후 약물 반응 예측 점수가 낮아졌습니다. 각 모델의 학습 전 점수를 기준으로 계산한 결과입니다.</p>
-              <button class="tm-preset" type="button" data-example="panacea" hidden>약물 반응 결과 보기</button>
-            </article>
-          </div>
-        </section>
-        <details class="tm-qa">
+      <section class="trajectory-study" id="findings" aria-labelledby="patterns-title">
+        <div class="trajectory-study-head"><h2 id="patterns-title">연구 결과</h2></div>
+        <div class="tm-patterns">
+          <article>
+            <h3>여섯 모델의 순위가 일치한 경우</h3>
+            <p>Tabula Sapiens에서는 유전자 발현 여부를 판별하는 최종 순위와 세포 유형을 분류하는 최종 순위가 모두 일치했습니다. 사전학습으로 얻은 점수를 기준으로 보면 두 순위가 달라집니다.</p>
+            <button class="btn btn-light tm-preset" type="button" data-example="tabula" hidden>사전학습 증감 비교</button>
+          </article>
+          <article>
+            <h3>사전학습 후 점수가 낮아진 경우</h3>
+            <p>PANACEA에서는 네 bulk RNA 모델 모두 사전학습 후 약물 반응 예측 점수가 낮아졌습니다. 각 모델의 학습 전 점수를 기준으로 계산한 결과입니다.</p>
+            <button class="btn btn-light tm-preset" type="button" data-example="panacea" hidden>약물 반응 결과 보기</button>
+          </article>
+        </div>
+        <details class="trajectory-archive tm-qa">
           <summary>RNA 질의응답에서는 어떤 모델이 앞섰을까요?</summary>
           <p>단일세포 모델 6종이 세포나 샘플의 정체성을 묻는 질문에서 참조 답변에 얼마나 높은 확률을 부여하는지 평가했습니다. 모델마다 한 번의 학습 결과를 사용했습니다.</p>
           <table>
@@ -125,12 +134,17 @@
           </table>
           <p>두 그룹은 서로 다른 질문으로 구성되어 있어 1위 모델이 달라진 이유를 이전 대화의 유무만으로 설명하기는 어렵습니다.</p>
         </details>
-        <details class="tm-method">
+      </section>
+
+      <section class="trajectory-methods" aria-labelledby="methods-title">
+        <h2 id="methods-title">방법</h2>
+        <details class="trajectory-method-downloads tm-method">
           <summary>점수 계산 방법</summary>
           <p>모델 이름은 RNA 인코더의 학습 방식을 나타냅니다. 단일세포 모델끼리, bulk 모델끼리는 같은 데이터로 학습했습니다. 최종 점수는 세 번의 실험을 평균한 값입니다. 사전학습 증감은 매 실험에서 같은 모델의 학습 전 점수를 뺀 후 세 차이를 평균한 값입니다. 학습 전후 모두 과제의 답을 예측하는 판독기를 따로 훈련했습니다.</p>
           <p>순위는 같은 과제 안에서 모델끼리 비교한 결과입니다. 왼쪽과 오른쪽 검사의 점수 단위는 다를 수 있습니다. 여기에 나온 순위는 이번에 평가한 모델에 한정되며 점수가 아주 비슷해도 순위는 갈릴 수 있습니다.</p>
         </details>
-      </div>
+        <div class="trajectory-study-link trajectory-links"><a href="/papers/ko/#transcriptome-models">논문 정보 보기 →</a></div>
+      </section>
     </main>
 
     <footer class="site-footer">

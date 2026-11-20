@@ -21,9 +21,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=20261120-1">
-    <link rel="stylesheet" href="/research/transcriptome-models/explorer.css">
-    <script src="/research/transcriptome-models/explorer.js" defer></script>
+    <link rel="stylesheet" href="/styles.css?v=20261120-2">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260922-recordings-7e8d80b6a2">
+    <link rel="stylesheet" href="/research/pbisc-diffusion/interactive-figures.css?v=20260920-1">
+    <link rel="stylesheet" href="/research/transcriptome-models/explorer.css?v=20261120-2">
+    <script src="/research/transcriptome-models/explorer.js?v=20261120-2" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -39,24 +41,33 @@
       </div>
     </header>
 
-    <main id="main" class="tm-main">
-      <header class="tm-intro">
-        <a href="/research/" class="tm-back">Research</a>
+    <main id="main">
+      <header class="page-head">
+        <a href="/research/#transcriptome-models" class="back">← Research</a>
         <h1>Transcriptome Models</h1>
-        <p>When a model learns to read gene expression, does it also get better at biology? We compared six single-cell models and four bulk RNA models on both kinds of test.</p>
+        <p>Can models that read gene expression well also predict cell types or drug responses?</p>
+        <p class="meta">6 single-cell models · 4 bulk RNA models · 5 biological tasks</p>
       </header>
 
-      <section class="tm-explorer" aria-labelledby="explorer-title">
-        <div class="tm-panel-head">
-          <h2 id="explorer-title">Compare the rankings</h2>
-          <p>Choose a task and a gene expression test. Select a model to follow it across the two rankings.</p>
+      <nav class="trajectory-tabs" aria-label="Explore the study">
+        <a href="#rankings">Rankings</a>
+        <a href="#findings">Findings</a>
+        <a href="#methods-title">Methods</a>
+      </nav>
+
+      <section class="trajectory-study tm-explorer" id="rankings" aria-labelledby="explorer-title">
+        <div class="trajectory-study-head">
+          <div>
+            <h2 id="explorer-title">Compare the rankings</h2>
+            <p class="trajectory-short-note">Choose a task and a gene expression test. Select a model to follow it across the two rankings.</p>
+          </div>
         </div>
         <div id="fallback" class="tm-fallback">
           <p>On Tabula Sapiens, the six models ranked in the same order for gene detection and cell-type classification. On PANACEA, all four bulk models scored lower on drug response after pretraining.</p>
           <noscript><p>Enable JavaScript to explore the scores.</p></noscript>
         </div>
-        <div id="interactive" hidden>
-          <div class="tm-controls">
+        <div id="interactive" class="pbx" hidden>
+          <div class="pbx-controls tm-controls">
             <label for="task">Biological task
               <select id="task">
                 <optgroup label="Single-cell RNA">
@@ -81,7 +92,7 @@
               </div>
             </fieldset>
           </div>
-          <div class="tm-chart">
+          <div class="pbx-stage">
             <div class="tm-chart-head">
               <div><h3 id="probe-name"></h3><p id="probe-metric"></p></div>
               <div><h3 id="task-name"></h3><p id="task-metric"></p></div>
@@ -91,28 +102,26 @@
               <svg id="connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
               <ol id="task-list" aria-labelledby="task-name"></ol>
             </div>
-            <div class="tm-detail" id="detail" role="status" aria-live="polite" aria-atomic="true"></div>
+            <div class="pbx-detail" id="detail" role="status" aria-live="polite" aria-atomic="true"></div>
           </div>
         </div>
       </section>
 
-      <div class="tm-below">
-        <section aria-labelledby="patterns-title">
-          <h2 id="patterns-title">Two patterns to explore</h2>
-          <div class="tm-patterns">
-            <article>
-              <h3>The same six places</h3>
-              <p>On Tabula Sapiens, every model held the same rank for gene detection and cell-type classification. The order changed when we ranked the models by how much they gained from pretraining.</p>
-              <button class="tm-preset" type="button" data-example="tabula" hidden>Compare the gains</button>
-            </article>
-            <article>
-              <h3>A lower score after pretraining</h3>
-              <p>On PANACEA, all four bulk RNA models scored lower on drug-response prediction after pretraining. Each was compared with its own untrained version.</p>
-              <button class="tm-preset" type="button" data-example="panacea" hidden>Explore drug response</button>
-            </article>
-          </div>
-        </section>
-        <details class="tm-qa">
+      <section class="trajectory-study" id="findings" aria-labelledby="patterns-title">
+        <div class="trajectory-study-head"><h2 id="patterns-title">Findings</h2></div>
+        <div class="tm-patterns">
+          <article>
+            <h3>The same six places</h3>
+            <p>On Tabula Sapiens, every model held the same rank for gene detection and cell-type classification. The order changed when we ranked the models by how much they gained from pretraining.</p>
+            <button class="btn btn-light tm-preset" type="button" data-example="tabula" hidden>Compare the gains</button>
+          </article>
+          <article>
+            <h3>A lower score after pretraining</h3>
+            <p>On PANACEA, all four bulk RNA models scored lower on drug-response prediction after pretraining. Each was compared with its own untrained version.</p>
+            <button class="btn btn-light tm-preset" type="button" data-example="panacea" hidden>Explore drug response</button>
+          </article>
+        </div>
+        <details class="trajectory-archive tm-qa">
           <summary>Which model led on RNA-based questions?</summary>
           <p>We also tested how much probability the six single-cell models assigned to reference answers about the identity of a cell or sample. We evaluated one training run per model.</p>
           <table>
@@ -125,12 +134,17 @@
           </table>
           <p>The two sets contain different questions, so the change in the leading model cannot be attributed to conversation history alone.</p>
         </details>
-        <details class="tm-method">
+      </section>
+
+      <section class="trajectory-methods" aria-labelledby="methods-title">
+        <h2 id="methods-title">Methods</h2>
+        <details class="trajectory-method-downloads tm-method">
           <summary>How the scores were calculated</summary>
           <p>The model names describe different ways of training an RNA encoder. Within each RNA modality, the models trained on the same corpus. Each score is the mean of three runs. For pretraining gain, we first subtract the matching untrained score in each run, then average the three differences. Both versions use a fitted readout for the task.</p>
           <p>Ranks compare models within one task. The left and right tests can use different units. These rankings describe the models tested here. Small differences in rank can correspond to nearly identical scores.</p>
         </details>
-      </div>
+        <div class="trajectory-study-link trajectory-links"><a href="/papers/#transcriptome-models">View paper details →</a></div>
+      </section>
     </main>
 
     <footer class="site-footer">

@@ -20,7 +20,7 @@ Then open `http://localhost:4173`.
 - `/research/talk/` and `/research/talk/ko/` — TALK playground: recorded RNA-LLM answers for real cells (data from `python tools/make_talk_demo.py`)
 - `/research/case2rl/` and `/research/case2rl/ko/` — case2RL: case-report PDFs, diagnostic environments, pilot rollouts and review
 - `/research/case2rl/review/` and its `/ko/` page — two recorded rollouts, blinded labels, turn-level review, browser snapshots and JSON import/export
-- `/papers/` and `/papers/ko/` — blurred manuscript previews and email-draft access request
+- `/papers/` and `/papers/ko/` — manuscript listings, cover images and private-copy requests by email draft
 - `/blog/` and `/blog/ko/` — signed essays on research direction
 - `/notes/` and `/notes/ko/` — what a technical note will contain (none are public yet)
 - `/members/` and `/members/ko/` — active members, pre-active members, and advisors
