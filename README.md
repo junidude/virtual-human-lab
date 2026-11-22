@@ -16,7 +16,7 @@ Then open `http://localhost:4173`.
 - `/research/` and `/research/ko/` — PBISC, Transcriptome Models, RNA-LLM and case2RL
 - `/research/pbisc-diffusion/` and `/research/pbisc-diffusion/ko/` — recorded diffusion sampling video with fixed PCA and UMAP views
 - `/research/pbisc-diffusion/one-cell/` and its `/ko/` page — interactive step-by-step view of one generated cell
-- `/research/transcriptome-models/` and its `/ko/` page — compare checkpoint LogME with final task ranks across 14 datasets, explore held-out model selection and compare expression tests with biological outcomes
+- `/research/transcriptome-models/` and its `/ko/` page — explore six single-cell and four bulk RNA training recipes, then compare checkpoint LogME, final model ranks and expression tests
 - `/research/talk/` and `/research/talk/ko/` — TALK playground: recorded RNA-LLM answers for real cells (data from `python tools/make_talk_demo.py`)
 - `/research/case2rl/` and `/research/case2rl/ko/` — case2RL: case-report PDFs, diagnostic environments, pilot rollouts and review
 - `/research/case2rl/review/` and its `/ko/` page — two recorded rollouts, blinded labels, turn-level review, browser snapshots and JSON import/export
@@ -44,7 +44,7 @@ the existing layout; remove retired pages when requested instead of redesigning 
 
 The home hero replays recorded PBISC-Diffusion sampling from `assets/home/hero-cells.bin` (see
 `hero-cells.json`; `assets/home/hero.js` draws it and never runs a model). The Transcriptome Models
-card uses an original schematic of changing ranks. The other research-card and essay artworks
+card illustrates a gene ID hidden in an example RNA profile. The other research-card and essay artworks
 in `assets/home/*.svg` are generated from published site data by `python tools/make_home_visuals.py`.
 
 The Diffusion and TALK pages include bilingual, responsive Figure 1 architecture diagrams.

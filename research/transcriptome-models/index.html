@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Transcriptome Models | Virtual Human Lab</title>
-    <meta name="description" content="Explore whether LogME measured early in training ranks RNA models in the same order as their final biological task scores.">
+    <meta name="description" content="Explore what six single-cell and four bulk RNA training recipes see, what they predict, and how their trained models compare.">
     <meta property="og:title" content="Transcriptome Models | Virtual Human Lab">
-    <meta property="og:description" content="Explore whether LogME measured early in training ranks RNA models in the same order as their final biological task scores.">
+    <meta property="og:description" content="Explore what six single-cell and four bulk RNA training recipes see, what they predict, and how their trained models compare.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.virtualhumanlab.com/research/transcriptome-models/">
     <meta property="og:locale" content="en_US">
@@ -24,10 +24,12 @@
     <link rel="stylesheet" href="/styles.css?v=20261120-2">
     <link rel="stylesheet" href="/research/pbisc-diffusion/trajectory.css?v=20260922-recordings-7e8d80b6a2">
     <link rel="stylesheet" href="/research/pbisc-diffusion/interactive-figures.css?v=20260920-1">
-    <link rel="stylesheet" href="/research/transcriptome-models/explorer.css?v=20261120-2">
+    <link rel="stylesheet" href="/research/transcriptome-models/explorer.css?v=20261122-1">
     <link rel="stylesheet" href="/research/transcriptome-models/checkpoint-explorer.css?v=20261121-1">
     <script src="/research/transcriptome-models/checkpoint-explorer.js?v=20261121-1" defer></script>
     <script src="/research/transcriptome-models/explorer.js?v=20261120-2" defer></script>
+    <link rel="stylesheet" href="/research/transcriptome-models/recipe-guide.css?v=20261122-1">
+    <script src="/research/transcriptome-models/recipe-guide.js?v=20261122-1" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -44,14 +46,77 @@
     </header>
 
     <main id="main">
-      <header class="page-head">
+      <header class="page-head recipe-masthead">
         <a href="/research/#transcriptome-models" class="back">← Research</a>
         <h1>Transcriptome Models</h1>
-        <p>At 25,000 steps, higher LogME tended to go with better final performance on all five original datasets and eight of nine additional datasets.</p>
-        <p class="meta">4 checkpoints · 5 original datasets and 9 additional datasets</p>
+        <p>Explore ten RNA training recipes. Pick one to see what the model reads and what it learns to predict.</p>
       </header>
 
-      <nav class="trajectory-tabs" aria-label="Explore the study">
+      <section class="recipe-guide-section" id="recipe-guide" aria-labelledby="recipe-guide-heading">
+        <h2 id="recipe-guide-heading" class="sr-only">Explore the training recipes</h2>
+        <div id="recipe-guide-fallback">
+          <div class="recipe-static-grid">
+            <div class="recipe-static-group"><h3>Single-cell RNA</h3>
+              <details name="recipe-static-sc" data-modality="sc" data-recipe="Presence" open>
+                <summary><b>Presence</b> · Is this gene expressed?</summary>
+                <p class="recipe-static-tokens"><span>Visible gene IDs</span><i aria-hidden="true">→</i><strong>Yes / No</strong></p>
+                <p>The encoder sees the IDs of expressed genes left in the cell after some have been removed. It learns to distinguish a hidden expressed gene from a measured gene with zero counts.</p>
+              </details>
+              <details name="recipe-static-sc" data-modality="sc" data-recipe="Identity">
+                <summary><b>Identity</b> · Which gene is missing?</summary>
+                <p class="recipe-static-tokens"><span>ID · ? · ID</span><i aria-hidden="true">→</i><strong>Gene ID</strong></p>
+                <p>Genes are ordered by expression relative to their usual level. The model sees the surrounding IDs and learns the original identity at a selected position.</p>
+              </details>
+              <details name="recipe-static-sc" data-modality="sc" data-recipe="GPT">
+                <summary><b>GPT</b> · Which gene comes next?</summary>
+                <p class="recipe-static-tokens"><span>IDs so far</span><i aria-hidden="true">→</i><strong>Next ID</strong></p>
+                <p>Expressed genes are ordered from higher to lower expression. At each position, the model uses the preceding sequence, including the current ID, to predict the next gene.</p>
+              </details>
+              <details name="recipe-static-sc" data-modality="sc" data-recipe="Bin-Class">
+                <summary><b>Bin-Class</b> · Which expression category?</summary>
+                <p class="recipe-static-tokens"><span>Gene ID · ?</span><i aria-hidden="true">→</i><strong>Category 1–5</strong></p>
+                <p>The gene ID stays visible while its expression category is hidden. The target is one of five categories for positive expression.</p>
+              </details>
+              <details name="recipe-static-sc" data-modality="sc" data-recipe="Bin-Value">
+                <summary><b>Bin-Value</b> · What is the bin number?</summary>
+                <p class="recipe-static-tokens"><span>Gene ID · ?</span><i aria-hidden="true">→</i><strong>Bin number 1–50</strong></p>
+                <p>A cell’s positive expression values are divided into quantile bins. The model predicts the hidden bin as a number, so a prediction two bins away is penalized more than one bin away.</p>
+              </details>
+              <details name="recipe-static-sc" data-modality="sc" data-recipe="Value">
+                <summary><b>Value</b> · How much was expressed?</summary>
+                <p class="recipe-static-tokens"><span>Gene ID · ?</span><i aria-hidden="true">→</i><strong>Continuous value</strong></p>
+                <p>The name of each selected gene stays in the input. Its positive expression value is hidden, and the model predicts that value on the log-normalized cell expression scale.</p>
+              </details>
+            </div>
+            <div class="recipe-static-group"><h3>Bulk RNA</h3>
+              <details name="recipe-static-bulk" data-modality="bulk" data-recipe="Identity">
+                <summary><b>Identity</b> · Which gene is missing?</summary>
+                <p class="recipe-static-tokens"><span>ID · ? · ID</span><i aria-hidden="true">→</i><strong>Gene ID</strong></p>
+                <p>Gene-specific reference distributions determine the order. Selected positive gene IDs are masked and the model reads both sides to recover their identities.</p>
+              </details>
+              <details name="recipe-static-bulk" data-modality="bulk" data-recipe="GPT">
+                <summary><b>GPT</b> · Which gene comes next?</summary>
+                <p class="recipe-static-tokens"><span>IDs so far</span><i aria-hidden="true">→</i><strong>Next ID</strong></p>
+                <p>After genes are ranked against gene-specific reference distributions, their IDs form a sequence. The model learns to predict the next ID from the sequence so far.</p>
+              </details>
+              <details name="recipe-static-bulk" data-modality="bulk" data-recipe="Bin-Class">
+                <summary><b>Bin-Class</b> · Which expression category?</summary>
+                <p class="recipe-static-tokens"><span>Gene ID · ?</span><i aria-hidden="true">→</i><strong>Expression category</strong></p>
+                <p>Measured genes keep a fixed ID order. The model predicts the original expression category at selected positions. Zero has its own category and positive values use bins 1–64.</p>
+              </details>
+              <details name="recipe-static-bulk" data-modality="bulk" data-recipe="Value">
+                <summary><b>Value</b> · How much was expressed?</summary>
+                <p class="recipe-static-tokens"><span>Gene ID · ?</span><i aria-hidden="true">→</i><strong>Continuous value</strong></p>
+                <p>In fixed gene order, each observed value is encoded with sine and cosine functions. A masked position keeps the gene ID, and its target is the original log-transformed TPM, including measured zeros.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div id="recipe-guide-app" hidden></div>
+      </section>
+
+      <h2 class="recipe-results-heading" id="recipe-results">Results across recipes</h2>
+      <nav class="trajectory-tabs recipe-results-nav" aria-label="Explore model comparisons">
         <a href="#checkpoint-explorer">Checkpoint LogME</a>
         <a href="#held-out">Early model selection</a>
         <a href="#rankings">Gene expression tests</a>
@@ -136,7 +201,7 @@
           </div>
           <p class="trajectory-short-note" id="checkpoint-scope">Each point compares six single-cell or four bulk RNA recipes within one dataset, using each recipe’s mean scores across three runs. Initialization precedes training. The final checkpoint gives an end-of-training reference.</p>
         </div>
-        <p class="trajectory-short-note">At 25,000 steps, the top LogME recipe finished first on 7 of 14 datasets. On GDPx2 the rankings ran in opposite directions (ρ = −0.80).</p>
+        <p class="trajectory-short-note">At 25,000 steps, higher LogME tended to go with higher final scores on all five original datasets and eight of nine additional datasets. The top LogME recipe finished first on 7 of 14 datasets. GDPx2 showed the reverse tendency (ρ = −0.80).</p>
       </section>
 
       <section class="trajectory-study ck-selection" id="held-out" aria-labelledby="held-out-title">

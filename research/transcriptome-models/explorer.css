@@ -193,3 +193,57 @@
   #connections path { stroke: GrayText; }
   #connections path.is-selected { stroke: Highlight; }
 }
+
+/* The recipe exhibit opens the page. Existing result sections retain their deep links. */
+.page-head.recipe-masthead {
+  padding-top: clamp(18px, 2.8vw, 40px);
+  padding-bottom: clamp(16px, 2vw, 28px);
+}
+.recipe-masthead .back { margin-bottom: 8px; }
+.recipe-masthead p { max-width: 770px; margin-top: 10px; text-wrap: pretty; }
+.recipe-guide-section {
+  width: min(1280px, calc(100% - 2 * var(--gutter)));
+  margin-inline: auto;
+}
+.recipe-results-heading {
+  width: min(1280px, calc(100% - 2 * var(--gutter)));
+  margin: clamp(40px, 6vw, 78px) auto 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+  text-align: center;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 500;
+}
+.recipe-static-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.recipe-static-group {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  padding: clamp(12px, 2vw, 24px);
+}
+.recipe-static-group h3 { font-size: 20px; margin-bottom: 10px; }
+.recipe-static-group details { padding-block: 10px; border-top: 1px solid var(--line); }
+.recipe-static-group summary { color: var(--ink-2); cursor: pointer; }
+.recipe-static-group details p { margin-top: 12px; }
+.recipe-static-tokens {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: .875rem;
+}
+.recipe-static-tokens span, .recipe-static-tokens strong {
+  padding: 6px 10px;
+  border-radius: 7px;
+  background: var(--surface);
+}
+.recipe-static-tokens strong { background: var(--blue-soft); }
+@media (max-width: 680px) {
+  .recipe-static-grid { grid-template-columns: minmax(0, 1fr); }
+  .recipe-masthead h1 { font-size: clamp(28px, 8.5vw, 40px); }
+  .recipe-masthead p { font-size: 1rem; }
+}
